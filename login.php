@@ -5,7 +5,7 @@
     $_SESSION = $usuario;
 
     if (isset($usuario) && isset($contraseña)) {
-        if ($usuario !== 'Bruno') {
+        if ($usuario !== 'Bruno' && $contraseña !== '1234') {
             echo 'Usuario y/o contraseña incorrectos';   
         }
     }
