@@ -6,18 +6,19 @@
 </head>
 <body>
     <main>
-        <h1> LOGIN </h1>
+        <span class="login"> LOGIN </span>
         <form method="POST" action="login.php">
             <div class="form-group">
                 <label for="user"> Usuario </label>
-                <br>
                 <input type="text" name="user">
             </div>
             <div class="form-group">
                 <label for="pass"> Contraseña </label>
-                <br>
-                <input type="text" name="pass">
+                <input type="password" name="pass">
             </div>
+            <input type="checkbox"> Recordar usuario y contraseña
+            <br>
+            <input type="submit" value="INGRESAR">
         </form>
     </main>
 </body>

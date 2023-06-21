@@ -5,8 +5,12 @@
     $_SESSION = $usuario;
 
     if (isset($usuario) && isset($contraseña)) {
-        if ($usuario !== 'Bruno' && $contraseña !== '1234') {
-            echo 'Usuario y/o contraseña incorrectos';   
+        if ($usuario == 'root' && $contraseña == 'root') {
+            header("location: administrador.php");
+        } else if ($usuario == 'operative' && $contraseña == 'operative') {
+            header("location: operador.php");  
+        } else {
+            echo "Usuario y/o contraseña incorrectos";
         }
     }
 ?>
