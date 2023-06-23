@@ -8,15 +8,15 @@ html, body {
 
 @font-face {
     font-family: "Inter";
-    src: url(../fonts/static/Inter-Thin.ttf);
+    src: url(../fonts/Inter/Inter-Thin.ttf);
 }
 @font-face {
     font-family: "Inter-ExtraLight";
-    src: url(../fonts/static/Inter-ExtraLight.ttf);
+    src: url(../fonts/Inter/Inter-ExtraLight.ttf);
 }
 @font-face {
     font-family: "Inter-Bold";
-    src: url(../fonts/static/Inter-Bold.ttf);
+    src: url(../fonts/Inter/Inter-Bold.ttf);
 }
 
 body {
@@ -30,12 +30,39 @@ body {
 main {
     background: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
     width: 400px;
-    border-radius: 10px;
+    border-radius: 10px 10px 10px 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* animation: border-white 2s ease infinite; */
 }
+
+/* @keyframes border-white {
+    0% {
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+    }
+    50% {
+        border-bottom: 2px solid darkslategray;
+        border-right: 2px solid darkslategray;
+    }
+    100% {
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+    }
+} */
+
+/* main::before {
+    background-color: black;
+    content: "InteliGO";
+    font-weight: bold;
+    position: absolute;
+    top: -40px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+} */
 
 .login {
     font-family: "Inter-ExtraLight";
