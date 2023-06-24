@@ -2,13 +2,15 @@
     session_start();
     $usuario = $_POST['user'];
     $contraseña = $_POST['pass'];
-    $_SESSION = $usuario;
+    $_SESSION['usuario'] = $usuario;
 
     if (isset($usuario) && isset($contraseña)) {
         if ($usuario == 'root' && $contraseña == 'root') {
-            header("location: administrador.php");
+            $_SESSION['tipoUsuario'] = "admin";
+            header("location: menu.php");
         } else if ($usuario == 'operativo' && $contraseña == 'operativo') {
-            header("location: operativo.php");  
+            $_SESSION['tipoUsuario'] = "operador";
+            header("location: menu.php");  
         } else {
             echo "Usuario y/o contraseña incorrectos";
         }

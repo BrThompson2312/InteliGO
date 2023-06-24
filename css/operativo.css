@@ -1,33 +1,4 @@
-@import 'fonts.css';
-
-html, body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    background-image: url(../img/pocitos2.jpg);
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-nav {
-    background-color: #141414;
-    width: 20%;
-    height: 100%;
-    float: left;
-}
-
-#logo {
-    background-color: #141414;
-    height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+@import 'comun.css';
 
 #user {
     background: rgb(199,119,0);
@@ -41,7 +12,6 @@ nav {
     position: relative;
     animation: user 3s ease infinite;
 }   
-
 @keyframes user {
     0% {
         background-position: 0% 50%;
@@ -53,118 +23,5 @@ nav {
         background-position: 0% 50%;
     }
 }
-
-/* #user:after {
-    content: "";
-    position: absolute;
-    bottom: -30px;
-    left: 30px;
-    border-top: 40px solid white;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 0px solid transparent;
-    z-index: 1;
-} */
-
-.style-user {
-    transform: scale(1.5, 1.5);
-    border-radius: 100px;
-    position: relative;
-}
-
-.conjunto-opciones {
-    position: absolute;
-    width: 100%;
-}
-
-#opciones {
-    background-color: #282828;
-    font-family: "RobotoFlex-Regular";
-    color: white;
-    height: 70%;
-    position: relative;
-}
-
-#opciones a {
-    background-color: #3A0000;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    transition: background-color .2s;
-} #opciones a:hover { background-color: red }
-
-.opciones-hilera {
-    font-family: "Inter-ExtraLight";
-    background-color: #424242;
-    padding: 5px;
-    padding-left: 25px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    transition: background-color .2s;
-} 
-.opciones-hilera > * {
-    padding-right: 50px;
-}
 .opciones-hilera:hover { background-color: gray; cursor: pointer; }
 .opciones-hilera:active { background-color: #C77700; transition: none }
-
-main {
-    color: white;
-    width: 80%;
-    height: 100%;
-    right: 0;
-    float: right;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
-    position: relative;
-}
-
-.inteligo {
-    padding: 10px;
-    border-radius: 0px 5px 5px 0px;
-    color: white;
-}
-.inteligo span {
-    color: darkred;
-}
-
-main img {
-    background-color: white;
-    width: 150px;
-    position: absolute;
-    /* border-top: 5px solid black;
-    border-left: 5px solid black; */
-    bottom: 0;
-    right: 0;
-    border-radius: 90% 0px 0px 0px;
-    padding-top: 25px;
-    padding-left: 25px;
-    transition: width .5s, background-color .5s, padding .5s;
-}
-
-.fondo {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: grid;
-    place-content: center;
-}
-main img:hover {
-    background-color: #427C7C;
-    padding: 25px;
-    width: 200px;
-}
