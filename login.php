@@ -7,8 +7,8 @@
     if (isset($usuario) && isset($contraseña)) {
         if ($usuario == 'root' && $contraseña == 'root') {
             header("location: administrador.php");
-        } else if ($usuario == 'operative' && $contraseña == 'operative') {
-            header("location: operador.php");  
+        } else if ($usuario == 'operativo' && $contraseña == 'operativo') {
+            header("location: operativo.php");  
         } else {
             echo "Usuario y/o contraseña incorrectos";
         }

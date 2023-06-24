@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title> Back_Pocitos </title>
+    <title> InteliGO </title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>

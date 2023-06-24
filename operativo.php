@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title> InteliGO </title>
-    <link rel="stylesheet" href="css/administrador.css">
+    <link rel="stylesheet" href="css/operativo.css">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -13,14 +13,12 @@
         <section id="user">
             <i class="fa-solid fa-user style-user"></i>
             <div class="user-categories">
-                <h3 style="margin: 0"> [Administrador] </h3>
-                <h5 style="margin: 5px;"> <!-- Nombre y apellido--> Root Root </h5>
+                <h3 style="margin: 0"> [Operativo] </h3>
+                <h5 style="margin: 5px;"> <!-- Nombre y apellido--> User User </h5>
             </div>
         </section>
         <section id="opciones">
             <div class="conjunto-opciones">
-                <div class="opciones-hilera"> Administradores </div>
-                <div class="opciones-hilera"> Operativos </div>
                 <div class="opciones-hilera"> Coches </div>
                 <div class="opciones-hilera"> Chofer </div>
                 <div class="opciones-hilera"> Lista negra </div>
@@ -36,7 +34,7 @@
     <main>
         <div class="fondo">
             <h1> BIENVENIDO DE NUEVO </h1>
-            <h3 style="margin: 5px"> <!-- Nombre y apellido--> Root Root </h3>
+            <h3 style="margin: 5px"> <!-- Nombre y apellido--> User User </h3>
         </div>
         <img src="img/logo.png">
     </main>
