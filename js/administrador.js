@@ -1,6 +1,21 @@
 let inicio = document.querySelector('#inicio');
-let admin = document.querySelector('#admin');
+let home = document.querySelector('#home');
+let admin = document.querySelector('#administradores');
 
-function administradores() {
-    inicio.style.display = "none";
+let main = document.querySelector('main');
+
+inicio.style.display = "none"
+// admin.style.display = "none"
+
+function opcion_menu( parametro ) {
+    switch(parametro) {
+        case 'home':
+            inicio.style.display = "unset";
+            admin.style.display = "none";
+        break;
+        case 'administradores':
+            inicio.style.display = "none";
+            admin.style.display = "unset";
+        break;
+    }
 }

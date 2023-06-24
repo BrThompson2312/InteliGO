@@ -11,14 +11,20 @@
     src: url(../fonts/Inter/Inter-Bold.ttf);
 }
 @font-face {
+    font-family: "Inter-SemiBold";
+    src: url(../fonts/Inter/Inter-SemiBold.ttf);
+}
+@font-face {
     font-family: "RobotoFlex-Regular";
     src: url(../fonts/Roboto_Flex/RobotoFlex-Regular.ttf);
 }
+
 html, body {
     height: 100%;
     padding: 0;
     margin: 0;
 }
+
 body {
     background-image: url(../img/pocitos2.jpg);
     background-attachment: fixed;
@@ -103,15 +109,9 @@ nav {
     padding-right: 50px;
 }
 main {
-    color: white;
     width: 80%;
     height: 100%;
-    right: 0;
     float: right;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
     position: relative;
 }
 main img {
@@ -127,6 +127,14 @@ main img {
     padding-left: 25px;
     transition: width .5s, background-color .5s, padding .5s;
 }
+#inicio {
+    background-color: red !important;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
 .fondo {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
     width: 100%;
@@ -136,6 +144,8 @@ main img {
     transform: translate(-50%, -50%);
     display: grid;
     place-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 main img:hover {
     background-color: #427C7C;

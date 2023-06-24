@@ -21,18 +21,5 @@
             <input type="submit" value="INGRESAR">
         </form>
     </main>
-    <!-- <script>
-        let user = document.querySelector('#user');
-        let pass = document.querySelector('#pass');
-        function valores() {
-            if (user.value == 'root' && pass.value == 'root') {
-                window.location.href = "administrador.php";
-            } else {
-                user.style.border = "2px solid red";
-                pass.style.border = "2px solid red";
-                alert('Usuario y/o contraseña incorrectos');
-            }
-        }
-    </script> -->
 </body>
 </html>
