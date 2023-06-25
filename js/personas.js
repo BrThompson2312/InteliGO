@@ -1,40 +1,94 @@
 let administradores = [
     {    
+        "nombre_completo":"administrador_0",
+        "cedula":"00000000",
+        "edad":"00",
+        "fecha-de-ingreso":"00/00/00",
         "id": "0000",
-        "nombre":"administrador_0",
     },
     {    
-        "id": "0001",
-        "nombre":"administrador_1",
+        "nombre_completo":"administrador_1",
+        "cedula":"00000000",
+        "edad":"00",
+        "fecha-de-ingreso":"00/00/00",
+        "id": "0000",
     },
     {    
-        "id": "0002",
-        "nombre":"administrador_2",
+        "nombre_completo":"administrador_2",
+        "cedula":"00000000",
+        "edad":"00",
+        "fecha-de-ingreso":"00/00/00",
+        "id": "0000",
     },
     {    
-        "id": "0003",
-        "nombre":"administrador_3",
+        "nombre_completo":"administrador_3",
+        "cedula":"00000000",
+        "edad":"00",
+        "fecha-de-ingreso":"00/00/00",
+        "id": "0000",
     },
     {    
-        "id": "0004",
-        "nombre":"administrador_4",
+        "nombre_completo":"administrador_4",
+        "cedula":"00000000",
+        "edad":"00",
+        "fecha-de-ingreso":"00/00/00",
+        "id": "0000",
     },
     {    
-        "id": "0005",
-        "nombre":"administrador_5",
+        "nombre_completo":"administrador_5",
+        "cedula":"00000000",
+        "edad":"00",
+        "fecha-de-ingreso":"00/00/00",
+        "id": "0000",
     }
 ]
 
 function prueba(jsonObj) {
 
-    const tabla = document.getElementsByClassName('registro-administradores');
+    let tabla = document.getElementsByClassName('registro-administradores');
         for (let j = 0; j < jsonObj.length; j++) {
+
+                        let rev_registro = document.createElement('tr');
+                            rev_registro.classList.add('rev_registro');
+
+                            let columna_vacia = document.createElement('td');
+                            let columna_madre = document.createElement('td');
+                                columna_madre.classList.add('dis_rev_registro');
+                            let tabla_madre = document.createElement('table');
+                            let fila_nombre = document.createElement('tr');
+                            let fila_cedula = document.createElement('tr');
+                            let fila_edad = document.createElement('tr');
+                            let fila_fechaIngreso = document.createElement('tr');
+                            let fila_id = document.createElement('tr');
+
+                            let columna_nombre = document.createElement('td');
+                            let columna_cedula = document.createElement('td');
+                            let columna_edad = document.createElement('td');
+                            let columna_fechaIngreso = document.createElement('td');
+                            let columna_id = document.createElement('td');
+
+                            rev_registro.appendChild(columna_vacia);
+                            rev_registro.appendChild(columna_madre);
+                            columna_madre.appendChild(tabla_madre);
+                            tabla_madre.appendChild(fila_nombre);
+                            tabla_madre.appendChild(fila_cedula);
+                            tabla_madre.appendChild(fila_edad);
+                            tabla_madre.appendChild(fila_fechaIngreso);
+                            tabla_madre.appendChild(fila_id);
+
+                            fila_nombre.appendChild(columna_nombre);
+                            fila_cedula.appendChild(columna_cedula);
+                            fila_edad.appendChild(columna_edad);
+                            fila_fechaIngreso.appendChild(columna_fechaIngreso);
+                            fila_id.appendChild(columna_id);
+
+                            columna_nombre.textContent = "Nombre:" + jsonObj[j].nombre;
+                            columna_cedula.textContent = "Cedula:" + jsonObj[j].cedula;
+
             
             let registro = document.createElement('tr'); 
                 registro.classList.add('datos-admin');
-
             let id = document.createElement('td');
-
             let nombre = document.createElement('td');
 
             let consulta = document.createElement('td');
@@ -44,11 +98,7 @@ function prueba(jsonObj) {
                 simb_consulta.classList.add('fa-solid', 'fa-eye');
                 consulta.onclick = function() {
                     alert('consultar');
-                    // let newRegistro = document.createElement('tr');
-                    // let newColumna = document.createElement('td');
-                    // registro.appendChild(newRegistro);
-                    // newRegistro.appendChild(newColumna);
-                    // newColumna.textContent = "fefef";
+                    consultando();
                 }
 
             let modificar = document.createElement('td');
@@ -79,7 +129,7 @@ function prueba(jsonObj) {
             registro.appendChild(modificar);
             registro.appendChild(eliminar);
             id.textContent = jsonObj[j].id;
-            nombre.textContent = jsonObj[j].nombre;
+            nombre.textContent = jsonObj[j].nombre_completo;
         }
         
 }

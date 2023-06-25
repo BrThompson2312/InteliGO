@@ -106,6 +106,34 @@
                         <td> <i class="fa-solid fa-gear"></i> </td>
                         <td> <i class="fa-solid fa-arrow-right-from-bracket"></i> </td>
                     </tr> -->
+
+                    <!-- <tr class="rev-registro">
+                        <td></td>
+                        <td class="">
+                            <table class="dis_rev-registro">
+                                <tr>
+                                    <td><h3>Nombre completo:</h3></td>
+                                    <td>administrador_0</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Cedula: </h3></td>
+                                    <td>00000000</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Edad:</h3></td>
+                                    <td>00</td>
+                                </tr>
+                                <tr>
+                                    <td><h3> Fecha de ingreso:</h3></td>
+                                    <td>00/00/00</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>ID:</h3></td>
+                                    <td>0000</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr> -->
                 </table>
             </div>
         </section>
