@@ -5,7 +5,6 @@ let admin = document.querySelector('#administradores');
 let main = document.querySelector('main');
 
 inicio.style.display = "none"
-// admin.style.display = "none"
 
 function opcion_menu( parametro ) {
     switch(parametro) {

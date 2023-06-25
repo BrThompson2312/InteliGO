@@ -94,18 +94,18 @@
             <input type="button" value=" + AGREGAR ">
 
             <div>
-                <table>
+                <table class="registro-administradores">
                     <tr class="indicadores">
                         <td> ID </td>
                         <td> NOMBRE </td>
                     </tr>
-                    <tr id="datos-admin">
-                        <td> 0000 </td>
-                        <td> Administrador _0 </td>
-                        <td> <button></button><i class="fa-solid fa-eye"></i> </td>
+                    <!-- <tr class="datos-admin">
+                        <td> 0 </td>
+                        <td> prueba </td>
+                        <td> <i class="fa-solid fa-eye"></i> </td>
                         <td> <i class="fa-solid fa-gear"></i> </td>
                         <td> <i class="fa-solid fa-arrow-right-from-bracket"></i> </td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
         </section>
@@ -113,7 +113,6 @@
             }
         ?>
     </main>
-
 
     <script src="js/administrador.js"></script>
     <script src="js/personas.js"></script>
