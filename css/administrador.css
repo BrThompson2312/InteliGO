@@ -74,6 +74,7 @@
 .indicadores {
     font-family: "Inter-SemiBold";
     color: white;
+    text-align: left;
 }
 
 .datos-admin td {
@@ -95,32 +96,25 @@
     width: 50px;
 }
 
-.datos-admin td:nth-child(3) {
-    background-color: #03A600;
-} .datos-admin td:nth-child(3):hover { background-color: darkgreen; cursor: pointer }
+/* CONSULTAR, MODIFICAR, ELIMINAR */
+    .datos-admin td:nth-child(3) {
+        background-color: #03A600;
+    } .datos-admin td:nth-child(3):hover { background-color: darkgreen; cursor: pointer }
 
-.datos-admin td:nth-child(4) {
-    background-color: #F1D900;
-} .datos-admin td:nth-child(4):hover { background-color: darkgoldenrod; cursor: pointer }
+    .datos-admin td:nth-child(4) {
+        background-color: #F1D900;
+    } .datos-admin td:nth-child(4):hover { background-color: darkgoldenrod; cursor: pointer }
 
-.datos-admin td:nth-child(5) {
-    background-color: #9E2600;
-} .datos-admin td:nth-child(5):hover { background-color: darkred; cursor: pointer }
-
+    .datos-admin td:nth-child(5) {
+        background-color: #9E2600;
+    } .datos-admin td:nth-child(5):hover { background-color: darkred; cursor: pointer }
 
 
 
 .dis_rev-registro {
     background-color: #BDBDBD;
 }
-.dis_rev-registro tr > td > h3 {
-    margin: 5px;
-    display: inline-block;
-}
-.dis_rev-registro tr > td:nth-child(1) {
-    width: 30%;
-    text-align: end; 
-}
-.dis_rev-registro tr > td:nth-child(2) {
-    width: 70%
+.dis_rev-registro tr > td {
+    margin: 0px;
+    padding: 10px;
 }

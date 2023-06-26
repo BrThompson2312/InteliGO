@@ -113,8 +113,10 @@ main {
     height: 100%;
     float: right;
     position: relative;
+    overflow: auto;
 }
-main img {
+
+.logo-img {
     background-color: white;
     width: 150px;
     position: absolute;
@@ -127,6 +129,7 @@ main img {
     padding-left: 25px;
     transition: width .5s, background-color .5s, padding .5s;
 }
+
 #inicio {
     background-color: red !important;
     color: white;
@@ -135,6 +138,7 @@ main img {
     justify-content: start;
     flex-direction: column;
 }
+
 .fondo {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
     width: 100%;
@@ -147,7 +151,8 @@ main img {
     padding-top: 50px;
     padding-bottom: 50px;
 }
-main img:hover {
+
+.logo-img:hover {
     background-color: #427C7C;
     padding: 25px;
     width: 200px;

@@ -76,12 +76,11 @@
                     }
                 ?>
             </div>
-            <img src="img/logo.png">
+            <img class="logo-img" src="img/logo.png">
         </section>
 
         <?php
             if ($tipoUsuario == 'admin') {
-
         ?>
         <section id="administradores">
             <h2> Administradores </h2>
@@ -96,39 +95,31 @@
             <div>
                 <table class="registro-administradores">
                     <tr class="indicadores">
-                        <td> ID </td>
-                        <td> NOMBRE </td>
+                        <th> ID </th>
+                        <th> NOMBRE </th>
                     </tr>
-                    <!-- <tr class="datos-admin">
-                        <td> 0 </td>
-                        <td> prueba </td>
-                        <td> <i class="fa-solid fa-eye"></i> </td>
-                        <td> <i class="fa-solid fa-gear"></i> </td>
-                        <td> <i class="fa-solid fa-arrow-right-from-bracket"></i> </td>
-                    </tr> -->
-
                     <!-- <tr class="rev-registro">
                         <td></td>
-                        <td class="">
+                        <td>
                             <table class="dis_rev-registro">
                                 <tr>
-                                    <td><h3>Nombre completo:</h3></td>
+                                    <td>Nombre completo:</td>
                                     <td>administrador_0</td>
                                 </tr>
                                 <tr>
-                                    <td><h3>Cedula: </h3></td>
+                                    <td>Cédula:</td>
                                     <td>00000000</td>
                                 </tr>
                                 <tr>
-                                    <td><h3>Edad:</h3></td>
+                                    <td>Edad:</td>
                                     <td>00</td>
                                 </tr>
                                 <tr>
-                                    <td><h3> Fecha de ingreso:</h3></td>
+                                    <td>Fecha de ingreso:</td>
                                     <td>00/00/00</td>
                                 </tr>
                                 <tr>
-                                    <td><h3>ID:</h3></td>
+                                    <td>ID:</td>
                                     <td>0000</td>
                                 </tr>
                             </table>
@@ -142,7 +133,7 @@
         ?>
     </main>
 
-    <script src="js/administrador.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/personas.js"></script>
 </body>
 </html>
