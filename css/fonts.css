@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Inter";
+    src: url(../fonts/Inter/Inter-Thin.ttf);
+}
+@font-face {
+    font-family: "Inter-ExtraLight";
+    src: url(../fonts/Inter/Inter-ExtraLight.ttf);
+}
+@font-face {
+    font-family: "Inter-Bold";
+    src: url(../fonts/Inter/Inter-Bold.ttf);
+}
+@font-face {
+    font-family: "Inter-SemiBold";
+    src: url(../fonts/Inter/Inter-SemiBold.ttf);
+}
+@font-face {
+    font-family: "RobotoFlex-Regular";
+    src: url(../fonts/Roboto_Flex/RobotoFlex-Regular.ttf);
+}

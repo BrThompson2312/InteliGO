@@ -1,23 +1,4 @@
-@font-face {
-    font-family: "Inter";
-    src: url(../fonts/Inter/Inter-Thin.ttf);
-}
-@font-face {
-    font-family: "Inter-ExtraLight";
-    src: url(../fonts/Inter/Inter-ExtraLight.ttf);
-}
-@font-face {
-    font-family: "Inter-Bold";
-    src: url(../fonts/Inter/Inter-Bold.ttf);
-}
-@font-face {
-    font-family: "Inter-SemiBold";
-    src: url(../fonts/Inter/Inter-SemiBold.ttf);
-}
-@font-face {
-    font-family: "RobotoFlex-Regular";
-    src: url(../fonts/Roboto_Flex/RobotoFlex-Regular.ttf);
-}
+@import 'fonts.css';
 
 html, body {
     height: 100%;
@@ -26,7 +7,8 @@ html, body {
 }
 
 body {
-    background-image: url(../img/pocitos2.jpg);
+    background-image: url(../img/4K\ Wallpapers\ Dark\ Background\ Gallery.jpg);
+    /* background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1));   */
     background-attachment: fixed;
     background-size: 100% 100%;
     font-family: Arial, Helvetica, sans-serif;
@@ -44,7 +26,7 @@ nav {
     color: white;
 }
 .inteligo span {
-    color: darkred;
+    color: red;
 }
 #logo {
     background-color: #141414;
@@ -67,9 +49,12 @@ nav {
     }
 }
 .style-user {
-    transform: scale(1.5, 1.5);
+    transform: scale(1, 1);
     border-radius: 100px;
     position: relative;
+    /* background-color: #141414; */
+    color: black;
+    padding: 10px;
 }
 .conjunto-opciones {
     position: absolute;
@@ -98,7 +83,7 @@ nav {
 } #opciones a:hover { background-color: red }
 .opciones-hilera {
     font-family: "Inter-ExtraLight";
-    background-color: #424242;
+    /* background-color: #424242; */
     padding: 5px;
     padding-left: 25px;
     margin-top: 5px;
@@ -116,22 +101,7 @@ main {
     overflow: auto;
 }
 
-.logo-img {
-    background-color: white;
-    width: 150px;
-    position: absolute;
-    /* border-top: 5px solid black;
-    border-left: 5px solid black; */
-    bottom: 0;
-    right: 0;
-    border-radius: 90% 0px 0px 0px;
-    padding-top: 25px;
-    padding-left: 25px;
-    transition: width .5s, background-color .5s, padding .5s;
-}
-
 #inicio {
-    background-color: red !important;
     color: white;
     display: flex;
     align-items: center;
@@ -140,7 +110,7 @@ main {
 }
 
 .fondo {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     width: 100%;
     position: absolute;
     top: 50%;
@@ -152,8 +122,38 @@ main {
     padding-bottom: 50px;
 }
 
-.logo-img:hover {
-    background-color: #427C7C;
-    padding: 25px;
-    width: 200px;
+/* .logo-img {
+    background-color: white;
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 90% 0px 0px 0px;
+    padding-top: 25px;
+    padding-left: 25px;
+    transition: width .5s, background-color .5s, padding .5s;
+} */
+
+.logo-img img:nth-child(1) {
+    background-color: white;
+    border-radius: 100% 0px 0px 0px;
+    padding: 20px 0px 0px 20px;
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: opacity 500ms ease-in-out;
+}
+.logo-img img:nth-child(2) {
+    background-color: white;
+    border-radius: 100% 0px 0px 0px;
+    padding: 20px 0px 0px 20px;
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: opacity 500ms ease-in-out;
+}
+.logo-img img:nth-child(2):hover {
+    opacity: 0;
 }
