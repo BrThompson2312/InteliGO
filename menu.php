@@ -3,7 +3,7 @@
     if(isset($_SESSION['tipoUsuario'] )) {
         $tipoUsuario = $_SESSION['tipoUsuario']; 
     } else {
-        die("Eeeepaaa, te salteaste el login");
+        die("Sesión cerrada, por favor ingrese usuario y contraseña");
     }   
 ?>
 <!DOCTYPE html>

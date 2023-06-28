@@ -15,7 +15,7 @@ function opcion_menu( parametro ) {
     switch( parametro ) {
         case 'home':
             for (let i = 0; i < opciones_hilera.length; i++) {
-                opciones_hilera[i].style.backgroundColor = "#282828";
+                opciones_hilera[i].style.backgroundColor = "none";
             }
             opciones_hilera[0].style.backgroundColor = "#427C7C";
             inicio.style.display = "block";
@@ -23,7 +23,7 @@ function opcion_menu( parametro ) {
         break;
         case 'administradores':
             for (let i = 0; i < opciones_hilera.length; i++) {
-                opciones_hilera[i].style.backgroundColor = "#282828";
+                opciones_hilera[i].style.backgroundColor = "none";
             }
             opciones_hilera[1].style.backgroundColor = "#427C7C";
             inicio.style.display = "none";
@@ -31,3 +31,14 @@ function opcion_menu( parametro ) {
         break;
     }
 }
+
+// function opcion_menu( parametro ) {
+//     for (let i = 0; i < opciones_hilera.length; i++) {
+//         opciones_hilera[i].style.backgroundColor = "none";
+//     }
+//         opciones_hilera[0].style.backgroundColor = "#427C7C";
+//         inicio.style.display = "block";
+//         admin.style.display = "none";
+// }
+
+// opcion_menu();

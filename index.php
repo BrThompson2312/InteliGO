@@ -6,7 +6,10 @@
 </head>
 <body>
     <main>
-        <span class="login"> LOGIN </span>
+        <div class="inteligo-login">
+            <h1 class="inteligo"> INTELI<span>GO</span></h1>
+            <span class="login"> LOGIN </span>
+        </div>
         <form method="POST" action="login.php">
             <div class="form-group">
                 <label for="user"> Usuario </label>
@@ -16,7 +19,7 @@
                 <label for="pass"> Contraseña </label>
                 <input type="password" name="pass" id="pass">
             </div>
-            <input type="checkbox"> Recordar usuario y contraseña
+            <!-- <input type="checkbox"> Recordar usuario y contraseña -->
             <br>
             <input type="submit" value="INGRESAR">
         </form>

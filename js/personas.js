@@ -130,8 +130,6 @@ let administradores = [
 // }
 // prueba(administradores); 
 
-
-
 function prototype2(jsonObj) {
     let registro_administradores = document.querySelector('.registro-administradores'); 
     for (let i = 0; i < jsonObj.length; i++){
@@ -181,8 +179,6 @@ function prototype2(jsonObj) {
             registro.appendChild(consultar);
             registro.appendChild(modificar);
             registro.appendChild(eliminar);
-
-            
     }
 }
 
