@@ -21,11 +21,12 @@
 </head>
 <body>
     <nav>
+
         <section id="logo">
             <h1 class="inteligo"> INTELI<span>GO</span></h1>
         </section>
+
         <section id="user">
-            <a id="logout" href="salir.php"> <i class="fa-solid fa-right-from-bracket"></i> </a>
             <div class="info-user">
                 <i class="fa-solid fa-user style-user"></i>
                 <div>
@@ -44,9 +45,10 @@
                 </div>
             </div>
         </section>
+
         <section id="opciones">
             <div class="conjunto-opciones">
-                <div class="opciones-hilera" id="home" onclick="opcion_menu('home')"> Home </div>
+                <div class="opciones-hilera" id="home" onclick="opcion_menu('home')"> Home </div>                
 
                 <?php
                     // print_r($_SESSION);
@@ -66,25 +68,29 @@
                 <div class="opciones-hilera" onclick="opcion_menu('reserva')"> Reserva </div>
                 <div class="opciones-hilera" onclick="opcion_menu('historial-de-movimiento')"> Historial de movimiento </div>
                 <div class="opciones-hilera" onclick="opcion_menu('gastos-de-mantenimiento')"> Gastos de mantenimiento </div>
+                <a id="logout" href="salir.php"> Salir </a>
             </div>
+
         </section>
+        
+        
+
     </nav>
     <main>
         <section id="inicio">
             <div class="fondo">
+                <h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>
                 <?php
                     if ($tipoUsuario == 'admin') {
-                        echo'<h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>';
                         echo'<h3 style="margin: 5px"> <!-- Nombre y apellido--> Root Root </h3>';
                     } else {
-                        echo'<h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>';
                         echo'<h3 style="margin: 5px"> <!-- Nombre y apellido--> User User </h3>';
                     }
                 ?>
-            </div>
-            <div class="logo-img">
-                <img src="img/logo.png">
-                <img src="img/black-logo.png">
+                <div class="logo-img">
+                    <img src="img/logo.png">
+                    <img src="img/black-logo.png">
+                </div>
             </div>
         </section>
 

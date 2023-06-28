@@ -1,14 +1,16 @@
 @import 'comun.css';
 
 #user {
-    background: rgb(66,124,124);
-    background: linear-gradient(45deg, rgb(48, 95, 95) 0%, rgba(0,251,251,1) 35%, rgb(48, 95, 95));
+    /* background: rgb(66,124,124);
+    background: linear-gradient(45deg, rgb(48, 95, 95) 0%, rgba(0,251,251,1) 35%, rgb(48, 95, 95)); */
     background-size: 500% 500%;
-    height: 20%;
+    height: 15%;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
-    animation: user 3s ease infinite;
+    animation: user 5s ease-in-out infinite;
 }   
 @keyframes user {
     0% {

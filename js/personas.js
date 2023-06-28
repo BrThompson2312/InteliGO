@@ -173,7 +173,6 @@ function prototype2(jsonObj) {
             eliminar.onclick = function() {
                 alert('eliminar' + [i]);
             }
-
             registro.appendChild(id);
             registro.appendChild(nombre);
             registro.appendChild(consultar);
