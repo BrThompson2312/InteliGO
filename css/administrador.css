@@ -10,14 +10,6 @@
     position: relative;
     animation: user 3s ease infinite;
 }   
-.info-user {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    width: 80%;
-    height: 100%;
-}
 @keyframes user {
     0% {
         background-position: 0% 50%;
@@ -32,42 +24,26 @@
 .opciones-hilera:hover { background-color: gray; cursor: pointer; }
 .opciones-hilera:active { background-color: #427C7C; transition: none }
 
-#logout {
-    background-color: red;
-    display: grid;
-    place-content: center;
-    height: 100%;
-    width: 20%;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-}
-
 #administradores > * {
     margin: 15px;
 }
-
 #administradores h2 {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));  
     color: white;
     margin: 0;
     padding: 20px;
 }
-
 #administradores form {
     color: white;
 }
-
 #administradores form > * {
     margin-top: 10px;
 }
-
 #administradores form input[type="text"] {
     padding: 5px;
     border: 2px solid #003452;
     width: 500px;
 }
-
 #administradores input[type="button"] {
     background-color: #026300;
     border: none;
@@ -81,19 +57,16 @@
 } #administradores input[type="button"]:hover {
     background-color: rgb(0, 53, 0);
 }
-
 #administradores table {
     width: 100%;
     margin: 0;
     border-collapse: collapse; 
 }
-
 .indicadores {
     font-family: "Inter-SemiBold";
     color: white;
     text-align: left;
 }
-
 .datos-admin td {
     background-color: #BDBDBD;
     color: black;
@@ -107,12 +80,10 @@
     width: 100px;
     text-align: center;
 }
-
 .datos-admin td:nth-child(3), td:nth-child(4), td:nth-child(5){
     text-align: center;
     width: 50px;
 }
-
 /* CONSULTAR, MODIFICAR, ELIMINAR */
     .datos-admin td:nth-child(3) {
         background-color: #03A600;
@@ -125,8 +96,6 @@
     .datos-admin td:nth-child(5) {
         background-color: #9E2600;
     } .datos-admin td:nth-child(5):hover { background-color: darkred; cursor: pointer }
-
-
 
 .dis_rev-registro {
     background-color: #BDBDBD;

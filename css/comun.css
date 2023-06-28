@@ -5,15 +5,12 @@ html, body {
     padding: 0;
     margin: 0;
 }
-
 body {
-    background-image: url(../img/4K\ Wallpapers\ Dark\ Background\ Gallery.jpg);
     /* background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1));   */
     background-attachment: fixed;
     background-size: 100% 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 nav {
     background-color: #141414;
     width: 20%;
@@ -21,9 +18,11 @@ nav {
     float: left;
 }
 .inteligo {
+    font-family: "Inter-Bold";
+    color: white;
     padding: 10px;
     border-radius: 0px 5px 5px 0px;
-    color: white;
+    letter-spacing: 0.25em;
 }
 .inteligo span {
     color: red;
@@ -36,7 +35,25 @@ nav {
     justify-content: center;
     flex-direction: column;
 }
-
+#logout {
+    background-color: darkred;
+    display: grid;
+    place-content: center;
+    height: 100%;
+    width: 20%;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    transition: background-color .3s;
+} #logout:hover { background-color: rgb(87, 0, 0) }
+.info-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+}
 @keyframes user {
     0% {
         background-position: 0% 50%;
@@ -49,7 +66,7 @@ nav {
     }
 }
 .style-user {
-    transform: scale(1, 1);
+    transform: scale(1.5, 1.5);
     border-radius: 100px;
     position: relative;
     /* background-color: #141414; */
@@ -94,6 +111,12 @@ nav {
     padding-right: 50px;
 }
 main {
+    /* background-color: ; */
+    background-image: url(../img/fondoweb.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 80% 100%;
+    background-position: right;
     width: 80%;
     height: 100%;
     float: right;
