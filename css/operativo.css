@@ -3,9 +3,9 @@
 #user {
     background: rgb(199,119,0);
     background: linear-gradient(80deg, rgb(123, 74, 0) 0%, rgba(255,152,0,1) 35%, rgb(123, 74, 0) 100%);
-        background-size: 500% 500%;
-        animation: gradient 15s ease infinite;
-    height: 20%;
+    background-size: 500% 500%;
+    animation: gradient 15s ease infinite;
+    height: 15%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -24,4 +24,8 @@
     }
 }
 .opciones-hilera:hover { background-color: gray; cursor: pointer; }
-.opciones-hilera:active { background-color: #C77700; transition: none }
+.opciones-hilera:active { background-color: #C77700; }
+.opciones-hileraActive { 
+    background-color: #C77700; 
+    transition: none 
+}

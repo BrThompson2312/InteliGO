@@ -3,7 +3,7 @@
     if(isset($_SESSION['tipoUsuario'] )) {
         $tipoUsuario = $_SESSION['tipoUsuario']; 
     } else {
-        die("Sesión cerrada, por favor ingrese usuario y contraseña");
+        die("Sesión cerrada. Por favor, ingrese usuario y contraseña");
     }   
 ?>
 <!DOCTYPE html>
@@ -45,11 +45,9 @@
                 </div>
             </div>
         </section>
-
         <section id="opciones">
             <div class="conjunto-opciones">
                 <div class="opciones-hilera" id="home" onclick="opcion_menu('home')"> Home </div>                
-
                 <?php
                     // print_r($_SESSION);
                     if($tipoUsuario=='admin') {
@@ -59,7 +57,6 @@
                     <?php
                     }
                 ?>
-
                 <div class="opciones-hilera" onclick="opcion_menu('coches')"> Coches </div>
                 <div class="opciones-hilera" onclick="opcion_menu('chofer')"> Chofer </div>
                 <div class="opciones-hilera" onclick="opcion_menu('lista-negra')"> Lista negra </div>
@@ -70,11 +67,7 @@
                 <div class="opciones-hilera" onclick="opcion_menu('gastos-de-mantenimiento')"> Gastos de mantenimiento </div>
                 <a id="logout" href="salir.php"> Salir </a>
             </div>
-
         </section>
-        
-        
-
     </nav>
     <main>
         <section id="inicio">
@@ -87,67 +80,40 @@
                         echo'<h3 style="margin: 5px"> <!-- Nombre y apellido--> User User </h3>';
                     }
                 ?>
-                <div class="logo-img">
-                    <img src="img/logo.png">
-                    <img src="img/black-logo.png">
-                </div>
+            </div>
+            <div class="logo-img">
+                <img src="img/logo.png">
+                <img src="img/black-logo.png">
             </div>
         </section>
 
         <?php
             if ($tipoUsuario == 'admin') {
         ?>
-        <section id="administradores">
-            <h2> Administradores </h2>
-            <form action="">
-                <label for="search"> Buscar administrador </label>
-                <br>
-                <input type="text">
-            </form>
-
-            <input type="button" value=" + AGREGAR ">
-
-            <div>
-                <table class="registro-administradores">
-                    <tr class="indicadores">
-                        <th> ID </th>
-                        <th> NOMBRE </th>
-                    </tr>
-                    <!-- <tr class="rev-registro">
-                        <td></td>
-                        <td>
-                            <table class="dis_rev-registro">
-                                <tr>
-                                    <td>Nombre completo:</td>
-                                    <td>administrador_0</td>
-                                </tr>
-                                <tr>
-                                    <td>Cédula:</td>
-                                    <td>00000000</td>
-                                </tr>
-                                <tr>
-                                    <td>Edad:</td>
-                                    <td>00</td>
-                                </tr>
-                                <tr>
-                                    <td>Fecha de ingreso:</td>
-                                    <td>00/00/00</td>
-                                </tr>
-                                <tr>
-                                    <td>ID:</td>
-                                    <td>0000</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr> -->
-                </table>
-            </div>
-        </section>
+                <section id="administradores">
+                    <h2 class="titulo-administradores"> Administradores </h2>
+                    <form action="GET">
+                        <label for="search"> Buscar administrador </label>
+                        <div class="inputs-busqueda">
+                            <input type="text" placeholder="ID">
+                            <input type="text" placeholder="Nombre del administrador">
+                            <button type="submit"> BUSCAR </button>
+                        </div>
+                    </form>
+                    <input type="button" value=" + AGREGAR ">
+                    <div>
+                        <table class="registro-administradores">
+                            <tr class="indicadores">
+                                <th> ID </th>
+                                <th> NOMBRE </th>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
         <?php
             }
         ?>
     </main>
-
     <script src="js/menu.js"></script>
     <script src="js/personas.js"></script>
 </body>

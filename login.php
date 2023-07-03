@@ -12,7 +12,7 @@
             $_SESSION['tipoUsuario'] = "operador";
             header("location: menu.php");  
         } else {
-            echo "Usuario y/o contraseña incorrectos";
+            header('location: index.php?error=1');
         }
     }
 ?>

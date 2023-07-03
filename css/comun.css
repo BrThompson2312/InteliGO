@@ -6,42 +6,18 @@ html, body {
     margin: 0;
 }
 body {
-    background: linear-gradient(-45deg, rgb(149, 97, 238), rgb(29, 182, 239));
-    background-size: 300% 300%;    
+    background-image: url(../img/pocitos.jpg);
+    background-size: 100% 100%;    
     background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
-    animation: loginImage 8s ease infinite;
-}
-@keyframes loginImage {
-    0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
 }
 nav {
-    /* background: linear-gradient(-45deg, rgb(149, 97, 238), rgb(29, 182, 239)); */
-    /* background-size: 300% 300%;  */
-    /* animation: user 5s ease infinite; */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    backdrop-filter: blur(10px);
     width: 20%;
     height: 100%;
     float: left;
     position: relative;
-}
-@keyframes user {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 nav:after {
     content: "";
@@ -53,7 +29,6 @@ nav:after {
     height: 100%;
 }
 #logo {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     height: 15%;
     width: 100%;
     display: flex;
@@ -70,7 +45,6 @@ nav:after {
 } .inteligo span { color: rgb(0, 238, 255); }
 
 #opciones {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     font-family: "RobotoFlex-Regular";
     color: white;
     height: 70%;
@@ -87,38 +61,24 @@ nav:after {
 }
 .opciones-hilera {
     font-family: "Inter-ExtraLight";
-    transition: background-color .2s;
+    transition: background-color .1s;
     width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 25px;
-} 
-.opciones-hilera > * { padding-left: 50px; color: red; }
-.user-logout {
-    background-color: green;
-    height: 20%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 .info-user {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 #logout {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     border-top: 1px solid darkred;
     border-bottom: 1px solid darkred;
-    /* display: flex;
-    align-items: center;
-    justify-content: center;*/
     text-decoration: none;
-    /* text-align: center;  */
     color: white;
     font-weight: bold;
     width: 100%;
@@ -128,18 +88,6 @@ nav:after {
     padding-left: 25px;
     transition: background-color .3s;
 } #logout:hover { background-color: rgb(87, 0, 0) }
-
-@keyframes user {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
 .style-user {
     transform: scale(1.5, 1.5);
     border-radius: 100px;
@@ -147,7 +95,6 @@ nav:after {
     color: black;
     padding: 10px;
 }
-
 main {
     background-image: url(../img/pocitos.jpg);
     background-repeat: no-repeat;
@@ -159,9 +106,7 @@ main {
     height: 100%;
     float: right;
     overflow: auto;
-    opacity: 1;
 }
-
 #inicio {
     color: white;
     display: flex;
@@ -169,10 +114,8 @@ main {
     justify-content: start;
     flex-direction: column;
 }
-
 .fondo {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-    /* background: linear-gradient(-45deg, rgb(149, 97, 238, 0.5), rgb(29, 182, 239, 0.5)); */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     width: 100%;
     position: absolute;
     top: 50%;
@@ -183,36 +126,22 @@ main {
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
-/* .logo-img {
+.logo-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 90% 0px 0px 0px;
+    transition: width .5s, background-color .5s, padding .5s;
+}
+.logo-img img:nth-child(1), 
+.logo-img img:nth-child(2)  {
     background-color: white;
     width: 150px;
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
-    border-radius: 90% 0px 0px 0px;
-    padding-top: 25px;
-    padding-left: 25px;
-    transition: width .5s, background-color .5s, padding .5s;
-} */
-.logo-img img:nth-child(1) {
-    background-color: white;
-    width: 200px;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    border-radius: 0% 0% 0% 90%;
+    padding-left: 20px;
+    padding-bottom: 20px;
     transition: opacity 500ms ease;
-}
-.logo-img img:nth-child(2) {
-    background-color: white;
-    width: 200px;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transition: opacity 500ms ease;
-}
-.logo-img img:nth-child(2):hover {
-    opacity: 0;
-}
+} .logo-img img:nth-child(2):hover { opacity: 0 }
