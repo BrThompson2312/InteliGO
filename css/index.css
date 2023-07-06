@@ -87,7 +87,6 @@ form button[type="submit"] {
     letter-spacing: 5px;
     padding: 10px;
     border: none;
-    border-radius: 10px;
     width: 100%;
     cursor: pointer;
     display: flex;
@@ -95,7 +94,7 @@ form button[type="submit"] {
     justify-content: center;
     position: relative;
     transition: background-color .5s, color .5s;
-} form button[type="submit"]:hover { background-color: rgb(0, 81, 255); color: white; }
+} form button[type="submit"]:hover { background-color: rgb(0, 81, 255); color: white }
 
 button ion-icon {
     position: absolute;

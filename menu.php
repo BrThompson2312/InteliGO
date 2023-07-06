@@ -18,6 +18,7 @@
         }
     ?>
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </head>
 <body>
     <nav>
@@ -45,9 +46,10 @@
                 </div>
             </div>
         </section>
+
         <section id="opciones">
             <div class="conjunto-opciones">
-                <div class="opciones-hilera" id="home" onclick="opcion_menu('home')"> Home </div>                
+                <div class="opciones-hilera" id="home" onclick="opcion_menu('home')"> <ion-icon name="home"></ion-icon> Home </div>                
                 <?php
                     // print_r($_SESSION);
                     if($tipoUsuario=='admin') {
@@ -65,7 +67,7 @@
                 <div class="opciones-hilera" onclick="opcion_menu('reserva')"> Reserva </div>
                 <div class="opciones-hilera" onclick="opcion_menu('historial-de-movimiento')"> Historial de movimiento </div>
                 <div class="opciones-hilera" onclick="opcion_menu('gastos-de-mantenimiento')"> Gastos de mantenimiento </div>
-                <a id="logout" href="salir.php"> Salir </a>
+                <a id="logout" href="salir.php"> <ion-icon name="log-out"></ion-icon> Salir </a>
             </div>
         </section>
     </nav>
@@ -95,12 +97,12 @@
                     <form action="GET">
                         <label for="search"> Buscar administrador </label>
                         <div class="inputs-busqueda">
-                            <input type="text" placeholder="ID">
+                            <input type="number" placeholder="ID" min="4 "max="4">
                             <input type="text" placeholder="Nombre del administrador">
-                            <button type="submit"> BUSCAR </button>
+                            <button type="submit"> Buscar </button>
                         </div>
                     </form>
-                    <input type="button" value=" + AGREGAR ">
+                    <input class="Agregar" type="button" value=" + AGREGAR ">
                     <div>
                         <table class="registro-administradores">
                             <tr class="indicadores">
