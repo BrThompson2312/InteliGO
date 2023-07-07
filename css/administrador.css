@@ -1,8 +1,10 @@
 @import 'comun.css';
 
 #user {
-    background: rgb(66,124,124);
-    background: linear-gradient(45deg, rgb(48, 95, 95) 0%, rgba(0,251,251,1) 35%, rgb(48, 95, 95));
+    /* background: rgb(66,124,124); */
+    /* background: linear-gradient(45deg, rgb(48, 95, 95) 0%, rgba(0,251,251,1) 35%, rgb(48, 95, 95)); */
+    background-image: url(../img/degradeGo.jpg);
+    color: white;
     background-size: 500% 500%;
     height: 15%;
     width: 100%;
@@ -23,12 +25,8 @@
         background-position: 0% 50%;
     }
 }
-.opciones-hilera:hover { background-color: rgb(48, 48, 48); cursor: pointer; }
-.opciones-hilera:active { background-color: #427C7C }
-.opciones-hileraActive { 
-    background-color: #427C7C; 
-    transition: none 
-}
+.opciones-hilera:focus { background-color: #427C7C }
+.opciones-hileraActive { background-color: #427C7C }
 #administradores > * {
     margin: 15px;
 }

@@ -13,7 +13,6 @@ body {
 }
 nav {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    backdrop-filter: blur(10px);
     width: 20%;
     height: 100%;
     float: left;
@@ -36,6 +35,9 @@ nav:after {
     justify-content: center;
     flex-direction: column;
 }
+    .logoImg {
+        width: 250px;
+    } 
 .inteligo {
     font-family: "Inter-Bold";
     color: white;
@@ -45,6 +47,7 @@ nav:after {
 } .inteligo span { color: rgb(0, 238, 255); }
 
 #opciones {
+    background-color: transparent;
     font-family: "RobotoFlex-Regular";
     color: white;
     height: 70%;
@@ -52,20 +55,23 @@ nav:after {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: column;
 }
-.conjunto-opciones {
-    width: 100%;
-    height: 80%;
-}
 .opciones-hilera {
-    font-family: "Inter-ExtraLight";
+    background-color: transparent;
+    color: white;
+    text-align: start;
+    border: none;
+    font-family: "Inter-SemiBold";
     width: 100%;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    text-align: 10px;
-}
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: background-color .3s;
+}.opciones-hilera:hover { background-color: rgb(56, 56, 56); cursor: pointer; }
+    .opciones-hilera > * {
+        position: relative; 
+        left: 10px;
+    }
 .info-user {
     display: flex;
     align-items: center;
@@ -82,17 +88,21 @@ nav:after {
     font-weight: bold;
     width: 100%;
     display: block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
     left: 0px;
     transition: background-color .3s;
 } #logout:hover { background-color: rgb(87, 0, 0) }
+    #logout > * {
+        position: relative;
+        left: 10px;
+    }
 .style-user {
-    transform: scale(1.5, 1.5);
-    border-radius: 100px;
-    position: relative;
+    background-color: white;
     color: black;
+    border-radius: 5px;
+    transform: scale(2, 2);
+    position: relative;
     padding: 10px;
 }
 main {

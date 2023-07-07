@@ -10,24 +10,18 @@ let main = document.querySelector('main');
 
 admin.style.display = "none";
 
-// function opcion_menu( parametro ) {
-//     function classFor() {
-//         for (let i = 0; i < opciones_hilera.length; i++) {
-//             opciones_hilera[i].classList.remove('opciones-hileraActive');
-//         }
-//     }
-//     switch( parametro ) {
-//         case 'home':
-//             classFor();
-//             opciones_hilera[0].classList.add('opciones-hileraActive');
-//             inicio.style.display = "block";
-//             admin.style.display = "none";
-//         break;
-//         case 'administradores':
-//             classFor();
-//             opciones_hilera[1].classList.add('opciones-hileraActive');
-//             inicio.style.display = "none";
-//             admin.style.display = "block";
-//         break;
-//     }
-// }
+function opcion_menu( parametro ) {
+    function classFor() {
+    }
+    switch( parametro ) {
+        case 'home':
+            inicio.style.display = "block";
+            admin.style.display = "none";
+        break;
+        case 'administradores':
+            opciones_hilera[0].classList.remove('opciones-hileraActive');
+            inicio.style.display = "none";
+            admin.style.display = "block";
+        break;
+    }
+}

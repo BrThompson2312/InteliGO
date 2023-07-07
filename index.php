@@ -18,7 +18,7 @@
 <body>
     <main>
         <div class="inteligo-login">
-            <h1 class="inteligo"> INTELI<span>GO</span></h1>
+            <img class="logoImg" src="img/logofinal/whiteLogo.png">
             <span></span>
             <span class="login"> LOGIN </span>
         </div>
@@ -29,7 +29,8 @@
                 <input type="text" name="user" id="user" required placeholder="Ingrese Usuario">
             </div>
             <div class="form-group">
-                <ion-icon name="lock"></ion-icon>
+                <ion-icon id="not-seePass" name="eye-off"></ion-icon>
+                <ion-icon id="seePass" name="eye" onclick="seeingPassword()"></ion-icon>
                 <label for="pass"> Contraseña </label>
                 <input type="password" name="pass" id="pass" required placeholder="Ingrese contraseña">
             </div>
@@ -41,5 +42,6 @@
             </button>
         </form>
     </main>
+    <script src="js/index.js"></script>
 </body>
 </html>

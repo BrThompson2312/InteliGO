@@ -24,7 +24,7 @@
     <nav>
 
         <section id="logo">
-            <h1 class="inteligo"> INTELI<span>GO</span></h1>
+            <img class="logoImg" src="img/logofinal/whiteLogo.png">
         </section>
 
         <section id="user">
@@ -48,27 +48,50 @@
         </section>
 
         <section id="opciones">
-            <div class="conjunto-opciones">
-                <div class="opciones-hilera" id="home" onclick="opcion_menu('home')"> <ion-icon name="home"></ion-icon> Home </div>                
-                <?php
-                    // print_r($_SESSION);
-                    if($tipoUsuario=='admin') {
-                    ?>
-                        <div class="opciones-hilera" onclick="opcion_menu('administradores')"> Administradores </div>
-                        <div class="opciones-hilera" onclick="opcion_menu('operativos')"> Operativos </div>
-                    <?php
-                    }
+            <button class="opciones-hilera" id="home" onclick="opcion_menu('home')"> 
+                <ion-icon name="home"></ion-icon> <span>Home</span>
+            </button>                
+            <?php
+                // print_r($_SESSION);
+                if($tipoUsuario=='admin') {
                 ?>
-                <div class="opciones-hilera" onclick="opcion_menu('coches')"> Coches </div>
-                <div class="opciones-hilera" onclick="opcion_menu('chofer')"> Chofer </div>
-                <div class="opciones-hilera" onclick="opcion_menu('lista-negra')"> Lista negra </div>
-                <div class="opciones-hilera" onclick="opcion_menu('cliente')"> Cliente </div>
-                <div class="opciones-hilera" onclick="opcion_menu('empresa')"> Empresa </div>
-                <div class="opciones-hilera" onclick="opcion_menu('reserva')"> Reserva </div>
-                <div class="opciones-hilera" onclick="opcion_menu('historial-de-movimiento')"> Historial de movimiento </div>
-                <div class="opciones-hilera" onclick="opcion_menu('gastos-de-mantenimiento')"> Gastos de mantenimiento </div>
-                <a id="logout" href="salir.php"> <ion-icon name="log-out"></ion-icon> Salir </a>
-            </div>
+                    <button class="opciones-hilera" onclick="opcion_menu('administradores')"> 
+                        <span>Administradores</span> 
+                    </button>
+                    <button class="opciones-hilera" onclick="opcion_menu('operativos')"> 
+                        <span>Operadores</span> 
+                    </button>
+                <?php
+                }
+            ?>
+            <button class="opciones-hilera" onclick="opcion_menu('coches')"> 
+                <span>Coches</span> 
+            </button>
+            <button class="opciones-hilera" onclick="opcion_menu('chofer')"> 
+                <span>Chofer</span> 
+            </button>
+            <button class="opciones-hilera" onclick="opcion_menu('lista-negra')"> 
+                <span>Lista negra</span>
+                </div>
+            <button class="opciones-hilera" onclick="opcion_menu('cliente')"> 
+                <span>Cliente</span>
+            </button>
+            <button class="opciones-hilera" onclick="opcion_menu('empresa')"> 
+                <span>Empresa</span>
+            </button>
+            <button class="opciones-hilera" onclick="opcion_menu('reserva')"> 
+                <span>Reserva</span>
+            </button>
+            <button class="opciones-hilera" onclick="opcion_menu('historial-de-movimiento')">
+                <span>Historial de movimiento</span>
+            </button>
+            <button class="opciones-hilera" onclick="opcion_menu('gastos-de-mantenimiento')"> 
+                <span>Gastos de mantenimiento</span>
+            </button>
+            <a id="logout" href="salir.php"> 
+                <ion-icon name="log-out"></ion-icon> 
+                <span>Salir</span>
+            </a>
         </section>
     </nav>
     <main>
