@@ -8,7 +8,7 @@
         if ($usuario == 'root' && $contraseña == 'root') {
             $_SESSION['tipoUsuario'] = "admin";
             header("location: menu.php");
-        } else if ($usuario == 'operativo' && $contraseña == 'operativo') {
+        } else if ($usuario == 'operador' && $contraseña == 'operador') {
             $_SESSION['tipoUsuario'] = "operador";
             header("location: menu.php");  
         } else {
