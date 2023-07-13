@@ -1,0 +1,18 @@
+@import 'comun.css';
+
+$boton-colores: rgb(177, 154, 0);
+ 
+@keyframes user {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.opciones-hilera:active { background-color: $boton-colores; }
+.opciones-hileraActive { background-color: $boton-colores; }

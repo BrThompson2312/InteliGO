@@ -1,27 +1,62 @@
 let opciones_hilera = document.getElementsByClassName('opciones-hilera');
-    opciones_hilera[0].classList.add('opciones-hileraActive');
 
-let main = document.querySelector('main');
-    let inicio = document.querySelector('#inicio');
-        inicio.style.display = "block";
-
-    let admin = document.querySelector('#administradores');
-    let home = document.querySelector('#home');
-
-admin.style.display = "none";
-
-function opcion_menu( parametro ) {
-    function classFor() {
+    for (i = 0; i < opciones_hilera.length; i++){
+        opciones_hilera[i].classList.add('opciones-hilera-activeHover');
     }
-    switch( parametro ) {
-        case 'home':
-            inicio.style.display = "block";
-            admin.style.display = "none";
-        break;
-        case 'administradores':
-            opciones_hilera[0].classList.remove('opciones-hileraActive');
-            inicio.style.display = "none";
-            admin.style.display = "block";
-        break;
+
+    opciones_hilera[0].classList.add('opciones-hilera-active');
+    opciones_hilera[0].classList.remove('opciones-hilera-activeHover');
+
+    function hileraRecorrido() {
+        for (i = 0; i < opciones_hilera.length; i++){
+            opciones_hilera[i].classList.remove('opciones-hilera-active');
+            opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+        }
     }
+
+let bloque = document.getElementsByClassName('bloque');
+
+for (let i = 0; i < bloque.length; i++){
+    bloque[i].style.display = "none";
 }
+bloque[0].style.display = "block";
+
+// function opcion_menu(parametro) {
+
+//     for (i = 0; i < opciones_hilera.length; i++){
+//         if(opciones_hilera[i].getAttribute("rel")==parametro) {
+//             opciones_hilera[i].classList.add('opciones-hilera-active');
+//             opciones_hilera[i].classList.remove('opciones-hilera-activeHover');
+//         } else {
+//             opciones_hilera[i].classList.remove('opciones-hilera-active');
+//             opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+//         }
+//     }
+
+//     bloque[0].style.display = "block";
+//     for (let i = 0; i < bloque.length; i++){
+//         bloque[i].style.display = "none";
+//     }
+//     let block = document.querySelector(parametro);
+//         block.style.display = "block";
+// }
+
+function opcion_menu( ObjHtml ) {
+    var relDelObjHtmlQueEstoyPasandoAca = ObjHtml.getAttribute("rel");
+    for (i = 0; i < opciones_hilera.length; i++){
+        if(opciones_hilera[i].getAttribute("rel")==relDelObjHtmlQueEstoyPasandoAca) {
+            opciones_hilera[i].classList.add('opciones-hilera-active');
+            opciones_hilera[i].classList.remove('opciones-hilera-activeHover');
+        } else {
+            opciones_hilera[i].classList.remove('opciones-hilera-active');
+            opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+        }
+    }
+
+    bloque[0].style.display = "block";
+    for (let i = 0; i < bloque.length; i++){
+        bloque[i].style.display = "none";
+    }
+    let block = document.querySelector(relDelObjHtmlQueEstoyPasandoAca);
+        block.style.display = "block";
+}   
