@@ -86,6 +86,9 @@ nav:after {
   position: relative;
   left: 10px;
 }
+.opciones-hilera ion-icon, .opciones-hilera i {
+  margin-right: 10px;
+}
 
 #home ion-icon {
   background-color: white;
@@ -152,7 +155,7 @@ main {
   height: 100%;
 }
 
-.conteiner {
+.conteiner-Inicio {
   color: white;
   display: flex;
   align-items: center;

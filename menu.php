@@ -57,10 +57,16 @@
                 if($tipoUsuario=='admin') {
                 ?>
                     <button class="opciones-hilera" rel="#administradores" onclick="opcion_menu(this)"> 
+                        <ion-icon name="settings"></ion-icon>
                         <span>Administradores</span> 
                     </button>
                     <button class="opciones-hilera" rel="#operadores" onclick="opcion_menu(this)"> 
+                        <ion-icon name="settings"></ion-icon>
                         <span>Operadores</span> 
+                    </button>
+                    <button class="opciones-hilera" id="eliminados" rel="#eliminados" onclick="opcion_menu(this)"> 
+                        <i class="fa-solid fa-user-slash"></i>
+                        <span>Eliminados</span>
                     </button>
                 <?php
                 }
@@ -94,7 +100,7 @@
 
         <!-- Inicio HOME -->
         <section class="bloque" id="inicio">
-            <div class="conteiner">
+            <div class="conteiner-Inicio">
                 <div class="logo-img">
                     <img src="img/logo.png">
                     <img src="img/black-logo.png">
@@ -159,23 +165,26 @@
             if ($tipoUsuario == 'admin') {
         ?>
                 <section class="bloque" id="administradores">
-                    <h2 class="titulo-administradores"> Administradores </h2>
-                    <form action="GET">
-                        <label for="search"> Buscar administrador </label>
-                        <div class="inputs-busqueda">
-                            <input type="number" placeholder="ID" min="4 "max="4">
-                            <input type="text" placeholder="Nombre del administrador">
-                            <button type="submit"> Buscar </button>
+                    <div class="conteiner-Administradores">
+                        <h2 class="titulo-administradores"> Administradores </h2>
+                        <form action="GET">
+                            <label for="search"> Buscar administrador </label>
+                            <div class="inputs-busqueda">
+                                <input type="number" placeholder="ID" min="4 "max="4">
+                                <input type="text" placeholder="Nombre del administrador">
+                                <button type="submit"> Buscar </button>
+                                <input class="Agregar" type="button" value=" + AGREGAR ">
+                            </div>
+                        </form>
+
+                        <div>
+                            <table class="registro-administradores">
+                                <tr class="indicadores">
+                                    <th> ID </th>
+                                    <th> NOMBRE </th>
+                                </tr>
+                            </table>
                         </div>
-                    </form>
-                    <input class="Agregar" type="button" value=" + AGREGAR ">
-                    <div>
-                        <table class="registro-administradores">
-                            <tr class="indicadores">
-                                <th> ID </th>
-                                <th> NOMBRE </th>
-                            </tr>
-                        </table>
                     </div>
                 </section>
         <?php
@@ -187,6 +196,7 @@
         <section class="bloque" id="operadores">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugiat obcaecati sed, officia id modi voluptas recusandae reprehenderit repudiandae architecto eum harum dolor laboriosam ipsum magni et! Sunt, alias animi?
         </section>
+        <!-- Fin OPERADORES -->
     </main>
 
     <script src="js/menu.js"></script>
