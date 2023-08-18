@@ -12,14 +12,15 @@
     <title> InteliGO </title>
     <?php
         if ($tipoUsuario == 'admin'){
-            echo '<link rel="stylesheet" href="css/administrador.css">';
+            echo '<link rel="stylesheet" href="view/css/administrador.css">';
         } else {
-            echo '<link rel="stylesheet" href="css/operativo.css">';
+            echo '<link rel="stylesheet" href="view/css/operativo.css">';
         }
     ?>
-    <link rel="shortcut icon" href="img/logofinal/logoIco3.ico">
+    <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="view/js/jquery.min.js"></script>
 </head>
 <body>
     <nav>
@@ -44,7 +45,7 @@
         </section>
 
         <section id="opciones">
-            <a id="logout" href="salir.php"> 
+            <a id="logout" href="Controller/salir.php"> 
                 <ion-icon name="log-out"></ion-icon>
                 <span>Salir</span>
             </a>
@@ -57,10 +58,16 @@
                 if($tipoUsuario=='admin') {
                 ?>
                     <button class="opciones-hilera" rel="#administradores" onclick="opcion_menu(this)"> 
+                        <ion-icon name="settings"></ion-icon>
                         <span>Administradores</span> 
                     </button>
                     <button class="opciones-hilera" rel="#operadores" onclick="opcion_menu(this)"> 
+                        <ion-icon name="settings"></ion-icon>
                         <span>Operadores</span> 
+                    </button>
+                    <button class="opciones-hilera" id="eliminados" rel="#eliminados" onclick="opcion_menu(this)"> 
+                        <i class="fa-solid fa-user-slash"></i>
+                        <span>Eliminados</span>
                     </button>
                 <?php
                 }
@@ -94,13 +101,13 @@
 
         <!-- Inicio HOME -->
         <section class="bloque" id="inicio">
-            <div class="conteiner">
+            <div class="conteiner-Inicio">
                 <div class="logo-img">
-                    <img src="img/logo.png">
-                    <img src="img/black-logo.png">
+                    <img src="view/img/logo.png">
+                    <img src="view/img/black-logo.png">
                 </div>
                 <div class="logoPresentacion">
-                    <img src="img/logofinal/blacklogo.png" alt="">         
+                    <img src="view/img/logofinal/blackLogo.png" alt="">         
                 </div>
                 <div class="fondo">
                     <h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>
@@ -120,7 +127,7 @@
                     ?>
                 </div>
                 <footer>
-                    <table>
+                    <!-- <table>
                         <tr>
                             <th>ACERCA DE</th>
                             <th>INFORMACIÓN DE CONTACTO</th>
@@ -148,7 +155,7 @@
                                 </ul>     
                             </td>
                         </tr>
-                    </table>
+                    </table> -->
                 </footer>
             </div>
         </section>
@@ -159,23 +166,45 @@
             if ($tipoUsuario == 'admin') {
         ?>
                 <section class="bloque" id="administradores">
-                    <h2 class="titulo-administradores"> Administradores </h2>
-                    <form action="GET">
-                        <label for="search"> Buscar administrador </label>
-                        <div class="inputs-busqueda">
-                            <input type="number" placeholder="ID" min="4 "max="4">
-                            <input type="text" placeholder="Nombre del administrador">
-                            <button type="submit"> Buscar </button>
+                    <div class="conteiner-Administradores">
+                        <h2 class="titulo-administradores"> Administradores </h2>
+                        <form action="GET">
+                            <label for="search"> Buscar administrador </label>
+                            <div class="inputs-busqueda">
+                                <input type="number" placeholder="ID" min="4 "max="4">
+                                <input type="text" placeholder="Nombre del administrador">
+                                <button type="submit"> Buscar </button>
+                                <input class="Agregar" type="button" value=" + AGREGAR ">
+                            </div>
+                        </form>
+
+                        <div>
+                            <table class="registro-administradores">
+                                <tr class="indicadores">
+                                    <th> ID </th>
+                                    <th> NOMBRE </th>
+                                </tr>
+                            </table>
+                            <table class="datos-admin2">
+                                <tr>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                </tr>
+                                
+                            </table>
+                            <table>
+                                <tr class="consultas">
+                                    <td></td>
+                                    <td>ex</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
                         </div>
-                    </form>
-                    <input class="Agregar" type="button" value=" + AGREGAR ">
-                    <div>
-                        <table class="registro-administradores">
-                            <tr class="indicadores">
-                                <th> ID </th>
-                                <th> NOMBRE </th>
-                            </tr>
-                        </table>
                     </div>
                 </section>
         <?php
@@ -187,9 +216,10 @@
         <section class="bloque" id="operadores">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugiat obcaecati sed, officia id modi voluptas recusandae reprehenderit repudiandae architecto eum harum dolor laboriosam ipsum magni et! Sunt, alias animi?
         </section>
+        <!-- Fin OPERADORES -->
     </main>
 
-    <script src="js/menu.js"></script>
-    <script src="js/personas.js"></script>
+    <script src="view/js/menu.js"></script>
+    <script src="view/js/personas.js"></script>
 </body>
 </html>

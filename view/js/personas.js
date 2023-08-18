@@ -27,7 +27,16 @@ let administradores = [
         "fecha_de_ingreso":"00/00/00",
         "id": "0003",
     },
-]
+];
+
+fetch('controller/bd.php')
+    .then(response => console.log(response.json()))
+    .then(function (data) {
+        console.log(JSON.parse(data))
+    })
+    .catch(window.onload = function(){
+        alert('Conexión NO establecida')
+    })
 
 function prototype2(jsonObj) {
     let registro_administradores = document.querySelector('.registro-administradores'); 
