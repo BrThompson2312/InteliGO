@@ -132,4 +132,56 @@
   text-align: center;
   width: 50px;
   cursor: pointer;
+}
+
+.datos-admin2 td {
+  background-color: #BDBDBD;
+  color: black;
+  padding: 10px;
+  border: none;
+}
+.datos-admin2 td:nth-child(1) {
+  background-color: gray;
+  font-weight: bold;
+  width: 100px;
+  text-align: center;
+}
+.datos-admin2 td:nth-child(3) {
+  background-color: #03A600;
+}
+.datos-admin2 td:nth-child(3):hover {
+  background-color: darkgreen;
+}
+.datos-admin2 td:nth-child(4) {
+  background-color: #F1D900;
+}
+.datos-admin2 td:nth-child(4):hover {
+  background-color: darkgoldenrod;
+}
+.datos-admin2 td:nth-child(5) {
+  background-color: #9E2600;
+}
+.datos-admin2 td:nth-child(5):hover {
+  background-color: darkred;
+}
+.datos-admin2 td:nth-child(3), .datos-admin2 td:nth-child(4), .datos-admin2 td:nth-child(5) {
+  text-align: center;
+  width: 50px;
+  cursor: pointer;
+}
+
+.consultas td {
+  color: black;
+  padding: 10px;
+  border: none;
+}
+.consultas td:nth-child(1) {
+  width: 100px;
+}
+.consultas td:nth-child(2) {
+  background-color: #BDBDBD;
+  border-radius: 0px 0px 10px 10px;
+}
+.consultas td:nth-child(3), .consultas td:nth-child(4), .consultas td:nth-child(5) {
+  width: 50px;
 }/*# sourceMappingURL=administrador.css.map */

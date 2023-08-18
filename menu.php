@@ -12,14 +12,15 @@
     <title> InteliGO </title>
     <?php
         if ($tipoUsuario == 'admin'){
-            echo '<link rel="stylesheet" href="css/administrador.css">';
+            echo '<link rel="stylesheet" href="view/css/administrador.css">';
         } else {
-            echo '<link rel="stylesheet" href="css/operativo.css">';
+            echo '<link rel="stylesheet" href="view/css/operativo.css">';
         }
     ?>
-    <link rel="shortcut icon" href="img/logofinal/logoIco3.ico">
+    <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="view/js/jquery.min.js"></script>
 </head>
 <body>
     <nav>
@@ -44,7 +45,7 @@
         </section>
 
         <section id="opciones">
-            <a id="logout" href="salir.php"> 
+            <a id="logout" href="Controller/salir.php"> 
                 <ion-icon name="log-out"></ion-icon>
                 <span>Salir</span>
             </a>
@@ -102,11 +103,11 @@
         <section class="bloque" id="inicio">
             <div class="conteiner-Inicio">
                 <div class="logo-img">
-                    <img src="img/logo.png">
-                    <img src="img/black-logo.png">
+                    <img src="view/img/logo.png">
+                    <img src="view/img/black-logo.png">
                 </div>
                 <div class="logoPresentacion">
-                    <img src="img/logofinal/blacklogo.png" alt="">         
+                    <img src="view/img/logofinal/blackLogo.png" alt="">         
                 </div>
                 <div class="fondo">
                     <h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>
@@ -126,7 +127,7 @@
                     ?>
                 </div>
                 <footer>
-                    <table>
+                    <!-- <table>
                         <tr>
                             <th>ACERCA DE</th>
                             <th>INFORMACIÓN DE CONTACTO</th>
@@ -154,7 +155,7 @@
                                 </ul>     
                             </td>
                         </tr>
-                    </table>
+                    </table> -->
                 </footer>
             </div>
         </section>
@@ -184,6 +185,25 @@
                                     <th> NOMBRE </th>
                                 </tr>
                             </table>
+                            <table class="datos-admin2">
+                                <tr>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                    <td>ex</td>
+                                </tr>
+                                
+                            </table>
+                            <table>
+                                <tr class="consultas">
+                                    <td></td>
+                                    <td>ex</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </section>
@@ -199,7 +219,7 @@
         <!-- Fin OPERADORES -->
     </main>
 
-    <script src="js/menu.js"></script>
-    <script src="js/personas.js"></script>
+    <script src="view/js/menu.js"></script>
+    <script src="view/js/personas.js"></script>
 </body>
 </html>

@@ -145,3 +145,61 @@ $eliminar: #9E2600;
         cursor: pointer;
     }
 }
+
+// Consultas
+.datos-admin2 {
+    td {
+        background-color: #BDBDBD;
+        color: black;
+        padding: 10px;
+        border: none;
+    }
+    td:nth-child(1){
+        background-color: gray;
+        font-weight: bold;
+        width: 100px;
+        text-align: center;
+    }
+    td:nth-child(3) {
+        background-color: $consultar;
+        &:hover { 
+            background-color: darkgreen; 
+        }
+    }
+    td:nth-child(4) {
+        background-color: $modificar;
+        &:hover {
+            background-color: darkgoldenrod;
+        }
+    }
+    td:nth-child(5) {
+        background-color: $eliminar;
+        
+        &:hover { 
+            background-color: darkred; 
+        }
+    }
+    td:nth-child(3), td:nth-child(4), td:nth-child(5){
+        text-align: center;
+        width: 50px;
+        cursor: pointer;
+    }
+}
+
+.consultas {
+    td {
+        color: black;
+        padding: 10px;
+        border: none;
+    }
+    td:nth-child(1){
+        width: 100px;
+    }
+    td:nth-child(2){
+        background-color: #BDBDBD;
+        border-radius: 0px 0px 10px 10px;
+    }
+    td:nth-child(3), td:nth-child(4), td:nth-child(5){
+        width: 50px;
+    }
+}

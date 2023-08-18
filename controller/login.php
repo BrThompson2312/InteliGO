@@ -7,10 +7,10 @@
     if (isset($usuario) && isset($contraseña)) {
         if ($usuario == 'root' && $contraseña == 'root') {
             $_SESSION['tipoUsuario'] = "admin";
-            header("location: menu.php");
+            header("location: ../menu.php");
         } else if ($usuario == 'operador' && $contraseña == 'operador') {
             $_SESSION['tipoUsuario'] = "operador";
-            header("location: menu.php");  
+            header("location: ../menu.php");  
         } else {
             header('location: index.php?error=1');
         }
