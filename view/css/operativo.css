@@ -1,4 +1,8 @@
 @import 'comun.css';
+#user {
+  background-color: #fd7e14;
+}
+
 @keyframes user {
   0% {
     background-position: 0% 50%;
@@ -10,10 +14,13 @@
     background-position: 0% 50%;
   }
 }
-.opciones-hilera:active {
-  background-color: rgb(177, 154, 0);
+.opciones-hilera-active {
+  background-color: #ca6510;
 }
 
-.opciones-hileraActive {
-  background-color: rgb(177, 154, 0);
+.opciones-hilera-activeHover {
+  background-color: none;
+}
+.opciones-hilera-activeHover:hover {
+  background-color: rgb(62, 62, 62);
 }/*# sourceMappingURL=operativo.css.map */

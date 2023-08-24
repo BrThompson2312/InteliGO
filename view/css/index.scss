@@ -16,8 +16,8 @@ body {
     animation: loginImage 6s ease-in-out infinite;
 }
 main {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     border-radius: 10px;
-    border: 1px solid white;
     backdrop-filter: blur(10px);
     background-size: 100% 100%;
     width: 500px;
@@ -35,7 +35,6 @@ main {
     background-color: white;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    // background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;

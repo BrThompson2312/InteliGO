@@ -42,6 +42,6 @@
             </button>
         </form>
     </main>
-    <script src="view/js/index.js"></script>
+    <script src="../view/js/index.js"></script>
 </body>
 </html>
