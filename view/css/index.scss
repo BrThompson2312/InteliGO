@@ -20,7 +20,7 @@ main {
     border-radius: 10px;
     backdrop-filter: blur(10px);
     background-size: 100% 100%;
-    width: 500px;
+    width: 450px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -64,7 +64,7 @@ form {
         margin-bottom: 50px;
         margin-left: 25px;
     }
-    button[type="submit"] {
+    button[id="login-user"] {
         background: white;
         font-family: "Inter-Bold";
         color: black;
@@ -86,17 +86,16 @@ form {
     display: flex;
     flex-direction: column;
     position: relative;
+    margin-bottom: 50px;
     i {
         position: absolute;
         right: 0;
         bottom: 10px;
-        transform: scale(1, 1);
     }
     ion-icon {
         position: absolute;
         right: 0;
         bottom: 10px;
-        transform: scale(1.3, 1.3);
     }
     label {
         position: absolute;
@@ -133,5 +132,5 @@ form {
 button ion-icon {
     position: absolute;
     left: 10px;
-    transform: scale(1.5);
+    font-size: 25px;
 }

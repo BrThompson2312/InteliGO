@@ -1,18 +1,30 @@
 <?php
-    session_start();
-    $usuario = $_POST['user'];
-    $contraseña = $_POST['pass'];
-    $_SESSION['usuario'] = $usuario;
+    ini_set('display_errors','on');
 
-    if (isset($usuario) && isset($contraseña)) {
-        if ($usuario == 'root' && $contraseña == 'root') {
-            $_SESSION['tipoUsuario'] = "admin";
-            header("location: ../menu.php");
-        } else if ($usuario == 'operador' && $contraseña == 'operador') {
-            $_SESSION['tipoUsuario'] = "operador";
-            header("location: ../menu.php");  
-        } else {
-            header('location: index.php?error=1');
+    require_once 'conexion.php';
+
+    session_start();
+
+    $cedula = $_POST['cedula'];
+    $contrasena = $_POST['pass'];
+    
+    $operator_ci = "SELECT * FROM usuario WHERE ci_usuario = '$cedula'";
+
+    $result = mysqli_query($conn, $operator_ci);
+
+    if($result){
+        $existeUsuario = false;
+        while($row = mysqli_fetch_assoc($result)) {
+            $rowContra = $row['contraseña'];
+            if($rowContra==$contrasena)  {
+                $_SESSION['tipoUsuario'] = $row['rol_usuario'];
+                $_SESSION['nombreUsuario']  = $row['nombre_usuario'];
+                header('location: ../menu.php');
+            } else {
+                echo "Error en la contraseña";
+            }   
         }
-    }
+    } else {
+        echo 'Fallo en el $result';
+    }  
 ?>

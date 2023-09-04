@@ -1,28 +1,25 @@
 @import 'comun.css';
 
-#user {
-    background-color: #087990;
-}
+$boton-colores: #035d6f;
 
-@keyframes user {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+.inicio-usuario {
+    span {
+        background-color: $boton-colores;
     }
 }
 
-$boton-colores: #087990;
-
-.opciones-hilera-active { background-color: $boton-colores }
-.opciones-hilera-activeHover { 
-    background-color: none; 
-    &:hover {
-        background-color: rgb(62, 62, 62);
+.info-user {
+    div {
+        > span {
+            background-color: $boton-colores;
+        }
     }
 }
 
+.indicadores {
+    background-color: $boton-colores;
+}
+
+.opciones-hilera-active { 
+    background-color: $boton-colores;
+}

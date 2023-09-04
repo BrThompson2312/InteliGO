@@ -1,13 +1,21 @@
 @import 'fonts.css';
-html, body {
-  height: 100%;
-  padding: 0;
-  margin: 0;
+#user {
+  background-color: #141414;
+  color: white;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.bloque {
-  display: block;
+html, body {
   height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -15,27 +23,32 @@ body {
   background-size: 100% 100%;
   background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-#user {
-  color: white;
-  background-size: 100% 100%;
-  height: 15%;
-  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  animation: user 5s ease-in-out infinite;
 }
 
 nav {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  width: 20%;
+  background-color: #141414;
   height: 100%;
-  float: left;
+  width: 20%;
+  margin: 0;
   position: relative;
   overflow: auto;
+  border-right: 5px solid #141414;
+  border-left: 5px solid #141414;
+}
+
+main {
+  height: 100%;
+  width: 80%;
+  margin: 0;
+  position: relative;
+  background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1));
+  overflow: auto;
+}
+
+.bloque {
+  height: 100%;
+  width: 100%;
 }
 
 #logo {
@@ -51,61 +64,80 @@ nav {
 }
 
 #alert-salir {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
+  font-size: 20px;
   position: absolute;
-  display: none;
-  z-index: 99;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  place-content: center;
   font-weight: bold;
+  display: none;
 }
 #alert-salir div {
-  border: 1px solid white;
+  background-color: #141414;
   border-radius: 10px;
-  border-top-right-radius: 0px;
   width: 400px;
-  height: 250px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0 auto;
+  top: 20%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  animation: popup 0.5s ease;
+}
+#alert-salir div p {
+  font-family: "Inter-ExtraLight";
 }
 #alert-salir div a {
-  background-color: rgb(87, 0, 0);
-  border-top: 1px solid darkred;
-  border-bottom: 1px solid darkred;
+  background-color: #dc3545;
   text-decoration: none;
   color: white;
   width: 100%;
   text-align: center;
   cursor: pointer;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 10px 0px 10px 0px;
+  font-size: 15px;
+  transition: background-color 0.3s;
+}
+#alert-salir div a:hover {
+  background-color: #a82935;
 }
 #alert-salir div i {
-  background-color: white;
-  color: black;
+  color: white;
   position: absolute;
-  border-bottom-left-radius: 50%;
+  border-radius: 10px;
   top: 0;
   right: 0;
-  padding: 15px;
+  padding: 10px;
+  margin: 5px;
   cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.5s;
 }
 
+@keyframes popup {
+  0% {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 20%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 #opciones {
   background-color: transparent;
   font-family: "RobotoFlex-Regular";
   color: white;
-  height: 85%;
+  height: 80%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -128,12 +160,25 @@ nav {
   transition: background-color 0.3s;
   cursor: pointer;
 }
-.opciones-hilera > * {
-  position: relative;
-  left: 10px;
-}
 .opciones-hilera ion-icon, .opciones-hilera i {
   margin-right: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+.opciones-hilera[rel="#eliminados"], .opciones-hilera[rel="#operador"] {
+  background-color: rgb(46, 46, 46);
+}
+
+.opciones-hilera-active {
+  font-family: "Inter-Bold";
+  text-transform: uppercase;
+}
+
+.opciones-hilera-activeHover {
+  background-color: none;
+}
+.opciones-hilera-activeHover:hover {
+  background-color: rgb(62, 62, 62);
 }
 
 .consultas {
@@ -174,47 +219,27 @@ nav {
   border-collapse: collapse;
 }
 
-.inputs-busqueda input[type=text] {
-  padding: 10px;
-  border: none;
+.inputs-busqueda {
+  display: flex;
 }
-.inputs-busqueda input[type=number] {
-  width: 50px;
+.inputs-busqueda button {
+  width: 100%;
   padding: 10px;
-  border: none;
-}
-.inputs-busqueda button[type=submit] {
-  background-color: #427C7C;
-  padding: 10px;
+  cursor: pointer;
   border: none;
   color: white;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
-.inputs-busqueda button[type=submit]:hover {
-  background-color: #235c5c;
+.inputs-busqueda .filtrar {
+  background-color: rgb(91, 102, 103);
 }
 .inputs-busqueda .agregar {
   background-color: #026300;
-  border: none;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
   transition: background-color 0.3s;
-  cursor: pointer;
-}
-.inputs-busqueda .agregar:hover {
-  background-color: rgb(0, 53, 0);
-}
-.inputs-busqueda .agregar:active {
-  background-color: #026300;
-  transition: none;
 }
 
 .titulo-section {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  border-bottom: 2px solid black;
+  background-color: #141414;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: white;
   margin: 0 !important;
@@ -240,7 +265,8 @@ nav {
 #xmark-reserva,
 #xmark-HDM,
 #xmark-GDM {
-  background-color: black;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  border-radius: 5px;
   padding: 10px;
   position: absolute;
   z-index: 99;
@@ -270,37 +296,58 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-direction: row;
   width: 100%;
   height: 100%;
   color: white;
+  font-size: 18px;
+}
+.info-user div > h3 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.info-user div > span {
+  margin-top: 30px;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 20px;
+  font-family: "Inter-Bold";
+}
+.info-user i {
+  background-color: gray;
+  color: black;
+  padding: 20px;
+  font-size: 30px;
+  border-radius: 10px;
 }
 
 #logout {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  border-top: 1px solid darkred;
-  border-bottom: 1px solid darkred;
+  background-color: #dc3545;
   text-decoration: none;
   color: white;
   font-weight: bold;
   width: 100%;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  left: 0px;
+  padding: 10px 0px 10px 0px;
   transition: background-color 0.3s;
   cursor: pointer;
 }
-#logout ion-icon {
-  background-color: #141414;
-  color: white;
-  height: 100%;
-  padding: 10px;
-  margin-right: 10px;
+#logout span {
+  position: relative;
+  left: 10px;
 }
 #logout:hover {
-  background-color: rgb(87, 0, 0);
+  background-color: #a82935;
+}
+#logout ion-icon {
+  border-radius: 5px;
+  font-size: 20px;
+  color: white;
+  height: 100%;
+  margin-left: 10px;
 }
 
 .style-user {
@@ -311,90 +358,81 @@ nav {
   cursor: pointer;
 }
 
-main {
+.conteiner-inicio {
   position: relative;
-  width: 80%;
-  height: 100%;
-  float: right;
-  overflow: auto;
-}
-
-#inicio {
-  display: block;
-  height: 100%;
-}
-
-.conteiner-Inicio {
   color: white;
   height: 100%;
   background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1));
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-}
-
-.fondo {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  height: 100%;
 }
 
-.logoPresentacion {
-  position: absolute;
+.inicio-logoProducto {
   z-index: 0;
   background-color: white;
+  border-radius: 0px 0px 20px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
-.logoPresentacion img {
+.inicio-logoProducto img {
   width: 300px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.logo-img {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  border-radius: 90% 0px 0px 0px;
-  transition: background-color 0.5s, padding 0.5s;
+.inicio-usuario {
+  display: grid;
+  place-content: center;
+  height: 100%;
 }
-.logo-img img:nth-child(1), .logo-img img:nth-child(2) {
-  background-color: white;
-  width: 200px;
-  top: 0;
-  left: 0;
-  position: absolute;
-  border-radius: 0% 0% 90% 0%;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  transition: opacity 500ms ease;
-}
-.logo-img img:nth-child(2) {
-  animation: changeImg 2s ease-in infinite;
+.inicio-usuario span {
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Inter-Bold";
 }
 
-@keyframes changeImg {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0;
-  }
+.inicio-logoEmpresa {
+  background-color: white;
+  border-radius: 20px 20px 0px 0px;
+  color: black;
+  width: 100%;
+  transition: background-color 0.5s, padding 0.5s;
 }
+.inicio-logoEmpresa table {
+  width: 100%;
+}
+.inicio-logoEmpresa ul {
+  list-style: none;
+  font-weight: bold;
+}
+.inicio-logoEmpresa table {
+  border-collapse: collapse;
+}
+.inicio-logoEmpresa table td > div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.inicio-logoEmpresa table tfoot {
+  background-color: #141414;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+.inicio-logoEmpresa table tfoot ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 footer {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   width: 100%;
@@ -440,23 +478,24 @@ footer table td:nth-child(2) ul li h4 {
 }
 
 .alert-section form {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(0deg, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8));
   color: white;
+  border-radius: 5px 5px 0px 0px;
+  font-family: "Inter-ExtraLight";
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border-radius: 5px 5px 0px 0px;
 }
 .alert-section form div {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   padding: 20px;
 }
 .alert-section form div > * {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px;
 }
-.alert-section form div > input, .alert-section form div option, .alert-section form div select {
+.alert-section form div > input, .alert-section form div select, .alert-section form div textarea {
   background-color: white;
   border: 3px solid blue;
   outline: none;
@@ -467,9 +506,6 @@ footer table td:nth-child(2) ul li h4 {
   color: black;
   margin-bottom: 10px;
   width: 300px;
-}
-.alert-section form div > label {
-  font-family: "Inter-ExtraLight";
 }
 .alert-section form > button {
   background-color: darkgreen;
@@ -485,6 +521,74 @@ footer table td:nth-child(2) ul li h4 {
   background-color: green;
 }
 
+.alert-section-reserva {
+  background: linear-gradient(0deg, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8));
+  color: white;
+  border-radius: 5px 5px 0px 0px;
+  font-family: "Inter-ExtraLight";
+}
+.alert-section-reserva table {
+  padding: 10px;
+}
+.alert-section-reserva table td > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.alert-section-reserva table td div > * {
+  margin: 5px;
+}
+.alert-section-reserva table td div > input, .alert-section-reserva table select, .alert-section-reserva table textarea {
+  background-color: white;
+  border: 3px solid blue;
+  outline: none;
+  padding: 6px;
+}
+.alert-section-reserva table td div > input, .alert-section-reserva table select, .alert-section-reserva table option {
+  border-radius: 4px;
+  color: black;
+  margin-bottom: 10px;
+  width: 300px;
+}
+.alert-section-reserva form > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-section-reserva form > div div {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.alert-section-reserva form > div div > input, .alert-section-reserva form > div div select, .alert-section-reserva form > div div textarea {
+  background-color: white;
+  border: 3px solid blue;
+  outline: none;
+  padding: 10px;
+}
+.alert-section-reserva form > div div > input, .alert-section-reserva form > div div option {
+  border-radius: 4px;
+  width: 300px;
+}
+.alert-section-reserva form > div div > * {
+  margin: 6px;
+}
+.alert-section-reserva form button {
+  background-color: darkgreen;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+.alert-section-reserva form button:hover {
+  background-color: green;
+}
+
 .block-relative-section {
   position: relative;
   display: none;
@@ -493,43 +597,50 @@ footer table td:nth-child(2) ul li h4 {
 .indicadores {
   font-family: "Inter-SemiBold";
   color: white;
-  text-align: left;
+  text-align: center;
+}
+.indicadores th {
+  padding: 5px;
 }
 
 .datos-admin {
   width: 100%;
+  font-weight: bold;
 }
 .datos-admin td {
   background-color: #ced4da;
   color: black;
   padding: 10px;
-  border: none;
+  text-align: center;
 }
 .datos-admin td:nth-child(1) {
   background-color: #adb5bd;
+  background: linear-gradient(rgba(206, 212, 218, 0.7), rgba(206, 212, 218, 0.7));
   font-weight: bold;
   width: 100px;
-  text-align: center;
 }
-.datos-admin td:nth-child(3) {
-  background-color: #198754;
+.datos-admin .bg-td {
+  background-color: #adb5bd;
 }
-.datos-admin td:nth-child(3):hover {
-  background-color: #146c43;
+.datos-admin .consultaRegistro {
+  background-color: #2eb405;
 }
-.datos-admin td:nth-child(4) {
+.datos-admin .consultaRegistro:hover {
+  background-color: #31a001;
+}
+.datos-admin .modificarRegistro {
   background-color: #ffc107;
 }
-.datos-admin td:nth-child(4):hover {
+.datos-admin .modificarRegistro:hover {
   background-color: #cc9a06;
 }
-.datos-admin td:nth-child(5) {
+.datos-admin .eliminarRegistro {
   background-color: #dc3545;
 }
-.datos-admin td:nth-child(5):hover {
+.datos-admin .eliminarRegistro:hover {
   background-color: #b02a37;
 }
-.datos-admin td:nth-child(3), .datos-admin td:nth-child(4), .datos-admin td:nth-child(5) {
+.datos-admin .consultaRegistro, .datos-admin .modificarRegistro, .datos-admin .eliminarRegistro {
   text-align: center;
   width: 50px;
   cursor: pointer;

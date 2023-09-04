@@ -1,5 +1,3 @@
-console.log("hello world");
-
 function seeingPassword() {
     var eye = document.getElementById("seePass");
     var not_eye = document.getElementById("not-seePass");

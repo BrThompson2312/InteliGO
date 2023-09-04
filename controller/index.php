@@ -23,10 +23,10 @@
         </div>
         <span class="login"> LOGIN </span>
         <form method="POST" action="controller/login.php">
-            <div class="form-group" style="margin-bottom: 50px;">
-                <i class="fa-regular fa-user"></i>
-                <input type="text" name="user" id="user" required>
-                <label for="user"> Usuario </label>
+            <div class="form-group">
+                <i class="fa-solid fa-id-card"></i>
+                <input type="text" name="cedula" id="user" required>
+                <label for="cedula"> Cédula </label>
             </div>
             <div class="form-group">
                 <ion-icon id="not-seePass" name="eye-off"></ion-icon>
@@ -34,14 +34,12 @@
                 <input type="password" name="pass" id="pass" required>
                 <label for="pass"> Contraseña </label>
             </div>
-            <input type="checkbox"> Recordar usuario y contraseña
-            <br>
-            <button type="submit">
+            <button type="submit" id="login-user">
                 <ion-icon name="log-in"></ion-icon>
                 <span> INGRESAR </span>
             </button>
         </form>
     </main>
-    <script src="../view/js/index.js"></script>
+    <script src="view/js/index.js"></script>
 </body>
 </html>

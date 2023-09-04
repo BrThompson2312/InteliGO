@@ -1,47 +1,63 @@
 @import 'fonts.css';
 
-$fuente-opciones: "Inter-ExtraLight";
+#user {
+    background-color: #141414;
+    color: white;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 
-$consultar: #198754;
+$fuente-opciones: "Inter-ExtraLight";
+$consultar: #2eb405;
 $modificar: #ffc107;
 $eliminar: #dc3545;
 
 html, body {
     height: 100%;
+    width: 100%;
     padding: 0;
     margin: 0;
+    
 }
-
-.bloque {
-    display: block;
-    height: 100%;
-}
-
 body {
     background-image: url(../img/pocitos.jpg);
     background-size: 100% 100%;    
     background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
-}
-#user {
-    color: white;
-    background-size: 100% 100%;
-    height: 15%;
-    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    animation: user 5s ease-in-out infinite;
 }
-nav {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    width: 20%;
+
+//Bloques padre
+    nav {
+        // background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        background-color: #141414;
+        height: 100%;
+        width: 20%;
+        margin: 0;
+        position: relative;
+        overflow: auto;
+        border-right: 5px solid #141414;
+        border-left: 5px solid #141414;
+    }
+    main {
+        height: 100%;
+        width: 80%;
+        margin: 0;
+        position: relative;
+        background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1) );
+        overflow: auto;
+    }
+
+.bloque {
     height: 100%;
-    float: left;
-    position: relative;
-    overflow: auto;
+    width: 100%;
 }
+
 #logo {
     height: 15%;
     width: 100%;
@@ -55,62 +71,85 @@ nav {
 }
 
 #alert-salir {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    // background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    // background: linear-gradient(rgba(157, 162, 188, 0.5), rgba(4, 30, 163, 0.5) );
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
+    font-size: 20px;
     position: absolute;
-    display: none;
-    z-index: 99;
+    z-index: 1;
     width: 100%;
     height: 100%;
-    place-content: center;
     font-weight: bold;
+    display: none;
     div {
-        border: 1px solid white;
+        // background: linear-gradient(0deg, rgba(black, 0.9), rgba(black, 0.9));
+        background-color: #141414;
+        // background-color: #141414;
         border-radius: 10px;
-        border-top-right-radius: 0px;
         width: 400px;
-        height: 250px;
+        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         position: relative;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: 0 auto;
+        top: 20%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        animation: popup 0.5s ease;
+        p {
+            font-family: "Inter-ExtraLight";
+        }
         a {
-            background-color: rgb(87, 0, 0);
-            border-top: 1px solid darkred;
-            border-bottom: 1px solid darkred;
+            background-color: #dc3545;
             text-decoration: none;
             color: white;
             width: 100%;
             text-align: center;
             cursor: pointer;
-            padding-top: 5px;
-            padding-bottom: 5px;
+            padding: 10px 0px 10px 0px;
+            font-size: 15px;
+            transition: background-color .3s;
+            &:hover {
+                background-color: #a82935;        
+            }
         }
         i {
-            background-color: white;
-            color: black;
+            color: white;
             position: absolute;
-            border-bottom-left-radius: 50%;
+            border-radius: 10px;
             top: 0;
             right: 0;
-            padding: 15px;
+            padding: 10px;
+            margin: 5px;
             cursor: pointer;
+            font-size: 20px;
+            transition: background-color .5s;
         }
     }
-    
+}
+
+@keyframes popup{
+    0% {
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        top: 20%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 #opciones {
     background-color: transparent;
     font-family: "RobotoFlex-Regular";
     color: white;
-    height: 85%;
+    height: 80%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -132,12 +171,25 @@ nav {
     padding-bottom: 15px;
     transition: background-color .3s;
     cursor: pointer;
-    > * {
-        position: relative; 
-        left: 10px;
-    }
     ion-icon, i {
         margin-right: 10px;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    &[rel="#eliminados"], &[rel="#operador"]{
+        background-color: rgb(46, 46, 46);
+    }
+}
+
+.opciones-hilera-active { 
+    font-family: "Inter-Bold"; 
+    text-transform: uppercase;
+}
+
+.opciones-hilera-activeHover { 
+    background-color: none; 
+    &:hover {
+        background-color: rgb(62, 62, 62);
     }
 }
 
@@ -181,48 +233,26 @@ nav {
 }
 
 .inputs-busqueda {
-    input[type="text"] {
+    display: flex;
+    button {
+        width: 100%;
         padding: 10px;
-        border: none;
-    }
-    input[type="number"] {
-        width: 50px;
-        padding: 10px;
-        border: none;
-    }
-    button[type="submit"]{
-        background-color: #427C7C;
-        padding: 10px;
+        cursor: pointer;
         border: none;
         color: white;
         font-weight: bold;
-        cursor: pointer;
-        transition: background-color .3s;
-        &:hover { 
-            background-color: #235c5c
-        }
-    }   
+    }
+    .filtrar {
+        background-color: rgb(91, 102, 103);
+    }
     .agregar {
         background-color: #026300;
-        border: none;
-        padding: 10px;
-        color: white;
-        font-weight: bold;
         transition: background-color .3s;
-        cursor: pointer;
-        &:hover { 
-            background-color: rgb(0, 53, 0) 
-        }
-        &:active {
-            background-color: #026300;
-            transition: none;
-        }
     }
 }
 
 .titulo-section {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    border-bottom: 2px solid black; 
+    background-color: #141414;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
     margin: 0 !important;
@@ -250,7 +280,8 @@ nav {
 #xmark-reserva,
 #xmark-HDM,
 #xmark-GDM {
-    background-color: black;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border-radius: 5px;
     padding: 10px;
     position: absolute;
     z-index: 99;
@@ -270,36 +301,59 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-direction: row;
     width: 100%;
     height: 100%;
     color: white;
+    font-size: 18px;
+    div {
+        > h3 {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        > span {
+            margin-top: 30px;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 20px;
+            font-family: "Inter-Bold";
+        }
+    }
+    i {
+        background-color: gray;
+        color: black;
+        padding: 20px;
+        font-size: 30px;
+        border-radius: 10px;
+    }
 }
 
 #logout {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    border-top: 1px solid darkred;
-    border-bottom: 1px solid darkred;
+    background-color: #dc3545;
     text-decoration: none;
     color: white;
     font-weight: bold;
     width: 100%;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: start;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    left: 0px;
+    padding: 10px 0px 10px 0px;
     transition: background-color .3s;
+    span {
+        position: relative;
+        left: 10px
+    }
     cursor: pointer;
+    &:hover {
+        background-color: #a82935;
+    }
     ion-icon {
-        background-color: #141414;
+        border-radius: 5px;
+        font-size: 20px;
         color: white;
         height: 100%;
-        padding: 10px;
-        margin-right: 10px;
-    }
-    &:hover {
-        background-color: rgb(87, 0, 0);
+        margin-left: 10px;
     }
 }
 
@@ -310,35 +364,21 @@ nav {
     position: relative;
     cursor: pointer;
 }
-main {
+
+.conteiner-inicio {
     position: relative;
-    width: 80%;
-    height: 100%;
-    float: right;
-    overflow: auto;
-}
-#inicio {
-    display: block;
-    height: 100%;
-}
-.conteiner-Inicio {
     color: white;
     height: 100%;
     background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1) );
     backdrop-filter: blur(10px);
-}
-.fondo {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    height: 100%;
 }
-
-.logoPresentacion {
-    position: absolute;
+.inicio-logoProducto {
     z-index: 0;
     background-color: white;
+    border-radius: 0px 0px 20px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -350,44 +390,51 @@ main {
     }
 }
 
-.logo-img {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    border-radius: 90% 0px 0px 0px;
-    transition: background-color .5s, padding .5s;
-    img:nth-child(1), img:nth-child(2)  {
-        background-color: white;
-        width: 200px;
-        top: 0;
-        left: 0;
-        position: absolute;
-        border-radius: 0% 0% 90% 0%;
-        padding-right: 30px;
-        padding-bottom: 30px;
-        transition: opacity 500ms ease;
-    }
-    img:nth-child(2) {
-        animation: changeImg 2s ease-in infinite;
+.inicio-usuario {
+    display: grid;
+    place-content: center;
+    height: 100%;
+    span {
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px; 
+        font-size: 20px;
+        text-align: center;
+        font-family: "Inter-Bold";
     }
 }
 
-@keyframes changeImg {
-    0% {
-        opacity: 0;
+.inicio-logoEmpresa {
+    background-color: white;
+    border-radius: 20px 20px 0px 0px;
+    color: black;
+    width: 100%;
+    transition: background-color .5s, padding .5s;
+    table {
+        width: 100%;
     }
-    25% {
-        opacity: 0.5;
+    ul {
+        list-style: none;
+        font-weight: bold;
     }
-    50% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 0;
+    table{
+        border-collapse: collapse;
+        td > div {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+        tfoot {
+            background-color: #141414;
+            text-align: center;
+            width: 100%;
+            color: white;
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }
 
@@ -439,21 +486,22 @@ footer{
 
 .alert-section {
     form {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        background: linear-gradient(0deg, rgba(#141414, 0.8), rgba(#141414, 0.8));
         color: white;
+        border-radius: 5px 5px 0px 0px;
+        font-family: "Inter-ExtraLight";
         display: flex;
         justify-content: center;
         flex-direction: column;
-        border-radius: 5px 5px 0px 0px;
         div {
             display: flex;
+            justify-content: center;
             flex-direction: column;
             padding: 20px;
             > * {
-                margin-top: 5px;
-                margin-bottom: 5px;
+                margin: 5px;
             }
-            > input, option, select {
+            > input, select, textarea {
                 background-color: white;
                 border: 3px solid blue;
                 outline: none;
@@ -465,11 +513,79 @@ footer{
                 margin-bottom: 10px;
                 width: 300px;
             }
-            > label {
-                font-family: "Inter-ExtraLight"
-            }
         }
         > button {
+            background-color: darkgreen;
+            border: none;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color .2s;
+            &:hover {
+                background-color: green;
+            }
+        }
+    }
+}
+
+.alert-section-reserva {
+    background: linear-gradient(0deg, rgba(#141414, 0.8), rgba(#141414, 0.8));
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    font-family: "Inter-ExtraLight";
+    table {
+        padding: 10px;
+        td > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        td div > * {
+            margin: 5px;
+        }
+        td div > input, select, textarea {
+            background-color: white;
+            border: 3px solid blue;
+            outline: none;
+            padding: 6px;
+        }
+        td div > input, select, option {
+            border-radius: 4px;
+            color: black;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+    }
+    form {
+        > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            div {
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                > input, select, textarea {
+                    background-color: white;
+                    border: 3px solid blue;
+                    outline: none;
+                    padding: 10px;
+                }
+                > input, option {
+                    border-radius: 4px;
+                    width: 300px;
+                }
+                > * {
+                    margin: 6px;
+                }
+            }
+            
+        }
+        button {
             background-color: darkgreen;
             border: none;
             padding: 10px;
@@ -493,42 +609,49 @@ footer{
 .indicadores {
     font-family: "Inter-SemiBold";
     color: white;
-    text-align: left;
+    text-align: center;
+    th {
+        padding: 5px;
+    }
 }
 
 .datos-admin {
     width: 100%;
+    font-weight: bold;
     td {
         background-color: #ced4da;
         color: black;
         padding: 10px;
-        border: none;
-    }
-    td:nth-child(1){
-        background-color: #adb5bd;
-        font-weight: bold;
-        width: 100px;
         text-align: center;
     }
-    td:nth-child(3) {
+    td:nth-child(1) {
+        background-color: #adb5bd;
+        background: linear-gradient(rgba(#ced4da, 0.7), rgba(#ced4da, 0.7)); 
+        font-weight: bold;
+        width: 100px;
+    }
+    .bg-td {
+        background-color: #adb5bd;
+    }
+    .consultaRegistro { 
         background-color: $consultar;
         &:hover { 
-            background-color: #146c43; 
+            background-color: #31a001; 
         }
     }
-    td:nth-child(4) {
+    .modificarRegistro {
         background-color: $modificar;
         &:hover {
             background-color: #cc9a06;
         }
     }
-    td:nth-child(5) {
+    .eliminarRegistro {
         background-color: $eliminar;
         &:hover { 
             background-color: #b02a37; 
         }
     }
-    td:nth-child(3), td:nth-child(4), td:nth-child(5){
+    .consultaRegistro, .modificarRegistro, .eliminarRegistro{
         text-align: center;
         width: 50px;
         cursor: pointer;

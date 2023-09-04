@@ -1,1 +1,1 @@
-{"version":3,"sources":["administrador.scss","administrador.css"],"names":[],"mappings":"AAAQ,mBAAA;AAER;EACI,yBAAA;ACAJ;;ADGA;EACI;IACI,2BAAA;ECAN;EDEE;IACI,6BAAA;ECAN;EDEE;IACI,2BAAA;ECAN;AACF;ADKA;EAA0B,yBAFV;ACAhB;;ADGA;EACI,sBAAA;ACAJ;ADCI;EACI,iCAAA;ACCR","file":"administrador.css"}
+{"version":3,"sources":["administrador.scss","administrador.css"],"names":[],"mappings":"AAAQ,mBAAA;AAKJ;EACI,yBAJQ;ACChB;;ADSQ;EACI,yBAXI;ACKhB;;ADWA;EACI,yBAjBY;ACShB;;ADWA;EACI,yBArBY;ACahB","file":"administrador.css"}

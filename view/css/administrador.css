@@ -1,26 +1,16 @@
 @import 'comun.css';
-#user {
-  background-color: #087990;
+.inicio-usuario span {
+  background-color: #035d6f;
 }
 
-@keyframes user {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.info-user div > span {
+  background-color: #035d6f;
 }
+
+.indicadores {
+  background-color: #035d6f;
+}
+
 .opciones-hilera-active {
-  background-color: #087990;
-}
-
-.opciones-hilera-activeHover {
-  background-color: none;
-}
-.opciones-hilera-activeHover:hover {
-  background-color: rgb(62, 62, 62);
+  background-color: #035d6f;
 }/*# sourceMappingURL=administrador.css.map */
