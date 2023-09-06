@@ -41,12 +41,12 @@
                         if ($tipoUsuario == 'administrador') {
                             ?>
                                 <h3><?php echo $_SESSION['nombreUsuario'];?></h3>
-                                <span>administrador</span>
+                                <span>Administrador</span>
                             <?php
                         } else {
                             ?>
                                 <h3><?php echo $_SESSION['nombreUsuario'];?></h3>
-                                <span>operador</span>
+                                <span>Operador</span>
                             <?php 
                         } ?>
                 </div>
@@ -84,10 +84,6 @@
                 <i class="fi fi-ss-steering-wheel"></i>
                 <span>Choferes</span> 
             </button>
-            <!-- <button class="opciones-hilera" rel="#lista-negra" onclick="opcion_menu(this)"> 
-                <i class="fi fi-bs-trash-list"></i>
-                <span>Lista negra</span>
-            </button> -->
             <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-person"></i>
                 <span>Particulares</span>
@@ -111,7 +107,7 @@
             <section class="bloque" id="inicio">
                 <div class="conteiner-inicio">
                     <div class="inicio-logoProducto">
-                        <img src="view/img/logofinal/blackLogo.png" alt="">         
+                        <img src="view/img/logofinal/whiteLogo.png" alt="">         
                     </div>
                     <div class="inicio-usuario">
                         <h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>
@@ -119,13 +115,13 @@
                             if ($tipoUsuario == 'administrador') {
                                 ?>
                                     <span> 
-                                        <?php echo $_SESSION['nombreUsuario'];?> <span> | </span> <?php echo $_SESSION['tipoUsuario']?>
+                                        <?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Administrador
                                     </span>
                                 <?php
                             } else {
                                 ?>
                                     <span> 
-                                        <?php echo $_SESSION['nombreUsuario'];?> <span> | </span> <?php echo $_SESSION['tipoUsuario']?>
+                                        <?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Operador
                                     </span>
                                 <?php
                             }
@@ -135,41 +131,15 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td> 
-                                        <ul>
-                                            <li><i class="fa-solid fa-copyright"></i> Copyright</li>
-                                            <!-- &nbsp;
-                                            <li>Factibilidad legal</li> -->
-                                        </ul>
-                                    </td>
                                     <td></td>
                                     <td>
                                         <div>
-                                            <h3>HECHO POR</h3>
-                                            <img src="view/img/logo.png" style="width: 150px;">
+                                            <h5>POWERED BY</h5>
+                                            <img src="view/img/logobk.png" style="width: 100px">
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <ul>
-                                            <li>Términos y condiciones</li>
-                                            &nbsp;
-                                            &nbsp;
-                                            &nbsp;
-                                            <li>Política de privacidad</li>
-                                            &nbsp;
-                                            &nbsp;
-                                            &nbsp;
-                                            <li>Política de cookies</li>
-                                        </ul>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -303,16 +273,16 @@
                 <i id="xmark-coches" class="fa-solid fa-xmark"></i>
                 <div class="block-relative-section BRS-coches">
                     <div class="alert-section">
-                        <form method="POST" action="controller/agregar/coches.php">
+                        <form method="POST" action="controller/agregar/a_coches.php">
                             <div>
+                                <label for="matricula-coches">Matricula</label>
+                                <input name="matricula-coches" type="type" placeholder="Matrícula">
                                 <label for="marca-coches">Marca</label>
                                 <input name="marca-coches" type="text" placeholder="Marca">
                                 <label for="modelo-coches">Modelo</label>
-                                <input name="modelo-coches" type="text" placeholder="Modelo">
-                                <label for="matricula-coches">Matricula</label>
-                                <input name="matricula-coches" type="number" placeholder="Matrícula">
+                                <input name="modelo-coches" type="text" placeholder="Modelo">     
                                 <label for="año-coches">Año</label>
-                                <input name="año-coches" type="date">
+                                <input name="año-coches" type="number">
                             </div>    
                             <button type="submit"> AGREGAR </button>    
                         </form>
@@ -349,14 +319,14 @@
                 <i id="xmark-chofer" class="fa-solid fa-xmark"></i>
                 <div class="block-relative-section BRS-choferes">
                     <div class="alert-section">
-                        <form action="">
+                        <form method="POST" action="controller/agregar/a_choferes.php">
                             <div>
-                                <label for="nombre-chofer">Nombre completo</label>
-                                <input name="nombre-chofer" type="text" placeholder="Nombre completo">
                                 <label for="cedula-chofer">Cedula</label>
                                 <input name="cedula-chofer" type="number" placeholder="Cédula">
-                                <label for="libreta-chofer">Tipo de libreta de conducir</label>
-                                <input name="libreta-chofer" type="text" value="Categoria F" readonly>
+                                <label for="nombre-chofer">Nombre completo</label>
+                                <input name="nombre-chofer" type="text" placeholder="Nombre completo">     
+                                <label for="tel-chofer">Teléfono</label>
+                                <input name="tel-chofer" type="number" placeholder="Teléfono">
                             </div>    
                             <button type="submit"> AGREGAR </button>                                  
                         </form>
@@ -365,51 +335,6 @@
 
             </section>
         <!-- Fin CHOFERES -->
-
-        <!-- Inicio LISTA NEGRA -->
-            <!-- <section class="bloque" id="lista-negra">
-                <div class="conteiner-section conteiner-LN">
-                    <h2 class="titulo-section"> LISTA NEGRA </h2>
-                    <form action="GET">
-                        <label for="search"> Buscar clientes </label>
-                        <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-LN', '.BRS-LN', '#xmark-administrador')" type="button">AGREGAR</button>
-                        </div>
-                    </form>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr class="indicadores">
-                                    <th> ID </th>
-                                    <th> NOMBRE </th>
-                                </tr>
-                            </thead>
-                            <tbody class="registro-LN"></tbody>
-                        </table>
-                    </div>
-                </div>
-                <i id="xmark-LN" class="fa-solid fa-xmark"></i>
-                <div class="block-relative-section BRS-LN">
-                    <div class="alert-section">
-                        <form action="">
-                            <div>
-                                <label for="">Nombre completo</label>
-                                <input type="text">
-                                <label for="">Cedula</label>
-                                <input type="number">
-                                <label for="">Fecha de ingreso</label>
-                                <input type="date">
-                                <label for="">Comentario</label>
-                                <input type="comment">
-                            </div>    
-                            <button type="submit"> AGREGAR </button>                                  
-                        </form>
-                    </div>
-                </div>
-
-            </section> -->
-        <!-- Fin LISTA NEGRA -->
 
         <!-- Inicio PARTICULARES -->
             <section class="bloque" id="particular">
@@ -440,16 +365,26 @@
                 <i id="xmark-cliente" class="fa-solid fa-xmark"></i>
                 <div class="block-relative-section BRS-cliente">
                     <div class="alert-section">
-                        <form action="">
+                        <form method="POST" action="controller/agregar/a_particulares.php">
                             <div>
-                                <label for="nombre-cliente">Nombre completo</label>
-                                <input name="nombre-cliente" type="text" placeholder="Nombre completo">
-                                <label for="edad-cliente">Edad</label>
-                                <input name="edad-cliente" type="number" placeholder="Edad">
-                                <label for="cedula-cliente">Cedula</label>
-                                <input name="cedula-cliente" type="number" placeholder="Cédula">
-                                <label for="fechaing-cliente">Fecha de ingreso</label>
-                                <input name="fechaing-cliente" type="date" value="<?php echo date("Y-m-d");?>" required readonly>
+                                <label for="cod">COD</label>
+                                <input name="cod" type="text">
+                                <label for="ln">Lista negra</label>
+                                <select name="ln">
+                                    <option value="">--Seleccione opción</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                                <label for="nombre">Nombre</label>
+                                <input name="nombre" type="text" placeholder="Nombre">
+                                <label for="apellido">Apellido</label>
+                                <input name="apellido" type="text" placeholder="Apellido">
+                                <label for="cedula">Cedula</label>
+                                <input name="cedula" type="number" placeholder="Cédula">
+                                <label for="direccion">Dirección</label>
+                                <input name="direccion" type="text" placeholder="Dirección">
+                                <label for="tel">Teléfono</label>
+                                <input name="tel" type="number">
                             </div>    
                             <button type="submit"> AGREGAR </button>                                  
                         </form>
@@ -488,18 +423,30 @@
                 <i id="xmark-empresa" class="fa-solid fa-xmark"></i>
                 <div class="block-relative-section BRS-empresa">
                     <div class="alert-section">
-                        <form action="">
+                        <form method="POST" action="controller/agregar/a_empresas.php">
                             <div>
-                                <label for="nombre-empresa">Nombre de la empresa</label>
-                                <input name="nombre-empresa" type="text" placeholder="Nombre" required>
-                                <label for="RUT-empresa">RUT</label>
-                                <input name="RUT-empresa" type="number" placeholder="RUT" required>
-                                <label for="direccion-empresa">Dirección</label>
-                                <input name="direccion-empresa" type="number" placeholder="Dirección" required>
-                                <label for="telefono-empresa">Teléfono</label>
-                                <input name="telefono-empresa" type="number" placeholder="Teléfono" required>
-                                <label for="contacto-empresa">Persona de contacto</label>
-                                <input name="contacto-empresa" type="number" placeholder="Persona de contacto" required>
+                                <label for="cod_empresa">COD Cliente</label>
+                                <input name="cod_empresa" type="number" placeholder="RUT" required>
+                                <label for="rut_empresa">RUT</label>
+                                <input name="rut_empresa" type="number" placeholder="RUT" required>
+                                <label for="ln_empresa">Lista negra</label>
+                                <select name="ln_empresa" id="">
+                                    <option value="">--Seleccione opción</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                                <label for="nombre_empresa">Nombre fantasía de la empresa</label>
+                                <input name="nombre_empresa" type="text" placeholder="Nombre fantasía" required>
+                                <label for="rs_empresa">Razón social</label>
+                                <input name="rs_empresa" type="text" placeholder="Razón social" required>     
+                                <label for="direccion_empresa">Dirección</label>
+                                <input name="direccion_empresa" type="text" placeholder="Dirección" required>
+                                <label for="tel_empresa">Teléfono</label>
+                                <input name="tel_empresa" type="number" placeholder="Teléfono" required>
+                                <label for="contacto_empresa">Persona de contacto</label>
+                                <input name="contacto_empresa" type="text" placeholder="Persona de contacto" required>
+                                <label for="correo_empresa">Correo</label>
+                                <input name="correo_empresa" type="text" placeholder="Correo" required>
                             </div>    
                             <button type="submit"> AGREGAR </button>                                  
                         </form>
@@ -538,193 +485,59 @@
                 <i id="xmark-reserva" class="fa-solid fa-xmark"></i>
                 <div class="block-relative-section BRS-reserva">
                     <div class="alert-section-reserva">
-                        <form action="">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="fecha-reserva">Fecha</label>
-                                            <input name="fecha-reserva" type="date">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="hora-reserva">Hora de inicio</label>
-                                            <input name="hora-reserva" type="time">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="empresa-reserva">Empresa</label>
-                                            <input name="empresa-reserva" type="text">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="pasajero-reserva">Pasajero</label>
-                                            <input name="pasajero-reserva" type="text">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="origen-reserva">Origen</label>
-                                            <input name="origen-reserva" type="text">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="destino-reserva">Destino</label>
-                                            <input name="destino-reserva" type="text">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="importe-reserva">Importe</label>
-                                            <input name="importe-reserva" type="number">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="formaPago-reserva">Forma de pago</label>
-                                            <select name="formaPago-reserva">
-                                                <option value="">--Seleccione forma de pago</option>
-                                                <option value="formaPago_contado-reserva">Contado</option>
-                                                <option value="formaPago_tarjeta-reserva">Tarjeta</option>
-                                                <option value="formaPago_transferencia-reserva">Transferencia</option>
-                                                <option value="formaPago_cuentacorriente-reserva">Cuenta corriente</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <div>
-                                            <label for="comentario-reserva">Comentario</label>
-                                            <textarea name="comentario-reserva" id="comentario" cols="30" rows="10"></textarea>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                        <form method="POST" action="controller/agregar/a_reservas.php">
+                            <div style="display: flex;">
+                                <div>
+                                    <label for="cod">COD</label>
+                                    <input name="cod" type="text" placeholder="Codigo de servicio">
+                                    <label for="tipo">Tipo</label>
+                                    <select name="tipo">
+                                        <option value="">--Seleccione opción</option>
+                                        <option value="Empresa">Empresa</option>
+                                        <option value="Particular">Particular</option>
+                                    </select>
+
+                                    <label for="pasajero">Nombre del pasajero</label>
+                                    <input name="pasajero" type="text" placeholder="Nombre">
+                                    <label for="chofer">Chofer</label>
+                                    <input name="chofer" type="number" placeholder="Cédula">
+                                    <label for="tel">Teléfono del pasajero</label>
+                                    <input name="tel" type="number" placeholder="Teléfono">
+                                    <label for="origen">Origen</label>
+                                    <input name="origen" type="number" placeholder="Origen">
+                                    <label for="destino">Destino</label>
+                                    <input name="destino" type="number" placeholder="Destino">
+                                </div>
+                                <div>
+                                    <label for="fecha_reserva">Fecha de reserva</label>
+                                    <input name="fecha_reserva" type="text" value="<?php echo date("d:m:Y")?>">
+                                    <label for="fecha_viaje">Fecha del viaje</label>
+                                    <input name="fecha_viaje" type="text" placeholder="Fecha del servicio a realizar">
+                                    <label for="hora">Hora</label>
+                                    <input name="hora" type="number" placeholder="hrs">
+                                    <label for="distancia">Distancia</label>
+                                    <input name="distancia" type="text" placeholder="km">
+                                    <label for="comentario">Comentario</label>
+                                    <textarea name="comentario" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
                             <button type="submit"> AGREGAR </button>                              
                         </form>
+                        <script>
+                            if(option.value == "Empresa"){
+                                alert('hola');
+                            }
+                        </script>
                     </div>
                 </div>
             </section>
         <!-- Fin RESERVA -->
 
-        <!-- Inicio HISTORIAL DE MOVIMIENTO -->
-            <!-- <section class="bloque" id="historial-de-movimiento">
-                <div class="conteiner-section conteiner-HDM">
-                    <h2 class="titulo-section"> HISTORIAL DE MOVIMIENTO </h2>
-                    <form action="GET">
-                        <label for="search"> Buscar movimientos </label>
-                        <div class="inputs-busqueda">
-                            <input type="number" placeholder="ID" min="4 "max="4">
-                            <input type="text">
-                            <button type="submit"> Buscar </button>
-                            <input class="agregar agregar-HDM" onclick="ventanaSeccion('.conteiner-HDM', '.BRS-HDM','#xmark-HDM')" type="button" value=" + AGREGAR ">
-                        </div>
-                    </form>
-                    <div>
-                        <table class="registro-HDM">
-                            <tr class="indicadores">
-                                <th> ID </th>
-                                <th> NOMBRE </th>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <i id="xmark-HDM" class="fa-solid fa-xmark"></i>
-                <div class="block-relative-section BRS-HDM">
-                    <div class="alert-section-reserva">
-                        <form action="">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="">Fecha</label>
-                                            <input type="date">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="">Hora Inicio</label>
-                                            <input type="time">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="">Origen</label>
-                                            <input type="text">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="">Destino</label>
-                                            <input type="text">
-                                        </div>
-                                        </td>
-                                    <td>
-                                        <div>
-                                            <label for="">Forma de pago</label>
-                                            <select name="forma-pago" id="forma-pago">
-                                                <option value="">--Escoja el método de pago</option>
-                                                <option value="Efectivo">Efectivo</option>
-                                                <option value="Debito">Tarjeta débito</option>
-                                                <option value="Credito">Tarjeta crédito</option>
-                                                <option value="Corriente">Cuenta corriente</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="">Empresa</label>
-                                            <input type="text">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="">Pasajero</label>
-                                            <input type="text">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="">Chofer</label>
-                                            <input type="text">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <label for="">Importe</label>
-                                            <input type="text">
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                           
-                            <button type="submit"> AGREGAR </button>                                  
-                        </form>
-                    </div>
-                </div>
-            </section> -->
-        <!-- Fin HISTORIAL DE MOVIMIENTO -->
-
         <!-- Inicio GASTOS DE MANTENIMIENTO -->
             <section class="bloque" id="gastos-de-mantenimiento">
                 <div class="conteiner-section conteiner-GDM">
                     <h2 class="titulo-section"> GASTOS DE MANTENIMIENTO </h2>
-                    <form action="GET">
+                    <form method="POST" action="controller/agregar/a_mantenimiento.php">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', '#xmark-GDM')" type="button">AGREGAR</button>
@@ -734,10 +547,11 @@
                         <table >
                             <thead>
                                 <tr class="indicadores">
-                                    <th> COD </th>
-                                    <th> TIPO DE MANTENIMIENTO </th>
-                                    <th> GASTOS DE MANTENIMIENTO </th>
-                                    <th> COMENTARIOS </th>
+                                    <th>COD</th>
+                                    <th>FECHA </th>
+                                    <th>TIPO DE MANTENIMIENTO</th>
+                                    <th>GASTOS DE MANTENIMIENTO</th>
+                                    <th>COMENTARIOS</th>
                                 </tr>
                             </thead>
                             <tbody class="registro-GDM">
@@ -748,28 +562,30 @@
                 <i id="xmark-GDM" class="fa-solid fa-xmark"></i>
                 <div class="block-relative-section BRS-GDM">
                     <div class="alert-section">
-                        <form action="">
+                        <form method="POST" action="controller/agregar/a_mantenimiento.php">
                             <div>
-                                <label for="Concepto">Concepto</label>
-                                <select name="Concepto" id="Concepto">
+                                <label for="cod_gdm">COD</label>
+                                <input name="cod_gdm" type="number" placeholder="Codigo">
+                                <label for="fecha_gdm">Fecha</label>
+                                <input name="fecha_gdm" type="date">
+                                <label for="concepto_gdm">Tipo de mantenimiento</label>
+                                <select name="concepto_gdm">
                                     <option value="">--Por favor eliga una opción</option>
-                                    <option value="con1">GASOIL</option>
-                                    <option value="con2">CAMBIO ACEITE</option>
-                                    <option value="con3">ELECTRICISTA</option>
-                                    <option value="con4">ALINEACIÓN Y BALANCEO</option>
-                                    <option value="con1">GOMERÍA</option>
-                                    <option value="con2">CAMBIO DE CORREA</option>
-                                    <option value="con3">FRENOS</option>
-                                    <option value="con4">EMBRAGUE</option>
-                                    <option value="con1">CHAPISTA</option>
-                                    <option value="con2">OTROS</option>
-                                </select>
-                                <label for="fecha-GDM">Fecha</label>
-                                <input name="fecha-GDM"type="date">
-                                <label for="importe-GDM">Importe</label>
-                                <input name="importe-GDM"type="text" placeholder="Importe">
-                                <label for="descripcion-GDM">Comentario</label>
-                                <textarea name="descripcion-GDM" cols="30" rows="10" placeholder="Comentario"></textarea>
+                                    <option value="Gasoil">GASOIL</option>
+                                    <option value="Cambio_aceite">CAMBIO ACEITE</option>
+                                    <option value="Electricista">ELECTRICISTA</option>
+                                    <option value="Alineacion_balanceo">ALINEACIÓN Y BALANCEO</option>
+                                    <option value="Gomeria">GOMERÍA</option>
+                                    <option value="Cambio_correa">CAMBIO DE CORREA</option>
+                                    <option value="Frenos">FRENOS</option>
+                                    <option value="Embrague">EMBRAGUE</option>
+                                    <option value="Chapista">CHAPISTA</option>
+                                    <option value="Otros">Otros</option>
+                                </select>  
+                                <label for="importe_gdm">Importe</label>
+                                <input name="importe_gdm" type="number" placeholder="Importe">
+                                <label for="comentario-gdm">Comentario</label>
+                                <textarea name="comentario_gdm" cols="30" rows="10" placeholder="Comentario"></textarea>
                             </div>    
                             <button type="submit"> AGREGAR </button>                                  
                         </form>

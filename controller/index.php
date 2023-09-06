@@ -6,15 +6,6 @@
     <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <script>
-        window.onload = function() {
-            <?php
-            if(isset($_GET{"error"})) {
-                echo 'alert("error usuario y contraseña")';
-            } 
-            ?>
-        };
-    </script>
 </head>
 <body>
     <main>

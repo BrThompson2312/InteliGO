@@ -2,135 +2,69 @@ create database IntelisoftBDD;
 use IntelisoftBDD;
 show tables;
 
-create table IF NOT EXISTS chofer(
-	ci integer,
-	nombre varchar (20) NOT NULL,
-	id_chofer int  NOT NULL auto_increment unique,
-	primary key (ci)
-);
 
+create table IF NOT EXISTS chofer(
+ci integer,
+nombre varchar (20) NOT NULL,
+primary key (ci)
+);
 select * from chofer;
-insert into chofer (`ci` , `nombre` , `id_chofer` ) values ('5474783' , 'Hernan', '7677436');
-insert into chofer (`ci` , `nombre` , `id_chofer` ) values ('5467466' , 'Fernando', '576436');
-insert into chofer (`ci` , `nombre` , `id_chofer` ) values ('5566533' , 'Franco', '3535454');
+insert into chofer (`ci` , `nombre` ) values ('5474783' , 'Hernan');
+insert into chofer (`ci` , `nombre` ) values ('5467466' , 'Fernando');
+insert into chofer (`ci` , `nombre` ) values ('5566533' , 'Franco');
+
+create table IF NOT EXISTS tel_chofer(
+ci integer,
+telefono int NOT NULL,
+primary key (ci)
+);
+select * from tel_chofer;
+insert into tel_chofer (`ci` , `telefono` ) values ('5474783' , '099223644');
+insert into tel_chofer (`ci` , `telefono` ) values ('5467466' , '092456454');
+insert into tel_chofer (`ci` , `telefono` ) values ('5566533' , '099476354');
 
 create table IF NOT EXISTS coches(
-	matricula varchar (20),
-	modelo varchar (20) NOT NULL,
-	marca varchar (20) NOT NULL,
-	año int  NOT NULL,
+matricula varchar (20),
+modelo varchar (20) NOT NULL,
+marca varchar (20) NOT NULL,
+año int  NOT NULL,
 primary key (matricula)
 );
-
 select * from coches;
 insert into coches (`matricula` , `marca` , `modelo` , `año` ) values ('SRE4565' , 'Nissan','Sentra', '2017');
 insert into coches (`matricula` , `marca` , `modelo`, `año` ) values ('SRE6544' , 'Nissan','Sentra', '2018');
 insert into coches (`matricula` , `marca`, `modelo` , `año` ) values ('SRE4334' , 'Nissan', 'Sentra', '2018');
 
-SELECT * FROM telefono_cliente;
-
-SELECT cliente.cod_cliente, lista_negra, direccion, nombre, apellido, telefono from cliente
-join particular on particular.cod_cliente = cliente.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;
-
-SELECT cliente.cod_cliente, lista_negra, direccion, telefono from cliente 
-join empresa on empresa.cod_cliente = cliente.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;
-
-select (select 'Particular' from particular where particular.cod_cliente=cliente.cod_cliente) as tipoParticular, (select 'Empresa' from empresa where empresa.cod_cliente=cliente.cod_cliente) as tipoEmpresa,  cliente.cod_cliente, servicio.cod_servicio, origen, destino, reserva.fecha as fecha_de_la_reserva, servicio.fecha as fecha_del_viaje, hora_inicio, distancia_recorrida, comentario, nombre_pasajero, apellido_pasajero, telefono from servicio
-join reserva on reserva.cod_servicio = servicio.cod_servicio
-join cliente on cliente.cod_cliente = reserva.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;
-
-select particular.cod_cliente, cliente.cod_cliente, servicio.cod_servicio, origen, destino, reserva.fecha AS fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario, nombre_pasajero, apellido_pasajero, telefono from servicio
-join reserva on reserva.cod_servicio = servicio.cod_servicio
-join cliente on cliente.cod_cliente = reserva.cod_cliente
-join particular on particular.cod_cliente = cliente.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;
-
-select empresa.cod_cliente, cliente.cod_cliente, servicio.cod_servicio, origen, destino, reserva.fecha as fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario, nombre_pasajero, apellido_pasajero, telefono from servicio
-join reserva on reserva.cod_servicio = servicio.cod_servicio
-join cliente on cliente.cod_cliente = reserva.cod_cliente
-join empresa on empresa.cod_cliente = cliente.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;
-
-select cliente.cod_cliente, cliente.cod_cliente, servicio.cod_servicio, origen, destino, reserva.fecha as fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario, nombre_pasajero, apellido_pasajero, telefono from servicio
-join reserva on reserva.cod_servicio = servicio.cod_servicio
-join cliente on cliente.cod_cliente = reserva.cod_cliente
-join empresa on empresa.cod_cliente = cliente.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;
-
-flush privileges;
-
-select * from servicio;
-select * from cliente;
-select * from particular;
-select * from empresa;
-select * from reserva;
-select * from telefono_cliente;
-insert into cliente values (30, 0, 'vega');
-insert into particular values (2, 'Bruno', 'Gómez');
-insert into empresa values (30, 12345678, 'yqc');
-
-select * from servicio;
-insert into servicio values (3000, 'yugoeslavia', '20 de julio', fecha, hora_inicio, '100km', 'probandoinsert2', 'Bruno2', 'Gomez2');
-
-select * from telefono_cliente;
-insert into telefono_cliente values ('30', '099778451');
-insert into telefono_cliente values ('2', '099778451');
-delete from telefono_cliente where cod_cliente = 3000;
-
-select * from reserva;
-insert into reserva values (30, 3000, '2020-09-02');
-SELECT * from usuario;
-
-SELECT cliente.cod_cliente, lista_negra, direccion, nombre, apellido from cliente 
-join particular on particular.cod_cliente = cliente.cod_cliente;
-
-select particular.cod_cliente, cliente.cod_cliente from cliente
-join particular on particular.cod_cliente = cliente.cod_cliente;
-
-select cliente.cod_cliente from cliente;
-
-select * from telefono_cliente;
-select * from reserva;
-select * from servicio;
-
-select * from reserva;
-
-select * from particular;
-select * from empresa;
 
 create table IF NOT EXISTS mantenimiento(
-	cod_mantenimiento integer,
-	tipo_mantenimiento varchar (20) NOT NULL,
-	gastos_mantenimiento int  NOT NULL,
-	comentarios varchar (50) NOT NULL,
-	primary key (cod_mantenimiento)
+cod_mantenimiento integer,
+tipo_mantenimiento varchar (20) NOT NULL,
+gastos_mantenimiento int  NOT NULL,
+comentarios varchar (50) NOT NULL,
+primary key (cod_mantenimiento)
 );
-
 select * from mantenimiento;
 insert into mantenimiento (`cod_mantenimiento` , `tipo_mantenimiento` , `gastos_mantenimiento`, `comentarios` ) values ('564533' , 'cambio de aceite', '500', 'cambiado con exito' );
 insert into mantenimiento (`cod_mantenimiento` , `tipo_mantenimiento` , `gastos_mantenimiento`, `comentarios` ) values ('676454' , 'pintura', '2000', 'pintura' );
 insert into mantenimiento (`cod_mantenimiento` , `tipo_mantenimiento` , `gastos_mantenimiento`, `comentarios` ) values ('86756' , 'aspiracion', '200', 'aspirado' );
 
+
 create table IF NOT EXISTS servicio(
-	cod_servicio integer,
-	origen varchar (20) NOT NULL,
-	destino varchar (20) NOT NULL,
-	fecha date  NOT NULL,
-	hora_inicio time NOT NULL,
-	distancia_recorrida varchar (10) NOT NULL,
-	comentario varchar (20) NOT NULL,
-	nombre_pasajero varchar (20) NOT NULL,
-	apellido_pasajero varchar (20) NOT NULL,
-	primary key (cod_servicio)
+cod_servicio integer,
+origen varchar (20) NOT NULL,
+destino varchar (20) NOT NULL,
+fecha date  NOT NULL,
+hora_inicio time NOT NULL,
+distancia_recorrida varchar (10) NOT NULL,
+comentario varchar (20) NOT NULL,
+nombre_pasajero varchar (20) NOT NULL,
+apellido_pasajero varchar (20) NOT NULL,
+primary key (cod_servicio)
 );
-
-
 insert into servicio (`cod_servicio` , `origen` , `destino`, `fecha` , `hora_inicio`  , `distancia_recorrida` , `comentario` , `nombre_pasajero` , `apellido_pasajero` ) values ('677443' , 'Maldonado', 'Requena', '2013-07-23' , '15:00:00' ,  '5km' , 'sc', 'Fernando', 'Castro' );
 insert into servicio (`cod_servicio` , `origen` , `destino`, `fecha` , `hora_inicio`  , `distancia_recorrida` , `comentario`, `nombre_pasajero`, `apellido_pasajero` ) values ('645566' , 'Maldonado', 'Requena', '2023-08-24' , '17:00:00' ,  '5km' , 'sc' , 'Facundo' , 'Martinez' );
 insert into servicio (`cod_servicio` , `origen` , `destino`, `fecha` , `hora_inicio`  , `distancia_recorrida` , `comentario` , `nombre_pasajero`, `apellido_pasajero` ) values ('786756' , 'Maldonado', 'Requena', '2023-09-27' , '18:00:00' ,  '5km' , 'sc' , 'Gabriel', 'Perez' );
+
 
 create table IF NOT EXISTS usuario(
 ci_usuario integer,
@@ -175,15 +109,17 @@ create table IF NOT EXISTS empresa(
 cod_cliente integer,
 rut int NOT NULL,
 razon_social varchar (20) NOT NULL,
+nombre_fantasia varchar (20) NOT NULL,
+Email varchar (20) NOT NULL,
 primary key (cod_cliente)
 );
 select * from empresa;
-insert into empresa (`cod_cliente` , `rut` , `razon_social`  ) values ('675645' , '7564534' , 'Ac');
-insert into empresa (`cod_cliente` , `rut` , `razon_social`  ) values ('867564' , '86756454' , 'BC');
-insert into empresa (`cod_cliente` , `rut`, `razon_social`   ) values ('897867' , '34465577' , 'CW');
+insert into empresa (`cod_cliente` , `rut` , `razon_social`, `nombre_fantasia`, `Email`  ) values ('675645' , '7564534' , 'Ac', 'BA', 'BA@gmail.com');
+insert into empresa (`cod_cliente` , `rut` , `razon_social`, `nombre_fantasia`, `Email`  ) values ('867564' , '86756454' , 'BC', 'DE', 'DE@gmail.com');
+insert into empresa (`cod_cliente` , `rut`, `razon_social`, `nombre_fantasia`, `Email`  ) values ('897867' , '34465577' , 'CW', 'HG', 'HG@gmail.com');
 
 create table IF NOT EXISTS particular(
-cod_cliente integer,
+cod_cliente integer auto_increment,
 nombre varchar (20) NOT NULL,
 apellido varchar (20) NOT NULL,
 primary key (cod_cliente)
@@ -192,6 +128,16 @@ select * from particular;
 insert into particular (`cod_cliente` , `nombre` , `apellido` ) values ('756446' , 'Hernan', 'Gomez');
 insert into particular (`cod_cliente` , `nombre` , `apellido` ) values ('534656' , 'Dario', 'Hernandez');
 insert into particular (`cod_cliente` , `nombre` , `apellido` ) values ('765646' , 'Natalia', 'Torres');
+
+create table IF NOT EXISTS tel_particular(
+cod_cliente integer auto_increment,
+telefono int NOT NULL,
+primary key (cod_cliente)
+);
+select * from tel_particular;
+insert into tel_particular (`cod_cliente` , `telefono` ) values ('756446' , '099582584');
+insert into tel_particular (`cod_cliente` , `telefono` ) values ('534656' , '092154796');
+insert into tel_particular (`cod_cliente` , `telefono` ) values ('765646' , '0996258225');
 
 create table IF NOT EXISTS forma_pago(
 cod_pago integer,

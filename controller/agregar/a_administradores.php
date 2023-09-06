@@ -9,7 +9,7 @@
     $rol_usuario = $_POST['rol-operador'];    
     $fecha_ingreso = $_POST['fechaing-operador'];
     
-    if (strlen($ci_usuario) > 7 && strlen($ci_usuario) <= 8){
+    if (strlen($ci_usuario) == 8){
         $query = "INSERT INTO usuario VALUES ('$ci_usuario', '$nombre_usuario', '$contraseña','$rol_usuario','$fecha_ingreso')";
         $result = mysqli_query($conn, $query);
         echo 'Datos guardados con éxito';

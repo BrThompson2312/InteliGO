@@ -377,8 +377,9 @@ body {
 }
 .inicio-logoProducto {
     z-index: 0;
-    background-color: white;
-    border-radius: 0px 0px 20px 20px;
+    background-color: black;
+    background: linear-gradient(rgb(0,0,0, 0.7), rgb(0,0,0, 0.7));
+    // border-radius: 0px 0px 20px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -405,13 +406,15 @@ body {
 }
 
 .inicio-logoEmpresa {
-    background-color: white;
-    border-radius: 20px 20px 0px 0px;
-    color: black;
+    background-color: black;
+    background: linear-gradient(rgb(0,0,0, 0.7), rgb(0,0,0, 0.7));
+    // border-radius: 20px 20px 0px 0px;
+    color: white;
     width: 100%;
     transition: background-color .5s, padding .5s;
     table {
         width: 100%;
+        margin: 0;
     }
     ul {
         list-style: none;
@@ -424,8 +427,11 @@ body {
             justify-content: end;
             align-items: center;
         }
+        td h3 {
+            margin-right: 20px;
+        }
         tfoot {
-            background-color: #141414;
+            background-color: black;
             text-align: center;
             width: 100%;
             color: white;
@@ -530,62 +536,37 @@ footer{
     }
 }
 
-.alert-section-reserva {
-    background: linear-gradient(0deg, rgba(#141414, 0.8), rgba(#141414, 0.8));
-    color: white;
-    border-radius: 5px 5px 0px 0px;
-    font-family: "Inter-ExtraLight";
-    table {
-        padding: 10px;
-        td > div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        td div > * {
-            margin: 5px;
-        }
-        td div > input, select, textarea {
-            background-color: white;
-            border: 3px solid blue;
-            outline: none;
-            padding: 6px;
-        }
-        td div > input, select, option {
-            border-radius: 4px;
-            color: black;
-            margin-bottom: 10px;
-            width: 300px;
-        }
-    }
+.alert-section-reserva{
     form {
-        > div {
+        background: linear-gradient(0deg, rgba(#141414, 0.8), rgba(#141414, 0.8));
+        color: white;
+        border-radius: 5px 5px 0px 0px;
+        font-family: "Inter-ExtraLight";
+        div {
+            padding: 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            div {
-                padding: 10px;
+            > * {
+                margin: 5px;
                 display: flex;
-                justify-content: center;
                 flex-direction: column;
-                > input, select, textarea {
-                    background-color: white;
-                    border: 3px solid blue;
-                    outline: none;
-                    padding: 10px;
-                }
-                > input, option {
-                    border-radius: 4px;
-                    width: 300px;
-                }
-                > * {
-                    margin: 6px;
-                }
             }
-            
+            > input, select, textarea {
+                background-color: white;
+                border: 3px solid blue;
+                outline: none;
+                padding: 10px;
+            }
+            > input, option {
+                border-radius: 4px;
+                color: black;
+                margin-bottom: 10px;
+                width: 300px;
+            }
+            > textarea {
+                resize: none;
+            }
         }
-        button {
+        > button {
             background-color: darkgreen;
             border: none;
             padding: 10px;
@@ -600,6 +581,7 @@ footer{
         }
     }
 }
+
 
 .block-relative-section {
     position: relative;

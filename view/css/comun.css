@@ -372,8 +372,8 @@ main {
 
 .inicio-logoProducto {
   z-index: 0;
-  background-color: white;
-  border-radius: 0px 0px 20px 20px;
+  background-color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,14 +400,15 @@ main {
 }
 
 .inicio-logoEmpresa {
-  background-color: white;
-  border-radius: 20px 20px 0px 0px;
-  color: black;
+  background-color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  color: white;
   width: 100%;
   transition: background-color 0.5s, padding 0.5s;
 }
 .inicio-logoEmpresa table {
   width: 100%;
+  margin: 0;
 }
 .inicio-logoEmpresa ul {
   list-style: none;
@@ -421,8 +422,11 @@ main {
   justify-content: end;
   align-items: center;
 }
+.inicio-logoEmpresa table td h3 {
+  margin-right: 20px;
+}
 .inicio-logoEmpresa table tfoot {
-  background-color: #141414;
+  background-color: black;
   text-align: center;
   width: 100%;
   color: white;
@@ -521,61 +525,37 @@ footer table td:nth-child(2) ul li h4 {
   background-color: green;
 }
 
-.alert-section-reserva {
+.alert-section-reserva form {
   background: linear-gradient(0deg, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8));
   color: white;
   border-radius: 5px 5px 0px 0px;
   font-family: "Inter-ExtraLight";
 }
-.alert-section-reserva table {
-  padding: 10px;
-}
-.alert-section-reserva table td > div {
+.alert-section-reserva form div {
+  padding: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.alert-section-reserva form div > * {
+  margin: 5px;
+  display: flex;
   flex-direction: column;
 }
-.alert-section-reserva table td div > * {
-  margin: 5px;
-}
-.alert-section-reserva table td div > input, .alert-section-reserva table select, .alert-section-reserva table textarea {
+.alert-section-reserva form div > input, .alert-section-reserva form div select, .alert-section-reserva form div textarea {
   background-color: white;
   border: 3px solid blue;
   outline: none;
-  padding: 6px;
+  padding: 10px;
 }
-.alert-section-reserva table td div > input, .alert-section-reserva table select, .alert-section-reserva table option {
+.alert-section-reserva form div > input, .alert-section-reserva form div option {
   border-radius: 4px;
   color: black;
   margin-bottom: 10px;
   width: 300px;
 }
-.alert-section-reserva form > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.alert-section-reserva form div > textarea {
+  resize: none;
 }
-.alert-section-reserva form > div div {
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.alert-section-reserva form > div div > input, .alert-section-reserva form > div div select, .alert-section-reserva form > div div textarea {
-  background-color: white;
-  border: 3px solid blue;
-  outline: none;
-  padding: 10px;
-}
-.alert-section-reserva form > div div > input, .alert-section-reserva form > div div option {
-  border-radius: 4px;
-  width: 300px;
-}
-.alert-section-reserva form > div div > * {
-  margin: 6px;
-}
-.alert-section-reserva form button {
+.alert-section-reserva form > button {
   background-color: darkgreen;
   border: none;
   padding: 10px;
@@ -585,7 +565,7 @@ footer table td:nth-child(2) ul li h4 {
   width: 100%;
   transition: background-color 0.2s;
 }
-.alert-section-reserva form button:hover {
+.alert-section-reserva form > button:hover {
   background-color: green;
 }
 

@@ -11,10 +11,10 @@
         while($row = mysqli_fetch_assoc($result)){
             if ($row['rol_usuario'] == 'operador'){
                 $json[] = array(
-                    'nombre' => $row['nombre_usuario'],
                     'pk' => $row['ci_usuario'],
+                    'nombre' => $row['nombre_usuario'],
                     'rol' => $row['rol_usuario'],
-                    'fechaing' => $row['fecha_ingreso']
+                    'fechaing_operador' => $row['fecha_ingreso'],
                 );
             }
         }

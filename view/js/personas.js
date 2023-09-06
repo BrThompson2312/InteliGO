@@ -43,7 +43,7 @@ function tableData(parametro, jsonObj){
                     break;
                     case '.registro-empresa':
                         alert(
-                            'Email: ' + '' + '\n' +
+                            'Email: ' + jsonObj[i].correo + '\n' +
                             'Encargado de pagos: ' + '' + '\n' +
                             'Autorizado: ' + ''
                         );
@@ -90,10 +90,11 @@ function tableData(parametro, jsonObj){
                     let fechaIng = document.createElement('td');
                         fechaIng.classList.add('bg-td');
                     rol_user.textContent = jsonObj[i].rol
-                    fechaIng.textContent = jsonObj[i].fechaing
+                    fechaIng.textContent = jsonObj[i].fechaing_operador
                     registro.appendChild(pk);
                     registro.appendChild(nombre);
-                    registro.appendChild(fechaIng)
+                    registro.appendChild(fechaIng);
+                    
                 break;
                 case '.registro-coches':
                     pk.textContent = jsonObj[i].pk;
@@ -114,6 +115,7 @@ function tableData(parametro, jsonObj){
                     nombre.textContent = jsonObj[i].nombre
                     let telefono_chofer = document.createElement('td');
                         telefono_chofer.classList.add('bg-td');
+                        telefono_chofer.textContent = jsonObj[i].telefono;
                         registro.appendChild(pk);
                         registro.appendChild(nombre);
                         registro.appendChild(telefono_chofer);
@@ -127,6 +129,10 @@ function tableData(parametro, jsonObj){
                 break;
                 case '.registro-cliente':
                     pk.textContent = jsonObj[i].pk;
+                    let lista_negra = document.createElement('td');
+                    let lnspan = document.createElement('span');
+                        lista_negra.appendChild(lnspan);
+                        lnspan.textContent = jsonObj[i].lista_negra;
                     let nombre_cliente = document.createElement('td');
                         nombre_cliente.classList.add('bg-td');
                         nombre_cliente.textContent = jsonObj[i].nombre;
@@ -135,11 +141,8 @@ function tableData(parametro, jsonObj){
                     let direccion_cliente = document.createElement('td');
                         direccion_cliente.textContent = jsonObj[i].direccion;
                         direccion_cliente.classList.add('bg-td');
-                    let lista_negra = document.createElement('td');
-                    let lnspan = document.createElement('span');
-                        lista_negra.appendChild(lnspan);
-                        lnspan.textContent = jsonObj[i].lista_negra;
                     let telefono_cliente = document.createElement('td');
+                        telefono_cliente.textContent = jsonObj[i].telefono;
                         if (jsonObj[i].lista_negra == '0'){
                             lnspan.style.backgroundColor = "green";
                             lnspan.style.padding = "5px";
@@ -161,7 +164,7 @@ function tableData(parametro, jsonObj){
                     registro.appendChild(telefono_cliente);
                 break;
                 case '.registro-empresa':
-                    pk.textContent = jsonObj[i].rut;
+                    pk.textContent = jsonObj[i].pk;
                     let empresa_ln = document.createElement('td');
                         lnempresa = document.createElement('span');
                         lnempresa.textContent = jsonObj[i].lista_negra;
@@ -181,7 +184,9 @@ function tableData(parametro, jsonObj){
                         }  
                     let nombre_fantasia = document.createElement('td');
                         nombre_fantasia.classList.add('bg-td');
-                        nombre.textContent = jsonObj[i].razon_social;
+                        nombre_fantasia.textContent = jsonObj[i].nombre_fantasia;
+                    let razon_social = document.createElement('td');
+                        razon_social.textContent = jsonObj[i].razon_social;
                     let direccion_empresa = document.createElement('td');
                         direccion_empresa.classList.add('bg-td');
                         direccion_empresa.textContent = jsonObj[i].direccion
@@ -192,7 +197,7 @@ function tableData(parametro, jsonObj){
                         registro.appendChild(pk);
                         registro.appendChild(empresa_ln);
                         registro.appendChild(nombre_fantasia);
-                        registro.appendChild(nombre)
+                        registro.appendChild(razon_social)
                         registro.appendChild(direccion_empresa);
                         registro.appendChild(telefono_empresa);
                         registro.appendChild(consultar);
@@ -203,7 +208,7 @@ function tableData(parametro, jsonObj){
                         lnstipo_pasajero = document.createElement('span');  
                         tipo_reserva.appendChild(lnstipo_pasajero);
                         lnstipo_pasajero.textContent = jsonObj[i].tipo;
-                        if (jsonObj[i].tipo == 'PARTICULAR'){
+                        if (jsonObj[i].tipo == "PARTICULAR"){
                             lnstipo_pasajero.style.backgroundColor = "red";
                         } else {
                             lnstipo_pasajero.style.backgroundColor = "orange";
@@ -235,14 +240,17 @@ function tableData(parametro, jsonObj){
                 break;
                 case '.registro-GDM':
                     pk.textContent = jsonObj[i].pk;
+                    let fecha = document.createElement('td');
                     let tipo_mantenimiento = document.createElement('td');
+                        tipo_mantenimiento.classList.add('bg-td')
                         tipo_mantenimiento.textContent = jsonObj[i].tipo_mantenimiento;
                     let gastos_mantenimiento = document.createElement('td');
                         gastos_mantenimiento.textContent = jsonObj[i].gastos_mantenimiento;
-                        gastos_mantenimiento.classList.add('bg-td')
                     let comentarios = document.createElement('td');
+                        comentarios.classList.add('bg-td')
                         comentarios.textContent = jsonObj[i].comentarios;
                         registro.appendChild(pk);
+                        registro.appendChild(fecha);
                         registro.appendChild(tipo_mantenimiento);
                         registro.appendChild(gastos_mantenimiento);
                         registro.appendChild(comentarios);
