@@ -6,6 +6,17 @@
     <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="view/js/jquery.min.js"></script>
+    <?php if(isset($_REQUEST['error'])){
+        ?>
+        <script>
+        window.onload = function(){
+            alert('Error usuario y contraseña');
+        }
+        </script>
+        <?php
+    }
+    ?>
 </head>
 <body>
     <main>
@@ -13,7 +24,7 @@
             <img src="view/img/logofinal/blackLogo.png">
         </div>
         <span class="login"> LOGIN </span>
-        <form method="POST" action="controller/login.php">
+        <form method="POST" action="model/login.php">
             <div class="form-group">
                 <i class="fa-solid fa-id-card"></i>
                 <input type="text" name="cedula" id="user" required>

@@ -12,16 +12,15 @@
     <title>InteliGO</title>
     <?php
         if ($tipoUsuario == 'administrador'){
-            echo '<link rel="stylesheet" href="view/css/administrador.css">';
+            echo '<link rel="stylesheet" href="../view/css/administrador.css">';
         } else {
-            echo '<link rel="stylesheet" href="view/css/operativo.css">';
+            echo '<link rel="stylesheet" href="../view/css/operativo.css">';
         }
     ?>
-    <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
+    <link rel="shortcut icon" href="../view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-    <script src="view/js/jquery.min.js"></script>
 </head>
 <body>
     <section id="alert-salir">
@@ -29,13 +28,13 @@
             <i id="xmark-salir" class="fa-solid fa-xmark"></i>
             <!-- <i id="xmark-salir "class="fi fi-sr-circle-xmark"></i> -->
             <p>¿Desea cerrar sesión?</p>
-                <a href="controller/salir.php">CERRAR SESIÓN</a>
+                <a href="salir.php">CERRAR SESIÓN</a>
         </div>
     </section>
     <nav>
         <section id="user">
             <div class="info-user">
-                <i class="fa-solid fa-user"></i>
+                <i id="active-nav" class="fa-solid fa-bars navbar_hilera"></i>
                 <div>
                     <?php
                         if ($tipoUsuario == 'administrador') {
@@ -60,7 +59,11 @@
             <button class="opciones-hilera" id="home" rel="#inicio" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-house-chimney"></i>
                 <span>Home</span>
-            </button>                
+            </button>
+            <button class="opciones-hilera" rel="#estadistica" onclick="opcion_menu(this)"> 
+                <ion-icon name="stats"></ion-icon>
+                <span>Estadísticas</span>
+            </button>          
             <?php
                 // print_r($_SESSION);
                 if($tipoUsuario=='administrador') {
@@ -76,13 +79,9 @@
                 <?php
                 }
             ?>
-            <button class="opciones-hilera" rel="#coches" onclick=opcion_menu(this)> 
-                <i class="fa-solid fa-car"></i>
-                <span>Coches</span> 
-            </button>
             <button class="opciones-hilera" rel="#chofer" onclick="opcion_menu(this)"> 
                 <i class="fi fi-ss-steering-wheel"></i>
-                <span>Choferes</span> 
+                <span>Choferes & Coches</span> 
             </button>
             <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-person"></i>
@@ -106,11 +105,10 @@
         <!-- Inicio HOME -->
             <section class="bloque" id="inicio">
                 <div class="conteiner-inicio">
-                    <div class="inicio-logoProducto">
-                        <img src="view/img/logofinal/whiteLogo.png" alt="">         
-                    </div>
+                    <i id="active-nav" class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                    <img src="../view/img/logofinal/whiteLogo.png" class="logo-img"> 
                     <div class="inicio-usuario">
-                        <h1 style="margin: 0"> BIENVENIDO DE NUEVO </h1>
+                        <h1> BIENVENIDO DE NUEVO </h1>
                         <?php
                             if ($tipoUsuario == 'administrador') {
                                 ?>
@@ -127,82 +125,83 @@
                             }
                         ?>
                     </div>
-                    <div class="inicio-logoEmpresa">          
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <div>
-                                            <h5>POWERED BY</h5>
-                                            <img src="view/img/logobk.png" style="width: 100px">
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </section>
         <!-- Fin HOME -->
+
+        <!-- Inicio ESTADISTICAS -->
+            <section class="bloque" id="estadistica">
+                <div class="conteiner-section conteiner-estadística">
+                    <div class="titulo-section titulo-estadistica">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>ESTADÍSTICAS</h2>
+                    </div>
+                </div>
+            </section>
+        <!-- Fin ESTADISTICAS -->
 
         <?php
                 if ($tipoUsuario == 'administrador') {
                 ?>
         <!-- Inicio OPERADORES -->
-                <section class="bloque" id="operador">
-                    <div class="conteiner-section conteiner-administradores">
-                        <h2 class="titulo-section">OPERADORES</h2>
-                        <form action="GET">
-                            <div class="inputs-busqueda">
-                                <button class="filtrar"> FILTRAR </button>
-                                <button class="agregar" onclick="ventanaSeccion('.conteiner-administradores', '.BRS-administradores', '#xmark-administrador')" type="button">AGREGAR</button>
-                            </div>
+            <section class="bloque" id="operador">
+                <div class="conteiner-section conteiner-operador">
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>OPERADORES</h2>
+                    </div>
+                    <form action="GET">
+                        <div class="inputs-busqueda">
+                            <button class="filtrar"> FILTRAR </button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador', '#xmark-operador')" type="button">AGREGAR</button>
+                        </div>
+                    </form>
+                    <div>
+                        <table >
+                            <thead>
+                                <tr class="indicadores">
+                                    <th> CEDULA </th>
+                                    <th> NOMBRE DEL OPERADOR </th>
+                                    <th> FECHA DE INGRESO </th>
+                                </tr>
+                            </thead>
+                            <tbody class="registro-operadores">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <i id="xmark-administrador" class="fa-solid fa-xmark"></i>
+                <div class="block-relative-section BRS-operador">
+                    <div class="alert-section">
+                        <form method="POST" action="controller/agregar/a_administradores.php">
+                            <div>
+                                <label for="nombre-operador">Nombre completo</label>
+                                <input name="nombre-operador" type="text" placeholder="Nombre del empleado" required>
+                                <label for="ci-operador">Cedula</label>
+                                <input name="ci-operador" type="number" placeholder="Cédula" required>
+                                <label for="edad-operador">Edad</label>
+                                <input name="edad-operador" type="number" placeholder="Edad" required>
+                                <label for="rol-operador">Rol del usuario</label>
+                                <input name="rol-operador" type="text" value="Operador" readonly>
+                                <label for="contrasena-operador">Contraseña</label>
+                                <input name="contrasena-operador" type="text" placeholder="Contraseña" required>
+                                <label for="fechaing-operador">Fecha de ingreso</label>
+                                <input type="datetime" name="fechaing-operador" value="<?php echo date("Y-m-d");?>" required readonly>
+                            </div>    
+                            <button type="submit"> AGREGAR </button>   
                         </form>
-                        <div>
-                            <table >
-                                <thead>
-                                    <tr class="indicadores">
-                                        <th> CEDULA </th>
-                                        <th> NOMBRE DEL OPERADOR </th>
-                                        <th> FECHA DE INGRESO </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="registro-administradores">
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
-
-                    <i id="xmark-administrador" class="fa-solid fa-xmark"></i>
-                    <div class="block-relative-section BRS-administradores">
-                        <div class="alert-section">
-                            <form method="POST" action="controller/agregar/a_administradores.php">
-                                <div>
-                                    <label for="nombre-operador">Nombre completo</label>
-                                    <input name="nombre-operador" type="text" placeholder="Nombre del empleado" required>
-                                    <label for="ci-operador">Cedula</label>
-                                    <input name="ci-operador" type="number" placeholder="Cédula" required>
-                                    <label for="edad-operador">Edad</label>
-                                    <input name="edad-operador" type="number" placeholder="Edad" required>
-                                    <label for="rol-operador">Rol del usuario</label>
-                                    <input name="rol-operador" type="text" value="Operador" readonly>
-                                    <label for="contrasena-operador">Contraseña</label>
-                                    <input name="contrasena-operador" type="text" placeholder="Contraseña" required>
-                                    <label for="fechaing-operador">Fecha de ingreso</label>
-                                    <input type="datetime" name="fechaing-operador" value="<?php echo date("Y-m-d");?>" required readonly>
-                                </div>    
-                                <button type="submit"> AGREGAR </button>   
-                            </form>
-                        </div>
-                    </div>
-                </section>
+                </div>
+            </section>
         <!-- Fin OPERADORES -->
 
         <!-- Inicio ELIMINADOS -->
             <section class="bloque" id="eliminados">
                 <div class="conteiner-section conteiner-eliminados">
-                    <h2 class="titulo-section"> ELIMINADOS </h2>
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>ELIMINADOS</h2>
+                    </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
@@ -240,77 +239,34 @@
                 </div>
             </section>            
         <!-- Fin ELIMINADOS -->
-
         <?php
             }
         ?>
-
-        <!-- Inicio COCHES -->
-            <section class="bloque" id="coches">
-                <div class="conteiner-section conteiner-coches">
-                    <h2 class="titulo-section"> COCHES </h2>
-                    <form action="GET">
-                        <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-coches', '.BRS-coches', '#xmark-coches')" type="button">AGREGAR</button>
-                        </div>
-                    </form>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr class="indicadores">
-                                    <th> MATRÍCULA </th>
-                                    <th> MARCA </th>
-                                    <th> MODELO </th>
-                                    <th> AÑO </th>
-                                </tr>
-                            </thead>
-                            <tbody class="registro-coches"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <i id="xmark-coches" class="fa-solid fa-xmark"></i>
-                <div class="block-relative-section BRS-coches">
-                    <div class="alert-section">
-                        <form method="POST" action="controller/agregar/a_coches.php">
-                            <div>
-                                <label for="matricula-coches">Matricula</label>
-                                <input name="matricula-coches" type="type" placeholder="Matrícula">
-                                <label for="marca-coches">Marca</label>
-                                <input name="marca-coches" type="text" placeholder="Marca">
-                                <label for="modelo-coches">Modelo</label>
-                                <input name="modelo-coches" type="text" placeholder="Modelo">     
-                                <label for="año-coches">Año</label>
-                                <input name="año-coches" type="number">
-                            </div>    
-                            <button type="submit"> AGREGAR </button>    
-                        </form>
-                    </div>
-                </div>
-            </section>            
-        <!-- Fin COCHES -->
-
-        <!-- Inicio CHOFERES -->
+        <!-- Inicio CHOFERES & COCHES -->
             <section class="bloque" id="chofer">
                 <div class="conteiner-section conteiner-chofer">
-                    <h2 class="titulo-section"> CHOFERES </h2>
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>CHOFERES</h2>
+                    </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes', '#xmark-chofer')" type="button">AGREGAR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-choferes', '.BRS-choferes', '#xmark-chofer')" type="button">AGREGAR</button>
                         </div>
                     </form>
                     <div>
                         <table>
                             <thead>
                                 <tr class="indicadores">
-                                    <th> CEDULA </th>
-                                    <th> NOMBRE DEL CHOFER </th>
-                                    <th> TELÉFONO </th>
+                                    <th>MATRÍCULA</th>
+                                    <th>CHOFER ASIGNADO</th>
+                                    <th>MODELO DEL AUTO</th>
+                                    <th>MARCA</th>
+                                    <th>AÑO</th>
                                 </tr>
                             </thead>
-                            <tbody class="registro-chofer"></tbody>
+                            <tbody class="registro-choferes"></tbody>
                         </table>
                     </div>
                 </div>
@@ -339,7 +295,10 @@
         <!-- Inicio PARTICULARES -->
             <section class="bloque" id="particular">
                 <div class="conteiner-section conteiner-cliente">
-                    <h2 class="titulo-section"> CLIENTES FRECUENTES </h2>
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>PARTICULARES</h2>
+                    </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
@@ -355,7 +314,6 @@
                                     <th> NOMBRE </th>
                                     <th> APELLIDO </th>
                                     <th> DIRECCIÓN </th>
-                                    <th> TELÉFONO </th>
                                 </tr>
                             </thead>
                             <tbody class="registro-cliente"></tbody>
@@ -396,7 +354,10 @@
         <!-- Inicio EMPRESA -->
             <section class="bloque" id="empresa">
                 <div class="conteiner-section conteiner-empresa">
-                    <h2 class="titulo-section"> EMPRESAS </h2>
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>EMPRESAS</h2>
+                    </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
@@ -407,12 +368,11 @@
                         <table>
                             <thead>
                                 <tr class="indicadores">
-                                    <th> RUT </th>
-                                    <th> LISTA NEGRA </th>
-                                    <th> NOMBRE FANTASÍA </th>
-                                    <th> RAZÓN SOCIAL </th>
-                                    <th> DIRECCIÓN </th>
-                                    <th> TELÉFONO </th>
+                                    <th>RUT</th>
+                                    <th>LISTA NEGRA</th>
+                                    <th>NOMBRE</th>
+                                    <th>RAZÓN SOCIAL</th>
+                                    <th>DIRECCIÓN</th>
                                 </tr>
                             </thead>
                             <tbody class="registro-empresa"></tbody>
@@ -458,7 +418,10 @@
         <!-- Inicio RESERVA -->
             <section class="bloque" id="reserva">
                 <div class="conteiner-section conteiner-reserva">
-                    <h2 class="titulo-section"> RESERVAS </h2>
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>RESERVAS</h2>
+                    </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
@@ -469,13 +432,11 @@
                         <table>
                             <thead>
                                 <tr class="indicadores">
-                                    <th> COD </th>
-                                    <th> TIPO </th>
-                                    <th> PASAJERO </th>
-                                    <th> CHOFER </th>
-                                    <th> TELÉFONO DEL PASAJERO </th>
-                                    <th> ORIGEN </th>
-                                    <th> DESTINO </th>
+                                    <th>COD</th>
+                                    <th>TIPO</th>
+                                    <th>PASAJERO</th>
+                                    <th>CHOFER</th>
+                                    <th>TELÉFONO</th>
                                 </tr>
                             </thead>
                             <tbody class="registro-reserva"></tbody>
@@ -523,11 +484,6 @@
                             </div>
                             <button type="submit"> AGREGAR </button>                              
                         </form>
-                        <script>
-                            if(option.value == "Empresa"){
-                                alert('hola');
-                            }
-                        </script>
                     </div>
                 </div>
             </section>
@@ -536,7 +492,10 @@
         <!-- Inicio GASTOS DE MANTENIMIENTO -->
             <section class="bloque" id="gastos-de-mantenimiento">
                 <div class="conteiner-section conteiner-GDM">
-                    <h2 class="titulo-section"> GASTOS DE MANTENIMIENTO </h2>
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <h2>GASTOS DE MANTENIMIENTO</h2>
+                    </div>
                     <form method="POST" action="controller/agregar/a_mantenimiento.php">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
@@ -594,8 +553,8 @@
             </section>
         <!-- Fin GASTOS DE MANTENIMIENTO -->
     </main>
-
-    <script src="view/js/menu.js"></script>
-    <script src="view/js/personas.js"></script>
+    <script src="../view/js/jquery.min.js"></script>
+    <script src="../view/js/menu.js"></script>
+    <script src="../view/js/personas.js"></script>
 </body>
 </html>

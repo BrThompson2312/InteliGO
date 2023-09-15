@@ -27,40 +27,103 @@ body {
 }
 
 nav {
-  background-color: #141414;
+  background-color: #242424;
   height: 100%;
-  width: 20%;
+  width: 300px;
   margin: 0;
-  position: relative;
-  overflow: auto;
+  position: absolute;
+  z-index: 1;
   border-right: 5px solid #141414;
   border-left: 5px solid #141414;
+  overflow: auto;
+  animation: none;
+}
+
+@keyframes ani_nav {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes desani_nav {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+.navbar_hilera, .navbar_block {
+  background: linear-gradient(-45deg, #17bded, #f5154c);
+  background-size: 500% 500%;
+  color: white;
+  padding: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  animation: button_hilera 4s ease-in infinite;
+}
+
+.navbar_hilera {
+  border-radius: 10px;
+}
+
+.navbar_block {
+  margin-right: 10px;
+}
+
+@keyframes button_hilera {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 main {
   height: 100%;
-  width: 80%;
-  margin: 0;
+  width: 100%;
   position: relative;
+  right: 0;
+  margin: 0;
   background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1));
   overflow: auto;
+}
+
+@keyframes ani_main {
+  0% {
+    width: 95%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+@keyframes desani_main {
+  0% {
+    width: 80%;
+  }
+  100% {
+    width: 95%;
+  }
 }
 
 .bloque {
   height: 100%;
   width: 100%;
-}
-
-#logo {
-  height: 15%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-#logo img {
-  width: 70%;
 }
 
 #alert-salir {
@@ -160,6 +223,8 @@ main {
   transition: background-color 0.3s;
   cursor: pointer;
 }
+
+
 .opciones-hilera ion-icon, .opciones-hilera i {
   margin-right: 10px;
   margin-left: 10px;
@@ -168,7 +233,9 @@ main {
 .opciones-hilera[rel="#eliminados"], .opciones-hilera[rel="#operador"] {
   background-color: rgb(46, 46, 46);
 }
-
+.opciones-hilera[rel="#estadistica"]{
+  background-color: #CF6C25;
+}
 .opciones-hilera-active {
   font-family: "Inter-Bold";
   text-transform: uppercase;
@@ -239,11 +306,18 @@ main {
 }
 
 .titulo-section {
-  background-color: #141414;
+  background-color: #242424;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: white;
-  margin: 0 !important;
-  padding: 20px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.titulo-section h2 {
+  margin-left: 10px;
+}
+.titulo-estadistica {
+  background-color: #CF6C25;
 }
 
 #home ion-icon {
@@ -313,13 +387,6 @@ main {
   font-size: 20px;
   font-family: "Inter-Bold";
 }
-.info-user i {
-  background-color: gray;
-  color: black;
-  padding: 20px;
-  font-size: 30px;
-  border-radius: 10px;
-}
 
 #logout {
   background-color: #dc3545;
@@ -327,7 +394,7 @@ main {
   color: white;
   font-weight: bold;
   width: 100%;
-  height: 30px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -365,30 +432,25 @@ main {
   background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1));
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
-
-.inicio-logoProducto {
-  z-index: 0;
-  background-color: black;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+.conteiner-inicio .navbar_block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
 }
-.inicio-logoProducto img {
-  width: 300px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.conteiner-inicio .logo-img {
+  width: 30%;
+  display: none;
 }
 
 .inicio-usuario {
   display: grid;
   place-content: center;
   height: 100%;
+}
+.inicio-usuario h1 {
+  margin: 0;
 }
 .inicio-usuario span {
   border-radius: 10px;
@@ -397,25 +459,6 @@ main {
   font-size: 20px;
   text-align: center;
   font-family: "Inter-Bold";
-}
-
-.inicio-logoEmpresa {
-  background-color: black;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-  color: white;
-  width: 100%;
-  transition: background-color 0.5s, padding 0.5s;
-}
-.inicio-logoEmpresa table {
-  width: 100%;
-  margin: 0;
-}
-.inicio-logoEmpresa ul {
-  list-style: none;
-  font-weight: bold;
-}
-.inicio-logoEmpresa table {
-  border-collapse: collapse;
 }
 .inicio-logoEmpresa table td > div {
   display: flex;

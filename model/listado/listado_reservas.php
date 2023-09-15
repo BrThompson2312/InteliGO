@@ -39,9 +39,7 @@
                 'comentario' => $row['comentario'],
             );
         }
-    } else {
-        echo 'Error';
-    };
+    }
     if($result2){
         while($row = mysqli_fetch_assoc($result2)){
             $json[] = array(
@@ -59,8 +57,6 @@
                 'comentario' => $row['comentario'],
             );
         }
-    } else {
-        echo 'Error';
-    };
+    }
     echo json_encode($json);
 ?>

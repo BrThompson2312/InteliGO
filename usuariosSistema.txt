@@ -1,7 +1,0 @@
-Cuenta del administrador:
-	usuario: 1
-	contraseña: root
-
-Cuenta del operador:
-	usuario: 2	
-	contraseña operador

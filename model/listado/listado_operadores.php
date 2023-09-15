@@ -13,7 +13,6 @@
                 $json[] = array(
                     'pk' => $row['ci_usuario'],
                     'nombre' => $row['nombre_usuario'],
-                    'rol' => $row['rol_usuario'],
                     'fechaing_operador' => $row['fecha_ingreso'],
                 );
             }

@@ -19,7 +19,7 @@ function tableData(parametro, jsonObj){
             simb_consultar.classList.add('fa-solid','fa-eye');
             consultar.onclick = function(){
                 switch(parametro){
-                    case '.registro-administradores':
+                    case '.registro-operadores':
                         alert(
                             'Cedula: ' + jsonObj[i].pk + '\n' + 
                             'Nombre: ' + jsonObj[i].nombre + '\n' +
@@ -27,22 +27,20 @@ function tableData(parametro, jsonObj){
                             'Fecha de ingreso: ' + jsonObj[i].fechaing
                         );
                     break;
-                    case '.registro-coches':
+                    case '.registro-choferes':
                         alert(
-                            'Cedula: ' + jsonObj[i].pk + '\n' + 
-                            'Nombre: ' + jsonObj[i].modelo + '\n' +
-                            'Año: ' + jsonObj[i].año
+                            'Cedula del chofer: ' + jsonObj[i].pk + '\n' +
+                            'Teléfono del chofer: ' + jsonObj[i].telefono
                         );
                     break;
-                    case '.registro-chofer':
+                    case '.registro-cliente':
                         alert(
-                            'Cedula: ' + jsonObj[i].pk + '\n' + 
-                            'Nombre: ' + jsonObj[i].nombre + '\n' +
-                            'Identificador: ' + jsonObj[i].id
+                            'Teléfono: ' + jsonObj[i].telefono
                         );
                     break;
                     case '.registro-empresa':
                         alert(
+                            'Teléfono: ' + jsonObj[i].telefono + '\n' +
                             'Email: ' + jsonObj[i].correo + '\n' +
                             'Encargado de pagos: ' + '' + '\n' +
                             'Autorizado: ' + ''
@@ -50,6 +48,8 @@ function tableData(parametro, jsonObj){
                     break;
                     case '.registro-reserva':
                         alert(
+                            'Origen: ' + jsonObj[i].origen + '\n' +
+                            'Destino: ' + jsonObj[i].destino + '\n' + 
                             'Fecha del viaje: ' + jsonObj[i].fecha_servicio + '\n' +
                             'Fecha de reserva: ' + jsonObj[i].fecha_reserva + '\n' +
                             'Hora: ' + jsonObj[i].hora_inicio + '\n' +
@@ -82,43 +82,40 @@ function tableData(parametro, jsonObj){
             }
 
             switch(parametro){
-                case '.registro-administradores':
+                case '.registro-operadores':
                     pk.textContent = jsonObj[i].pk;
                     nombre.textContent = jsonObj[i].nombre;
                     let rol_user = document.createElement('td');
                         rol_user.classList.add('bg-td')
                     let fechaIng = document.createElement('td');
                         fechaIng.classList.add('bg-td');
-                    rol_user.textContent = jsonObj[i].rol
                     fechaIng.textContent = jsonObj[i].fechaing_operador
                     registro.appendChild(pk);
                     registro.appendChild(nombre);
                     registro.appendChild(fechaIng);
-                    
                 break;
-                case '.registro-coches':
-                    pk.textContent = jsonObj[i].pk;
-                    let marca_coche = document.createElement('td');
-                        marca_coche.textContent = jsonObj[i].marca
-                    let modelo = document.createElement('td');
-                        modelo.classList.add('bg-td');
-                        modelo.textContent = jsonObj[i].modelo;
-                    let año = document.createElement('td');
-                        año.textContent = jsonObj[i].año;
-                        registro.appendChild(pk);
-                        registro.appendChild(marca_coche);
-                        registro.appendChild(modelo);
-                        registro.appendChild(año)
-                break;
-                case '.registro-chofer':
+                case '.registro-choferes':
                     pk.textContent = jsonObj[i].pk;
                     nombre.textContent = jsonObj[i].nombre
                     let telefono_chofer = document.createElement('td');
                         telefono_chofer.classList.add('bg-td');
                         telefono_chofer.textContent = jsonObj[i].telefono;
-                        registro.appendChild(pk);
+                    let matricula = document.createElement('td');
+                        matricula.textContent = jsonObj[i].matricula;
+                    let modelo = document.createElement('td');
+                        modelo.classList.add('bg-td');
+                        modelo.textContent = jsonObj[i].modelo;
+                    let marca = document.createElement('td');
+                        marca.textContent = jsonObj[i].marca;
+                    let año = document.createElement('td');
+                        año.classList.add('bg-td');
+                        año.textContent = jsonObj[i].año;
+                        registro.appendChild(matricula);
                         registro.appendChild(nombre);
-                        registro.appendChild(telefono_chofer);
+                        registro.appendChild(modelo);
+                        registro.appendChild(marca);
+                        registro.appendChild(año);
+                        registro.appendChild(consultar)
                 break;
                 case '.registro-LN':
                     pk.textContent = jsonObj[i].pk;
@@ -132,7 +129,17 @@ function tableData(parametro, jsonObj){
                     let lista_negra = document.createElement('td');
                     let lnspan = document.createElement('span');
                         lista_negra.appendChild(lnspan);
+                        lnspan.style.padding = "5px";
+                        lnspan.style.borderRadius = "5px"
+                        lnspan.style.color = "white";
                         lnspan.textContent = jsonObj[i].lista_negra;
+                        if (jsonObj[i].lista_negra == '0'){
+                            lnspan.style.backgroundColor = "green";
+                            lnspan.textContent = "NO"
+                        } else {
+                            lnspan.style.backgroundColor = "red";
+                            lnspan.textContent = "SI"
+                        }
                     let nombre_cliente = document.createElement('td');
                         nombre_cliente.classList.add('bg-td');
                         nombre_cliente.textContent = jsonObj[i].nombre;
@@ -141,27 +148,12 @@ function tableData(parametro, jsonObj){
                     let direccion_cliente = document.createElement('td');
                         direccion_cliente.textContent = jsonObj[i].direccion;
                         direccion_cliente.classList.add('bg-td');
-                    let telefono_cliente = document.createElement('td');
-                        telefono_cliente.textContent = jsonObj[i].telefono;
-                        if (jsonObj[i].lista_negra == '0'){
-                            lnspan.style.backgroundColor = "green";
-                            lnspan.style.padding = "5px";
-                            lnspan.style.borderRadius = "5px"
-                            lnspan.style.color = "white";
-                            lnspan.textContent = "NO"
-                        } else {
-                            lnspan.style.backgroundColor = "red";
-                            lnspan.style.padding = "5px";
-                            lnspan.style.borderRadius = "5px"
-                            lnspan.style.color = "white";
-                            lnspan.textContent = "SI"
-                        }
                     registro.appendChild(pk);
                     registro.appendChild(lista_negra);
                     registro.appendChild(nombre_cliente)
                     registro.appendChild(apellido_cliente);
                     registro.appendChild(direccion_cliente);
-                    registro.appendChild(telefono_cliente);
+                    registro.appendChild(consultar);
                 break;
                 case '.registro-empresa':
                     pk.textContent = jsonObj[i].pk;
@@ -190,8 +182,6 @@ function tableData(parametro, jsonObj){
                     let direccion_empresa = document.createElement('td');
                         direccion_empresa.classList.add('bg-td');
                         direccion_empresa.textContent = jsonObj[i].direccion
-                    let telefono_empresa = document.createElement('td');
-                        telefono_empresa.textContent = jsonObj[i].telefono;
                     let email_empresa = document.createElement('td');
                         email_empresa.classList.add('bg-td');
                         registro.appendChild(pk);
@@ -199,7 +189,6 @@ function tableData(parametro, jsonObj){
                         registro.appendChild(nombre_fantasia);
                         registro.appendChild(razon_social)
                         registro.appendChild(direccion_empresa);
-                        registro.appendChild(telefono_empresa);
                         registro.appendChild(consultar);
                 break;
                 case '.registro-reserva':
@@ -224,18 +213,11 @@ function tableData(parametro, jsonObj){
                     let telefono = document.createElement('td');
                         telefono.classList.add('bg-td');
                         telefono.textContent = jsonObj[i].telefono;
-                    let origen = document.createElement('td');
-                        origen.textContent = jsonObj[i].origen;
-                    let destino = document.createElement('td');
-                        destino.classList.add('bg-td');
-                        destino.textContent = jsonObj[i].destino;
                         registro.appendChild(pk);
                         registro.appendChild(tipo_reserva);
                         registro.appendChild(nombre_pasajero);
                         registro.appendChild(cedula_chofer);
                         registro.appendChild(telefono);
-                        registro.appendChild(origen);
-                        registro.appendChild(destino);
                         registro.appendChild(consultar)
                 break;
                 case '.registro-GDM':

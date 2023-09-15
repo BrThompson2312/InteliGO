@@ -44,49 +44,27 @@ function opcion_menu(ObjHtml) {
     switch (rel) {
         case '#operador':
             $.ajax({
-                url: 'controller/listado/listado_operadores.php',
+                url: '../model/listado/listado_operadores.php',
                 type: 'POST',
                 success: function(response){
-                    let administradores = JSON.parse(response);
-                    tableData('.registro-administradores', administradores);
-                }
-            })
-        break;
-        case '#eliminados':
-        break;
-        case '#coches':
-            $.ajax({
-                url: 'controller/listado/listado_coches.php',
-                type: 'POST',
-                success: function(response){
-                    let coches = JSON.parse(response);
-                    tableData('.registro-coches', coches);
+                    let operadores = JSON.parse(response);
+                    tableData('.registro-operadores', operadores);
                 }
             })
         break;
         case '#chofer':
             $.ajax({
-                url: 'controller/listado/listado_choferes.php',
+                url: '../model/listado/listado_choferes.php',
                 type: 'POST',
                 success: function(response){
                     let choferes = JSON.parse(response);
-                    tableData('.registro-chofer', choferes);
-                }
-            })
-        break;
-        case '#lista-negra':
-            $.ajax({
-                url: 'controller/listado/listado_listaLN.php',
-                type: 'POST',
-                success: function(response){
-                    let lista_negra = JSON.parse(response);
-                    tableData('.registro-LN', lista_negra);
+                    tableData('.registro-choferes', choferes);
                 }
             })
         break;
         case '#particular':
             $.ajax({
-                url: 'controller/listado/listado_particulares.php',
+                url: '../model/listado/listado_particulares.php',
                 type: 'POST',
                 success: function(response){
                     let clientes = JSON.parse(response);
@@ -96,7 +74,7 @@ function opcion_menu(ObjHtml) {
         break;
         case '#empresa':
             $.ajax({
-                url: 'controller/listado/listado_empresas.php',
+                url: '../model/listado/listado_empresas.php',
                 type: 'POST',
                 success: function(response){
                     let empresas = JSON.parse(response);
@@ -104,9 +82,29 @@ function opcion_menu(ObjHtml) {
                 }
             })
         break;
+        case '#coches':
+            $.ajax({
+                url: '../model/listado/listado_coches.php',
+                type: 'POST',
+                success: function(response){
+                    let coches = JSON.parse(response);
+                    tableData('.registro-coches', coches);
+                }
+            })
+        break;
+        case '#lista-negra':
+            $.ajax({
+                url: '../model/listado/listado_listaln.php',
+                type: 'POST',
+                success: function(response){
+                    let lista_negra = JSON.parse(response);
+                    tableData('.registro-LN', lista_negra);
+                }
+            })
+        break;
         case '#reserva':
             $.ajax({
-                url: 'controller/listado/listado_reservas.php',
+                url: '../model/listado/listado_reservas.php',
                 type: 'POST',
                 success: function(response){
                     let reservas = JSON.parse(response);
@@ -116,7 +114,7 @@ function opcion_menu(ObjHtml) {
         break;
         case '#gastos-de-mantenimiento':
             $.ajax({
-                url: 'controller/listado/listado_mantenimiento.php',
+                url: '../model/listado/listado_mantenimiento.php',
                 type: 'POST',
                 success: function(response){
                     let gastos_mantenimiento = JSON.parse(response);
@@ -146,3 +144,21 @@ $('#xmark-salir').on('click',function(){
     $('#alert-salir').css('display','none');
 });
 
+let nav = document.querySelector('nav');
+    nav.style.left = '-100%';
+
+var button_hilera = document.querySelector('.navbar_hilera');
+button_hilera.onclick = function(){   
+    if (nav.style.left === '0%'){
+        nav.style.animation = 'desani_nav 0.5s ease-in-out';
+        nav.style.left = '-100%';
+    }
+}
+
+let button_block = document.querySelector('.navbar_block');
+function nav_block(){
+    if (nav.style.left === '-100%'){
+        nav.style.left = '0%';
+        nav.style.animation = 'ani_nav 0.5s ease-in-out';
+    }
+}
