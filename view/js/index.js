@@ -13,20 +13,3 @@ function seeingPassword() {
         pass.type = "password";
     }
 }
-
-// let user = document.querySelector('#user');
-// $('#login-user').on('click',function(){
-//     if (user.value == 0 || pass.value == 0) {
-//         alert('Por favor, rellene los campos')
-//     } else {
-//         alert('funca');
-//         $.ajax({
-//             url: 'model/login2.php',
-//             type: 'POST',
-//             data: {
-//                 user: user.value,
-//                 pass: pass.value
-//             },
-//         })
-//     }
-// })

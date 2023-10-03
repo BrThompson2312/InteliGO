@@ -1,16 +1,25 @@
 @import 'comun.css';
-.inicio-usuario span {
-  background-color: #299402;
+
+:root {
+  --bg-operador: #299402;
+}
+
+#inicio main span {
+  background: var(--bg-operador);
 }
 
 .info-user div > span {
-  background-color: #299402;
+  background: var(--bg-operador);
 }
 
 .indicadores {
-  background-color: #299402;
+  background: var(--bg-operador);
 }
 
 .opciones-hilera-active {
-  background-color: #299402;
-}/*# sourceMappingURL=operativo.css.map */
+  background: var(--bg-operador);
+}
+
+::selection {
+  background: var(--bg-operador);
+}

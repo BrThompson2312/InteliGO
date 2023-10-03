@@ -1,14 +1,18 @@
 @import 'fonts.css';
+@import 'alertSection.css';
+
 #user {
   background-color: #141414;
   color: white;
   background-size: 100% 100%;
   width: 100%;
   height: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 html, body {
@@ -26,28 +30,39 @@ body {
   display: flex;
 }
 
+
 nav {
   background-color: #242424;
   height: 100%;
-  width: 300px;
+  font-size: 1em;
   margin: 0;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   border-right: 5px solid #141414;
   border-left: 5px solid #141414;
   overflow: auto;
-  animation: none;
+  animation: ani_nav 1s ease;
 }
-
+@media (max-width: 500px){
+  nav {
+    width: 100%;
+  }
+}
+@media (min-width: 500px){
+  nav {
+    width: 400px;
+  }
+}
 @keyframes ani_nav {
   0% {
     left: -100%;
+    opacity: 0
   }
   100% {
     left: 0%;
+    opacity: 1
   }
 }
-
 @keyframes desani_nav {
   0% {
     left: 0%;
@@ -62,7 +77,7 @@ nav {
   background-size: 500% 500%;
   color: white;
   padding: 20px;
-  font-size: 30px;
+  font-size: 2em;
   cursor: pointer;
   animation: button_hilera 4s ease-in infinite;
 }
@@ -70,9 +85,14 @@ nav {
 .navbar_hilera {
   border-radius: 10px;
 }
-
 .navbar_block {
   margin-right: 10px;
+}
+
+@keyframes pr {
+  to {
+    left: 400px;
+  }
 }
 
 @keyframes button_hilera {
@@ -101,6 +121,7 @@ main {
   margin: 0;
   background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1));
   overflow: auto;
+  font-size: 1em;
 }
 
 @keyframes ani_main {
@@ -120,18 +141,16 @@ main {
     width: 95%;
   }
 }
-
 .bloque {
   height: 100%;
   width: 100%;
+  font-size: 1em;
 }
-
 #alert-salir {
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
-  font-size: 20px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   font-weight: bold;
@@ -140,8 +159,8 @@ main {
 #alert-salir div {
   background-color: #141414;
   border-radius: 10px;
-  width: 400px;
-  height: 200px;
+  width: 20em;
+  height: 12em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +183,7 @@ main {
   text-align: center;
   cursor: pointer;
   padding: 10px 0px 10px 0px;
-  font-size: 15px;
+  font-size: 1em;
   transition: background-color 0.3s;
 }
 #alert-salir div a:hover {
@@ -179,7 +198,7 @@ main {
   padding: 10px;
   margin: 5px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1em;
   transition: background-color 0.5s;
 }
 
@@ -215,11 +234,10 @@ main {
   justify-content: start;
   color: white;
   text-align: start;
-  font-size: 15px;
+  font-size: 1em;
   border: none;
   width: 100%;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  height: 100%;
   transition: background-color 0.3s;
   cursor: pointer;
 }
@@ -228,7 +246,7 @@ main {
 .opciones-hilera ion-icon, .opciones-hilera i {
   margin-right: 10px;
   margin-left: 10px;
-  font-size: 20px;
+  font-size: 1em;
 }
 .opciones-hilera[rel="#eliminados"], .opciones-hilera[rel="#operador"] {
   background-color: rgb(46, 46, 46);
@@ -288,10 +306,11 @@ main {
 
 .inputs-busqueda {
   display: flex;
+  
 }
 .inputs-busqueda button {
   width: 100%;
-  padding: 10px;
+  padding: 1em;
   cursor: pointer;
   border: none;
   color: white;
@@ -299,10 +318,12 @@ main {
 }
 .inputs-busqueda .filtrar {
   background-color: rgb(91, 102, 103);
+  font-size: 1em;
 }
 .inputs-busqueda .agregar {
   background-color: #026300;
   transition: background-color 0.3s;
+  font-size: 1em;
 }
 
 .titulo-section {
@@ -327,45 +348,6 @@ main {
   padding: 5px;
   border-radius: 100%;
 }
-
-#xmark-administrador,
-#xmark-operador,
-#xmark-eliminados,
-#xmark-coches,
-#xmark-chofer,
-#xmark-LN,
-#xmark-cliente,
-#xmark-empresa,
-#xmark-reserva,
-#xmark-HDM,
-#xmark-GDM {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  border-radius: 5px;
-  padding: 10px;
-  position: absolute;
-  z-index: 99;
-  display: none;
-  margin: 10px;
-  left: 0;
-  color: white;
-  cursor: pointer;
-  transform: scale(1.2, 1.2);
-  transition: background-color 0.3s;
-}
-#xmark-administrador:hover,
-#xmark-operador:hover,
-#xmark-eliminados:hover,
-#xmark-coches:hover,
-#xmark-chofer:hover,
-#xmark-LN:hover,
-#xmark-cliente:hover,
-#xmark-empresa:hover,
-#xmark-reserva:hover,
-#xmark-HDM:hover,
-#xmark-GDM:hover {
-  background-color: #141414;
-}
-
 .info-user {
   display: flex;
   align-items: center;
@@ -374,7 +356,7 @@ main {
   width: 100%;
   height: 100%;
   color: white;
-  font-size: 18px;
+  font-size: 1em;
 }
 .info-user div > h3 {
   margin: 0;
@@ -384,7 +366,7 @@ main {
   margin-top: 30px;
   border-radius: 10px;
   padding: 5px;
-  font-size: 20px;
+  font-size: 1em;
   font-family: "Inter-Bold";
 }
 
@@ -394,7 +376,7 @@ main {
   color: white;
   font-weight: bold;
   width: 100%;
-  height: 20px;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -411,7 +393,7 @@ main {
 }
 #logout ion-icon {
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 1em;
   color: white;
   height: 100%;
   margin-left: 10px;
@@ -425,198 +407,82 @@ main {
   cursor: pointer;
 }
 
-.conteiner-inicio {
-  position: relative;
+#inicio {
   color: white;
   height: 100%;
+  width: 100%;
   background: linear-gradient(rgba(157, 162, 188, 0.1), rgba(4, 30, 163, 0.1));
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
 }
-.conteiner-inicio .navbar_block {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 10px;
-}
-.conteiner-inicio .logo-img {
-  width: 30%;
-  display: none;
+
+#inicio header {
+  background: none;
+  height: 20%;
 }
 
-.inicio-usuario {
+#inicio main {
+  background: none;
   display: grid;
   place-content: center;
-  height: 100%;
+  height: 60%;
 }
-.inicio-usuario h1 {
+
+#inicio footer {
+  color: white;
+  border-radius: 100px 0% 0% 0%;
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#inicio footer img {
+  width: 100px;
+  position: relative;
+}
+
+#inicio footer h3 {
+  position: relative;
+}
+
+#inicio main h1 {
   margin: 0;
 }
-.inicio-usuario span {
+
+#inicio .navbar_block {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.navbar_icon {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 1em;
+}
+
+#inicio .logo-img {
+  width: 30%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#inicio main span {
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 1em;
   text-align: center;
   font-family: "Inter-Bold";
 }
-.inicio-logoEmpresa table td > div {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}
-.inicio-logoEmpresa table td h3 {
-  margin-right: 20px;
-}
-.inicio-logoEmpresa table tfoot {
-  background-color: black;
-  text-align: center;
-  width: 100%;
-  color: white;
-}
-.inicio-logoEmpresa table tfoot ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-footer {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  width: 100%;
-}
-footer table {
-  width: 100%;
-  text-align: flex-start;
-  border-collapse: collapse;
-  border-top: 2px solid black;
-}
-footer table th {
-  width: 50%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-footer table th:nth-child(2) {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-}
-footer table td {
-  text-align: center;
-}
-footer table td:nth-child(1) {
-  line-height: 30px;
-}
-footer table td:nth-child(2) {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-  text-align: start;
-}
-footer table td:nth-child(2) ul li {
-  margin-bottom: 10px;
-}
-footer table td:nth-child(2) ul li h4 {
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-.block-relative-section {
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-.alert-section form {
-  background: linear-gradient(0deg, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8));
-  color: white;
-  border-radius: 5px 5px 0px 0px;
-  font-family: "Inter-ExtraLight";
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.alert-section form div {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-}
-.alert-section form div > * {
-  margin: 5px;
-}
-.alert-section form div > input, .alert-section form div select, .alert-section form div textarea {
-  background-color: white;
-  border: 3px solid blue;
-  outline: none;
-  padding: 10px;
-}
-.alert-section form div > input, .alert-section form div option {
-  border-radius: 4px;
-  color: black;
-  margin-bottom: 10px;
-  width: 300px;
-}
-.alert-section form > button {
-  background-color: darkgreen;
-  border: none;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.2s;
-}
-.alert-section form > button:hover {
-  background-color: green;
-}
-
-.alert-section-reserva form {
-  background: linear-gradient(0deg, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8));
-  color: white;
-  border-radius: 5px 5px 0px 0px;
-  font-family: "Inter-ExtraLight";
-}
-.alert-section-reserva form div {
-  padding: 20px;
-  display: flex;
-}
-.alert-section-reserva form div > * {
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-}
-.alert-section-reserva form div > input, .alert-section-reserva form div select, .alert-section-reserva form div textarea {
-  background-color: white;
-  border: 3px solid blue;
-  outline: none;
-  padding: 10px;
-}
-.alert-section-reserva form div > input, .alert-section-reserva form div option {
-  border-radius: 4px;
-  color: black;
-  margin-bottom: 10px;
-  width: 300px;
-}
-.alert-section-reserva form div > textarea {
-  resize: none;
-}
-.alert-section-reserva form > button {
-  background-color: darkgreen;
-  border: none;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.2s;
-}
-.alert-section-reserva form > button:hover {
-  background-color: green;
-}
-
-.block-relative-section {
-  position: relative;
-  display: none;
-}
-
 .indicadores {
   font-family: "Inter-SemiBold";
   color: white;
@@ -625,7 +491,6 @@ footer table td:nth-child(2) ul li h4 {
 .indicadores th {
   padding: 5px;
 }
-
 .datos-admin {
   width: 100%;
   font-weight: bold;
@@ -640,13 +505,13 @@ footer table td:nth-child(2) ul li h4 {
   background-color: #adb5bd;
   background: linear-gradient(rgba(206, 212, 218, 0.7), rgba(206, 212, 218, 0.7));
   font-weight: bold;
-  width: 100px;
 }
 .datos-admin .bg-td {
   background-color: #adb5bd;
 }
 .datos-admin .consultaRegistro {
   background-color: #2eb405;
+  display: table-cell;
 }
 .datos-admin .consultaRegistro:hover {
   background-color: #31a001;
@@ -663,8 +528,46 @@ footer table td:nth-child(2) ul li h4 {
 .datos-admin .eliminarRegistro:hover {
   background-color: #b02a37;
 }
-.datos-admin .consultaRegistro, .datos-admin .modificarRegistro, .datos-admin .eliminarRegistro {
+.datos-admin :where(.consultaRegistro, .modificarRegistro, .eliminarRegistro){
+  display: table-cell !important;
   text-align: center;
-  width: 50px;
   cursor: pointer;
-}/*# sourceMappingURL=comun.css.map */
+  width: 50px;
+}
+
+:where(.registro-operadores, .registro-GDM) .consultaRegistro {
+  display: none !important;
+}
+
+@media (max-width: 700px){
+  .datos-admin .consultaRegistro {
+    display: table-cell !important;
+  }
+  .datos-admin td:where(:nth-child(2)), .indicadores th:where(:nth-child(2)) {
+    display: none;
+  }
+}
+@media (max-width: 600px){
+  .datos-admin .consultaRegistro {
+    display: table-cell !important;
+  }
+  .datos-admin td:where(:nth-child(3)), .indicadores th:where(:nth-child(3)) {
+    display: none;
+  }
+}
+@media (max-width: 500px){
+  .datos-admin .consultaRegistro {
+    display: table-cell !important;
+  }
+  .datos-admin td:nth-child(4), .indicadores th:where(:nth-child(4)) {
+    display: none;
+  }
+}
+@media (max-width: 400px){
+  .datos-admin .consultaRegistro {
+    display: table-cell !important;
+  }
+  .datos-admin td:where(:nth-child(4),:nth-child(5)), .indicadores th:where(:nth-child(4),:nth-child(5)) {
+    display: none;
+  }
+}

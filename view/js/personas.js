@@ -2,17 +2,14 @@ function tableData(parametro, jsonObj){
     let registro_seccion = document.querySelector(parametro);      
     registro_seccion.innerHTML='';
     for (let i = 0; i < jsonObj.length; i++){
-
         let registro = document.createElement('tr');
         registro.classList.add('datos-admin');
         registro_seccion.appendChild(registro);
-        
         let pk = document.createElement('td');
-    
         let nombre = document.createElement('td');
-
         let consultar = document.createElement('td');
             consultar.classList.add('consultaRegistro');
+            consultar.style.display = "table-cell";
             let simb_consultar = document.createElement('i');
             consultar.appendChild(simb_consultar);
             consultar.title = "Mas información";
@@ -59,8 +56,6 @@ function tableData(parametro, jsonObj){
                     break;
                 }
             }
-
-    
         let modificar = document.createElement('td');
             modificar.classList.add('modificarRegistro');
             modificar.title = "Modificar";
@@ -70,7 +65,6 @@ function tableData(parametro, jsonObj){
             modificar.onclick = function() {
                 alert('modificar' + [i]);
             }
-            
         let eliminar = document.createElement('td');
             eliminar.classList.add('eliminarRegistro');
             eliminar.title = "Eliminar";
@@ -80,7 +74,6 @@ function tableData(parametro, jsonObj){
             eliminar.onclick = function() {
                 alert('eliminar' + [i]);
             }
-
             switch(parametro){
                 case '.registro-operadores':
                     pk.textContent = jsonObj[i].pk;
@@ -115,14 +108,6 @@ function tableData(parametro, jsonObj){
                         registro.appendChild(modelo);
                         registro.appendChild(marca);
                         registro.appendChild(año);
-                        registro.appendChild(consultar)
-                break;
-                case '.registro-LN':
-                    pk.textContent = jsonObj[i].pk;
-                    let direccion = document.createElement('td');
-                        direccion.textContent = jsonObj[i].direccion;
-                    registro.appendChild(pk);
-                    registro.appendChild(direccion);
                 break;
                 case '.registro-cliente':
                     pk.textContent = jsonObj[i].pk;
@@ -153,7 +138,6 @@ function tableData(parametro, jsonObj){
                     registro.appendChild(nombre_cliente)
                     registro.appendChild(apellido_cliente);
                     registro.appendChild(direccion_cliente);
-                    registro.appendChild(consultar);
                 break;
                 case '.registro-empresa':
                     pk.textContent = jsonObj[i].pk;
@@ -189,7 +173,6 @@ function tableData(parametro, jsonObj){
                         registro.appendChild(nombre_fantasia);
                         registro.appendChild(razon_social)
                         registro.appendChild(direccion_empresa);
-                        registro.appendChild(consultar);
                 break;
                 case '.registro-reserva':
                     pk.textContent = jsonObj[i].pk;
@@ -218,7 +201,6 @@ function tableData(parametro, jsonObj){
                         registro.appendChild(nombre_pasajero);
                         registro.appendChild(cedula_chofer);
                         registro.appendChild(telefono);
-                        registro.appendChild(consultar)
                 break;
                 case '.registro-GDM':
                     pk.textContent = jsonObj[i].pk;
@@ -237,11 +219,8 @@ function tableData(parametro, jsonObj){
                         registro.appendChild(gastos_mantenimiento);
                         registro.appendChild(comentarios);
                 break;
-                default:
-                    registro.appendChild(consultar);
-                break;
             }
-
+            registro.appendChild(consultar);
             registro.appendChild(modificar);
             registro.appendChild(eliminar);
     }

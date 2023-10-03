@@ -1,16 +1,25 @@
 @import 'comun.css';
-.inicio-usuario span {
-  background-color: #035d6f;
+
+:root {
+  --bg-administrador: #035d6f;
+}
+
+#inicio main span {
+  background: var(--bg-administrador)
 }
 
 .info-user div > span {
-  background-color: #035d6f;
+  background: var(--bg-administrador)
 }
 
 .indicadores {
-  background-color: #035d6f;
+  background: var(--bg-administrador)
 }
 
 .opciones-hilera-active {
-  background-color: #035d6f;
-}/*# sourceMappingURL=administrador.css.map */
+  background: var(--bg-administrador)
+}
+
+::selection {
+  background: var(--bg-administrador)
+}
