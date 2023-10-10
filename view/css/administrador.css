@@ -8,7 +8,7 @@
   background: var(--bg-administrador)
 }
 
-.info-user div > span {
+.info-user div {
   background: var(--bg-administrador)
 }
 

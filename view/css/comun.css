@@ -36,16 +36,17 @@ nav {
   height: 100%;
   font-size: 1em;
   margin: 0;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   border-right: 5px solid #141414;
-  border-left: 5px solid #141414;
   overflow: auto;
   animation: ani_nav 1s ease;
 }
 @media (max-width: 500px){
   nav {
     width: 100%;
+    border-right: none;
+    border-left: none;
   }
 }
 @media (min-width: 500px){
@@ -53,6 +54,7 @@ nav {
     width: 400px;
   }
 }
+
 @keyframes ani_nav {
   0% {
     left: -100%;
@@ -358,16 +360,27 @@ main {
   color: white;
   font-size: 1em;
 }
-.info-user div > h3 {
-  margin: 0;
-  margin-bottom: 10px;
-}
-.info-user div > span {
-  margin-top: 30px;
+.info-user div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   border-radius: 10px;
-  padding: 5px;
-  font-size: 1em;
+}
+.info-user i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info-user div h3 {
+  margin: 0;
+}
+.info-user div span {
   font-family: "Inter-Bold";
+}
+.info-user div > * {
+  margin-left: 10px !important;
+  margin-right: 10px !important
 }
 
 #logout {
@@ -398,7 +411,6 @@ main {
   height: 100%;
   margin-left: 10px;
 }
-
 .style-user {
   color: #141414;
   border-radius: 5px;
@@ -406,7 +418,6 @@ main {
   position: relative;
   cursor: pointer;
 }
-
 #inicio {
   color: white;
   height: 100%;
@@ -415,10 +426,43 @@ main {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
 }
-
 #inicio header {
   background: none;
   height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#inicio header img {
+  position: absolute;
+  width: 30%;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 700px) {
+  header > * {
+    margin: 0px 10px 0px 10px;
+  }
+  #inicio header img {
+    width: 250px;
+    position: static;
+    transform: none;
+    top: 0;
+  }
+  #inicio header .navbar_block {
+    position: static;
+    border-radius: 100%;
+  }
+}
+@media (min-width: 700px) {
+  #inicio header .navbar_block {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    border-radius: 100%;
+  }
 }
 
 #inicio main {
@@ -427,7 +471,6 @@ main {
   place-content: center;
   height: 60%;
 }
-
 #inicio footer {
   color: white;
   border-radius: 100px 0% 0% 0%;
@@ -453,13 +496,6 @@ main {
   margin: 0;
 }
 
-#inicio .navbar_block {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
 .navbar_icon {
   background-color: white;
   color: black;
@@ -468,11 +504,10 @@ main {
   font-size: 1em;
 }
 
-#inicio .logo-img {
-  width: 30%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+@media (max-width: 600px) {
+  #inicio .logo-img {
+    width: 50%;
+  }
 }
 
 #inicio main span {

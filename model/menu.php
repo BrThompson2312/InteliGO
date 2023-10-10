@@ -23,6 +23,7 @@
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <script src="../view/js/jquery.min.js"></script>
 </head>
 <body>
     <section id="alert-salir">
@@ -40,13 +41,11 @@
                     <?php
                         if ($tipoUsuario == 'administrador') {
                             ?>
-                                <h3><?php echo $_SESSION['nombreUsuario'];?></h3>
-                                <span>Administrador</span>
+                                <h3><?php echo $_SESSION['nombreUsuario'];?></h3><span>|</span><span>Administrador</span>
                             <?php
                         } else {
                             ?>
-                                <h3><?php echo $_SESSION['nombreUsuario'];?></h3>
-                                <span>Operador</span>
+                                <h3><?php echo $_SESSION['nombreUsuario'];?></h3><span>|</span><span>Operador</span>
                             <?php 
                         } ?>
                 </div>
@@ -61,10 +60,6 @@
                 <i class="fa-solid fa-house-chimney"></i>
                 <span>Home</span>
             </button>
-            <button class="opciones-hilera" rel="#estadistica" onclick="opcion_menu(this)"> 
-                <ion-icon name="stats"></ion-icon>
-                <span>Estadísticas</span>
-            </button>          
             <?php
                 // print_r($_SESSION);
                 if($tipoUsuario=='administrador') {
@@ -84,64 +79,49 @@
                 <i class="fi fi-ss-steering-wheel"></i>
                 <span>Coches & Choferes</span> 
             </button>
-            <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)" style="background-color: darkred"> 
+            <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-person"></i>
                 <span>Particulares</span>
             </button>
-            <button class="opciones-hilera" rel="#empresa" onclick="opcion_menu(this)" style="background-color: darkred"> 
+            <button class="opciones-hilera" rel="#empresa" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-building"></i>
                 <span>Empresas</span>
             </button>
-            <button class="opciones-hilera" rel="#reserva" onclick="opcion_menu(this)" style="background-color: darkred"> 
+            <button class="opciones-hilera" rel="#reserva" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Reservas</span>
             </button>
-            <button class="opciones-hilera" rel="#gastos-de-mantenimiento" onclick="opcion_menu(this)" style="background-color: darkred"> 
+            <button class="opciones-hilera" rel="#gastos-de-mantenimiento" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-wrench"></i>
                 <span>Gastos de mantenimiento</span>
             </button>
         </section>
     </nav>
     <main>
-        <!-- Inicio HOME -->
-            <section class="bloque" id="inicio">
-                <header>
-                    <i id="active-nav" class="fa-solid fa-bars navbar_block" onclick="nav_block()" ></i>
-                    <img src="../view/img/logofinal/whiteLogo.png" class="logo-img"> 
-                </header>
-                <main>
-                    <h1> BIENVENIDO DE NUEVO </h1>
-                    <?php
-                        if ($tipoUsuario == 'administrador') {
-                            ?>
-                                <span><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Administrador</span>
-                            <?php
-                        } else {
-                            ?>
-                                <span><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Operador</span>
-                            <?php
-                        }
-                    ?>
-                </main>
-                <footer>
-                    <h5>POWERED BY</h5>
-                    <img src="../view/img/logobk.png">
-                </footer>
-            </section>
-        <!-- Fin HOME -->
-
-        <!-- Inicio ESTADISTICAS -->
-            <section class="bloque" id="estadistica">
-                <div class="conteiner-section conteiner-estadística">
-                    <div class="titulo-section titulo-estadistica">
-                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
-                        <ion-icon name="stats" class="navbar_icon"></ion-icon>
-                        <h2>ESTADÍSTICAS</h2>
-                    </div>
-                </div>
-            </section>
-        <!-- Fin ESTADISTICAS -->
-
+        <section class="bloque" id="inicio">
+            <header>
+                <i id="active-nav" class="fa-solid fa-bars navbar_block" onclick="nav_block()" ></i>
+                <img src="../view/img/logofinal/whiteLogo.png">
+            </header>
+            <main>
+                <h1> BIENVENIDO DE NUEVO </h1>
+                <?php
+                    if ($tipoUsuario == 'administrador') {
+                        ?>
+                            <span><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Administrador</span>
+                        <?php
+                    } else {
+                        ?>
+                            <span><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Operador</span>
+                        <?php
+                    }
+                ?>
+            </main>
+            <footer>
+                <h5>POWERED BY</h5>
+                <img src="../view/img/logobk.png">
+            </footer>
+        </section>
         <?php
                 if ($tipoUsuario == 'administrador') {
                 ?>
@@ -217,7 +197,7 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-eliminados">
-                    <form class="alert_section" action="">
+                    <form class="alert_section">
                         <div>
                             <label for="nombre-eliminado">Nombre completo</label>
                             <input name="nombre-eliminado" type="text">
@@ -227,8 +207,8 @@
                             <input name="fechaIng-eliminado" type="date">
                         </div>    
                         <div class="buttons">
-                            <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos"> AGREGAR </button>   
+                            <button class="cancel_button" type="button"> CANCELAR </button>   
+                            <button class="subir_datos" type="button"> AGREGAR </button>   
                         </div>
                     </form>
                 </div>
@@ -265,26 +245,25 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-choferes">
-                    <form class="alert_section" method="POST" action="../model/agregar/a_choferes.php">
-                        <label for="cedula-chofer">Cedula</label>
-                        <input name="cedula-chofer" type="number" placeholder="Cédula">
-                        <label for="nombre-chofer">Nombre completo</label>
-                        <input name="nombre-chofer" type="text" placeholder="Nombre completo">     
+                    <form class="alert_section">
+                        <label for="ci-chofer">Cedula</label>
+                        <input name="ci-chofer" type="number" placeholder="Cédula">
+                        <label for="name-chofer">Nombre completo</label>
+                        <input name="name-chofer" type="text" placeholder="Nombre completo">     
                         <label for="tel-chofer">Teléfono</label>
                         <input name="tel-chofer" type="number" placeholder="Teléfono">
-                        <label for="tel-chofer">Matrícula</label>
-                        <input name="tel-chofer" type="number" placeholder="Teléfono">
-                        <label for="tel-chofer">Marca</label>
-                        <input name="tel-chofer" type="number" placeholder="Teléfono">
-                        <label for="tel-chofer">Año</label>
-                        <input name="tel-chofer" type="number" placeholder="Teléfono">
+                        <label for="matricula-veh">Matrícula</label>
+                        <input name="matricula-veh" type="number" placeholder="Teléfono">
+                        <label for="marcha-veh">Marca</label>
+                        <input name="marca-veh" type="number" placeholder="Teléfono">
+                        <label for="año-veh">Año</label>
+                        <input name="año-veh" type="number" placeholder="Teléfono">
                         <div class="buttons">
-                            <button class="cancel_button">ATRAS</button>   
-                            <button class="subir_datos"> AGREGAR </button>   
+                            <button class="cancel_button" type="button" >ATRAS</button>   
+                            <button class="subir_datos" type="button"> AGREGAR </button>   
                         </div>                   
                     </form>
                 </div>
-
             </section>
         <!-- Fin CHOFERES & COCHES -->
 
@@ -316,7 +295,7 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-cliente">
-                    <form class="alert_section" method="POST" action="../model/agregar/a_particulares.php">
+                    <form class="alert_section">
                         <label for="ln">Lista negra</label>
                         <select name="ln">
                             <option value="">--Seleccione opción</option>
@@ -370,7 +349,7 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-empresa">
-                    <form class="alert_section" method="POST" action="../model/agregar/a_empresas.php">
+                    <form class="alert_section">
                         <div class="conteiner_form">
                             <div>
                                 <label for="rut_empresa">RUT</label>
@@ -434,7 +413,7 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-reserva">
-                    <form class="alert_section" method="POST" action="../model/agregar/a_reservas.php">
+                    <form class="alert_section">
                         <div class="conteiner_form">
                             <div>
                                 <label for="tipo">Tipo</label>
@@ -505,7 +484,7 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-GDM">
-                    <form class="alert_section" method="POST" action="../model/agregar/a_mantenimiento.php">
+                    <form class="alert_section">
                         <label for="fecha_gdm">Fecha</label>
                         <input name="fecha_gdm" type="date">
                         <label for="concepto_gdm">Tipo de mantenimiento</label>
@@ -535,9 +514,8 @@
             </section>
         <!-- Fin GASTOS DE MANTENIMIENTO -->
     </main>
-    <script src="../view/js/jquery.min.js"></script>
     <script src="../view/js/personas.js"></script>
-    <script src="../view/js/menu.js"></script>
-    <script src="../view/js/agregar/add_operador.js"></script>
+    <!-- <script src="../view/js/agregar/add_operador.js"></script> -->
+    <!-- <script src="../view/js/agregar/add_chofer.js"></script> -->
 </body>
 </html>

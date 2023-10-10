@@ -1,12 +1,13 @@
+
+
 function tableData(parametro, jsonObj){
     let registro_seccion = document.querySelector(parametro);      
-    registro_seccion.innerHTML='';
+    registro_seccion.innerHTML = '';
     for (let i = 0; i < jsonObj.length; i++){
         let registro = document.createElement('tr');
         registro.classList.add('datos-admin');
         registro_seccion.appendChild(registro);
-        let pk = document.createElement('td');
-        let nombre = document.createElement('td');
+
         let consultar = document.createElement('td');
             consultar.classList.add('consultaRegistro');
             consultar.style.display = "table-cell";
@@ -14,44 +15,50 @@ function tableData(parametro, jsonObj){
             consultar.appendChild(simb_consultar);
             consultar.title = "Mas información";
             simb_consultar.classList.add('fa-solid','fa-eye');
+
+        let col1 = document.createElement('td');
+        let col2 = document.createElement('td');
+        let col3 = document.createElement('td');
+        let col4 = document.createElement('td');
+        let col5 = document.createElement('td');
+
             consultar.onclick = function(){
                 switch(parametro){
                     case '.registro-operadores':
                         alert(
-                            'Cedula: ' + jsonObj[i].pk + '\n' + 
-                            'Nombre: ' + jsonObj[i].nombre + '\n' +
-                            'Rol de usuario: ' + jsonObj[i].rol + '\n' +
-                            'Fecha de ingreso: ' + jsonObj[i].fechaing
+                            'Cedula: ' + jsonObj[i].col1 + '\n' + 
+                            'Nombre: ' + jsonObj[i].col2 + '\n' +
+                            'Fecha de ingreso: ' + jsonObj[i].col3
                         );
                     break;
                     case '.registro-choferes':
                         alert(
-                            'Cedula del chofer: ' + jsonObj[i].pk + '\n' +
-                            'Teléfono del chofer: ' + jsonObj[i].telefono
+                            'Cedula del chofer: ' + jsonObj[i].col1 + '\n' +
+                            'Teléfono del chofer: ' + jsonObj[i].col2
                         );
                     break;
                     case '.registro-cliente':
                         alert(
-                            'Teléfono: ' + jsonObj[i].telefono
+                            'Teléfono: ' + jsonObj[i].col1
                         );
                     break;
                     case '.registro-empresa':
                         alert(
-                            'Teléfono: ' + jsonObj[i].telefono + '\n' +
-                            'Email: ' + jsonObj[i].correo + '\n' +
+                            'Teléfono: ' + jsonObj[i].col1 + '\n' +
+                            'Email: ' + jsonObj[i].col2 + '\n' +
                             'Encargado de pagos: ' + '' + '\n' +
                             'Autorizado: ' + ''
                         );
                     break;
                     case '.registro-reserva':
                         alert(
-                            'Origen: ' + jsonObj[i].origen + '\n' +
-                            'Destino: ' + jsonObj[i].destino + '\n' + 
-                            'Fecha del viaje: ' + jsonObj[i].fecha_servicio + '\n' +
-                            'Fecha de reserva: ' + jsonObj[i].fecha_reserva + '\n' +
-                            'Hora: ' + jsonObj[i].hora_inicio + '\n' +
-                            'Distancia recorrida: ' + jsonObj[i].distancia_recorrida + '\n' +
-                            'Comentario: ' + jsonObj[i].comentario
+                            'Origen: ' + jsonObj[i].col1 + '\n' +
+                            'Destino: ' + jsonObj[i].col2 + '\n' + 
+                            'Fecha del viaje: ' + jsonObj[i].col3 + '\n' +
+                            'Fecha de reserva: ' + jsonObj[i].col4 + '\n' +
+                            'Hora: ' + jsonObj[i].col5 + '\n' +
+                            'Distancia recorrida: ' + jsonObj[i].col6 + '\n' +
+                            'Comentario: ' + jsonObj[i].col7
                         );
                     break;
                 }
@@ -74,154 +81,198 @@ function tableData(parametro, jsonObj){
             eliminar.onclick = function() {
                 alert('eliminar' + [i]);
             }
-            switch(parametro){
-                case '.registro-operadores':
-                    pk.textContent = jsonObj[i].pk;
-                    nombre.textContent = jsonObj[i].nombre;
-                    let rol_user = document.createElement('td');
-                        rol_user.classList.add('bg-td')
-                    let fechaIng = document.createElement('td');
-                        fechaIng.classList.add('bg-td');
-                    fechaIng.textContent = jsonObj[i].fechaing_operador
-                    registro.appendChild(pk);
-                    registro.appendChild(nombre);
-                    registro.appendChild(fechaIng);
-                break;
-                case '.registro-choferes':
-                    pk.textContent = jsonObj[i].pk;
-                    nombre.textContent = jsonObj[i].nombre
-                    let telefono_chofer = document.createElement('td');
-                        telefono_chofer.classList.add('bg-td');
-                        telefono_chofer.textContent = jsonObj[i].telefono;
-                    let matricula = document.createElement('td');
-                        matricula.textContent = jsonObj[i].matricula;
-                    let modelo = document.createElement('td');
-                        modelo.classList.add('bg-td');
-                        modelo.textContent = jsonObj[i].modelo;
-                    let marca = document.createElement('td');
-                        marca.textContent = jsonObj[i].marca;
-                    let año = document.createElement('td');
-                        año.classList.add('bg-td');
-                        año.textContent = jsonObj[i].año;
-                        registro.appendChild(matricula);
-                        registro.appendChild(nombre);
-                        registro.appendChild(modelo);
-                        registro.appendChild(marca);
-                        registro.appendChild(año);
-                break;
-                case '.registro-cliente':
-                    pk.textContent = jsonObj[i].pk;
-                    let lista_negra = document.createElement('td');
-                    let lnspan = document.createElement('span');
-                        lista_negra.appendChild(lnspan);
-                        lnspan.style.padding = "5px";
-                        lnspan.style.borderRadius = "5px"
-                        lnspan.style.color = "white";
-                        lnspan.textContent = jsonObj[i].lista_negra;
-                        if (jsonObj[i].lista_negra == '0'){
-                            lnspan.style.backgroundColor = "green";
-                            lnspan.textContent = "NO"
-                        } else {
-                            lnspan.style.backgroundColor = "red";
-                            lnspan.textContent = "SI"
-                        }
-                    let nombre_cliente = document.createElement('td');
-                        nombre_cliente.classList.add('bg-td');
-                        nombre_cliente.textContent = jsonObj[i].nombre;
-                    let apellido_cliente = document.createElement('td');
-                        apellido_cliente.textContent = jsonObj[i].apellido;
-                    let direccion_cliente = document.createElement('td');
-                        direccion_cliente.textContent = jsonObj[i].direccion;
-                        direccion_cliente.classList.add('bg-td');
-                    registro.appendChild(pk);
-                    registro.appendChild(lista_negra);
-                    registro.appendChild(nombre_cliente)
-                    registro.appendChild(apellido_cliente);
-                    registro.appendChild(direccion_cliente);
-                break;
-                case '.registro-empresa':
-                    pk.textContent = jsonObj[i].pk;
-                    let empresa_ln = document.createElement('td');
-                        lnempresa = document.createElement('span');
-                        lnempresa.textContent = jsonObj[i].lista_negra;
-                        empresa_ln.appendChild(lnempresa);
-                        if(jsonObj[i].lista_negra == '1'){
-                            lnempresa.style.backgroundColor = "red";
-                            lnempresa.style.padding = "5px";
-                            lnempresa.style.borderRadius = "5px"
-                            lnempresa.style.color = "white";
-                            lnempresa.textContent = "SI"
-                        } else {
-                            lnempresa.style.backgroundColor = "green";
-                            lnempresa.style.padding = "5px";
-                            lnempresa.style.borderRadius = "5px"
-                            lnempresa.style.color = "white";
-                            lnempresa.textContent = "NO"
-                        }  
-                    let nombre_fantasia = document.createElement('td');
-                        nombre_fantasia.classList.add('bg-td');
-                        nombre_fantasia.textContent = jsonObj[i].nombre_fantasia;
-                    let razon_social = document.createElement('td');
-                        razon_social.textContent = jsonObj[i].razon_social;
-                    let direccion_empresa = document.createElement('td');
-                        direccion_empresa.classList.add('bg-td');
-                        direccion_empresa.textContent = jsonObj[i].direccion
-                    let email_empresa = document.createElement('td');
-                        email_empresa.classList.add('bg-td');
-                        registro.appendChild(pk);
-                        registro.appendChild(empresa_ln);
-                        registro.appendChild(nombre_fantasia);
-                        registro.appendChild(razon_social)
-                        registro.appendChild(direccion_empresa);
-                break;
-                case '.registro-reserva':
-                    pk.textContent = jsonObj[i].pk;
-                    let tipo_reserva = document.createElement('td');
-                        lnstipo_pasajero = document.createElement('span');  
-                        tipo_reserva.appendChild(lnstipo_pasajero);
-                        lnstipo_pasajero.textContent = jsonObj[i].tipo;
-                        if (jsonObj[i].tipo == "PARTICULAR"){
-                            lnstipo_pasajero.style.backgroundColor = "red";
-                        } else {
-                            lnstipo_pasajero.style.backgroundColor = "orange";
-                        }
-                        lnstipo_pasajero.style.padding = "5px";
-                        lnstipo_pasajero.style.borderRadius = "5px";
-                        lnstipo_pasajero.style.color = "white";
-                    let nombre_pasajero = document.createElement('td');                        
-                        nombre_pasajero.classList.add('bg-td');
-                        nombre_pasajero.textContent = jsonObj[i].nombre;
-                    let cedula_chofer = document.createElement('td');
-                        cedula_chofer.textContent = jsonObj[i].cedula_chofer;
-                    let telefono = document.createElement('td');
-                        telefono.classList.add('bg-td');
-                        telefono.textContent = jsonObj[i].telefono;
-                        registro.appendChild(pk);
-                        registro.appendChild(tipo_reserva);
-                        registro.appendChild(nombre_pasajero);
-                        registro.appendChild(cedula_chofer);
-                        registro.appendChild(telefono);
-                break;
-                case '.registro-GDM':
-                    pk.textContent = jsonObj[i].pk;
-                    let fecha = document.createElement('td');
-                    let tipo_mantenimiento = document.createElement('td');
-                        tipo_mantenimiento.classList.add('bg-td')
-                        tipo_mantenimiento.textContent = jsonObj[i].tipo_mantenimiento;
-                    let gastos_mantenimiento = document.createElement('td');
-                        gastos_mantenimiento.textContent = jsonObj[i].gastos_mantenimiento;
-                    let comentarios = document.createElement('td');
-                        comentarios.classList.add('bg-td')
-                        comentarios.textContent = jsonObj[i].comentarios;
-                        registro.appendChild(pk);
-                        registro.appendChild(fecha);
-                        registro.appendChild(tipo_mantenimiento);
-                        registro.appendChild(gastos_mantenimiento);
-                        registro.appendChild(comentarios);
-                break;
+
+            function data(parametro){
+                if(parametro != '.registro-operadores'){
+                    col1.textContent = jsonObj[i].col1;
+                    col2.textContent = jsonObj[i].col2;
+                    col3.textContent = jsonObj[i].col3;
+                    col4.textContent = jsonObj[i].col4;
+                    col5.textContent = jsonObj[i].col5;
+                    registro.appendChild(col1);
+                    registro.appendChild(col2);
+                    registro.appendChild(col3);
+                    registro.appendChild(col4);
+                    registro.appendChild(col5);
+                } else {
+                    col1.textContent = jsonObj[i].col1;
+                    col2.textContent = jsonObj[i].col2;
+                    col3.textContent = jsonObj[i].col3;
+                    registro.appendChild(col1);
+                    registro.appendChild(col2);
+                    registro.appendChild(col3);
+                }
             }
+
+            data(parametro);
+            
             registro.appendChild(consultar);
             registro.appendChild(modificar);
             registro.appendChild(eliminar);
     }
+}
+
+let opciones_hilera = document.getElementsByClassName('opciones-hilera');
+for (let i = 0; i < opciones_hilera.length; i++){
+    opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+}
+opciones_hilera[0].classList.add('opciones-hilera-active');
+opciones_hilera[0].classList.remove('opciones-hilera-activeHover');
+function hileraRecorrido() {
+    for (let i = 0; i < opciones_hilera.length; i++){
+        opciones_hilera[i].classList.remove('opciones-hilera-active');
+        opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+    }
+}
+let bloque = document.getElementsByClassName('bloque');
+for (let i = 0; i < bloque.length; i++){
+    bloque[i].style.display = "none";
+}
+bloque[0].style.display = "block";
+
+function consultas(url, registro){
+    $.ajax({
+        url: url,
+        type: 'POST',
+        success: function(response){
+            let block = JSON.parse(response);
+            tableData(registro, block);
+        }
+    })
+}
+
+function llamado(rel){
+    alert('works');
+    switch (rel) {
+        case '#operador':
+            consultas('../model/listado/listado_operadores.php', '.registro-operadores');
+        break;
+        case '#chofer':
+            consultas('../model/listado/listado_choferes.php', '.registro-choferes');
+        break;
+        case '#particular':
+            consultas('../model/listado/listado_particulares.php', '.registro-cliente');
+        break;
+        case '#empresa':
+            consultas('../model/listado/listado_empresas.php', '.registro-empresa');
+        break;
+        case '#coches':
+            consultas('../model/listado/listado_coches.php', '.registro-chofer');
+        break;
+        case '#reserva':
+            consultas('../model/listado/listado_reservas.php', '.registro-reserva');
+        break;
+        case '#gastos-de-mantenimiento':
+            consultas('../model/listado/listado_mantenimiento.php', '.registro-GDM');
+        break;
+    }
+}
+
+let rel;
+function opcion_menu(ObjHtml) {
+    rel = ObjHtml.getAttribute("rel");
+    for (let i = 0; i < opciones_hilera.length; i++){
+        if(opciones_hilera[i].getAttribute('rel')==rel) {
+            opciones_hilera[i].classList.add('opciones-hilera-active');
+            opciones_hilera[i].classList.remove('opciones-hilera-activeHover');
+        } else {
+            opciones_hilera[i].classList.remove('opciones-hilera-active');
+            opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+        }
+    }
+    navbar();
+    bloque[0].style.display = "block";
+    for (let i = 0; i < bloque.length; i++){
+        bloque[i].style.display = "none";
+    }
+    let block = document.querySelector(rel);
+        block.style.display = "block";
+    
+    llamado(rel);
+}
+
+function ventanaSeccion(conteiner_section, BRS, closeWindow){
+    $(conteiner_section).css('display','none');
+    $(BRS).css('display','flex');
+    $(closeWindow).on('click',function(event){
+        event.preventDefault();
+        $(conteiner_section).css('display','block');
+        $(BRS).css('display','none');
+        llamado(rel);
+    });
+    navbar();
+}
+
+$('#logout').on('click',function(){
+   $('#alert-salir').css('display','grid')
+})
+
+$('#xmark-salir').on('click',function(){
+    $('#alert-salir').css('display','none');
+});
+
+let nav = document.querySelector('nav');
+    nav.style.left = '0%';
+
+var button_hilera = document.querySelector('.navbar_hilera');
+    button_hilera.onclick = function(){   
+        navbar();
+    }
+function nav_block(){
+    if (nav.style.left === '-200%'){
+        nav.style.left = '0%';
+        nav.style.animation = 'ani_nav 0.5s ease';
+    }
+}
+function navbar(){
+    if (nav.style.left === '0%'){
+        nav.style.animation = 'desani_nav 0.5s ease';
+        nav.style.left = '-200%';
+    }
+}
+
+class Chofer {
+    constructor(nombre, cedula, tel, matricula, marca, año, btn_chofer){
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.tel = tel;
+        this.matricula = matricula;
+        this.marca = marca;
+        this.año = año;
+    }
+}
+
+let subir_datos = document.querySelector('.subir_datos');
+    subir_datos.onclick = function(event){
+        event.preventDefault();
+        alert('hola')
+
+    // let nombre = document.querySelector('[name="name-chofer"]');
+    // let cedula = document.querySelector('[name="ci-chofer"]');
+    // let tel = document.querySelector('[name="tel-chofer"]');
+    // let matricula = document.querySelector('[name="matricula-veh"]');
+    // let marca = document.querySelector('[name="marca-veh"]');
+    // let año = document.querySelector('[name="año-veh"]');
+    
+    // $.ajax({
+    //     url: '../model/agregar/a_choferes.php',
+    //     type: 'POST',
+    //     data: {
+    //         nombre: nombre.value,
+    //         cedula: cedula.value,
+    //         tel: tel.value,
+    //         matricula: matricula.value,
+    //         marca: marca.value,
+    //         año: año.value,
+    //     },
+    //     success: function(response){
+    //         alert(response)
+    //     },
+    //     error: function(reject){
+    //         alert(reject);
+    //     }
+    // })
+
+    // let chofer = new Chofer(nombre, cedula, tel, matricula, marca, año);
+    // console.log(chofer);
 }

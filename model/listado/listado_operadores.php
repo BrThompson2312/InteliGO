@@ -1,24 +1,24 @@
-<?php
-    ini_set('display_errors', 'on');
+<?php require_once '../conexion.php';
 
-    require_once '../conexion.php';
+ini_set('display_errors', 'on');
 
-    $query = 'SELECT * FROM usuario ORDER BY nombre_usuario';
-    $result = mysqli_query($conn, $query);
-    $json = array();
+$query = 'SELECT * FROM usuario ORDER BY nombre_usuario';
+$result = mysqli_query($conn, $query);
+$json = array();
 
-    if($result){
-        while($row = mysqli_fetch_assoc($result)){
-            if ($row['rol_usuario'] == 'operador'){
-                $json[] = array(
-                    'pk' => $row['ci_usuario'],
-                    'nombre' => $row['nombre_usuario'],
-                    'fechaing_operador' => $row['fecha_ingreso'],
-                );
-            }
+if($result){
+    while($row = mysqli_fetch_assoc($result)){
+        if ($row['rol_usuario'] == 'operador'){
+            $json[] = array(
+                'col1' => $row['ci_usuario'],
+                'col2' => $row['nombre_usuario'],
+                'col3' => $row['fecha_ingreso'],
+            );
         }
-        echo json_encode($json);
-    } else {
-        echo 'Error';
-    };
+    }
+    echo json_encode($json);
+} else {
+    echo 'Error';
+};
+
 ?>

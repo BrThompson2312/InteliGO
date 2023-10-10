@@ -8,7 +8,7 @@
   background: var(--bg-operador);
 }
 
-.info-user div > span {
+.info-user div {
   background: var(--bg-operador);
 }
 
