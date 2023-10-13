@@ -16,10 +16,10 @@
             <img src="view/img/logofinal/blackLogo.png">
         </div>
         <span class="login"> LOGIN </span>
-        <form method="POST" action="model/login.php">
+        <form>
             <div class="form-group">
                 <i class="fa-solid fa-id-card"></i>
-                <input type="text" name="cedula" id="user" required>
+                <input type="text" name="cedula" id="cedula" required>
                 <label for="cedula"> Cédula </label>
             </div>
             <div class="form-group">
@@ -28,7 +28,7 @@
                 <input type="password" name="pass" id="pass" required>
                 <label for="pass"> Contraseña </label>
             </div>
-            <button type="submit" id="login-user">
+            <button type="button" id="login-user">
                 <ion-icon name="log-in"></ion-icon>
                 <span> INGRESAR </span>
             </button>

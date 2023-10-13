@@ -3,23 +3,24 @@
 :root {
   --bg-operador: #299402;
 }
-
+nav {
+  border-right: 5px solid var(--bg-operador);
+}
+.spanPromotion {
+  background: var(--bg-operador);
+}
 #inicio main span {
   background: var(--bg-operador);
 }
-
-.info-user div {
-  background: var(--bg-operador);
-}
-
 .indicadores {
   background: var(--bg-operador);
 }
-
 .opciones-hilera-active {
   background: var(--bg-operador);
 }
-
+.opciones-hilera-activeHover {
+  background-color: var(--bg-operador);
+}
 ::selection {
   background: var(--bg-operador);
 }

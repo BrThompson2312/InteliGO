@@ -1,0 +1,137 @@
+.consultas {
+  width: 100%;
+}
+.consultas td {
+  color: black;
+  padding: 10px;
+  border: none;
+}
+.consultas td:nth-child(1) {
+  width: 100px;
+}
+.consultas td:nth-child(2) {
+  background-color: #BDBDBD;
+}
+.consultas td:nth-child(3), .consultas td:nth-child(4), .consultas td:nth-child(5) {
+  width: 50px;
+}
+.conteiner-section {
+  color: white;
+}
+.conteiner-section > * {
+  margin: 10px;
+}
+.conteiner-section form > * {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.conteiner-section form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.conteiner-section table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+.indicadores {
+    font-family: "Inter-SemiBold";
+    color: white;
+    text-align: center;
+  }
+  .indicadores th {
+    padding: 5px;
+  }
+  .datos-admin {
+    width: 100%;
+    font-weight: bold;
+  }
+  .datos-admin td {
+    background-color: #ced4da;
+    color: black;
+    padding: 10px;
+    text-align: center;
+  }
+  .datos-admin td:where(:nth-child(1), :nth-child(3), :nth-child(5)) {
+    background-color: #adb5bd;
+    background: linear-gradient(rgba(206, 212, 218, 0.7), rgba(206, 212, 218, 0.7));
+  }
+  .datos-admin .bg-td {
+    background: #adb5bd;
+  }
+  .datos-admin .consultaRegistro {
+    background: #2eb405 !important;
+    display: table-cell;
+  }
+  .datos-admin .consultaRegistro:hover {
+    background: #31a001 !important;
+  }
+  .datos-admin .modificarRegistro {
+    background: #ffc107 !important;
+  }
+  .datos-admin .modificarRegistro:hover {
+    background: #cc9a06 !important;
+  }
+  .datos-admin .eliminarRegistro {
+    background: #dc3545 !important;
+  }
+  .datos-admin .eliminarRegistro:hover {
+    background: #b02a37 !important;
+  }
+  .datos-admin :where(.consultaRegistro, .modificarRegistro, .eliminarRegistro){
+    display: table-cell !important;
+    text-align: center;
+    cursor: pointer;
+    width: 50px;
+  }
+  :where(.registro-operadores, .registro-GDM) .consultaRegistro {
+    display: none !important;
+  }
+  
+  @media (max-width: 700px){
+    .datos-admin .consultaRegistro {
+      display: table-cell !important;
+    }
+    .datos-admin td:where(:nth-child(5)), .indicadores th:where(:nth-child(5)) {
+      display: none;
+    }
+  }
+  @media (max-width: 600px){
+    .datos-admin .consultaRegistro {
+      display: table-cell !important;
+    }
+    .datos-admin td:where(:nth-child(4)), .indicadores th:where(:nth-child(4)) {
+      display: none;
+    }
+  }
+  @media (max-width: 500px){
+    .datos-admin .consultaRegistro {
+      display: table-cell !important;
+    }
+    .datos-admin td:nth-child(3), .indicadores th:where(:nth-child(3)) {
+      display: none;
+    }
+  }
+  @media (max-width: 400px){
+    .datos-admin .consultaRegistro {
+      display: table-cell !important;
+    }
+    .datos-admin td:where(:nth-child(2)), .indicadores th:where(:nth-child(2)) {
+      display: none;
+    }
+  }
+
+/* Operadores */
+@media (max-width: 700px){
+  .registro-operadores .datos-admin .consultaRegistro {
+    display: none !important;
+  }
+}
+@media (max-width: 500px){
+  .registro-operadores .datos-admin .consultaRegistro {
+    display: table-cell !important;
+  }
+  .datos-admin td:where(:nth-child(5)), .indicadores th:where(:nth-child(5)) {
+    display: none;
+  }
+}

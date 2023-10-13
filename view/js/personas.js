@@ -1,5 +1,3 @@
-
-
 function tableData(parametro, jsonObj){
     let registro_seccion = document.querySelector(parametro);      
     registro_seccion.innerHTML = '';
@@ -33,8 +31,8 @@ function tableData(parametro, jsonObj){
                     break;
                     case '.registro-choferes':
                         alert(
-                            'Cedula del chofer: ' + jsonObj[i].col1 + '\n' +
-                            'Teléfono del chofer: ' + jsonObj[i].col2
+                            'Marca: ' + jsonObj[i].col6 + '\n' +
+                            'Año: ' + jsonObj[i].col7
                         );
                     break;
                     case '.registro-cliente':
@@ -142,7 +140,6 @@ function consultas(url, registro){
 }
 
 function llamado(rel){
-    alert('works');
     switch (rel) {
         case '#operador':
             consultas('../model/listado/listado_operadores.php', '.registro-operadores');
@@ -186,7 +183,12 @@ function opcion_menu(ObjHtml) {
         bloque[i].style.display = "none";
     }
     let block = document.querySelector(rel);
-        block.style.display = "block";
+        if(rel == '#acercaDe'){
+            block.style.display = "flex";
+        } else {
+            block.style.display = "block";
+        }
+        
     
     llamado(rel);
 }
@@ -212,7 +214,7 @@ $('#xmark-salir').on('click',function(){
 });
 
 let nav = document.querySelector('nav');
-    nav.style.left = '0%';
+    nav.style.left = '-200%';
 
 var button_hilera = document.querySelector('.navbar_hilera');
     button_hilera.onclick = function(){   
@@ -229,50 +231,4 @@ function navbar(){
         nav.style.animation = 'desani_nav 0.5s ease';
         nav.style.left = '-200%';
     }
-}
-
-class Chofer {
-    constructor(nombre, cedula, tel, matricula, marca, año, btn_chofer){
-        this.nombre = nombre;
-        this.cedula = cedula;
-        this.tel = tel;
-        this.matricula = matricula;
-        this.marca = marca;
-        this.año = año;
-    }
-}
-
-let subir_datos = document.querySelector('.subir_datos');
-    subir_datos.onclick = function(event){
-        event.preventDefault();
-        alert('hola')
-
-    // let nombre = document.querySelector('[name="name-chofer"]');
-    // let cedula = document.querySelector('[name="ci-chofer"]');
-    // let tel = document.querySelector('[name="tel-chofer"]');
-    // let matricula = document.querySelector('[name="matricula-veh"]');
-    // let marca = document.querySelector('[name="marca-veh"]');
-    // let año = document.querySelector('[name="año-veh"]');
-    
-    // $.ajax({
-    //     url: '../model/agregar/a_choferes.php',
-    //     type: 'POST',
-    //     data: {
-    //         nombre: nombre.value,
-    //         cedula: cedula.value,
-    //         tel: tel.value,
-    //         matricula: matricula.value,
-    //         marca: marca.value,
-    //         año: año.value,
-    //     },
-    //     success: function(response){
-    //         alert(response)
-    //     },
-    //     error: function(reject){
-    //         alert(reject);
-    //     }
-    // })
-
-    // let chofer = new Chofer(nombre, cedula, tel, matricula, marca, año);
-    // console.log(chofer);
 }

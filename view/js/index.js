@@ -1,7 +1,8 @@
+let pass = document.querySelector("#pass");
 function seeingPassword() {
     var eye = document.getElementById("seePass");
     var not_eye = document.getElementById("not-seePass");
-    let pass = document.querySelector("#pass");
+    
 
     if (pass.type == "password") {
         eye.style.opacity = "0";
@@ -13,3 +14,27 @@ function seeingPassword() {
         pass.type = "password";
     }
 }
+
+let cedula = document.querySelector('#cedula');
+let login_user = document.querySelector("#login-user");
+    login_user.onclick = function(event){
+        event.preventDefault()
+        if (cedula.value == '' || pass.value == ''){
+            alert('campos vacios')
+        } else {
+            $.ajax({
+                url: 'model/login.php',
+                type: 'POST',
+                data: {
+                    cedula: cedula.value,
+                    pass: pass.value
+                }, success: function(response){
+                   if (response == true){
+                        window.location.href = 'model/menu.php';
+                   } else {
+                       alert(response);
+                   }
+                }
+            })
+        }
+    }

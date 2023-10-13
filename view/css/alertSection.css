@@ -19,7 +19,6 @@
     padding: 1em;
 }
 .alert_section label {
-    /* background-color: darkslategray; */
     border-radius: 10px;
     text-transform: uppercase;
     font-weight: bold;
@@ -50,9 +49,7 @@
     overflow: hidden;
     padding-block: 0em 2em;
 }
-
 /* CONTEINER FORM */
-
     .alert_section .conteiner_form {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -75,9 +72,7 @@
     .alert_section .conteiner_form :where(input, textarea) {
         margin: 10px 10px 10px 10px;
     }
-
 /* CONTEINER FORM */
-
 .buttons {
     display: flex;
     flex-direction: row;

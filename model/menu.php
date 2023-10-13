@@ -41,11 +41,11 @@
                     <?php
                         if ($tipoUsuario == 'administrador') {
                             ?>
-                                <h3><?php echo $_SESSION['nombreUsuario'];?></h3><span>|</span><span>Administrador</span>
+                                <span class="spanPromotion"><span> <?php echo $_SESSION['nombreUsuario'];?> </span><span> | </span><span> Administrador </span></span>
                             <?php
                         } else {
                             ?>
-                                <h3><?php echo $_SESSION['nombreUsuario'];?></h3><span>|</span><span>Operador</span>
+                                <span><?php echo $_SESSION['nombreUsuario'];?></span><span>|</span><span>Operador</span>
                             <?php 
                         } ?>
                 </div>
@@ -56,15 +56,27 @@
                 <ion-icon name="log-out"></ion-icon>
                 <span>Cerrar Sesión</span>
             </div>
-            <button class="opciones-hilera" id="home" rel="#inicio" onclick="opcion_menu(this)"> 
-                <i class="fa-solid fa-house-chimney"></i>
+            <button class="opciones-hilera" rel="#inicio" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-person"></i>
                 <span>Home</span>
             </button>
+            <button class="opciones-hilera" rel="#estadistica" onclick="opcion_menu(this)"> 
+                <span class="rellenoColor"></span>
+                <ion-icon name="stats"></ion-icon>
+                <span>Estadísticas</span>
+            </button>
+            <!-- <script>
+                const btnUploadFile = document.querySelector(".opciones-hilera");
+                    function setButtonProgress(button, percent) {
+                    const textElement = button.querySelector(".button__text");
+                    button.querySelector(".button__progress").style.width = `${percent}%`;
+                }
+            </script> -->
             <?php
                 // print_r($_SESSION);
                 if($tipoUsuario=='administrador') {
                 ?>
-                    <button class="opciones-hilera" rel="#operador" onclick="opcion_menu(this)"> 
+                    <button class="opciones-hilera" rel="#operador" onclick="opcion_menu(this)">
                         <ion-icon name="people"></ion-icon>
                         <span>Operadores</span> 
                     </button>
@@ -75,7 +87,7 @@
                 <?php
                 }
             ?>
-            <button class="opciones-hilera" rel="#chofer" onclick="opcion_menu(this)"> 
+            <button class="opciones-hilera" rel="#chofer" onclick="opcion_menu(this)">
                 <i class="fi fi-ss-steering-wheel"></i>
                 <span>Coches & Choferes</span> 
             </button>
@@ -93,35 +105,43 @@
             </button>
             <button class="opciones-hilera" rel="#gastos-de-mantenimiento" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-wrench"></i>
-                <span>Gastos de mantenimiento</span>
+                <span>Mantenimiento</span>
+            </button>
+            <button class="opciones-hilera" rel="#acercaDe" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-info"></i>
+                <span>Acerca de</span>
             </button>
         </section>
     </nav>
     <main>
         <section class="bloque" id="inicio">
-            <header>
-                <i id="active-nav" class="fa-solid fa-bars navbar_block" onclick="nav_block()" ></i>
-                <img src="../view/img/logofinal/whiteLogo.png">
-            </header>
+            <i class="fa-solid fa-bars navbar_block" onclick="nav_block()" ></i>
             <main>
                 <h1> BIENVENIDO DE NUEVO </h1>
                 <?php
                     if ($tipoUsuario == 'administrador') {
                         ?>
-                            <span><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Administrador</span>
+                            <span class="spanPromotion"><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Administrador</span>
                         <?php
                     } else {
                         ?>
-                            <span><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Operador</span>
+                            <span class="spanPromotion"><?php echo $_SESSION['nombreUsuario'];?> <span> | </span> Operador</span>
                         <?php
                     }
                 ?>
             </main>
-            <footer>
-                <h5>POWERED BY</h5>
-                <img src="../view/img/logobk.png">
-            </footer>
         </section>
+        <!-- Inicio ESTADISTICAS -->
+        <section class="bloque" id="estadistica">
+            <div class="conteiner-section conteiner-eliminados">
+                <div class="titulo-section">
+                    <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                    <i class="fa-solid fa-person-circle-minus navbar_icon"></i>
+                    <h2>ESTADÍSTICA</h2>
+                </div>
+            </div>
+        </section>            
+        <!-- Fin ESTADISTICAS -->
         <?php
                 if ($tipoUsuario == 'administrador') {
                 ?>
@@ -151,24 +171,20 @@
                     </table>
                 </div>
                 <div class="block_relative_section BRS-operador">
-                    <form class="alert_section">
-                        <label for="nombre-operador">Nombre completo</label>
-                        <input name="nombre-operador" type="text" placeholder="Nombre del empleado">
+                    <div class="alert_section">
                         <label for="ci-operador">Cedula</label>
                         <input name="ci-operador" type="number" placeholder="Cédula">
-                        <label for="edad-operador">Edad</label>
-                        <input name="edad-operador" type="number" placeholder="Edad">
+                        <label for="nombre-operador">Nombre completo</label>
+                        <input name="nombre-operador" type="text" placeholder="Nombre del empleado">
                         <label for="contrasena-operador">Contraseña</label>
                         <input name="contrasena-operador" type="text" placeholder="Contraseña">
-                        <label for="rol-operador">Rol del usuario</label>
-                        <input name="rol-operador" type="text" value="Operador">
-                        <label for="fechaing-operador">Fecha de ingreso</label>
-                        <input type="datetime" name="fechaing-operador" value="<?php echo date("Y-m-d");?>" required readonly>
+                        <label for="fecha-operador">Fecha de ingreso</label>
+                        <input type="datetime" name="fecha-operador" value="<?php echo date("Y-m-d");?>" required readonly>
                         <div class="buttons">
                             <button type="button" class="cancel_button"> ATRAS </button>   
-                            <button class="subir_datos">AGREGAR</button>
+                            <button class="subir_datos" onclick="btn_switch('operador')">AGREGAR</button>
                         </div>
-                    </form>
+                </div>
                 </div>
             </section>
         <!-- Fin OPERADORES -->
@@ -234,11 +250,11 @@
                     <table>
                         <thead>
                             <tr class="indicadores">
+                                <th>CEDULA</th>
                                 <th>MATRÍCULA</th>
-                                <th>CHOFER ASIGNADO</th>
-                                <th>MODELO DEL AUTO</th>
+                                <th>CHOFER</th>
+                                <th>TELEFONO</th>
                                 <th>MARCA</th>
-                                <th>AÑO</th>
                             </tr>
                         </thead>
                         <tbody class="registro-choferes"></tbody>
@@ -248,19 +264,21 @@
                     <form class="alert_section">
                         <label for="ci-chofer">Cedula</label>
                         <input name="ci-chofer" type="number" placeholder="Cédula">
-                        <label for="name-chofer">Nombre completo</label>
-                        <input name="name-chofer" type="text" placeholder="Nombre completo">     
+                        <label for="nombre-chofer">Nombre completo</label>
+                        <input name="nombre-chofer" type="text" placeholder="Nombre completo">     
                         <label for="tel-chofer">Teléfono</label>
                         <input name="tel-chofer" type="number" placeholder="Teléfono">
                         <label for="matricula-veh">Matrícula</label>
-                        <input name="matricula-veh" type="number" placeholder="Teléfono">
+                        <input name="modelo-veh" type="text" placeholder="Matrícula">
+                        <label for="modelo-veh">Modelo</label>
+                        <input name="matricula-veh" type="text" placeholder="Matrícula">
                         <label for="marcha-veh">Marca</label>
-                        <input name="marca-veh" type="number" placeholder="Teléfono">
+                        <input name="marca-veh" type="text" placeholder="Marca">
                         <label for="año-veh">Año</label>
-                        <input name="año-veh" type="number" placeholder="Teléfono">
+                        <input name="año-veh" type="number" placeholder="Año">
                         <div class="buttons">
                             <button class="cancel_button" type="button" >ATRAS</button>   
-                            <button class="subir_datos" type="button"> AGREGAR </button>   
+                            <button class="subir_datos" type="button" onclick="btn_switch('chofer')"> AGREGAR </button>   
                         </div>                   
                     </form>
                 </div>
@@ -296,25 +314,25 @@
                 </div>
                 <div class="block_relative_section BRS-cliente">
                     <form class="alert_section">
-                        <label for="ln">Lista negra</label>
-                        <select name="ln">
+                        <label for="ci-particular">Cedula</label>
+                        <input name="ci-particular" type="number" placeholder="Cedula">
+                        <label for="nombre-particular">Nombre</label>
+                        <input name="nombre-particular" type="text" placeholder="Nombre">
+                        <label for="apellido-particular">Apellido</label>
+                        <input name="apellido-particular" type="text" placeholder="Apellido">
+                        <label for="ln-particular">Lista negra</label>
+                        <select name="ln-particular">
                             <option value="">--Seleccione opción</option>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
                         </select>
-                        <label for="nombre">Nombre</label>
-                        <input name="nombre" type="text" placeholder="Nombre">
-                        <label for="apellido">Apellido</label>
-                        <input name="apellido" type="text" placeholder="Apellido">
-                        <label for="cedula">Cedula</label>
-                        <input name="cedula" type="number" placeholder="Cedula">
-                        <label for="direccion">Dirección</label>
-                        <input name="direccion" type="text" placeholder="Dirección">
-                        <label for="tel">Teléfono</label>
-                        <input name="tel" type="number" placeholder="Teléfono">
+                        <label for="direccion-particular">Dirección</label>
+                        <input name="direccion-particular" type="text" placeholder="Dirección">
+                        <label for="tel-particular">Teléfono</label>
+                        <input name="tel-particular" type="number" placeholder="Teléfono">
                         <div class="buttons">
                             <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos"> AGREGAR </button>   
+                            <button class="subir_datos" type="button" onclick="btn_switch('particular')"> AGREGAR </button>   
                         </div>                      
                     </form>
                 </div>
@@ -360,7 +378,7 @@
                                     <option value="1">SI</option>
                                     <option value="0">NO</option>
                                 </select>
-                                <label for="nombre_empresa">Nombre fantasía de la empresa</label>
+                                <label for="nombre_empresa">Nombre fantasía</label>
                                 <input name="nombre_empresa" type="text" placeholder="Nombre fantasía" required>
                                 <label for="rs_empresa">Razón social</label>
                                 <input name="rs_empresa" type="text" placeholder="Razón social" required>     
@@ -370,15 +388,15 @@
                                 <input name="direccion_empresa" type="text" placeholder="Dirección" required>
                                 <label for="tel_empresa">Teléfono</label>
                                 <input name="tel_empresa" type="number" placeholder="Teléfono" required>
-                                <label for="contacto_empresa">Persona de contacto</label>
-                                <input name="contacto_empresa" type="text" placeholder="Persona de contacto" required>
+                                <label for="nombre_empresa">Persona de contacto</label>
+                                <input name="nombre_empresa" type="text" placeholder="Persona de contacto" required>
                                 <label for="correo_empresa">Correo</label>
                                 <input name="correo_empresa" type="email" placeholder="Correo" required>
                             </div>
                         </div>
                         <div class="buttons">
                             <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos"> AGREGAR </button>   
+                            <button class="subir_datos" type="button" onclick="btn_switch('empresa')"> AGREGAR </button>   
                         </div>                             
                     </form>
                 </div>
@@ -416,39 +434,39 @@
                     <form class="alert_section">
                         <div class="conteiner_form">
                             <div>
-                                <label for="tipo">Tipo</label>
-                                <select name="tipo">
+                                <label for="tipo-reserva">Tipo</label>
+                                <select name="tipo-reserva">
                                     <option value="">--Seleccione opción</option>
                                     <option value="Empresa">Empresa</option>
                                     <option value="Particular">Particular</option>
                                 </select>
-                                <label for="pasajero">Nombre del pasajero</label>
-                                <input name="pasajero" type="text" placeholder="Nombre">
-                                <label for="chofer">Chofer</label>
-                                <input name="chofer" type="number" placeholder="Cédula">
-                                <label for="fecha_viaje">Fecha del viaje</label>
-                                <input name="fecha_viaje" type="text" placeholder="Fecha del servicio a realizar">
-                                <label for="hora">Hora</label>
-                                <input name="hora" type="number" placeholder="hrs">
+                                <label for="pasajero-reserva">Nombre del pasajero</label>
+                                <input name="pasajero-reserva" type="text" placeholder="Nombre">
+                                <label for="chofer-reserva">Chofer</label>
+                                <input name="chofer-reserva" type="number" placeholder="Cédula">
+                                <label for="fecha_viaje-reserva">Fecha del viaje</label>
+                                <input name="fecha_viaje-reserva" type="text" placeholder="Fecha del servicio a realizar">
+                                <label for="hora-reserva">Hora</label>
+                                <input name="hora-reserva" type="number" placeholder="hrs">
                             </div>
                             <div>
-                                <label for="tel">Teléfono del pasajero</label>
-                                <input name="tel" type="number" placeholder="Teléfono">
-                                <label for="origen">Origen</label>
-                                <input name="origen" type="number" placeholder="Origen">
-                                <label for="fecha_reserva">Fecha de reserva</label>
-                                <input name="fecha_reserva" type="text" value="<?php echo date("d:m:Y")?>" readonly>
-                                <label for="distancia">Distancia</label>
-                                <input name="distancia" type="text" placeholder="km">
-                                <label for="destino">Destino</label>
-                                <input name="destino" type="number" placeholder="Destino">
+                                <label for="tel-reserva">Teléfono del pasajero</label>
+                                <input name="tel-reserva" type="number" placeholder="Teléfono">
+                                <label for="origen-reserva">Origen</label>
+                                <input name="origen-reserva" type="number" placeholder="Origen">
+                                <label for="fecha_reserva-reserva">Fecha de reserva</label>
+                                <input name="fecha_reserva-reserva" type="text" value="<?php echo date("d:m:Y")?>" readonly>
+                                <label for="distancia-reserva">Distancia</label>
+                                <input name="distancia-reserva" type="text" placeholder="km">
+                                <label for="destino-reserva">Destino</label>
+                                <input name="destino-reserva" type="number" placeholder="Destino">
                             </div>
                         </div>
-                        <label for="comentario">Comentario</label>
-                        <textarea name="comentario" placeholder="Comentario"></textarea>
+                        <label for="comentario-reserva">Comentario</label>
+                        <textarea name="comentario-reserva" placeholder="Comentario"></textarea>
                         <div class="buttons">
                             <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos"> AGREGAR </button>   
+                            <button class="subir_datos" type="button" onclick="btn_switch('reserva')"> AGREGAR </button>   
                         </div>                          
                     </form>
                 </div>
@@ -461,7 +479,7 @@
                     <div class="titulo-section">
                         <i class="fa-solid fa-bars navbar_block" onclick="nav_block()" ></i>
                         <i class="fa-solid fa-wrench navbar_icon"></i>
-                        <h2>GASTOS DE MANTENIMIENTO</h2>
+                        <h2>MANTENIMIENTO</h2>
                     </div>
                     <form method="POST" action="controller/agregar/a_mantenimiento.php">
                         <div class="inputs-busqueda">
@@ -469,7 +487,7 @@
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', '.cancel_button')" type="button">AGREGAR</button>
                         </div>
                     </form>
-                    <table >
+                    <table>
                         <thead>
                             <tr class="indicadores">
                                 <th>COD</th>
@@ -479,8 +497,7 @@
                                 <th>COMENTARIOS</th>
                             </tr>
                         </thead>
-                        <tbody class="registro-GDM">
-                        </tbody>
+                        <tbody class="registro-GDM"></tbody>
                     </table>
                 </div>
                 <div class="block_relative_section BRS-GDM">
@@ -507,15 +524,26 @@
                         <textarea name="comentario_gdm" cols="30" rows="10" placeholder="Comentario"></textarea>
                         <div class="buttons">
                             <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos"> AGREGAR </button>   
+                            <button class="subir_datos" type="button" onclick="btn_switch('mantenimiento')"> AGREGAR </button>   
                         </div>                             
                     </form>
                 </div>
             </section>
         <!-- Fin GASTOS DE MANTENIMIENTO -->
+        <section class="bloque" id="acercaDe">
+            <main>
+                <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                <div>
+                    <img src="../view/img/logofinal/whiteLogo.png" alt="">
+                </div>
+                <div>
+                    <span class="spanPromotion">Powered by</span>
+                    <img src="../view/img/logobk.png" alt="">
+                </div>
+            </main>
+        </section>            
     </main>
     <script src="../view/js/personas.js"></script>
-    <!-- <script src="../view/js/agregar/add_operador.js"></script> -->
-    <!-- <script src="../view/js/agregar/add_chofer.js"></script> -->
+    <script src="../view/js/add_persona.js"></script>
 </body>
 </html>

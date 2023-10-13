@@ -1,7 +1,7 @@
-<?php
+<?php require_once 'conexion.php';
 
 ini_set('display_errors','on');
-require_once 'conexion.php';
+
 session_start();
 
 $user = $_POST['cedula'];
@@ -17,13 +17,13 @@ if($ejQuery){
         if($row['contraseña'] == $pass)  {
             $_SESSION['tipoUsuario'] = $row['rol_usuario'];
             $_SESSION['nombreUsuario']  = $row['nombre_usuario'];
-            header('location: menu.php');
+            echo true;
         } else {
-            header('location: ../index.php?error=1');
+            echo 'Campos ingresados incorrectos o usuario no existente';
         }
     }
     if(!$flgEncontroUsuario) {
-        header('location: ../index.php?&error=1');
+        echo 'Campos ingresados incorrectos o usuario no existente';
     }
 } else {
     echo 'Fallo en el $result';
