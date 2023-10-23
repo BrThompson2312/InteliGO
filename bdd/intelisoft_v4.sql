@@ -3,6 +3,61 @@ use IntelisoftBDD;
 show tables;
 
 
+select servicio.cod_servicio, empresa.cod_cliente, nombre_pasajero, realizan.ci as ci_chofer, telefono as telefono_pasajero, origen, destino, reserva.fecha as fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario from servicio
+join reserva on reserva.cod_servicio = servicio.cod_servicio
+join cliente on cliente.cod_cliente = reserva.cod_cliente
+join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente
+join realizan on realizan.cod_servicio = servicio.cod_servicio
+join empresa on empresa.cod_cliente = cliente.cod_cliente;
+
+select chofer.ci, coches.matricula, nombre, modelo, marca, año, telefono from maneja
+join chofer on chofer.ci = maneja.ci
+join coches on coches.matricula = maneja.matricula
+join tel_chofer on tel_chofer.ci = chofer.ci;
+
+select * from usuario;
+insert into usuario values(2, 'operador', 'operador', 'operador', fecha_ingreso);
+
+select * from chofer;
+select * from tel_chofer;
+select * from coches;
+
+use IntelisoftBDD;
+
+select servicio.cod_servicio, particular.cod_cliente, nombre_pasajero, realizan.ci as ci_chofer, telefono as telefono_pasajero, origen, destino, reserva.fecha as fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario from servicio
+join reserva on reserva.cod_servicio = servicio.cod_servicio
+join cliente on cliente.cod_cliente = reserva.cod_cliente
+join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente
+join realizan on realizan.cod_servicio = servicio.cod_servicio
+join particular on particular.cod_cliente = cliente.cod_cliente;
+
+select particular.cod_cliente, realizan.ci, servicio.cod_servicio, origen, destino, reserva.fecha as fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario, nombre_pasajero from servicio
+join reserva on reserva.cod_servicio = servicio.cod_servicio
+join particular on particular.cod_cliente = reserva.cod_cliente
+join realizan on realizan.cod_servicio = servicio.cod_servicio;
+
+select empresa.cod_cliente, realizan.ci, servicio.cod_servicio, origen, destino, reserva.fecha, servicio.fecha, hora_inicio, distancia_recorrida, comentario, nombre_pasajero from servicio
+join reserva on reserva.cod_servicio = servicio.cod_servicio
+join empresa on empresa.cod_cliente = reserva.cod_cliente
+join realizan on realizan.cod_servicio = servicio.cod_servicio;
+
+select * from usuario ;
+
+SELECT realizan.ci as cedula_chofer, particular.cod_cliente, servicio.cod_servicio, origen, destino, reserva.fecha AS fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario, nombre_pasajero, apellido_pasajero, telefono from servicio
+    join reserva on reserva.cod_servicio = servicio.cod_servicio
+    join cliente on cliente.cod_cliente = reserva.cod_cliente
+    join particular on particular.cod_cliente = cliente.cod_cliente
+    join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente
+    join realizan on realizan.cod_servicio = servicio.cod_servicio;
+    
+SELECT realizan.ci as cedula_chofer, empresa.cod_cliente, servicio.cod_servicio, origen, destino, reserva.fecha as fecha_reserva, servicio.fecha as fecha_servicio, hora_inicio, distancia_recorrida, comentario, nombre_pasajero, apellido_pasajero, telefono from servicio
+    join reserva on reserva.cod_servicio = servicio.cod_servicio
+    join cliente on cliente.cod_cliente = reserva.cod_cliente
+    join empresa on empresa.cod_cliente = cliente.cod_cliente
+    join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente
+    join realizan on realizan.cod_servicio = servicio.cod_servicio;
+
+
 create table IF NOT EXISTS chofer(
 ci integer,
 nombre varchar (20) NOT NULL,

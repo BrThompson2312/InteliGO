@@ -1,4 +1,4 @@
-<?php require_once '../conexion.php';
+<?php require_once '../conf_page/conexion.php';
 
 ini_set('display_errors', 'on');
 
@@ -7,7 +7,7 @@ $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
-$lista_negra = $_POST['lista_negra'];
+$lista_negra = $_POST['listanegra'];
 
 $query_particular = "INSERT INTO particular VALUES ('$cedula','$nombre','$apellido')";
 $query_cliente = "INSERT INTO cliente VALUES ('$cedula','$lista_negra','$direccion')";

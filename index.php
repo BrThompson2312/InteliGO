@@ -1,3 +1,3 @@
 <?php
-    require 'model/index.php'
+    require 'model/conf_page/index.php'
 ?>

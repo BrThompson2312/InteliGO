@@ -34,6 +34,6 @@
             </button>
         </form>
     </main>
-    <script src="view/js/index.js"></script>
+    <script src="view/js/login.js"></script>
 </body>
 </html>

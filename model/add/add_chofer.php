@@ -1,4 +1,4 @@
-<?php require_once '../conexion.php';
+<?php require_once '../conf_page/conexion.php';
 
 ini_set('display_errors', 'on');
 
@@ -9,6 +9,8 @@ $matricula = $_POST['matricula'];
 $modelo = $_POST['modelo'];
 $marca = $_POST['marca'];
 $año = $_POST['año']; 
+
+echo "$cedula \n $nombre \n $telefono \n $matricula \n $modelo \n $marca \n $año";
 
 $query_chofer = "INSERT INTO chofer VALUES ('$cedula', '$nombre')";
 $query_coche = "INSERT INTO coches VALUES ('$matricula', '$modelo','$marca','$año')";
@@ -21,9 +23,9 @@ $result_maneja = mysqli_query($conn, $query_maneja);
 $result_tel = mysqli_query($conn, $query_tel);
 
 if ($result_chofer && $result_coche && $result_maneja && $result_tel) {
-    echo 'Datos del chofer y coche guardados con éxito';
+    echo true;
 } else {
-    echo 'Error en los campos ingresados';
+    echo false;
 }
 
 ?>

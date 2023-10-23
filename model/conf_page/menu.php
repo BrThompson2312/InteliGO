@@ -5,6 +5,7 @@
     } else {
         die("Sesión cerrada. Por favor, ingrese usuario y contraseña");
     }
+    $dir = '../../view/css/administrador.css';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,19 +15,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
         if ($tipoUsuario == 'administrador'){
-            echo '<link rel="stylesheet" href="../view/css/administrador.css">';
+            echo '<link rel="stylesheet" href="../../view/css/administrador.css">';
         } else {
-            echo '<link rel="stylesheet" href="../view/css/operativo.css">';
+            echo '<link rel="stylesheet" href="../../view/css/operativo.css">';
         }
     ?>
-    <link rel="shortcut icon" href="../view/img/logofinal/logoIco3.ico">
+    <link rel="shortcut icon" href="../../view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-    <script src="../view/js/jquery.min.js"></script>
+    <script src="../../view/js/jquery.min.js"></script>
 </head>
 <body>
-    <section id="alert-salir">
+    <section id="alert-add">
+        <i class="fa fa-check fa-1x"></i> 
+        <p>Se ha agregado correctamente</p>
+    </section>
+    <section id="alert-salir">  
         <div>
             <i id="xmark-salir" class="fa-solid fa-xmark"></i>
             <p>¿Desea cerrar sesión?</p>
@@ -45,44 +50,23 @@
                             <?php
                         } else {
                             ?>
-                                <span><?php echo $_SESSION['nombreUsuario'];?></span><span>|</span><span>Operador</span>
+                                <span class="spanPromotion"><span> <?php echo $_SESSION['nombreUsuario'];?> </span><span> | </span><span> Operador </span></span>
                             <?php 
                         } ?>
                 </div>
             </div>
         </section>
         <section id="opciones">
-            <div id="logout"> 
-                <ion-icon name="log-out"></ion-icon>
-                <span>Cerrar Sesión</span>
-            </div>
             <button class="opciones-hilera" rel="#inicio" onclick="opcion_menu(this)"> 
-                <i class="fa-solid fa-person"></i>
+                <i class="fa-solid fa-house"></i>
                 <span>Home</span>
             </button>
-            <button class="opciones-hilera" rel="#estadistica" onclick="opcion_menu(this)"> 
-                <span class="rellenoColor"></span>
-                <ion-icon name="stats"></ion-icon>
-                <span>Estadísticas</span>
-            </button>
-            <!-- <script>
-                const btnUploadFile = document.querySelector(".opciones-hilera");
-                    function setButtonProgress(button, percent) {
-                    const textElement = button.querySelector(".button__text");
-                    button.querySelector(".button__progress").style.width = `${percent}%`;
-                }
-            </script> -->
             <?php
-                // print_r($_SESSION);
                 if($tipoUsuario=='administrador') {
                 ?>
                     <button class="opciones-hilera" rel="#operador" onclick="opcion_menu(this)">
                         <ion-icon name="people"></ion-icon>
                         <span>Operadores</span> 
-                    </button>
-                    <button class="opciones-hilera" rel="#eliminados" onclick="opcion_menu(this)"> 
-                        <i class="fa-solid fa-person-circle-minus"></i>
-                        <span>Eliminados</span>
                     </button>
                 <?php
                 }
@@ -109,8 +93,11 @@
             </button>
             <button class="opciones-hilera" rel="#acercaDe" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-info"></i>
-                <span>Acerca de</span>
+                <span>Acerca De</span>
             </button>
+            <div id="logout"> 
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
         </section>
     </nav>
     <main>
@@ -131,17 +118,6 @@
                 ?>
             </main>
         </section>
-        <!-- Inicio ESTADISTICAS -->
-        <section class="bloque" id="estadistica">
-            <div class="conteiner-section conteiner-eliminados">
-                <div class="titulo-section">
-                    <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
-                    <i class="fa-solid fa-person-circle-minus navbar_icon"></i>
-                    <h2>ESTADÍSTICA</h2>
-                </div>
-            </div>
-        </section>            
-        <!-- Fin ESTADISTICAS -->
         <?php
                 if ($tipoUsuario == 'administrador') {
                 ?>
@@ -155,8 +131,9 @@
                     </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="filtrar" type="button"> FILTRAR </button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador', '.cancel_button')" type="button">AÑADIR</button>
+                            <button class="eliminados" type="button">ELIMINADOS</button>
                         </div>
                     </form>
                     <table>
@@ -168,68 +145,28 @@
                             </tr>
                         </thead>
                         <tbody class="registro-operadores"></tbody>
+                        <tbody class="registro-del_operadores"></tbody>
                     </table>
                 </div>
                 <div class="block_relative_section BRS-operador">
-                    <div class="alert_section">
+                    <form class="alert_section">
                         <label for="ci-operador">Cedula</label>
-                        <input name="ci-operador" type="number" placeholder="Cédula">
+                        <input name="ci-operador" type="text" maxlength="8">
                         <label for="nombre-operador">Nombre completo</label>
-                        <input name="nombre-operador" type="text" placeholder="Nombre del empleado">
+                        <input name="nombre-operador" type="text">
                         <label for="contrasena-operador">Contraseña</label>
-                        <input name="contrasena-operador" type="text" placeholder="Contraseña">
+                        <input name="contrasena-operador" type="text">
                         <label for="fecha-operador">Fecha de ingreso</label>
                         <input type="datetime" name="fecha-operador" value="<?php echo date("Y-m-d");?>" required readonly>
                         <div class="buttons">
-                            <button type="button" class="cancel_button"> ATRAS </button>   
-                            <button class="subir_datos" onclick="btn_switch('operador')">AGREGAR</button>
+                            <button class="cancel_button" type="button">Cancelar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>
                         </div>
-                </div>
+                    </form>
                 </div>
             </section>
         <!-- Fin OPERADORES -->
 
-        <!-- Inicio ELIMINADOS -->
-            <section class="bloque" id="eliminados">
-                <div class="conteiner-section conteiner-eliminados">
-                    <div class="titulo-section">
-                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
-                        <i class="fa-solid fa-person-circle-minus navbar_icon"></i>
-                        <h2>ELIMINADOS</h2>
-                    </div>
-                    <form action="GET">
-                        <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                        </div>
-                    </form>
-                    <table>
-                        <thead>
-                            <tr class="indicadores">
-                                <th>ID</th>
-                                <th>NOMBRE</th>
-                            </tr>
-                        </thead>
-                        <tbody class="registro-eliminados"></tbody>
-                    </table>
-                </div>
-                <div class="block_relative_section BRS-eliminados">
-                    <form class="alert_section">
-                        <div>
-                            <label for="nombre-eliminado">Nombre completo</label>
-                            <input name="nombre-eliminado" type="text">
-                            <label for="cedula-eliminado">Cedula</label>
-                            <input name="cedula-eliminado" type="number">
-                            <label for="fechaIng-eliminado">Fecha de ingreso</label>
-                            <input name="fechaIng-eliminado" type="date">
-                        </div>    
-                        <div class="buttons">
-                            <button class="cancel_button" type="button"> CANCELAR </button>   
-                            <button class="subir_datos" type="button"> AGREGAR </button>   
-                        </div>
-                    </form>
-                </div>
-            </section>            
-        <!-- Fin ELIMINADOS -->
         <?php
             }
         ?>
@@ -243,18 +180,25 @@
                     </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="filtrar" type="button"> FILTRAR </button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes', '.cancel_button')" type="button">AÑADIR</button>
+                            <?php
+                                if ($tipoUsuario == 'administrador') {
+                                    ?>
+                                        <button class="eliminados" type="button">ELIMINADOS</button>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
-                                <th>CEDULA</th>
-                                <th>MATRÍCULA</th>
-                                <th>CHOFER</th>
-                                <th>TELEFONO</th>
+                                <th>NOMBRE</th>
+                                <th>MATRICULA</th>
+                                <th>MODELO</th>
                                 <th>MARCA</th>
+                                <th>AÑO</th>
                             </tr>
                         </thead>
                         <tbody class="registro-choferes"></tbody>
@@ -262,23 +206,29 @@
                 </div>
                 <div class="block_relative_section BRS-choferes">
                     <form class="alert_section">
-                        <label for="ci-chofer">Cedula</label>
-                        <input name="ci-chofer" type="number" placeholder="Cédula">
-                        <label for="nombre-chofer">Nombre completo</label>
-                        <input name="nombre-chofer" type="text" placeholder="Nombre completo">     
-                        <label for="tel-chofer">Teléfono</label>
-                        <input name="tel-chofer" type="number" placeholder="Teléfono">
-                        <label for="matricula-veh">Matrícula</label>
-                        <input name="modelo-veh" type="text" placeholder="Matrícula">
-                        <label for="modelo-veh">Modelo</label>
-                        <input name="matricula-veh" type="text" placeholder="Matrícula">
+                        <div class="conteiner_form">
+                            <div>
+                                <label for="ci-chofer">Cedula</label>
+                                <input name="ci-chofer" type="text" maxlength="8">
+                                <label for="nombre-chofer">Nombre completo</label>
+                                <input name="nombre-chofer" type="text">     
+                            </div>
+                            <div>
+                                <label for="matricula-veh">Matrícula</label>
+                                <input name="matricula-veh" type="text">
+                                <label for="modelo-veh">Modelo</label>
+                                <input name="modelo-veh" type="text">
+                            </div>
+                        </div>
                         <label for="marcha-veh">Marca</label>
-                        <input name="marca-veh" type="text" placeholder="Marca">
+                        <input name="marca-veh" type="text">
                         <label for="año-veh">Año</label>
-                        <input name="año-veh" type="number" placeholder="Año">
+                        <input name="año-veh" type="text" maxlength="4">
+                        <label for="tel-chofer">Teléfono</label>
+                        <input name="tel-chofer" type="text" maxlength="12">
                         <div class="buttons">
-                            <button class="cancel_button" type="button" >ATRAS</button>   
-                            <button class="subir_datos" type="button" onclick="btn_switch('chofer')"> AGREGAR </button>   
+                            <button class="cancel_button" type="button">Cancelar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>   
                         </div>                   
                     </form>
                 </div>
@@ -295,18 +245,25 @@
                     </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-cliente', '.BRS-cliente', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="filtrar">FILTRAR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-cliente', '.BRS-cliente', '.cancel_button')" type="button">AÑADIR</button>
+                            <?php
+                                if ($tipoUsuario == 'administrador') {
+                                    ?>
+                                        <button class="eliminados" type="button">ELIMINADOS</button>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
-                                <th> COD </th>
-                                <th> LISTA NEGRA </th>
-                                <th> NOMBRE </th>
-                                <th> APELLIDO </th>
-                                <th> DIRECCIÓN </th>
+                                <th>TELÉFONO</th>
+                                <th>LISTA NEGRA</th>
+                                <th>NOMBRE</th>
+                                <th>APELLIDO</th>
+                                <th>DIRECCIÓN</th>
                             </tr>
                         </thead>
                         <tbody class="registro-cliente"></tbody>
@@ -314,12 +271,10 @@
                 </div>
                 <div class="block_relative_section BRS-cliente">
                     <form class="alert_section">
-                        <label for="ci-particular">Cedula</label>
-                        <input name="ci-particular" type="number" placeholder="Cedula">
                         <label for="nombre-particular">Nombre</label>
-                        <input name="nombre-particular" type="text" placeholder="Nombre">
+                        <input name="nombre-particular" type="text">
                         <label for="apellido-particular">Apellido</label>
-                        <input name="apellido-particular" type="text" placeholder="Apellido">
+                        <input name="apellido-particular" type="text">
                         <label for="ln-particular">Lista negra</label>
                         <select name="ln-particular">
                             <option value="">--Seleccione opción</option>
@@ -327,12 +282,12 @@
                             <option value="0">NO</option>
                         </select>
                         <label for="direccion-particular">Dirección</label>
-                        <input name="direccion-particular" type="text" placeholder="Dirección">
+                        <input name="direccion-particular" type="text">
                         <label for="tel-particular">Teléfono</label>
-                        <input name="tel-particular" type="number" placeholder="Teléfono">
+                        <input name="tel-particular" type="number">
                         <div class="buttons">
-                            <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos" type="button" onclick="btn_switch('particular')"> AGREGAR </button>   
+                            <button class="cancel_button" type="button">Cancelar</button>
+                            <button class="subir_datos" type="button">Agregar</button>
                         </div>                      
                     </form>
                 </div>
@@ -349,8 +304,15 @@
                     </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-empresa', '.BRS-empresa', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="filtrar">FILTRAR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-empresa', '.BRS-empresa', '.cancel_button')" type="button">AÑADIR</button>
+                            <?php
+                                if ($tipoUsuario == 'administrador') {
+                                    ?>
+                                        <button class="eliminados" type="button">ELIMINADOS</button>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </form>
                     <table>
@@ -358,9 +320,9 @@
                             <tr class="indicadores">
                                 <th>RUT</th>
                                 <th>LISTA NEGRA</th>
-                                <th>NOMBRE</th>
-                                <th>RAZÓN SOCIAL</th>
+                                <th>NOMBRE FANTASÍA</th>
                                 <th>DIRECCIÓN</th>
+                                <th>TELÉFONO</th>
                             </tr>
                         </thead>
                         <tbody class="registro-empresa"></tbody>
@@ -370,33 +332,33 @@
                     <form class="alert_section">
                         <div class="conteiner_form">
                             <div>
-                                <label for="rut_empresa">RUT</label>
-                                <input name="rut_empresa" type="number" placeholder="RUT" required>
-                                <label for="ln_empresa">Lista negra</label>
-                                <select name="ln_empresa" id="">
+                                <label for="rut-empresa">RUT</label>
+                                <input name="rut-empresa" type="number" required>
+                                <label for="listanegra-empresa">Lista negra</label>
+                                <select name="listanegra-empresa" id="">
                                     <option value="">--Seleccione opción</option>
                                     <option value="1">SI</option>
                                     <option value="0">NO</option>
                                 </select>
-                                <label for="nombre_empresa">Nombre fantasía</label>
-                                <input name="nombre_empresa" type="text" placeholder="Nombre fantasía" required>
-                                <label for="rs_empresa">Razón social</label>
-                                <input name="rs_empresa" type="text" placeholder="Razón social" required>     
+                                <label for="fantasia-empresa">Nombre fantasía</label>
+                                <input name="fantasia-empresa" type="text" required>
+                                <label for="razonsocial-empresa">Razón social</label>
+                                <input name="razonsocial-empresa" type="text" required>     
                             </div>
                             <div>
-                                <label for="direccion_empresa">Dirección</label>
-                                <input name="direccion_empresa" type="text" placeholder="Dirección" required>
-                                <label for="tel_empresa">Teléfono</label>
-                                <input name="tel_empresa" type="number" placeholder="Teléfono" required>
-                                <label for="nombre_empresa">Persona de contacto</label>
-                                <input name="nombre_empresa" type="text" placeholder="Persona de contacto" required>
-                                <label for="correo_empresa">Correo</label>
-                                <input name="correo_empresa" type="email" placeholder="Correo" required>
+                                <label for="direccion-empresa">Dirección</label>
+                                <input name="direccion-empresa" type="text" required>
+                                <label for="tel-empresa">Teléfono</label>
+                                <input name="tel-empresa" type="number" required>
+                                <label for="empleado-empresa">Persona de contacto</label>
+                                <input name="empleado-empresa" type="text" required>
+                                <label for="correo-empresa">Correo</label>
+                                <input name="correo-empresa" type="email" required>
                             </div>
                         </div>
                         <div class="buttons">
-                            <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos" type="button" onclick="btn_switch('empresa')"> AGREGAR </button>   
+                            <button class="cancel_button" type="button">Cancelar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>   
                         </div>                             
                     </form>
                 </div>
@@ -413,8 +375,15 @@
                     </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-reserva', '.BRS-reserva', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="filtrar">FILTRAR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-reserva', '.BRS-reserva', '.cancel_button')" type="button">AÑADIR</button>
+                            <?php
+                                if ($tipoUsuario == 'administrador') {
+                                    ?>
+                                        <button class="eliminados" type="button">ELIMINADOS</button>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </form>
                     <table>
@@ -422,9 +391,9 @@
                             <tr class="indicadores">
                                 <th>COD</th>
                                 <th>TIPO</th>
-                                <th>PASAJERO</th>
                                 <th>CHOFER</th>
-                                <th>TELÉFONO</th>
+                                <th>ORIGEN</th>
+                                <th>DESTINO</th>
                             </tr>
                         </thead>
                         <tbody class="registro-reserva"></tbody>
@@ -440,33 +409,35 @@
                                     <option value="Empresa">Empresa</option>
                                     <option value="Particular">Particular</option>
                                 </select>
-                                <label for="pasajero-reserva">Nombre del pasajero</label>
-                                <input name="pasajero-reserva" type="text" placeholder="Nombre">
-                                <label for="chofer-reserva">Chofer</label>
-                                <input name="chofer-reserva" type="number" placeholder="Cédula">
-                                <label for="fecha_viaje-reserva">Fecha del viaje</label>
-                                <input name="fecha_viaje-reserva" type="text" placeholder="Fecha del servicio a realizar">
-                                <label for="hora-reserva">Hora</label>
-                                <input name="hora-reserva" type="number" placeholder="hrs">
-                            </div>
-                            <div>
-                                <label for="tel-reserva">Teléfono del pasajero</label>
-                                <input name="tel-reserva" type="number" placeholder="Teléfono">
+                                <label for="pasajero-reserva">Pasajero</label>
+                                <input name="pasajero-reserva" type="text">
                                 <label for="origen-reserva">Origen</label>
-                                <input name="origen-reserva" type="number" placeholder="Origen">
+                                <input name="origen-reserva" type="number">
                                 <label for="fecha_reserva-reserva">Fecha de reserva</label>
                                 <input name="fecha_reserva-reserva" type="text" value="<?php echo date("d:m:Y")?>" readonly>
-                                <label for="distancia-reserva">Distancia</label>
-                                <input name="distancia-reserva" type="text" placeholder="km">
+                                <label for="hora-reserva">Hora de reserva</label>
+                                <input name="hora-reserva" type="text" value="<?php echo date("H:i:s")?>" readonly>
+                            </div>
+                            <div>
+                                <label for="chofer-reserva">Chofer</label>
+                                <select name="chofer-reserva" id="">
+                                    <option value="">--Seleccione Chofer disponible</option>
+                                </select>
+                                <label for="tel-reserva">Teléfono del pasajero</label>
+                                <input name="tel-reserva" type="number">
                                 <label for="destino-reserva">Destino</label>
-                                <input name="destino-reserva" type="number" placeholder="Destino">
+                                <input name="destino-reserva" type="number">
+                                <label for="fecha_reserva-viaje">Fecha del viaje</label>
+                                <input name="fecha_viaje-reserva" type="date">
+                                <label for="hora-viaje">Hora del viaje</label>
+                                <input name="hora-viaje" type="time">
                             </div>
                         </div>
                         <label for="comentario-reserva">Comentario</label>
-                        <textarea name="comentario-reserva" placeholder="Comentario"></textarea>
+                        <textarea name="comentario-reserva"></textarea>
                         <div class="buttons">
-                            <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos" type="button" onclick="btn_switch('reserva')"> AGREGAR </button>   
+                            <button class="cancel_button" type="button">Cancelar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>   
                         </div>                          
                     </form>
                 </div>
@@ -481,20 +452,27 @@
                         <i class="fa-solid fa-wrench navbar_icon"></i>
                         <h2>MANTENIMIENTO</h2>
                     </div>
-                    <form method="POST" action="controller/agregar/a_mantenimiento.php">
+                    <form>
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="filtrar">FILTRAR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', '.cancel_button')" type="button">AÑADIR</button>
+                            <?php
+                                if ($tipoUsuario == 'administrador') {
+                                    ?>
+                                        <button class="eliminados" type="button">ELIMINADOS</button>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
-                                <th>COD</th>
-                                <th>FECHA </th>
-                                <th>TIPO DE MANTENIMIENTO</th>
-                                <th>GASTOS DE MANTENIMIENTO</th>
+                                <th>COD-FACTURA</th>
+                                <th>MATRÍCULA</th>
+                                <th>CONCEPTO</th>
                                 <th>COMENTARIOS</th>
+                                <th>IMPORTE TOTAL</th>
                             </tr>
                         </thead>
                         <tbody class="registro-GDM"></tbody>
@@ -502,48 +480,62 @@
                 </div>
                 <div class="block_relative_section BRS-GDM">
                     <form class="alert_section">
-                        <label for="fecha_gdm">Fecha</label>
-                        <input name="fecha_gdm" type="date">
-                        <label for="concepto_gdm">Tipo de mantenimiento</label>
-                        <select name="concepto_gdm">
-                            <option value="">--Por favor eliga una opción</option>
-                            <option value="Gasoil">GASOIL</option>
-                            <option value="Cambio_aceite">CAMBIO ACEITE</option>
-                            <option value="Electricista">ELECTRICISTA</option>
-                            <option value="Alineacion_balanceo">ALINEACIÓN Y BALANCEO</option>
-                            <option value="Gomeria">GOMERÍA</option>
-                            <option value="Cambio_correa">CAMBIO DE CORREA</option>
-                            <option value="Frenos">FRENOS</option>
-                            <option value="Embrague">EMBRAGUE</option>
-                            <option value="Chapista">CHAPISTA</option>
-                            <option value="Otros">Otros</option>
-                        </select>  
-                        <label for="importe_gdm">Importe</label>
-                        <input name="importe_gdm" type="number" placeholder="Importe">
+                        <div class="conteiner_form">
+                            <div>
+                                <label for="codigofac-gdm">Cod-factura</label>
+                                <input name="codigofac-gdm" type="number">
+                                <label for="concepto-gdm">Concepto</label>
+                                <select name="concepto-gdm">
+                                    <option value="">--Por favor elija una opción</option>
+                                    <option value="Gasoil">Gasoil</option>
+                                    <option value="Cambio_aceite">Cambio de aceite</option>
+                                    <option value="Electricista">Electricista</option>
+                                    <option value="Alineacion_balanceo">Alineación y balanceo</option>
+                                    <option value="Gomeria">Gomería</option>
+                                    <option value="Cambio_correa">Cambio de correa</option>
+                                    <option value="Frenos">Frenos</option>
+                                    <option value="Embrague">Embrague</option>
+                                    <option value="Chapista">Chapista</option>
+                                    <option value="Otros">Otros</option>
+                                </select>  
+                            </div>
+                            <div> 
+                                <label for="matricula-gdm">Matrícula</label>
+                                <input name="matricula-gdm" type="text">
+                                <label for="importe-gdm">Importe</label>
+                                <input name="importe-gdm" type="number">
+                            </div>     
+                        </div>
+                        <label for="fecha-gdm">Fecha</label>
+                        <input name="fecha-gdm" type="date">
                         <label for="comentario-gdm">Comentario</label>
-                        <textarea name="comentario_gdm" cols="30" rows="10" placeholder="Comentario"></textarea>
+                        <textarea name="comentario-gdm"></textarea> 
                         <div class="buttons">
-                            <button type="button" class="cancel_button"> CANCELAR </button>   
-                            <button class="subir_datos" type="button" onclick="btn_switch('mantenimiento')"> AGREGAR </button>   
+                            <button class="cancel_button" type="button">Cancelar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>   
                         </div>                             
                     </form>
                 </div>
             </section>
         <!-- Fin GASTOS DE MANTENIMIENTO -->
+
+        <!-- ACERCA DE -->
         <section class="bloque" id="acercaDe">
             <main>
                 <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
                 <div>
-                    <img src="../view/img/logofinal/whiteLogo.png" alt="">
+                    <img src="../../view/img/logofinal/whiteLogo.png" alt="">
                 </div>
                 <div>
                     <span class="spanPromotion">Powered by</span>
-                    <img src="../view/img/logobk.png" alt="">
+                    <img src="../../view/img/logobk.png" alt="">
                 </div>
             </main>
-        </section>            
+        </section>
+        <!-- ACERCA DE -->
     </main>
-    <script src="../view/js/personas.js"></script>
-    <script src="../view/js/add_persona.js"></script>
+    <script src="../../view/js/tableData.js"></script>
+    <script src="../../view/js/consultar.js"></script>
+    <script type="module" src="../../view/js/add_all.js"></script>
 </body>
 </html>

@@ -1,7 +1,26 @@
 @import 'comun.css';
 
 :root {
-  --bg-operador: #299402;
+  --bg-operador: #0a8d10;
+}
+#user {
+  background: #1b5f02
+}
+.alert_section {
+  background: #012e04;
+  border: none;
+  border-left: 20px solid var(--bg-operador);
+}
+.alert_section label {
+  background: var(--bg-operador)
+}
+.alert_section :where(label, input, textarea, select) {
+  background: #1b5f02;
+}
+.alert_section :where(input, textarea, select) {
+  border-bottom: 3px solid var(--bg-operador);
+  border-left: 3px solid var(--bg-operador);
+  border-right: 3px solid var(--bg-operador);
 }
 nav {
   border-right: 5px solid var(--bg-operador);

@@ -1,4 +1,4 @@
-<?php require_once '../conexion.php';
+<?php require_once '../conf_page/conexion.php';
 
 ini_set('display_errors', 'on');
 
@@ -16,13 +16,13 @@ $hora_ingreso = date("h:i:s");
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['ci'],
+            'col1' => $row['nombre'],
             'col2' => $row['matricula'],
-            'col3' => $row['nombre'],
-            'col4' => $row['telefono'],
-            'col5' => $row['modelo'],
-            'col6' => $row['marca'],
-            'col7' => $row['año'],
+            'col3' => $row['modelo'],
+            'col4' => $row['marca'],
+            'col5' => $row['año'],
+            'col6' => $row['telefono'],
+            'col7' => $row['ci']
         );
     }
     echo json_encode($json);

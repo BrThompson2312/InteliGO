@@ -23,14 +23,14 @@ let login_user = document.querySelector("#login-user");
             alert('campos vacios')
         } else {
             $.ajax({
-                url: 'model/login.php',
+                url: 'model/conf_page/login.php',
                 type: 'POST',
                 data: {
                     cedula: cedula.value,
                     pass: pass.value
                 }, success: function(response){
                    if (response == true){
-                        window.location.href = 'model/menu.php';
+                        window.location.href = 'model/conf_page/menu.php';
                    } else {
                        alert(response);
                    }

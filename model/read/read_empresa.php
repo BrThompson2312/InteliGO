@@ -1,4 +1,4 @@
-<?php require_once '../conexion.php';
+<?php require_once '../conf_page/conexion.php';
 
 ini_set('display_errors', 'on');
 
@@ -15,9 +15,9 @@ if($result){
             'col1' => $row['rut'],
             'col2' => $row['lista_negra'],
             'col3' => $row['nombre_fantasia'],
-            'col4' => $row['razon_social'],
-            'col5' => $row['direccion'],
-            'col6' => $row['telefono'],
+            'col4' => $row['direccion'],
+            'col5' => $row['telefono'],
+            'col6' => $row['razon_social'],
             'col7' => $row['Email']
         );
     }

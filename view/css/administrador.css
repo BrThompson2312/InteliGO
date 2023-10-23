@@ -3,6 +3,25 @@
 :root {
   --bg-administrador: #035d6f;
 }
+#user {
+  background: #03424e
+}
+.alert_section {
+  background: #01171b;
+  border: none;
+  border-left: 20px solid var(--bg-administrador);
+}
+.alert_section label {
+  background: var(--bg-administrador)
+}
+.alert_section :where(label, input, textarea, select) {
+  background: #053c47;
+}
+.alert_section :where(input, textarea, select) {
+  border-bottom: 3px solid var(--bg-administrador);
+  border-left: 3px solid var(--bg-administrador);
+  border-right: 3px solid var(--bg-administrador);
+}
 nav {
   border-right: 5px solid var(--bg-administrador);
 }
@@ -16,7 +35,7 @@ nav {
   background: var(--bg-administrador);
 }
 .opciones-hilera-activeHover {
-  background-color: var(--bg-administrador);
+  background: var(--bg-administrador);
 }
 ::selection {
   background: var(--bg-administrador)

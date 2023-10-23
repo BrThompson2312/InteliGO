@@ -1,7 +1,6 @@
-<?php
+<?php require_once '../conf_page/conexion.php';
 
 ini_set('display_errors','on');
-require_once '../conexion.php';
 
 $cod = $_POST['cod_gdm'];
 $fecha = $_POST['fecha_gdm'];

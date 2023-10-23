@@ -18,3 +18,7 @@
     font-family: "RobotoFlex-Regular";
     src: url(../fonts/Roboto_Flex/RobotoFlex-Regular.ttf);
 }
+@font-face {
+    font-family: "Cera Pro";
+    src: url(../fonts/cerapro/Cera\ Pro\ Black.otf)
+}

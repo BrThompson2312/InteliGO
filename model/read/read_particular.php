@@ -1,4 +1,4 @@
-<?php require_once '../conexion.php';
+<?php require_once '../conf_page/conexion.php';
 
 ini_set('display_errors', 'on');
 
@@ -12,12 +12,11 @@ $json = array();
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['cod_cliente'],
+            'col1' => $row['telefono'],
             'col2' => $row['lista_negra'],  
             'col3' => $row['nombre'],
             'col4' => $row['apellido'],  
             'col5' => $row['direccion'],
-            'col6' => $row['telefono']
         );
     }
     echo json_encode($json);
