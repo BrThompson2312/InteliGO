@@ -1,6 +1,6 @@
-import {alertSuccess} from "../add_all.js";
+import {rut_conexion, alertSuccess} from "../add_all.js";
 
-export function add_mantenimiento(){
+export function add_mantenimiento(parent){
 
     let codigofac = document.getElementsByName('codigofac-gdm')[0].value;
     let fecha = document.getElementsByName('fecha-gdm')[0].value;
@@ -8,7 +8,7 @@ export function add_mantenimiento(){
     let importe = document.getElementsByName('importe-gdm')[0].value;
     let comentario = document.getElementsByName('comentario-gdm')[0].value;
 
-    if (codigofac, fecha, concepto, comentario == ''){
+    if (codigofac == '' || fecha == '' || concepto == '' || importe == '' || comentario == ''){
         alertSuccess('incompleted');
     } else {
         $.ajax({
@@ -22,7 +22,12 @@ export function add_mantenimiento(){
                 comentario: comentario,
             },
             success: function(response){
-                alert(response);
+                if(response == true){
+                    alertSuccess('success');
+                    document.querySelector(`${parent} .alert_section`).reset();
+                } else {
+                    alertSuccess('error');
+                }
             },
             error: function(reject){
                 alert(reject);

@@ -132,8 +132,7 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador', '.cancel_button')" type="button">AÑADIR</button>
-                            <button class="eliminados" type="button">ELIMINADOS</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
@@ -145,19 +144,37 @@
                             </tr>
                         </thead>
                         <tbody class="registro-operadores"></tbody>
-                        <tbody class="registro-del_operadores"></tbody>
                     </table>
                 </div>
                 <div class="block_relative_section BRS-operador">
                     <form class="alert_section">
                         <label for="ci-operador">Cedula</label>
-                        <input name="ci-operador" type="text" maxlength="8">
+                        <input 
+                            name="ci-operador" 
+                            type="text" 
+                            placeholder="12345678"
+                            maxlength="8">
+
                         <label for="nombre-operador">Nombre completo</label>
-                        <input name="nombre-operador" type="text">
+                        <input 
+                            name="nombre-operador" 
+                            type="text" 
+                            placeholder="John" 
+                            maxlength="10">
+
                         <label for="contrasena-operador">Contraseña</label>
-                        <input name="contrasena-operador" type="text">
+                        <input 
+                            name="contrasena-operador" 
+                            type="password" 
+                            maxlength="10">
+
                         <label for="fecha-operador">Fecha de ingreso</label>
-                        <input type="datetime" name="fecha-operador" value="<?php echo date("Y-m-d");?>" required readonly>
+                        <input 
+                            type="datetime" 
+                            name="fecha-operador" 
+                            value="<?php echo date("Y-m-d");?>" 
+                            readonly>
+
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
@@ -181,14 +198,7 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes', '.cancel_button')" type="button">AÑADIR</button>
-                            <?php
-                                if ($tipoUsuario == 'administrador') {
-                                    ?>
-                                        <button class="eliminados" type="button">ELIMINADOS</button>
-                                    <?php
-                                }
-                            ?>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
@@ -209,27 +219,60 @@
                         <div class="conteiner_form">
                             <div>
                                 <label for="ci-chofer">Cedula</label>
-                                <input name="ci-chofer" type="text" maxlength="8">
+                                <input 
+                                    name="ci-chofer" 
+                                    type="text" 
+                                    placeholder="12345678" 
+                                    maxlength="8">
+
                                 <label for="nombre-chofer">Nombre completo</label>
-                                <input name="nombre-chofer" type="text">     
+                                <input 
+                                    name="nombre-chofer" 
+                                    type="text" 
+                                    placeholder="John" 
+                                    maxlength="10">     
                             </div>
                             <div>
                                 <label for="matricula-veh">Matrícula</label>
-                                <input name="matricula-veh" type="text">
+                                <input 
+                                    name="matricula-veh" 
+                                    type="text" 
+                                    placeholder="SRC4040" 
+                                    maxlength="7">
+
                                 <label for="modelo-veh">Modelo</label>
-                                <input name="modelo-veh" type="text">
+                                <input 
+                                    name="modelo-veh" 
+                                    type="text" 
+                                    placeholder="ToyotaOne"
+                                    maxlength="20">
                             </div>
                         </div>
                         <label for="marcha-veh">Marca</label>
-                        <input name="marca-veh" type="text">
+                        <input 
+                            name="marca-veh" 
+                            type="text"
+                            placeholder="Toyota"
+                            maxlength="20">
+
                         <label for="año-veh">Año</label>
-                        <input name="año-veh" type="text" maxlength="4">
+                        <input 
+                            name="año-veh" 
+                            type="text" 
+                            placeholder="Rango: 1901 - 2023" 
+                            maxlength="4">
+
                         <label for="tel-chofer">Teléfono</label>
-                        <input name="tel-chofer" type="text" maxlength="12">
+                        <input 
+                            name="tel-chofer" 
+                            type="text" 
+                            placeholder=" 012345678 | +59812345678 | 012 345 678"
+                            maxlength="12">
+
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
-                            <button class="subir_datos" type="button">Agregar</button>   
-                        </div>                   
+                            <button class="subir_datos" type="button">Agregar</button>
+                        </div>                  
                     </form>
                 </div>
             </section>
@@ -247,13 +290,6 @@
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-cliente', '.BRS-cliente', '.cancel_button')" type="button">AÑADIR</button>
-                            <?php
-                                if ($tipoUsuario == 'administrador') {
-                                    ?>
-                                        <button class="eliminados" type="button">ELIMINADOS</button>
-                                    <?php
-                                }
-                            ?>
                         </div>
                     </form>
                     <table>
@@ -272,19 +308,37 @@
                 <div class="block_relative_section BRS-cliente">
                     <form class="alert_section">
                         <label for="nombre-particular">Nombre</label>
-                        <input name="nombre-particular" type="text">
+                        <input 
+                            name="nombre-particular" 
+                            type="text" 
+                            placeholder="Jorge">
+                        
                         <label for="apellido-particular">Apellido</label>
-                        <input name="apellido-particular" type="text">
+                        <input 
+                            name="apellido-particular" 
+                            type="text" 
+                            placeholder="White">
+                        
                         <label for="ln-particular">Lista negra</label>
                         <select name="ln-particular">
                             <option value="">--Seleccione opción</option>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
                         </select>
+
                         <label for="direccion-particular">Dirección</label>
-                        <input name="direccion-particular" type="text">
+                        <input 
+                            name="direccion-particular" 
+                            type="text"
+                            placeholder="Carlos de la Vega 6554">
+                        
                         <label for="tel-particular">Teléfono</label>
-                        <input name="tel-particular" type="number">
+                        <input 
+                            name="tel-particular" 
+                            type="text" 
+                            placeholder="12345678"
+                            maxlength="8">
+
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>
                             <button class="subir_datos" type="button">Agregar</button>
@@ -306,13 +360,6 @@
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-empresa', '.BRS-empresa', '.cancel_button')" type="button">AÑADIR</button>
-                            <?php
-                                if ($tipoUsuario == 'administrador') {
-                                    ?>
-                                        <button class="eliminados" type="button">ELIMINADOS</button>
-                                    <?php
-                                }
-                            ?>
                         </div>
                     </form>
                     <table>
@@ -333,29 +380,71 @@
                         <div class="conteiner_form">
                             <div>
                                 <label for="rut-empresa">RUT</label>
-                                <input name="rut-empresa" type="number" required>
+                                <input 
+                                    name="rut-empresa" 
+                                    type="text"  
+                                    placeholder="2134565438765"
+                                    maxlength="12">
+                                    
                                 <label for="listanegra-empresa">Lista negra</label>
-                                <select name="listanegra-empresa" id="">
+                                <select name="listanegra-empresa">
                                     <option value="">--Seleccione opción</option>
                                     <option value="1">SI</option>
                                     <option value="0">NO</option>
                                 </select>
+
                                 <label for="fantasia-empresa">Nombre fantasía</label>
-                                <input name="fantasia-empresa" type="text" required>
+                                <input 
+                                    name="fantasia-empresa" 
+                                    type="text" 
+                                    placeholder="McDonald's">
+                                
                                 <label for="razonsocial-empresa">Razón social</label>
-                                <input name="razonsocial-empresa" type="text" required>     
+                                <input 
+                                    name="razonsocial-empresa" 
+                                    type="text" 
+                                    placeholder="Restaurantes McDonald's S.A.">     
                             </div>
                             <div>
                                 <label for="direccion-empresa">Dirección</label>
-                                <input name="direccion-empresa" type="text" required>
+                                <input 
+                                    name="direccion-empresa"
+                                    type="text"
+                                    placeholder="Carlos de la Vega 0000">
+
                                 <label for="tel-empresa">Teléfono</label>
-                                <input name="tel-empresa" type="number" required>
+                                <input 
+                                    name="tel-empresa" 
+                                    type="text" 
+                                    placeholder="12345678"
+                                    maxlength="8">
+
                                 <label for="empleado-empresa">Persona de contacto</label>
-                                <input name="empleado-empresa" type="text" required>
+                                <input 
+                                    name="empleado-empresa" 
+                                    type="text" 
+                                    placeholder="John White">
+
                                 <label for="correo-empresa">Correo</label>
-                                <input name="correo-empresa" type="email" required>
+                                <input 
+                                    name="correo-empresa" 
+                                    type="email" 
+                                    placeholder="correo@correo.com">
+
                             </div>
                         </div>
+                        <label for="encargado-empresa">Encargado de pagos</label>
+                        <input 
+                            name="encargado-empresa" 
+                            type="text" 
+                            placeholder="">
+                            
+                        <label for="autorizado-empresa">Autorizado</label>
+                        <input 
+                            name="autorizado-empresa" 
+                            type="text" 
+                            placeholder="">
+
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>   
@@ -377,13 +466,6 @@
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-reserva', '.BRS-reserva', '.cancel_button')" type="button">AÑADIR</button>
-                            <?php
-                                if ($tipoUsuario == 'administrador') {
-                                    ?>
-                                        <button class="eliminados" type="button">ELIMINADOS</button>
-                                    <?php
-                                }
-                            ?>
                         </div>
                     </form>
                     <table>
@@ -410,27 +492,52 @@
                                     <option value="Particular">Particular</option>
                                 </select>
                                 <label for="pasajero-reserva">Pasajero</label>
-                                <input name="pasajero-reserva" type="text">
+                                <input 
+                                    name="pasajero-reserva" 
+                                    type="text">
+
                                 <label for="origen-reserva">Origen</label>
-                                <input name="origen-reserva" type="number">
+                                <input 
+                                    name="origen-reserva" 
+                                    type="number">
+
                                 <label for="fecha_reserva-reserva">Fecha de reserva</label>
-                                <input name="fecha_reserva-reserva" type="text" value="<?php echo date("d:m:Y")?>" readonly>
+                                <input 
+                                    name="fecha_reserva-reserva" 
+                                    type="text" value="<?php echo date("d:m:Y")?>">
+
                                 <label for="hora-reserva">Hora de reserva</label>
-                                <input name="hora-reserva" type="text" value="<?php echo date("H:i:s")?>" readonly>
+                                <input 
+                                    name="hora-reserva" 
+                                    type="text" 
+                                    value="<?php echo date("H:i:s")?>">
+
                             </div>
                             <div>
                                 <label for="chofer-reserva">Chofer</label>
-                                <select name="chofer-reserva" id="">
+                                <select name="chofer-reserva">
                                     <option value="">--Seleccione Chofer disponible</option>
                                 </select>
+
                                 <label for="tel-reserva">Teléfono del pasajero</label>
-                                <input name="tel-reserva" type="number">
+                                <input 
+                                    name="tel-reserva" 
+                                    type="number">
+
                                 <label for="destino-reserva">Destino</label>
-                                <input name="destino-reserva" type="number">
+                                <input 
+                                    name="destino-reserva" 
+                                    type="number">
+
                                 <label for="fecha_reserva-viaje">Fecha del viaje</label>
-                                <input name="fecha_viaje-reserva" type="date">
+                                <input 
+                                    name="fecha_viaje-reserva" 
+                                    type="date">
+
                                 <label for="hora-viaje">Hora del viaje</label>
-                                <input name="hora-viaje" type="time">
+                                <input 
+                                    name="hora-viaje" 
+                                    type="time">
                             </div>
                         </div>
                         <label for="comentario-reserva">Comentario</label>
@@ -456,13 +563,6 @@
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', '.cancel_button')" type="button">AÑADIR</button>
-                            <?php
-                                if ($tipoUsuario == 'administrador') {
-                                    ?>
-                                        <button class="eliminados" type="button">ELIMINADOS</button>
-                                    <?php
-                                }
-                            ?>
                         </div>
                     </form>
                     <table>
@@ -483,7 +583,10 @@
                         <div class="conteiner_form">
                             <div>
                                 <label for="codigofac-gdm">Cod-factura</label>
-                                <input name="codigofac-gdm" type="number">
+                                <input 
+                                    name="codigofac-gdm" 
+                                    type="number">
+                                    
                                 <label for="concepto-gdm">Concepto</label>
                                 <select name="concepto-gdm">
                                     <option value="">--Por favor elija una opción</option>
@@ -507,9 +610,14 @@
                             </div>     
                         </div>
                         <label for="fecha-gdm">Fecha</label>
-                        <input name="fecha-gdm" type="date">
+                        <input 
+                            name="fecha-gdm" 
+                            type="date">
+
                         <label for="comentario-gdm">Comentario</label>
-                        <textarea name="comentario-gdm"></textarea> 
+                        <textarea 
+                            name="comentario-gdm"></textarea> 
+
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>   
@@ -520,18 +628,18 @@
         <!-- Fin GASTOS DE MANTENIMIENTO -->
 
         <!-- ACERCA DE -->
-        <section class="bloque" id="acercaDe">
-            <main>
-                <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
-                <div>
-                    <img src="../../view/img/logofinal/whiteLogo.png" alt="">
-                </div>
-                <div>
-                    <span class="spanPromotion">Powered by</span>
-                    <img src="../../view/img/logobk.png" alt="">
-                </div>
-            </main>
-        </section>
+            <section class="bloque" id="acercaDe">
+                <main>
+                    <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                    <div>
+                        <img src="../../view/img/logofinal/whiteLogo.png" alt="">
+                    </div>
+                    <div>
+                        <span class="spanPromotion">Powered by</span>
+                        <img src="../../view/img/logobk.png" alt="">
+                    </div>
+                </main>
+            </section>
         <!-- ACERCA DE -->
     </main>
     <script src="../../view/js/tableData.js"></script>

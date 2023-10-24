@@ -1,36 +1,41 @@
-export function add_particular(){
+import {rut_conexion, alertSuccess} from "../add_all.js";
 
-    let cedula = document.getElementsByName('ci-particular')[0].value;
+export function add_particular(parent){
+
     let nombre = document.getElementsByName('nombre-particular')[0].value;
     let apellido = document.getElementsByName('apellido-particular')[0].value;
     let direccion = document.getElementsByName('direccion-particular')[0].value;
     let telefono = document.getElementsByName('tel-particular')[0].value;
     let listanegra = document.getElementsByName('ln-particular')[0].value;
 
-    if (nombre, cedula, apellido, direccion, telefono, listanegra == ''){
-        alert('Llene todos los campos');z
+    if (nombre == '' || apellido == '' || direccion == '' || telefono == '' || listanegra == ''){
+        alertSuccess('incompleted')
     } else {
-        if (cedula.length == 8 && telefono.length == 8){
-        $.ajax({
-            url: `${rut_conexion}particular.php`,
-            type: 'POST',
-            data: {
-                cedula: cedula,
-                nombre: nombre,
-                apellido: apellido,
-                direccion: direccion,
-                telefono: telefono,
-                listanegra: listanegra,
-            },
-            success: function(response){
-                alert(response);
-            },
-            error: function(reject){
-                alert(reject);
-            }
-        })
+        if (telefono.length == 8){
+            $.ajax({
+                url: `${rut_conexion}particular.php`,
+                type: 'POST',
+                data: {
+                    nombre: nombre,
+                    apellido: apellido,
+                    direccion: direccion,
+                    telefono: telefono,
+                    listanegra: listanegra,
+                },
+                success: function(response){
+                    if(response == true) {
+                        alertSuccess('success');
+                        document.querySelector(`${parent} .alert_section`).reset();
+                    } else {
+                        alertSuccess('error');
+                    }
+                },
+                error: function(reject){
+                    alert(reject);
+                }
+            })
         } else {
-            alert('Cedula y/o telefono invalidos');
+            alertSuccess('warning');
         }
     }    
 }

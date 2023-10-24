@@ -223,19 +223,22 @@ main {
   color: white;
   font-weight: bold;
 }
-.inputs-busqueda .filtrar {
-  background-color: rgb(91, 102, 103);
+.inputs-busqueda :where(.filtrar, .agregar, .eliminados) {
   font-size: 1em;
+  transition: background-color 0.3s;
+}
+.inputs-busqueda .filtrar {
+  background-color: #141414;
 }
 .inputs-busqueda .agregar {
   background-color: #026300;
-  transition: background-color 0.3s;
-  font-size: 1em;
 }
 .inputs-busqueda .eliminados {
   background-color: darkred;
-  transition: background-color 0.3s;
-  font-size: 1em;
+}
+.inputs-busqueda .back {
+  background-color: rgb(134, 113, 19);
+  transition: none
 }
 .titulo-section {
   background-color: #242424;

@@ -1,4 +1,6 @@
-export function add_reserva(){
+import {rut_conexion, alertSuccess} from "../add_all.js";
+
+export function add_reserva(parent){
 
     let tipo_reserva, pasajero, origen, fecha_reserva, hora_reserva, chofer, telefono, destino, fecha_viaje, hora_viaje, comentario;
     
@@ -35,14 +37,19 @@ export function add_reserva(){
                 comentario: comentario
             },
             success: function(response){
-                alert(response);
+                if (response == true ){
+                    alertSuccess('success');
+                    document.querySelector(`${parent} .alert_section`).reset();
+                } else {
+                    alertSuccess('error');
+                }
             },
             error: function(reject){
                 alert(reject);
             }
         })
         } else {
-            alert('Telefono invalido');
+            alertSuccess('warning');
         }
     }    
 }

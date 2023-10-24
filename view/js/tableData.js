@@ -127,8 +127,6 @@ function tableData(parametro, jsonObj){
                                     alert(reject);
                                 }
                             })
-                        } else {
-                            alert('Cancelado');
                         }
                     break;
                     case '.registro-choferes':
@@ -164,6 +162,9 @@ function tableData(parametro, jsonObj){
                 registro.appendChild(col2);
                 registro.appendChild(col3);
             break;
+            // case '.registro-deleted-operadores':
+            //     alert('si')
+            // break;
             case '.registro-empresa':
             case '.registro-cliente':
                 col1.textContent = jsonObj[i].col1;

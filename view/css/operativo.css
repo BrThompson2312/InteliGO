@@ -1,13 +1,13 @@
 @import 'comun.css';
 
 :root {
-  --bg-operador: #0a8d10;
+  --bg-operador: #990ceb;
 }
 #user {
-  background: #1b5f02
+  background: #350352
 }
 .alert_section {
-  background: #012e04;
+  background: #350352;
   border: none;
   border-left: 20px solid var(--bg-operador);
 }
@@ -15,7 +15,7 @@
   background: var(--bg-operador)
 }
 .alert_section :where(label, input, textarea, select) {
-  background: #1b5f02;
+  background: #6b318d;
 }
 .alert_section :where(input, textarea, select) {
   border-bottom: 3px solid var(--bg-operador);

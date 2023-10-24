@@ -1,6 +1,6 @@
-import {alertSuccess} from "../add_all.js";
+import {rut_conexion, alertSuccess} from "../add_all.js";
 
-export function add_chofer(){
+export function add_chofer(parent){
 
     let cedula = document.getElementsByName('ci-chofer')[0].value;
     let nombre = document.getElementsByName('nombre-chofer')[0].value;
@@ -13,32 +13,38 @@ export function add_chofer(){
     if (cedula == '' || nombre == '' || telefono == '' || matricula == '' || modelo == '' || marca == '' || año == ''){
         alertSuccess('incompleted')
     } else {
-        if (cedula.length == 8 && telefono.length == 8 && matricula.length == 7 && año.length == 4){
-        $.ajax({
-            url: `${rut_conexion}chofer.php`,
-            type: 'POST',
-            data: {
-                cedula: cedula,
-                nombre: nombre,
-                telefono: telefono,
-                matricula: matricula,
-                modelo: modelo,
-                marca: marca,
-                año: año
-            },
-            success: function(response){
-                if (response == true){
-                    alertSuccess('success');
-                } else {
-                    alertSuccess('error');
+        if (
+            cedula.length == 8 
+            && telefono.length >= 8 && telefono.length <= 12 
+            && matricula.length == 7 
+            && año.length == 4
+        ){
+            $.ajax({
+                url: `${rut_conexion}chofer.php`,
+                type: 'POST',
+                data: {
+                    cedula: cedula,
+                    nombre: nombre,
+                    telefono: telefono,
+                    matricula: matricula,
+                    modelo: modelo,
+                    marca: marca,
+                    año: año
+                },
+                success: function(response){
+                    if (response == true){
+                        alertSuccess('success');
+                        document.querySelector(`${parent} .alert_section`).reset();
+                    } else {
+                        alertSuccess('error');
+                    }
+                },
+                error: function(reject){
+                    alert(reject);
                 }
-            },
-            error: function(reject){
-                alert(reject);
-            }
-        })
+            })
         } else {
-            alert('Cedula, telefono, matricula y/o año invalidos');
+            alertSuccess('warning');
         }
     }    
 }

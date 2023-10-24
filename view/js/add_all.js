@@ -24,8 +24,7 @@ export function alertSuccess(message) {
             alert_success.classList.remove('alert-info');
             alert_success.classList.remove('alert-danger');
             alert_success.classList.add('alert-success');
-            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-info fa-1x"></i> Datos agregados correctamente';
-            document.querySelector('.alert_section').reset();
+            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-info fa-1x"></i> Campos ingresados correctamente';
             break;
         case 'incompleted':
             alert_success.classList.remove('alert-success');
@@ -61,25 +60,25 @@ export function alertSuccess(message) {
 }
 
 cont_operador.onclick = function(){
-    add_operador();
+    add_operador('.BRS-operador');
 };
 
 cont_chofer.onclick = function(){
-    add_chofer();
+    add_chofer('.BRS-choferes');
 }
 
 cont_particular.onclick = function(){
-    add_particular();
+    add_particular('.BRS-cliente');
 }
 
 cont_empresa.onclick = function(){
-    add_empresa();
+    add_empresa('.BRS-empresa');
 }
 
 cont_reserva.onclick = function(){
-    add_reserva();
+    add_reserva('.BRS-reserva');
 }
 
 cont_mantenimiento.onclick = function(){
-    add_mantenimiento();
+    add_mantenimiento('.BRS-GDM');
 }

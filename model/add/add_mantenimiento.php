@@ -8,16 +8,12 @@ $concepto = $_POST['concepto_gdm'];
 $importe = $_POST['importe_gdm'];
 $comentario = $_POST['comentario_gdm'];
 
-if ($cod == NULL || $fecha == NULL || $concepto == NULL || $importe == NULL || $comentario == NULL){
-    echo 'Fallo. Por favor, rellene los campos';
+$query = "INSERT INTO mantenimiento VALUES ('$cod', '$concepto','$importe','$comentario')";
+$result = mysqli_query($conn, $query);
+if ($result){
+    echo 'Formulario rellenado con éxito';
 } else {
-    $query = "INSERT INTO mantenimiento VALUES ('$cod', '$concepto','$importe','$comentario')";
-    $result = mysqli_query($conn, $query);
-    if ($result){
-        echo 'Formulario rellenado con éxito';
-    } else {
-        echo 'Fallo';
-    }
+    echo 'Fallo';
 }
 
 ?>

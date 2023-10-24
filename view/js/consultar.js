@@ -26,6 +26,7 @@ function consultas(url, registro){
         }
     })
 }
+
 let rutaConsulta = '../../model/read/read_';
 function llamado(rel){
     switch (rel) {
@@ -75,18 +76,32 @@ function opcion_menu(ObjHtml) {
         }
     llamado(rel);
 }
-function ventanaSeccion(conteiner_section, BRS, closeWindow){
-    $(conteiner_section).css('display','none');
-    $(BRS).css('display','flex');
-    $(closeWindow).on('click',function(event){
-        event.preventDefault();
-        $(conteiner_section).css('display','block');
-        $(BRS).css('display','none');
+
+function ventanaSeccion(containerSection, windowOpened){
+    document.querySelector(containerSection).style.display = 'none';
+    document.querySelector(windowOpened).style.display = 'flex';
+    let wop = document.querySelector(windowOpened);
+    wop.querySelector('.cancel_button').onclick = function() {
+        document.querySelector(containerSection).style.display = 'block';
+        document.querySelector(windowOpened).style.display = 'none';
         llamado(rel);
-        document.querySelector('.alert_section').reset();
-    });
+        wop.querySelector('.alert_section').reset();
+    }
     navbar();
 }
+
+// function ventanaSeccionEliminados(openWindowDelete, objDeleter) {
+//     consultas(`../../model/read_deleted/deleted_operador.php`, openWindowDelete);
+//     let dd = objDeleter.innerHTML = 'VOLVER';
+//     objDeleter.classList.add('back');
+//     disappearObjects();
+//     console.log(dd);
+// }
+
+// function disappearObjects() {
+//     document.querySelector('.inputs-busqueda .filtrar').style.display = 'none';
+//     document.querySelector('.inputs-busqueda .agregar').style.display = 'none';
+// }
 
 // Popup de confirmación de salida
     $('#logout').on('click',function(){
@@ -96,9 +111,10 @@ function ventanaSeccion(conteiner_section, BRS, closeWindow){
         $('#alert-salir').css('display','none');
     });
 
+
 let nav = document.querySelector('nav');
     nav.style.left = '-200%';
-var button_hilera = document.querySelector('.navbar_hilera');
+let button_hilera = document.querySelector('.navbar_hilera');
     button_hilera.onclick = function(){   
         navbar();
     }

@@ -2,40 +2,34 @@
 
 ini_set('display_errors', 'on');
 
-$cedula = $_POST['cedula'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
-$lista_negra = $_POST['listanegra'];
+$listanegra = $_POST['listanegra'];
 
-$query_particular = "INSERT INTO particular VALUES ('$cedula','$nombre','$apellido')";
-$query_cliente = "INSERT INTO cliente VALUES ('$cedula','$lista_negra','$direccion')";
-$query_tel = "INSERT INTO telefono_cliente VALUES ('$cedula','$telefono')";
+$query_particular = "INSERT INTO cliente VALUES (0,'$listanegra','$direccion')";
 
-$result_particular = mysqli_query($conn, $query_particular);
-$result_cliente = mysqli_query($conn, $query_cliente);
-$result_tel = mysqli_query($conn, $query_tel);
+if(mysqli_query($conn, $query_particular)) {
+    $query          = "SELECT max(cod_cliente) as codigo from cliente" ;
+    $result_cliente = mysqli_query($conn, $query);
+    $row            = mysqli_fetch_assoc($result_cliente);
+    $cod_cliente    = $row['codigo'];
 
-// if($result_particular){
-//     if($result_cliente){
-//         if($result_tel){ 
-//             echo 'Formulario rellenado con éxito';
-//         } else {
-//             echo 'Fallo result tel';
-//         }
-//     } else {
-//         echo 'Fallo result cliente';
-//     }
-// } else {
-//     echo 'fallo result particular';
-// }
+    $query_particular = "INSERT INTO particular VALUES ($cod_cliente,'$nombre','$apellido')";
+    $query_telefono = "INSERT INTO telefono_cliente VALUES ($cod_cliente,'$telefono')";
 
-if ($result_particular && $result_cliente && $result_tel) {
-    echo 'Formulario rellenado con éxito';
+    if( mysqli_query($conn, $query_particular) ) {
+        if( mysqli_query($conn, $query_telefono) ) {
+            echo 1;
+        } else {
+            echo "error 2.  $query_telefono" ;
+        }
+    } else {
+        echo 'error 1';
+    }
 } else {
-    echo 'Fallo al rellenar el formulario';
+    echo 'error 0';
 }
-
 
 ?>
