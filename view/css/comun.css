@@ -228,7 +228,7 @@ main {
   transition: background-color 0.3s;
 }
 .inputs-busqueda .filtrar {
-  background-color: #141414;
+  background-color: gray;
 }
 .inputs-busqueda .agregar {
   background-color: #026300;

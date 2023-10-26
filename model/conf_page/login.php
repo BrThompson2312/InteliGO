@@ -7,14 +7,14 @@ session_start();
 $user = $_POST['cedula'];
 $pass = $_POST['pass'];
 
-$query = "SELECT * FROM usuario WHERE ci_usuario = '$user'";
+$query = "SELECT * FROM usuario WHERE cedula = '$user'";
 $ejQuery = mysqli_query($conn, $query);
 
 if($ejQuery){
     $flgEncontroUsuario=false;
     while($row = mysqli_fetch_assoc($ejQuery)) {
         $flgEncontroUsuario=true;
-        if($row['contraseña'] == $pass)  {
+        if($row['contrasena'] == $pass)  {
             $_SESSION['tipoUsuario'] = $row['rol_usuario'];
             $_SESSION['nombreUsuario']  = $row['nombre_usuario'];
             echo true;

@@ -31,22 +31,28 @@ function tableData(parametro, jsonObj){
                     break;
                     case '.registro-choferes':
                         alert(
-                            'Nombre: ' + jsonObj[i].col1 + '\n' +
-                            'Matrícula: ' + jsonObj[i].col2 + '\n' +
-                            'Modelo: ' + jsonObj[i].col3 + '\n' +
-                            'Marca: ' + jsonObj[i].col4+ '\n' +
-                            'Año: ' + jsonObj[i].col5 + '\n' +
-                            'Teléfono: ' + jsonObj[i].col6 + '\n' +
-                            'Cedula: ' + jsonObj[i].col7
+                            'Teléfono: ' + jsonObj[i].col1 + '\n' +
+                            'Nombre: ' + jsonObj[i].col2 + '\n' +
+                            'Cedula: ' + jsonObj[i].col3  + '\n' +
+                            'Coche: ' + jsonObj[i].col4
                         );
+                    break;
+                    case '.registro-coches':
+                        alert(
+                            'matricula: ' + jsonObj[i].col1 + '\n' +
+                            'Modelo: ' + jsonObj[i].col2 + '\n' +
+                            'Marca: ' + jsonObj[i].col3 + '\n' +
+                            'Año: ' + jsonObj[i].col4
+                        )
                     break;
                     case '.registro-cliente':
                         alert(
-                            'Teléfono: ' + jsonObj[i].col1 + '\n' +
-                            'Lista negra: ' + jsonObj[i].col2 + '\n' +
+                            'Cliente: ' + jsonObj[i].col1 + '\n' +
+                            'Teléfono: ' + jsonObj[i].col2 + '\n' +
                             'Nombre: ' + jsonObj[i].col3 + '\n' +
                             'Apellido: ' + jsonObj[i].col4 + '\n' +
-                            'Dirección: ' + jsonObj[i].col5 + '\n'
+                            'Dirección: ' + jsonObj[i].col5 + '\n' +
+                            'Lista Negra: ' + jsonObj[i].col6
                         )
                     break;
                     case '.registro-empresa':
@@ -83,8 +89,8 @@ function tableData(parametro, jsonObj){
                             'Concepto: ' + jsonObj[i].col3 + '\n' +
                             'Comentarios: ' + jsonObj[i].col4 + '\n' +
                             'Importe total: ' + jsonObj[i].col5 + '\n' +
-                            'Fecha: ' + jsonObj[i].col6 + '\n' +
-                            'Empresa: ' + jsonObj[i].col7
+                            'Taller: ' + jsonObj[i].col6 + '\n' +
+                            'Fecha: ' + jsonObj[i].col7
                         )
                     break;
                 }
@@ -98,58 +104,35 @@ function tableData(parametro, jsonObj){
             modificar.onclick = function() {
                 alert('modificar' + [i]);
             }
+
+        
+
         let eliminar = document.createElement('td');
             eliminar.classList.add('eliminarRegistro');
             eliminar.title = "Eliminar";
             let simb_eliminar = document.createElement('i');
             eliminar.appendChild(simb_eliminar);
             simb_eliminar.classList.add('fa-solid', 'fa-trash');
+
+            let rutaDelete = '../../model/del/del_';
             eliminar.onclick = function() {
                 switch(parametro){
                     case '.registro-operadores':
-                        let del_operador = confirm('¿Está seguro de eliminar este registro?')
-                        if(del_operador == true){
-                            $.ajax({
-                                url: '../../model/del/del_operador.php',
-                                type: 'POST',
-                                data: {
-                                    cedula: jsonObj[i].col1
-                                },
-                                success: function(response){
-                                    if(response == 1) {
-                                        alert('Registro eliminado correctamente')
-                                    } else {
-                                        alert('Error al eliminar el registro');
-                                    }
-                                    consultas(`${rutaConsulta}operador.php`, '.registro-operadores')
-                                },
-                                error: function(reject){
-                                    alert(reject);
-                                }
-                            })
-                        }
-                    break;
+                        deleteBlock(`${rutaDelete}operador.php`, jsonObj[i].col1, 'operador.php', '.registro-operadores');
+                        break;
+
                     case '.registro-choferes':
-                        let del_chofer = confirm('¿Está seguro de eliminar este registro?')
-                        if(del_chofer == true){
-                            $.ajax({
-                                url: '../model/eliminar/del_chofer.php',
-                                type: 'POST',
-                                data: {
-                                    cedula: jsonObj[i].col7
-                                },
-                                success: function(response){
-                                    alert(response);
-                                    consultas(`${rutaConsulta}chofer.php`, '.registro-choferes');
-                                },
-                                error: function(reject){
-                                    alert(reject);
-                                }
-                            })
-                        } else {
-                            alert('Cancelado');
-                        }
-                    break;
+                        deleteBlock(`${rutaDelete}chofer.php`, jsonObj[i].col5, 'chofer.php', '.registro-choferes')
+                        break;
+
+                    case '.registro-coches':
+                        deleteBlock(`${rutaDelete}coche.php`, jsonObj[i].col1, 'coche.php', '.registro-coches')
+                        break;
+
+                    case '.registro-GDM':
+                        deleteBlock(`${rutaDelete}mantenimiento.php`, jsonObj[i].col1, 'mantenimiento.php', '.registro-GDM');
+                        addBackRegister(jsonObj[i].col2);
+                        break;
                 }
             }
 
@@ -161,43 +144,20 @@ function tableData(parametro, jsonObj){
                 registro.appendChild(col1);
                 registro.appendChild(col2);
                 registro.appendChild(col3);
-            break;
-            // case '.registro-deleted-operadores':
-            //     alert('si')
-            // break;
-            case '.registro-empresa':
-            case '.registro-cliente':
+                break;
+
+            case '.registro-choferes':
+            case '.registro-coches':
                 col1.textContent = jsonObj[i].col1;
-                if (jsonObj[i].col2 == '1'){
-                    col2.innerHTML = `<span class="listanegra-si">SI</span>`;
-                } else {
-                    col2.innerHTML = `<span class="listanegra-no">NO</span>`;
-                }
+                col2.textContent = jsonObj[i].col2;
                 col3.textContent = jsonObj[i].col3;
                 col4.textContent = jsonObj[i].col4;
-                col5.textContent = jsonObj[i].col5;
                 registro.appendChild(col1);
                 registro.appendChild(col2);
                 registro.appendChild(col3);
                 registro.appendChild(col4);
-                registro.appendChild(col5); 
-            break;
-            case '.registro-reserva':
-                col1.textContent = jsonObj[i].col1;
-                if (jsonObj[i].col2 == '1'){
-                    col2.innerHTML = `<span class="reserva-particular">PARTICULAR</span>`;
-                } else {
-                    col2.innerHTML = `<span class="reserva-empresa">EMPRESA</span>`;
-                }
-                col3.textContent = jsonObj[i].col3;
-                col4.textContent = jsonObj[i].col4;
-                col5.textContent = jsonObj[i].col5;
-                registro.appendChild(col1);
-                registro.appendChild(col2);
-                registro.appendChild(col3);
-                registro.appendChild(col4);
-                registro.appendChild(col5); 
-            break;
+                break;
+
             default:
                 col1.textContent = jsonObj[i].col1;
                 col2.textContent = jsonObj[i].col2;
@@ -209,11 +169,55 @@ function tableData(parametro, jsonObj){
                 registro.appendChild(col3);
                 registro.appendChild(col4);
                 registro.appendChild(col5); 
-            break;
+                break;
         }
 
         registro.appendChild(consultar);
         registro.appendChild(modificar);
         registro.appendChild(eliminar);
     }
+}
+
+function deleteBlock(url, send, read_block, block) {
+    let alertConfirmDelete = confirm('¿Está seguro de eliminar este registro?')
+    if (alertConfirmDelete == true) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                send: send
+            },
+            success: function(response){
+                if(response == 1) {
+                    alert('Registro eliminado correctamente')
+                } else {
+                    alert('Error al eliminar el registro');
+                }
+                consultas(`${rutaConsulta}${read_block}`, `${block}`)
+            },
+            error: function(reject){
+                alert(reject);
+            }
+        })
+    }
+}
+
+function addBackRegister(matricula) {
+    $.ajax({
+        url: '../../model/add/add_cocheMan.php',
+        type: 'POST',
+        data: {
+            matricula: matricula
+        },
+        success: function(response) {
+            if (response == true) {
+                alert('Coche agregado correctamente');
+            } else {
+                alert('Error al agregar coche');
+            }
+        },
+        error: function(response) {
+            alert(response);
+        }
+    })
 }

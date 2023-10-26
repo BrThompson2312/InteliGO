@@ -36,6 +36,9 @@ function llamado(rel){
         case '#chofer':
             consultas(`${rutaConsulta}chofer.php`, '.registro-choferes');
         break;
+        case '#coche':
+            consultas(`${rutaConsulta}coche.php`, '.registro-coches');
+        break;
         case '#particular':
             consultas(`${rutaConsulta}particular.php`, '.registro-cliente');
         break;
@@ -89,19 +92,6 @@ function ventanaSeccion(containerSection, windowOpened){
     }
     navbar();
 }
-
-// function ventanaSeccionEliminados(openWindowDelete, objDeleter) {
-//     consultas(`../../model/read_deleted/deleted_operador.php`, openWindowDelete);
-//     let dd = objDeleter.innerHTML = 'VOLVER';
-//     objDeleter.classList.add('back');
-//     disappearObjects();
-//     console.log(dd);
-// }
-
-// function disappearObjects() {
-//     document.querySelector('.inputs-busqueda .filtrar').style.display = 'none';
-//     document.querySelector('.inputs-busqueda .agregar').style.display = 'none';
-// }
 
 // Popup de confirmación de salida
     $('#logout').on('click',function(){

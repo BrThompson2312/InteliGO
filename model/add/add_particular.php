@@ -21,7 +21,7 @@ if(mysqli_query($conn, $query_particular)) {
 
     if( mysqli_query($conn, $query_particular) ) {
         if( mysqli_query($conn, $query_telefono) ) {
-            echo 1;
+            echo true;
         } else {
             echo "error 2.  $query_telefono" ;
         }

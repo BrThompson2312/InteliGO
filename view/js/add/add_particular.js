@@ -8,10 +8,16 @@ export function add_particular(parent){
     let telefono = document.getElementsByName('tel-particular')[0].value;
     let listanegra = document.getElementsByName('ln-particular')[0].value;
 
-    if (nombre == '' || apellido == '' || direccion == '' || telefono == '' || listanegra == ''){
+    if (
+        nombre == '' 
+        || apellido == '' 
+        || direccion == '' 
+        || telefono == '' 
+        || listanegra == ''
+    ){
         alertSuccess('incompleted')
     } else {
-        if (telefono.length == 8){
+        if (telefono.length >= 8 && telefono.length <= 12){
             $.ajax({
                 url: `${rut_conexion}particular.php`,
                 type: 'POST',
@@ -23,6 +29,7 @@ export function add_particular(parent){
                     listanegra: listanegra,
                 },
                 success: function(response){
+                    alert(response);
                     if(response == true) {
                         alertSuccess('success');
                         document.querySelector(`${parent} .alert_section`).reset();

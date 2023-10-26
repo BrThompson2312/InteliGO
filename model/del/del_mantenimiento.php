@@ -1,8 +1,8 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cedula = $_POST['send'];
+$codigo = $_POST['send'];
 
-$query = "UPDATE chofer SET activo = 0 WHERE cedula = '$cedula'";
+$query = "UPDATE mantenimiento SET activo = 0 WHERE cod_mantenimiento = '$codigo'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

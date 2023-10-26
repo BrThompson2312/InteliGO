@@ -1,28 +1,23 @@
-<?php require_once '../conf_page/conexion.php';
+<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
-ini_set('display_errors', 'on');
-
-$query = 'SELECT chofer.ci, coches.matricula, nombre, modelo, marca, año, telefono from maneja
-join chofer on chofer.ci = maneja.ci
-join coches on coches.matricula = maneja.matricula
-join tel_chofer on tel_chofer.ci = chofer.ci';
+$query = 
+    'SELECT telefono, nombre, maneja.cedula as cedula, maneja.matricula FROM maneja
+    JOIN chofer on chofer.cedula = maneja.cedula
+    JOIN coches on coches.matricula = maneja.matricula
+    JOIN tel_chofer on tel_chofer.cedula = chofer.cedula
+    WHERE chofer.activo = 1';
 
 $result = mysqli_query($conn, $query);
-$json = array();
-
-$fecha_ingreso = date("d-m-Y");
-$hora_ingreso = date("h:i:s");
+$json   = array();
 
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['nombre'],
-            'col2' => $row['matricula'],
-            'col3' => $row['modelo'],
-            'col4' => $row['marca'],
-            'col5' => $row['año'],
-            'col6' => $row['telefono'],
-            'col7' => $row['ci']
+            'col1' => $row['telefono'],
+            'col2' => $row['nombre'],
+            'col3' => $row['cedula'],
+            'col4' => $row['matricula'],
+            'col5' => $row['cedula']
         );
     }
     echo json_encode($json);

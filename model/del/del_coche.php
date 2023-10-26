@@ -1,8 +1,8 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cedula = $_POST['send'];
+$matricula = $_POST['send'];
 
-$query = "UPDATE chofer SET activo = 0 WHERE cedula = '$cedula'";
+$query = "UPDATE coches SET activo = 0 WHERE matricula = '$matricula'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

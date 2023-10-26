@@ -1,8 +1,8 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cedula = $_POST['cedula'];
+$cedula = $_POST['send'];
 
-$query = "UPDATE usuario SET activo = 0 WHERE ci_usuario = '$cedula'";
+$query = "UPDATE usuario SET activo = 0 WHERE cedula = '$cedula'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

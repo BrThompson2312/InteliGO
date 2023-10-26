@@ -8,7 +8,7 @@ $rol = 'operador';
 $pass = $_POST['pass'];
 $fecha = $_POST['fecha'];
 
-$query = "INSERT INTO usuario(ci_usuario, nombre_usuario, contraseña, rol_usuario, fecha_ingreso, activo) VALUES ('$cedula','$nombre','$pass','$rol','$fecha', 1)";
+$query = "INSERT INTO usuario VALUES ('$cedula','$nombre','$pass','$rol','$fecha', 1)";
 $result = mysqli_query($conn, $query);
 
 if ($result){

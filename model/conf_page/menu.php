@@ -73,7 +73,11 @@
             ?>
             <button class="opciones-hilera" rel="#chofer" onclick="opcion_menu(this)">
                 <i class="fi fi-ss-steering-wheel"></i>
-                <span>Coches & Choferes</span> 
+                <span>Choferes</span> 
+            </button>
+            <button class="opciones-hilera" rel="#coche" onclick="opcion_menu(this)">
+                <i class="fa-solid fa-car"></i>
+                <span>Coches</span> 
             </button>
             <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-person"></i>
@@ -193,7 +197,7 @@
                     <div class="titulo-section">
                         <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
                         <i class="fi fi-ss-steering-wheel navbar_icon"></i>
-                        <h2>COCHES & CHOFERES</h2>
+                        <h2>CHOFERES</h2>
                     </div>
                     <form action="GET">
                         <div class="inputs-busqueda">
@@ -204,11 +208,10 @@
                     <table>
                         <thead>
                             <tr class="indicadores">
+                                <th>TELEFONO</th>
                                 <th>NOMBRE</th>
-                                <th>MATRICULA</th>
-                                <th>MODELO</th>
-                                <th>MARCA</th>
-                                <th>AÑO</th>
+                                <th>CEDULA</th>
+                                <th>COCHE</th>
                             </tr>
                         </thead>
                         <tbody class="registro-choferes"></tbody>
@@ -216,51 +219,27 @@
                 </div>
                 <div class="block_relative_section BRS-choferes">
                     <form class="alert_section">
-                        <div class="conteiner_form">
-                            <div>
-                                <label for="ci-chofer">Cedula</label>
-                                <input 
-                                    name="ci-chofer" 
-                                    type="text" 
-                                    placeholder="12345678" 
-                                    maxlength="8">
-
-                                <label for="nombre-chofer">Nombre completo</label>
-                                <input 
-                                    name="nombre-chofer" 
-                                    type="text" 
-                                    placeholder="John" 
-                                    maxlength="10">     
-                            </div>
-                            <div>
-                                <label for="matricula-veh">Matrícula</label>
-                                <input 
-                                    name="matricula-veh" 
-                                    type="text" 
-                                    placeholder="SRC4040" 
-                                    maxlength="7">
-
-                                <label for="modelo-veh">Modelo</label>
-                                <input 
-                                    name="modelo-veh" 
-                                    type="text" 
-                                    placeholder="ToyotaOne"
-                                    maxlength="20">
-                            </div>
-                        </div>
-                        <label for="marcha-veh">Marca</label>
+ 
+                        <label for="ci-chofer">Cedula</label>
                         <input 
-                            name="marca-veh" 
-                            type="text"
-                            placeholder="Toyota"
-                            maxlength="20">
-
-                        <label for="año-veh">Año</label>
-                        <input 
-                            name="año-veh" 
+                            name="ci-chofer" 
                             type="text" 
-                            placeholder="Rango: 1901 - 2023" 
-                            maxlength="4">
+                            placeholder="12345678" 
+                            maxlength="8">
+
+                        <label for="nombre-chofer">Nombre completo</label>
+                        <input 
+                            name="nombre-chofer" 
+                            type="text" 
+                            placeholder="John" 
+                            maxlength="10">     
+
+                        <label for="matricula-chofer" >Matrícula</label>
+                        <input 
+                            name="matricula-chofer"
+                            type="text"
+                            placeholder="SRC4040"
+                            maxlength="7">
 
                         <label for="tel-chofer">Teléfono</label>
                         <input 
@@ -272,11 +251,78 @@
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
-                        </div>                  
+                        </div>  
+                                    
                     </form>
                 </div>
             </section>
         <!-- Fin CHOFERES & COCHES -->
+
+        <!-- Inicio COCHES -->
+        <section class="bloque" id="coche">
+                <div class="conteiner-section conteiner-coche">
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <i class="fi fi-ss-steering-wheel navbar_icon"></i>
+                        <h2>COCHES</h2>
+                    </div>
+                    <form action="GET">
+                        <div class="inputs-busqueda">
+                            <button class="filtrar" type="button"> FILTRAR </button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-coche', '.BRS-coches')" type="button">AÑADIR</button>
+                        </div>
+                    </form>
+                    <table>
+                        <thead>
+                            <tr class="indicadores">
+                                <th>MATRICULA</th>
+                                <th>MODELO</th>
+                                <th>MARCA</th>
+                                <th>AÑO</th>
+                            </tr>
+                        </thead>
+                        <tbody class="registro-coches"></tbody>
+                    </table>
+                </div>
+                <div class="block_relative_section BRS-coches">
+                    <form class="alert_section">
+
+                        <label for="matricula-coche">Matrícula</label>
+                        <input 
+                            name="matricula-coche" 
+                            type="text" 
+                            placeholder="SRC4040" 
+                            maxlength="7">
+
+                        <label for="marca-coche">Marca</label>
+                        <input 
+                        name="marca-coche"
+                        type="text"
+                        placeholder="Toyota"
+                        maxlength="20">
+
+                        <label for="modelo-coche">Modelo</label>
+                        <input 
+                            name="modelo-coche" 
+                            type="text" 
+                            placeholder="ToyotaOne"
+                            maxlength="20">     
+                        
+                        <label for="año-coche">Año</label>
+                        <input 
+                            name="año-coche" 
+                            type="text" 
+                            placeholder="2023"
+                            maxlength="4">
+
+                        <div class="buttons">
+                            <button class="cancel_button" type="button">Cancelar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>
+                        </div>                  
+                    </form>
+                </div>
+            </section>
+        <!-- Fin COCHES -->
 
         <!-- Inicio PARTICULARES -->
             <section class="bloque" id="particular">
@@ -295,8 +341,8 @@
                     <table>
                         <thead>
                             <tr class="indicadores">
-                                <th>TELÉFONO</th>
-                                <th>LISTA NEGRA</th>
+                                <th>CLIENTE</th>
+                                <th>TELEFONO</th>
                                 <th>NOMBRE</th>
                                 <th>APELLIDO</th>
                                 <th>DIRECCIÓN</th>
@@ -310,13 +356,15 @@
                         <label for="nombre-particular">Nombre</label>
                         <input 
                             name="nombre-particular" 
-                            type="text" 
-                            placeholder="Jorge">
+                            type="text"
+                            maxlength="20"
+                            placeholder="John">
                         
                         <label for="apellido-particular">Apellido</label>
                         <input 
                             name="apellido-particular" 
                             type="text" 
+                            maxlength="20"
                             placeholder="White">
                         
                         <label for="ln-particular">Lista negra</label>
@@ -330,14 +378,15 @@
                         <input 
                             name="direccion-particular" 
                             type="text"
+                            maxlength="50"
                             placeholder="Carlos de la Vega 6554">
                         
                         <label for="tel-particular">Teléfono</label>
                         <input 
                             name="tel-particular" 
                             type="text" 
-                            placeholder="12345678"
-                            maxlength="8">
+                            placeholder=" 012345678 | +59812345678 | 012 345 678"
+                            maxlength="12">
 
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>
@@ -383,7 +432,7 @@
                                 <input 
                                     name="rut-empresa" 
                                     type="text"  
-                                    placeholder="2134565438765"
+                                    placeholder="210000000000"
                                     maxlength="12">
                                     
                                 <label for="listanegra-empresa">Lista negra</label>
@@ -582,20 +631,21 @@
                     <form class="alert_section">
                         <div class="conteiner_form">
                             <div>
-                                <label for="codigofac-gdm">Cod-factura</label>
+                                <label for="codigo-gdm">Cod-factura</label>
                                 <input 
-                                    name="codigofac-gdm" 
-                                    type="number">
+                                    name="codigo-gdm" 
+                                    type="number"
+                                    placeholder="0000">
                                     
                                 <label for="concepto-gdm">Concepto</label>
                                 <select name="concepto-gdm">
                                     <option value="">--Por favor elija una opción</option>
                                     <option value="Gasoil">Gasoil</option>
-                                    <option value="Cambio_aceite">Cambio de aceite</option>
+                                    <option value="Cambio de aceite">Cambio de aceite</option>
                                     <option value="Electricista">Electricista</option>
-                                    <option value="Alineacion_balanceo">Alineación y balanceo</option>
+                                    <option value="Alineacion balanceo">Alineación y balanceo</option>
                                     <option value="Gomeria">Gomería</option>
-                                    <option value="Cambio_correa">Cambio de correa</option>
+                                    <option value="Cambio correa">Cambio de correa</option>
                                     <option value="Frenos">Frenos</option>
                                     <option value="Embrague">Embrague</option>
                                     <option value="Chapista">Chapista</option>
@@ -603,20 +653,40 @@
                                 </select>  
                             </div>
                             <div> 
-                                <label for="matricula-gdm">Matrícula</label>
-                                <input name="matricula-gdm" type="text">
+                                <label for="matricula-gdm" >Matrícula</label>
+                                <input
+                                    name="matricula-gdm" 
+                                    type="text"
+                                    placeholder="SRC4040"
+                                    maxlength="7">
+
                                 <label for="importe-gdm">Importe</label>
-                                <input name="importe-gdm" type="number">
+                                <input 
+                                    name="importe-gdm"
+                                    type="number"
+                                    placeholder="00000">
+                                    
                             </div>     
                         </div>
                         <label for="fecha-gdm">Fecha</label>
                         <input 
                             name="fecha-gdm" 
                             type="date">
+                            
+                        <label for="taller-gdm">Taller</label>
+                        <input 
+                            name="taller-gdm" 
+                            type="text"
+                            placeholder="Taller"
+                            maxlength="40">
 
                         <label for="comentario-gdm">Comentario</label>
                         <textarea 
-                            name="comentario-gdm"></textarea> 
+                            name="comentario-gdm"
+                            type="text"
+                            placeholder="Comentario"
+                            maxlength="50">
+                        </textarea> 
 
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   

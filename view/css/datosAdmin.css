@@ -84,7 +84,7 @@
   cursor: pointer;
   width: 50px;
 }
-:where(.registro-operadores, .registro-cliente) .consultaRegistro {
+:where(.registro-operadores, .registro-choferes, .registro-coches) .consultaRegistro {
   display: none !important;
 }
 

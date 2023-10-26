@@ -10,7 +10,7 @@ if($result){
     while($row = mysqli_fetch_assoc($result)){
         if ($row['rol_usuario'] == 'operador'){
             $json[] = array(
-                'col1' => $row['ci_usuario'],
+                'col1' => $row['cedula'],
                 'col2' => $row['nombre_usuario'],
                 'col3' => $row['fecha_ingreso'],
             );
