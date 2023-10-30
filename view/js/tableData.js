@@ -79,13 +79,16 @@ function tableData(parametro, jsonObj){
                             'Pasajero: ' + jsonObj[i].col2 + '\n' +
                             'Origen: ' + jsonObj[i].col3 + '\n' +
                             'Destino: ' + jsonObj[i].col4 + '\n' +
-                            'Fecha del servicio: ' + jsonObj[i].col5 + '\n' +
-                            'Hora de inicio: ' + jsonObj[i].col6 + '\n' +
-                            'Hora de la reserva: ' + jsonObj[i].col7 + '\n' +
-                            'Comentario: ' + jsonObj[i].col8 + '\n' +
-                            'Apellido: ' + jsonObj[i].col9 + '\n' +
-                            'Monto: ' + jsonObj[i].col10 + '\n' +
-                            'COD SERVICIO: ' + jsonObj[i].col11
+                            'Chofer: ' + jsonObj[i].col5 + '\n' +
+                            'Identificación Chofer: ' + jsonObj[i].col6 + '\n' +
+                            'Apellido Pasajero: ' + jsonObj[i].col7 + '\n' +
+                            'Fecha_reserva: ' + jsonObj[i].col8 + '\n' +
+                            'Hora de Reserva: ' + jsonObj[i].col9 + '\n' +
+                            'Fecha de Servicio: ' + jsonObj[i].col10 + '\n' +
+                            'Hora de Servicio: ' + jsonObj[i].col11 + '\n' +
+                            'Comentario: ' + jsonObj[i].col12 + '\n' +
+                            'Monto: ' + jsonObj[i].col13 + '\n' +
+                            'COD SERVICIO: ' + jsonObj[i].col14
                         );
                         break;
 
@@ -172,8 +175,9 @@ function tableData(parametro, jsonObj){
                                     type: 'POST',
                                     data: {
                                         cedula: jsonObj[i].col4,
-                                        nombre: arrInputs[0].value,
-                                        apellido: arrInputs[1].value,
+                                        telefono: arrInputs[0].value,
+                                        nombre: arrInputs[1].value,
+                                        apellido: arrInputs[2].value,
                                     },
                                     success: function(response) {
                                         alert(response);
@@ -247,7 +251,7 @@ function tableData(parametro, jsonObj){
                                     url: '../../model/update/upd_reserva.php',
                                     type: 'POST',
                                     data: {
-                                        cod: jsonObj[i].col1,
+                                        cod: jsonObj[i].col14,
                                         nombre: arrInputs[0].value,
                                         apellido: arrInputs[1].value,
                                         monto: arrInputs[2].value,
@@ -256,11 +260,14 @@ function tableData(parametro, jsonObj){
                                         destino: arrInputs[5].value,
                                         fecha: arrInputs[6].value,
                                         hora: arrInputs[7].value,
-                                        chofer: arrInputs[8].value,
-                                        comentario: arrInputs[9].value,
+                                        comentario: arrInputs[8].value,
                                     },
                                     success: function(response) {
-                                        alert(response);
+                                        if (response == true) {
+                                            alert('Reserva modificada correctamente');
+                                        } else {
+                                            alert('Error al modificar reserva');
+                                        }
                                     },
                                     error: function() {
                                         alert('No hay conexión');
@@ -313,8 +320,9 @@ function tableData(parametro, jsonObj){
 
                     case '.registro-choferes':
                         exception = [
+                            'tel-chofer',
                             'nombre-chofer', 
-                            'apellido-chofer'
+                            'apellido-chofer'  
                         ];
                         modBlock('.conteiner-chofer',  '.BRS-choferes', exception);
                         break;
@@ -361,7 +369,6 @@ function tableData(parametro, jsonObj){
                             'destino-servicio',
                             'fecha-servicio',
                             'hora-servicio',
-                            'chofer-realizan',
                             'comentario-servicio'
                         ];
                         modBlock('.conteiner-reserva',  '.BRS-reserva', exception);

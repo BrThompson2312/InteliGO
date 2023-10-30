@@ -29,6 +29,7 @@
     font-weight: bold;
 }
 .alert_section :where(label, input, textarea, select){
+    border-radius: 0px 0px 10px 10px;
     color: white;
     border: none;
     outline: none;

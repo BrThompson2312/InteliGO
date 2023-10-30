@@ -585,7 +585,7 @@
                                 <th>NOMBRE</th>
                                 <th>ORIGEN</th>
                                 <th>DESTINO</th>
-                                <th>FECHA DEL SERVICIO</th>
+                                <th>CHOFER</th>
                             </tr>
                         </thead>
                         <tbody class="registro-reserva"></tbody>

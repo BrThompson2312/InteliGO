@@ -9,18 +9,20 @@ $origen         = $_POST['origen'];
 $destino        = $_POST['destino'];
 $fecha          = $_POST['fecha'];
 $hora           = $_POST['hora'];
-$chofer         = $_POST['chofer'];
 $comentario     = $_POST['comentario'];
 
-$query_cliente = "UPDATE cliente SET direccion = '$direccion', lista_negra = '$listanegra' WHERE cod_cliente = '$cod'";
-$query_particular = "UPDATE empresa SET razon_social = '$razonsocial', nombre_fantasia = '$fantasia', correo = '$correo', encargado_de_pagos = '$encargado', autorizado = '$autorizado' WHERE cod_cliente = '$cod'";
+$query_servicio = 
+"UPDATE servicio SET origen = '$origen', destino = '$destino', fecha = '$fecha', hora = '$hora', comentario = '$comentario', nombre_pasajero = '$nombre', apellido_pasajero = '$apellido', monto = '$monto' WHERE cod_servicio = '$cod'";
 
-if (mysqli_query($conn, $query_cliente)) {
-    if (mysqli_query($conn, $query_particular)) {
-        echo 'Modificado con éxito';
+$query_reserva 
+= "UPDATE reserva SET cod_cliente = '$cliente' WHERE cod_servicio = '$cod'";
+
+if (mysqli_query($conn, $query_servicio)) {
+    if (mysqli_query($conn, $query_reserva)) {
+        echo true;
     }
 } else {
-    echo "Error".mysqli_error($conn);
+    echo false;
 }
 
 ?>

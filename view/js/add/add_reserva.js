@@ -78,6 +78,7 @@ export function add_reserva(parent){
                 hora_reserva: hora_reserva
             },
             success: function(response){
+                alert(response);
                 if (response == true ){
                     alertSuccess('success');
                     document.querySelector(`${parent} .alert_section`).reset();

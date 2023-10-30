@@ -1,26 +1,21 @@
 @import 'comun.css';
 
 :root {
-  --bg-operador: #990ceb;
+  --bg-operador: #3c0ceb;
 }
 #user {
   background: #350352
 }
 .alert_section {
-  background: #350352;
-  border: none;
-  border-left: 20px solid var(--bg-operador);
+  background: rgba(20, 20, 20, 0.5);
+  border: 5px double var(--bg-operador);
 }
 .alert_section label {
-  background: var(--bg-operador)
+  background: var(--bg-operador);
+  border-radius: 10px 10px 0px 0px;
 }
 .alert_section :where(label, input, textarea, select) {
-  background: #6b318d;
-}
-.alert_section :where(input, textarea, select) {
-  border-bottom: 3px solid var(--bg-operador);
-  border-left: 3px solid var(--bg-operador);
-  border-right: 3px solid var(--bg-operador);
+  background: rgba(5, 5, 5, 1);
 }
 nav {
   border-right: 5px solid var(--bg-operador);
