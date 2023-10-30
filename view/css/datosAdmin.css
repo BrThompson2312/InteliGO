@@ -76,7 +76,7 @@
   background: #dc3545 !important;
 }
 .datos-admin .eliminarRegistro:hover {
-  background: #b02a37 !important;
+  background: #7e1d27 !important;
 }
 .datos-admin :where(.consultaRegistro, .modificarRegistro, .eliminarRegistro){
   display: table-cell !important;
@@ -84,7 +84,11 @@
   cursor: pointer;
   width: 50px;
 }
-:where(.registro-operadores, .registro-choferes, .registro-coches) .consultaRegistro {
+:where(.registro-operadores, .registro-choferes, .registro-coches, .registro-asignacion) .consultaRegistro {
+  display: none !important;
+}
+
+:where(.registro-asignacion) .modificarRegistro {
   display: none !important;
 }
 

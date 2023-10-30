@@ -1,10 +1,9 @@
-<?php require_once '../conf_page/conexion.php';
+<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
-ini_set('display_errors', 'on');
-
-$query = 'SELECT cliente.cod_cliente as cod_cliente, rut, razon_social, nombre_fantasia, Email, telefono, direccion, lista_negra from empresa
-join cliente on cliente.cod_cliente = empresa.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;';
+$query = 
+'SELECT empresa.cod_cliente as nro_empresa, rut, razon_social, nombre_fantasia, correo, encargado_de_pagos, autorizado, activo, direccion from empresa
+JOIN cliente on cliente.cod_cliente = empresa.cod_cliente
+where activo = 1';
 
 $result = mysqli_query($conn, $query);
 $json = array();
@@ -12,13 +11,15 @@ $json = array();
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['rut'],
-            'col2' => $row['lista_negra'],
+            'col1' => $row['nro_empresa'],
+            'col2' => $row['rut'],
             'col3' => $row['nombre_fantasia'],
-            'col4' => $row['direccion'],
-            'col5' => $row['telefono'],
+            'col4' => $row['correo'],
+            'col5' => $row['direccion'],
             'col6' => $row['razon_social'],
-            'col7' => $row['Email']
+            'col7' => $row['correo'],
+            'col8' => $row['encargado_de_pagos'],
+            'col9' => $row['autorizado'],
         );
     }
     echo json_encode($json);

@@ -79,6 +79,10 @@
                 <i class="fa-solid fa-car"></i>
                 <span>Coches</span> 
             </button>
+            <button class="opciones-hilera" rel="#asignacion" onclick="opcion_menu(this)">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <span>Asignaciones</span> 
+            </button>
             <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
                 <i class="fa-solid fa-person"></i>
                 <span>Particulares</span>
@@ -136,7 +140,7 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
@@ -159,21 +163,22 @@
                             placeholder="12345678"
                             maxlength="8">
 
-                        <label for="nombre-operador">Nombre completo</label>
+                        <label for="nombre-operador">Nombre de usuario</label>
                         <input 
                             name="nombre-operador" 
                             type="text" 
                             placeholder="John" 
-                            maxlength="10">
+                            maxlength="70">
 
                         <label for="contrasena-operador">Contraseña</label>
                         <input 
                             name="contrasena-operador" 
                             type="password" 
-                            maxlength="10">
+                            maxlength="16">
 
-                        <label for="fecha-operador">Fecha de ingreso</label>
+                        <label for="fecha-operador" style="border-radius: 10px">Fecha de ingreso</label>
                         <input 
+                            style="background: none; border: none"
                             type="datetime" 
                             name="fecha-operador" 
                             value="<?php echo date("Y-m-d");?>" 
@@ -182,6 +187,7 @@
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>
                     </form>
                 </div>
@@ -191,7 +197,7 @@
         <?php
             }
         ?>
-        <!-- Inicio CHOFERES & COCHES -->
+        <!-- Inicio CHOFERES -->
             <section class="bloque" id="chofer">
                 <div class="conteiner-section conteiner-chofer">
                     <div class="titulo-section">
@@ -202,7 +208,7 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
@@ -210,8 +216,8 @@
                             <tr class="indicadores">
                                 <th>TELEFONO</th>
                                 <th>NOMBRE</th>
+                                <th>APELLIDO</th>
                                 <th>CEDULA</th>
-                                <th>COCHE</th>
                             </tr>
                         </thead>
                         <tbody class="registro-choferes"></tbody>
@@ -219,6 +225,27 @@
                 </div>
                 <div class="block_relative_section BRS-choferes">
                     <form class="alert_section">
+
+                        <label for="tel-chofer">Teléfono</label>
+                        <input
+                            name="tel-chofer" 
+                            type="text" 
+                            placeholder=" 012345678 | +59812345678 | 012 345 678"
+                            maxlength="12">
+
+                        <label for="nombre-chofer">Nombre</label>
+                        <input 
+                            name="nombre-chofer" 
+                            type="text"
+                            placeholder="John" 
+                            maxlength="35">
+
+                        <label for="apellido-chofer">Apellido</label>
+                        <input 
+                            name="apellido-chofer" 
+                            type="text"
+                            placeholder="White" 
+                            maxlength="35">
  
                         <label for="ci-chofer">Cedula</label>
                         <input 
@@ -227,36 +254,15 @@
                             placeholder="12345678" 
                             maxlength="8">
 
-                        <label for="nombre-chofer">Nombre completo</label>
-                        <input 
-                            name="nombre-chofer" 
-                            type="text" 
-                            placeholder="John" 
-                            maxlength="10">     
-
-                        <label for="matricula-chofer" >Matrícula</label>
-                        <input 
-                            name="matricula-chofer"
-                            type="text"
-                            placeholder="SRC4040"
-                            maxlength="7">
-
-                        <label for="tel-chofer">Teléfono</label>
-                        <input 
-                            name="tel-chofer" 
-                            type="text" 
-                            placeholder=" 012345678 | +59812345678 | 012 345 678"
-                            maxlength="12">
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>  
-                                    
                     </form>
                 </div>
             </section>
-        <!-- Fin CHOFERES & COCHES -->
+        <!-- Fin CHOFERES -->
 
         <!-- Inicio COCHES -->
         <section class="bloque" id="coche">
@@ -269,15 +275,15 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-coche', '.BRS-coches')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-coche', '.BRS-coches','subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
                                 <th>MATRICULA</th>
-                                <th>MODELO</th>
                                 <th>MARCA</th>
+                                <th>MODELO</th>
                                 <th>AÑO</th>
                             </tr>
                         </thead>
@@ -318,11 +324,63 @@
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>                  
                     </form>
                 </div>
             </section>
         <!-- Fin COCHES -->
+
+         <!-- Inicio ASIGNACIONES -->
+            <section class="bloque" id="asignacion">
+                <div class="conteiner-section conteiner-asignacion">
+                    <div class="titulo-section">
+                        <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
+                        <i class="fa-solid fa-clipboard-list navbar_icon"></i>
+                        <h2>ASIGNACIONES</h2>
+                    </div>
+                    <form action="GET">
+                        <div class="inputs-busqueda">
+                            <button class="filtrar"> FILTRAR </button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-asignacion', '.BRS-asignacion', '.cancel_button')" type="button">AGREGAR</button>
+                        </div>
+                    </form>
+                    <table>
+                        <thead>
+                            <tr class="indicadores">
+                                <th>CEDULA</th>
+                                <th>CHOFER</th>
+                                <th>COCHE</th>
+                            </tr>
+                        </thead>
+                        <tbody class="registro-asignacion"></tbody>
+                    </table>
+                </div>
+                <div class="block_relative_section BRS-asignacion">
+                    <form class="alert_section">
+
+                        <label for="ci-asignacion">Cedula</label>
+                        <input 
+                            name="ci-asignacion" 
+                            type="text" 
+                            placeholder="Cédula"
+                            maxlength="8"> 
+
+                        <label for="matricula-asignacion">Matrícula</label>
+                        <input 
+                            name="matricula-asignacion" 
+                            type="text" 
+                            placeholder="Matrícula"
+                            maxlength="7">
+
+                        <div class="buttons">
+                            <button class="cancel_button" type="button">Atras</button>   
+                            <button class="subir_datos" type="button" onclick="btn_switch('chofer')">Agregar</button> 
+                        </div>                   
+                    </form>
+                </div>
+            </section>
+        <!-- Fin ASIGNACIONES -->
 
         <!-- Inicio PARTICULARES -->
             <section class="bloque" id="particular">
@@ -335,13 +393,13 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-cliente', '.BRS-cliente', '.cancel_button')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-cliente', '.BRS-cliente', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
-                                <th>CLIENTE</th>
+                                <th>NRO_CLIENTE</th>
                                 <th>TELEFONO</th>
                                 <th>NOMBRE</th>
                                 <th>APELLIDO</th>
@@ -353,44 +411,45 @@
                 </div>
                 <div class="block_relative_section BRS-cliente">
                     <form class="alert_section">
+                        <label for="tel-particular">Teléfono</label>
+                        <input 
+                            name="tel-particular" 
+                            type="text"
+                            maxlength="12"
+                            placeholder="012345678 | +59812345678 | 012 345 678">
+                        
                         <label for="nombre-particular">Nombre</label>
                         <input 
                             name="nombre-particular" 
-                            type="text"
-                            maxlength="20"
-                            placeholder="John">
-                        
+                            type="text" 
+                            maxlength="70"
+                            placeholder="White">
+
                         <label for="apellido-particular">Apellido</label>
                         <input 
                             name="apellido-particular" 
                             type="text" 
-                            maxlength="20"
-                            placeholder="White">
-                        
-                        <label for="ln-particular">Lista negra</label>
-                        <select name="ln-particular">
-                            <option value="">--Seleccione opción</option>
-                            <option value="1">SI</option>
-                            <option value="0">NO</option>
-                        </select>
+                            placeholder="White"
+                            maxlength="70">
 
                         <label for="direccion-particular">Dirección</label>
                         <input 
                             name="direccion-particular" 
                             type="text"
                             maxlength="50"
-                            placeholder="Carlos de la Vega 6554">
-                        
-                        <label for="tel-particular">Teléfono</label>
-                        <input 
-                            name="tel-particular" 
-                            type="text" 
-                            placeholder=" 012345678 | +59812345678 | 012 345 678"
-                            maxlength="12">
+                            placeholder="Carlos de la Vega Yugoeslavia 0000">
+
+                        <label for="ln-particular">Lista negra</label>
+                        <select name="ln-particular" >
+                            <option value="">-- Seleccione opción</option>
+                            <option value="1">SI</option>
+                            <option value="0">NO</option>
+                        </select>
 
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>
                             <button class="subir_datos" type="button">Agregar</button>
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>                      
                     </form>
                 </div>
@@ -408,17 +467,17 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-empresa', '.BRS-empresa', '.cancel_button')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-empresa', '.BRS-empresa', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
+                                <th>NRO_CLIENTE</th>
                                 <th>RUT</th>
-                                <th>LISTA NEGRA</th>
-                                <th>NOMBRE FANTASÍA</th>
+                                <th>NOMBRE</th>
+                                <th>CORREO</th>
                                 <th>DIRECCIÓN</th>
-                                <th>TELÉFONO</th>
                             </tr>
                         </thead>
                         <tbody class="registro-empresa"></tbody>
@@ -445,13 +504,15 @@
                                 <label for="fantasia-empresa">Nombre fantasía</label>
                                 <input 
                                     name="fantasia-empresa" 
-                                    type="text" 
+                                    type="text"
+                                    maxlength="70"
                                     placeholder="McDonald's">
                                 
                                 <label for="razonsocial-empresa">Razón social</label>
                                 <input 
                                     name="razonsocial-empresa" 
-                                    type="text" 
+                                    type="text"
+                                    maxlength="70"
                                     placeholder="Restaurantes McDonald's S.A.">     
                             </div>
                             <div>
@@ -459,44 +520,44 @@
                                 <input 
                                     name="direccion-empresa"
                                     type="text"
+                                    maxlength="100"
                                     placeholder="Carlos de la Vega 0000">
 
                                 <label for="tel-empresa">Teléfono</label>
                                 <input 
                                     name="tel-empresa" 
                                     type="text" 
-                                    placeholder="12345678"
-                                    maxlength="8">
-
-                                <label for="empleado-empresa">Persona de contacto</label>
-                                <input 
-                                    name="empleado-empresa" 
-                                    type="text" 
-                                    placeholder="John White">
+                                    placeholder="12345678 | +59812345678 | 012 345 678"
+                                    maxlength="12">
 
                                 <label for="correo-empresa">Correo</label>
                                 <input 
                                     name="correo-empresa" 
-                                    type="email" 
+                                    type="email"
+                                    maxlength="125"
                                     placeholder="correo@correo.com">
+
+                                <label for="encargado-empresa">Encargado de pagos</label>
+                                <input 
+                                    name="encargado-empresa" 
+                                    type="text"
+                                    maxlength="70"
+                                    placeholder="">
 
                             </div>
                         </div>
-                        <label for="encargado-empresa">Encargado de pagos</label>
-                        <input 
-                            name="encargado-empresa" 
-                            type="text" 
-                            placeholder="">
-                            
+                        
                         <label for="autorizado-empresa">Autorizado</label>
                         <input 
                             name="autorizado-empresa" 
-                            type="text" 
+                            type="text"
+                            maxlength="70"
                             placeholder="">
 
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>   
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>                             
                     </form>
                 </div>
@@ -514,17 +575,17 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-reserva', '.BRS-reserva', '.cancel_button')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-reserva', '.BRS-reserva', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
                         <thead>
                             <tr class="indicadores">
-                                <th>COD</th>
-                                <th>TIPO</th>
-                                <th>CHOFER</th>
+                                <th>CLIENTE</th>
+                                <th>NOMBRE</th>
                                 <th>ORIGEN</th>
                                 <th>DESTINO</th>
+                                <th>FECHA DEL SERVICIO</th>
                             </tr>
                         </thead>
                         <tbody class="registro-reserva"></tbody>
@@ -532,68 +593,102 @@
                 </div>
                 <div class="block_relative_section BRS-reserva">
                     <form class="alert_section">
+
+                        <label for="nombre-servicio">Nombre del pasajero</label>
+                        <input 
+                            name="nombre-servicio"
+                            type="text"
+                            placeholder="John"
+                            maxlength="70">
+
+                        <label for="apellido-servicio">Apellido del pasajero</label>
+                        <input 
+                            name="apellido-servicio" 
+                            type="text"
+                            placeholder="White"
+                            maxlength="70">
+
+                        <label for="monto-servicio">Monto</label>
+                        <input 
+                            name="monto-servicio" 
+                            type="number">
+
                         <div class="conteiner_form">
                             <div>
-                                <label for="tipo-reserva">Tipo</label>
-                                <select name="tipo-reserva">
-                                    <option value="">--Seleccione opción</option>
-                                    <option value="Empresa">Empresa</option>
-                                    <option value="Particular">Particular</option>
-                                </select>
-                                <label for="pasajero-reserva">Pasajero</label>
+                                <label for="cliente-reserva">Cliente</label>
                                 <input 
-                                    name="pasajero-reserva" 
-                                    type="text">
+                                    name="cliente-reserva"
+                                    type="number"
+                                    placeholder="Seleccione cliente de la sección Empresa/Particular">
+                                
+                                <label for="origen-servicio">Origen</label>
+                                <input 
+                                    name="origen-servicio" 
+                                    type="text"
+                                    placeholder="Carlos de la Vega 5348"
+                                    maxlength="70">
 
-                                <label for="origen-reserva">Origen</label>
+                                <label for="fecha-reserva" style="border-radius: 10px">Fecha de reserva</label>
                                 <input 
-                                    name="origen-reserva" 
-                                    type="number">
+                                    style="background: none; border: none"
+                                    name="fecha-reserva" 
+                                    type="text" 
+                                    value="<?php echo date("Y-m-d")?>"
+                                    readonly>
 
-                                <label for="fecha_reserva-reserva">Fecha de reserva</label>
+                                <label for="hora-reserva" style="border-radius: 10px">Hora de reserva</label>
                                 <input 
-                                    name="fecha_reserva-reserva" 
-                                    type="text" value="<?php echo date("d:m:Y")?>">
-
-                                <label for="hora-reserva">Hora de reserva</label>
-                                <input 
+                                    style="background: none; border: none"
                                     name="hora-reserva" 
                                     type="text" 
+                                    value="<?php echo date("H:i:s")?>"
+                                    readonly>
+
+                            </div>
+                            <div>
+                                
+                                <label for="tel-cliente-servicio">Teléfono del pasajero</label>
+                                <input 
+                                    name="tel-cliente-servicio" 
+                                    type="text"
+                                    placeholder="012345678 | +59812345678 | 012 345 678"
+                                    maxlength="12">
+
+                                <label for="destino-servicio">Destino</label>
+                                <input 
+                                    name="destino-servicio" 
+                                    type="text"
+                                    placeholder="18 de Julio"
+                                    maxlength="70">
+
+                                <label for="fecha-servicio">Fecha del viaje</label>
+                                <input 
+                                    name="fecha-servicio" 
+                                    type="text"
+                                    value="<?php echo date("Y-m-d")?>">
+
+                                <label for="hora-servicio">Hora del viaje</label>
+                                <input 
+                                    name="hora-servicio"
+                                    type="time"
                                     value="<?php echo date("H:i:s")?>">
 
                             </div>
-                            <div>
-                                <label for="chofer-reserva">Chofer</label>
-                                <select name="chofer-reserva">
-                                    <option value="">--Seleccione Chofer disponible</option>
-                                </select>
-
-                                <label for="tel-reserva">Teléfono del pasajero</label>
-                                <input 
-                                    name="tel-reserva" 
-                                    type="number">
-
-                                <label for="destino-reserva">Destino</label>
-                                <input 
-                                    name="destino-reserva" 
-                                    type="number">
-
-                                <label for="fecha_reserva-viaje">Fecha del viaje</label>
-                                <input 
-                                    name="fecha_viaje-reserva" 
-                                    type="date">
-
-                                <label for="hora-viaje">Hora del viaje</label>
-                                <input 
-                                    name="hora-viaje" 
-                                    type="time">
-                            </div>
                         </div>
-                        <label for="comentario-reserva">Comentario</label>
-                        <textarea name="comentario-reserva"></textarea>
+
+                        <label for="chofer-realizan">Chofer</label>
+                        <input
+                            name="chofer-realizan"
+                            type="text"
+                            placeholder="12345678"
+                            maxlength="8">
+
+                        <label for="comentario-servicio">Comentario</label>
+                        <textarea name="comentario-servicio" maxlength="100"></textarea>
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
-                            <button class="subir_datos" type="button">Agregar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>                          
                     </form>
                 </div>
@@ -611,7 +706,7 @@
                     <form>
                         <div class="inputs-busqueda">
                             <button class="filtrar">FILTRAR</button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', '.cancel_button')" type="button">AÑADIR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
                     <table>
@@ -671,26 +766,28 @@
                         <label for="fecha-gdm">Fecha</label>
                         <input 
                             name="fecha-gdm" 
-                            type="date">
+                            type="text"
+                            value="<?php echo date("Y-m-d")?>">
                             
                         <label for="taller-gdm">Taller</label>
                         <input 
                             name="taller-gdm" 
                             type="text"
                             placeholder="Taller"
-                            maxlength="40">
+                            maxlength="70">
 
                         <label for="comentario-gdm">Comentario</label>
                         <textarea 
                             name="comentario-gdm"
                             type="text"
                             placeholder="Comentario"
-                            maxlength="50">
+                            maxlength="100">
                         </textarea> 
 
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
-                            <button class="subir_datos" type="button">Agregar</button>   
+                            <button class="subir_datos" type="button">Agregar</button>
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>                             
                     </form>
                 </div>

@@ -1,40 +1,81 @@
 import {rut_conexion, alertSuccess} from "../add_all.js";
 
 export function add_reserva(parent){
-
-    let tipo_reserva, pasajero, origen, fecha_reserva, hora_reserva, chofer, telefono, destino, fecha_viaje, hora_viaje, comentario;
     
-    tipo_reserva = document.getElementsByName('tipo-reserva')[0].value;
-    pasajero = document.getElementsByName('pasajero-reserva')[0].value;
-    origen = document.getElementsByName('origen-reserva')[0].value;
-    fecha_reserva = document.getElementsByName('fecha-reserva-reserva')[0].value;
-    hora_reserva = document.getElementsByName('hora-reserva')[0].value;
-    chofer = document.getElementsByName('chofer-reserva')[0].value;
-    telefono = document.getElementsByName('tel-reserva')[0].value;
-    destino = document.getElementsByName('destino-reserva')[0].value;
-    fecha_viaje = document.getElementsByName('fecha_viaje-reserva')[0].value;
-    hora_viaje = document.getElementsByName('hora-viaje')[0].value;
-    comentario = document.getElementsByName('comentario-reserva')[0].value;
+    // Datos del viaje
+    let origen          = document.getElementsByName('origen-servicio')[0].value;
+    let destino         = document.getElementsByName('destino-servicio')[0].value;
+    let fecha           = document.getElementsByName('fecha-servicio')[0].value;
+    let hora            = document.getElementsByName('hora-servicio')[0].value;
+    let comentario      = document.getElementsByName('comentario-servicio')[0].value;
+    let nombre          = document.getElementsByName('nombre-servicio')[0].value;
+    let apellido        = document.getElementsByName('apellido-servicio')[0].value;
+    let monto           = document.getElementsByName('monto-servicio')[0].value;
 
-    if (tipo_reserva == '' || pasajero == '' || origen == '' || fecha_reserva == '' || hora_reserva == '' || chofer == '' || telefono == '' || destino == '' || fecha_viaje == '' || hora_viaje == '' || comentario == ''){
-        alert('Llene todos los campos');
+
+    // Chofer asignado
+    let chofer          = document.getElementsByName('chofer-realizan')[0].value;
+
+    // Telefono del pasajero
+    let telefono        = document.getElementsByName('tel-cliente-servicio')[0].value;
+
+    // Reserva del viaje
+    let cliente         = document.getElementsByName('cliente-reserva')[0].value;
+    let fecha_reserva   = document.getElementsByName('fecha-reserva')[0].value;
+    let hora_reserva    = document.getElementsByName('hora-reserva')[0].value;
+
+    if (
+        // Datos del viaje
+        origen == ''
+        || destino == ''
+        || fecha == ''
+        || hora == ''
+        || comentario == ''
+        || nombre == ''
+        || apellido == ''
+        || monto == ''
+
+        // Chofer asignado
+        || chofer == ''
+
+        // Telefono del pasajero
+        || telefono == ''
+
+        // Reserva del viaje
+        || cliente == ''
+        || fecha_reserva == ''
+        || hora_reserva == ''
+    ){
+        alertSuccess('incompleted');
     } else {
-        if (telefono.length == 8){
+        if (
+            telefono.length >= 8 && telefono.length <= 12
+            && chofer.length == 8
+        ){
         $.ajax({
             url: `${rut_conexion}reserva.php`,
             type: 'POST',
             data: {
-                tipo_reserva: tipo_reserva,
-                pasajero: pasajero,
+                // Datos del viaje
                 origen: origen,
-                fecha_reserva: fecha_reserva,
-                hora_reserva: hora_reserva,
-                chofer: chofer,
-                telefono: telefono,
                 destino: destino,
-                fecha_viaje: fecha_viaje,
-                hora_viaje: hora_viaje,
-                comentario: comentario
+                fecha: fecha,
+                hora: hora,
+                comentario: comentario,
+                nombre: nombre,
+                apellido: apellido,
+                monto: monto,
+
+                // Chofer asignado
+                chofer: chofer,
+
+                // Telefono del pasajero
+                telefono: telefono,
+
+                // Reserva del viaje
+                cliente: cliente,
+                fecha_reserva: fecha_reserva,
+                hora_reserva: hora_reserva
             },
             success: function(response){
                 if (response == true ){

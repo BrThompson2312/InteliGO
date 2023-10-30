@@ -41,7 +41,8 @@ body img {
   }
 }
 main {
-  background-color: transparent;
+  background: rgba(20, 20, 20, 0.5);
+  padding: 1em;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -60,7 +61,7 @@ main {
 }
 @media (min-width: 900px){
   main {
-    width: 500px;
+    width: 400px;
   }
 }
 .inteligo-login {
@@ -116,12 +117,12 @@ form {
 .form-group i {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 20px;
 }
 .form-group ion-icon {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 20px;
 }
 .form-group label {
   position: absolute;
@@ -133,7 +134,7 @@ form {
 .form-group input {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid white;
+  border-bottom: 10px double rgba(255, 255, 255, 0.5);
   color: white;
   padding: 10px;
   margin-top: 10px;

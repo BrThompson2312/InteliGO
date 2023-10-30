@@ -28,7 +28,7 @@
                 <input type="password" name="pass" id="pass" required>
                 <label for="pass"> Contraseña </label>
             </div>
-            <button type="button" id="login-user">
+            <button type="submit" id="login-user">
                 <ion-icon name="log-in"></ion-icon>
                 <span> INGRESAR </span>
             </button>

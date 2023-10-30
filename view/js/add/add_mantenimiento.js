@@ -33,7 +33,6 @@ export function add_mantenimiento(parent){
                     comentario: comentario,
                 },
                 success: function(response){
-                    alert(response);
                     if(response == true){
                         alertSuccess('success');
                         document.querySelector(`${parent} .alert_section`).reset();

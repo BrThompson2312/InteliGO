@@ -2,34 +2,34 @@
 
 ini_set('display_errors', 'on');
 
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$direccion = $_POST['direccion'];
-$telefono = $_POST['telefono'];
+$telefono   = $_POST['telefono'];
+$nombre     = $_POST['nombre'];
+$apellido   = $_POST['apellido'];
+$direccion  = $_POST['direccion'];
 $listanegra = $_POST['listanegra'];
 
-$query_particular = "INSERT INTO cliente VALUES (0,'$listanegra','$direccion')";
+$query_cliente = "INSERT INTO cliente VALUES (0, '$listanegra', '$direccion', 1)";
 
-if(mysqli_query($conn, $query_particular)) {
-    $query          = "SELECT max(cod_cliente) as codigo from cliente" ;
-    $result_cliente = mysqli_query($conn, $query);
-    $row            = mysqli_fetch_assoc($result_cliente);
-    $cod_cliente    = $row['codigo'];
+if(mysqli_query($conn, $query_cliente)) {
+    $query_max_cliente  = "SELECT max(cod_cliente) as codigo from cliente" ;
+    $result_cliente     = mysqli_query($conn, $query_max_cliente);
+    $row                = mysqli_fetch_assoc($result_cliente);
+    $cod_cliente        = $row['codigo'];
 
-    $query_particular = "INSERT INTO particular VALUES ($cod_cliente,'$nombre','$apellido')";
-    $query_telefono = "INSERT INTO telefono_cliente VALUES ($cod_cliente,'$telefono')";
+    $query_particular   = "INSERT INTO particular VALUES (0, $cod_cliente,'$nombre','$apellido')";
+    $query_telefono     = "INSERT INTO telefono_cliente VALUES ($cod_cliente,'$telefono')";
 
-    if( mysqli_query($conn, $query_particular) ) {
-        if( mysqli_query($conn, $query_telefono) ) {
+    if(mysqli_query($conn, $query_particular)) {
+        if(mysqli_query($conn, $query_telefono) ) {
             echo true;
         } else {
-            echo "error 2.  $query_telefono" ;
+            echo false;
         }
     } else {
-        echo 'error 1';
+        echo false;
     }
 } else {
-    echo 'error 0';
+    echo false;
 }
 
 ?>

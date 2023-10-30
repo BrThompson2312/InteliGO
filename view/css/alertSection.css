@@ -79,13 +79,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     margin-top: auto;
 }
-.alert_section .buttons :where(.cancel_button, .subir_datos){
+.alert_section .buttons :where(.cancel_button, .subir_datos, .modificar_datos){
     background: #040404;
     border: none;
-    border-radius: 1em;
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
@@ -107,9 +105,11 @@
     border: 2px solid darkgreen;
     color: white; 
 }
-.alert_section .buttons .subir_datos:hover {
-    background: darkgreen;
-    color: white;
+.alert_section .buttons .modificar_datos{
+    display: none;
+    background: darkgoldenrod;
+    border: 2px solid darkgoldenrod;
+    color: white; 
 }
 
 @media (max-width: 600px){

@@ -1,10 +1,10 @@
-<?php require_once '../conf_page/conexion.php';
+<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
-ini_set('display_errors', 'on');
-
-$query = 'SELECT cliente.cod_cliente as cliente, lista_negra, nombre, apellido, direccion, telefono from cliente
-join particular on particular.cod_cliente = cliente.cod_cliente
-join telefono_cliente on telefono_cliente.cod_cliente = cliente.cod_cliente;';
+$query = 
+'SELECT particular.cod_cliente as nro_particular, telefono, nombre, apellido, direccion, lista_negra FROM particular
+JOIN cliente on cliente.cod_cliente = particular.cod_cliente
+JOIN telefono_cliente on telefono_cliente.cod_cliente = particular.cod_cliente
+WHERE activo = 1';
 
 $result = mysqli_query($conn, $query);
 $json = array();
@@ -12,7 +12,7 @@ $json = array();
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['cliente'],
+            'col1' => $row['nro_particular'],
             'col2' => $row['telefono'],  
             'col3' => $row['nombre'],
             'col4' => $row['apellido'],  

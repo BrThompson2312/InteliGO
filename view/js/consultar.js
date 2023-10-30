@@ -39,6 +39,9 @@ function llamado(rel){
         case '#coche':
             consultas(`${rutaConsulta}coche.php`, '.registro-coches');
         break;
+        case '#asignacion':
+            consultas(`${rutaConsulta}asignacion.php`, '.registro-asignacion');
+        break;
         case '#particular':
             consultas(`${rutaConsulta}particular.php`, '.registro-cliente');
         break;
@@ -46,7 +49,7 @@ function llamado(rel){
             consultas(`${rutaConsulta}empresa.php`, '.registro-empresa');
         break;
         case '#reserva':
-            consultas(`${rutaConsulta}empresa.php`, '.registro-reserva');
+            consultas(`${rutaConsulta}reserva.php`, '.registro-reserva');
         break;
         case '#gastos-de-mantenimiento':
             consultas(`${rutaConsulta}mantenimiento.php`, '.registro-GDM');
@@ -80,9 +83,46 @@ function opcion_menu(ObjHtml) {
     llamado(rel);
 }
 
-function ventanaSeccion(containerSection, windowOpened){
+function labelInput(windowOpened){
+    let label = document.querySelectorAll(`${windowOpened} label`);
+    let input = document.querySelectorAll(`${windowOpened} input`);
+    let select = document.querySelectorAll(`${windowOpened} select`);
+    let textarea = document.querySelectorAll(`${windowOpened} textarea`);
+
+    for (let i = 0; i < label.length; i++){
+        label[i].style.display = "block";
+    }
+    for (let i = 0; i < input.length; i++){
+        input[i].style.display = "block";
+    }
+    for (let i = 0; i < select.length; i++){
+        select[i].style.display = "block";
+    }
+    for (let i = 0; i < textarea.length; i++){
+        textarea[i].style.display = "block";
+    }
+}
+
+function ventanaSeccion(containerSection, windowOpened, mode){
     document.querySelector(containerSection).style.display = 'none';
     document.querySelector(windowOpened).style.display = 'flex';
+
+    let modificar_datos = document.querySelector(`${windowOpened} .modificar_datos`);
+    let subir_datos     = document.querySelector(`${windowOpened} .subir_datos`);
+
+    switch(mode) {
+        case 'subir':
+            modificar_datos.style.display = "none";
+            subir_datos.style.display = "block";
+            labelInput(windowOpened);
+        break;
+
+        case 'modificar':
+            modificar_datos.style.display = "block";
+            subir_datos.style.display = "none";
+        break;
+    }
+    
     let wop = document.querySelector(windowOpened);
     wop.querySelector('.cancel_button').onclick = function() {
         document.querySelector(containerSection).style.display = 'block';

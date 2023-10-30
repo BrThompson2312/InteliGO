@@ -1,24 +1,20 @@
 import {rut_conexion, alertSuccess} from "../add_all.js";
 
-export function add_chofer(parent){
+export function add_asignacion(parent){
 
-    var telefono    = document.getElementsByName("tel-chofer")[0].value;
-    let nombre      = document.getElementsByName('nombre-chofer')[0].value;
-    let apellido    = document.getElementsByName('apellido-chofer')[0].value;
-    let cedula      = document.getElementsByName('ci-chofer')[0].value;
+    let cedula = document.getElementsByName('ci-asignacion')[0].value;
+    let matricula = document.getElementsByName('matricula-asignacion')[0].value;
 
-    if (telefono == '' || nombre == '' || apellido == '' | cedula == ''){
+    if (cedula == '' || matricula == ''){
         alertSuccess('incompleted')
     } else {
-        if (cedula.length == 8 && telefono.length >= 8 && telefono.length <= 12){
+        if (cedula.length == 8 && matricula.length == 7){
             $.ajax({
-                url: `${rut_conexion}chofer.php`,
+                url: `${rut_conexion}asignacion.php`,
                 type: 'POST',
                 data: {
-                    telefono:   telefono,
-                    nombre:     nombre,
-                    apellido:   apellido,
-                    cedula:     cedula,
+                    cedula: cedula,
+                    matricula: matricula,
                 },
                 success: function(response){
                     if (response == true){

@@ -32,7 +32,7 @@ let login_user = document.querySelector("#login-user");
                    if (response == true){
                         window.location.href = 'model/conf_page/menu.php';
                    } else {
-                       alert(response);
+                       alert('Error al iniciar sesión');
                    }
                 }
             })
