@@ -1,5 +1,3 @@
-import {rut_conexion, alertSuccess} from "../add_all.js";
-
 export function add_empresa(parent){
     
     let rut             = document.getElementsByName('rut-empresa')[0].value;

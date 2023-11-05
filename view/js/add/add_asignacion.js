@@ -1,5 +1,3 @@
-import {rut_conexion, alertSuccess} from "../add_all.js";
-
 export function add_asignacion(parent){
 
     let cedula = document.getElementsByName('ci-asignacion')[0].value;

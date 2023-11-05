@@ -2,7 +2,7 @@
 
 $cedula = $_POST['send'];
 
-$query = "UPDATE chofer SET activo = 0 WHERE cedula = '$cedula'";
+$query = "UPDATE chofer SET activo = 0, fecha_desactivacion = now() WHERE cedula = '$cedula'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

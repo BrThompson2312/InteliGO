@@ -1,5 +1,3 @@
-import {rut_conexion, alertSuccess} from "../add_all.js";
-
 export function add_chofer(parent){
 
     var telefono    = document.getElementsByName("tel-chofer")[0].value;

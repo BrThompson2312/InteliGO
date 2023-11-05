@@ -1,4 +1,4 @@
-<?php require_once '../conf_page/conexion.php';
+<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
 $query = "SELECT matricula, modelo, marca, año FROM coches WHERE activo = 1";
 $result = mysqli_query($conn, $query);

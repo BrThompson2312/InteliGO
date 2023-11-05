@@ -176,14 +176,6 @@
                             type="password" 
                             maxlength="16">
 
-                        <label for="fecha-operador" style="border-radius: 10px">Fecha de ingreso</label>
-                        <input 
-                            style="background: none; border: none"
-                            type="datetime" 
-                            name="fecha-operador" 
-                            value="<?php echo date("Y-m-d");?>" 
-                            readonly>
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
@@ -342,7 +334,7 @@
                     <form action="GET">
                         <div class="inputs-busqueda">
                             <button class="filtrar"> FILTRAR </button>
-                            <button class="agregar" onclick="ventanaSeccion('.conteiner-asignacion', '.BRS-asignacion', '.cancel_button')" type="button">AGREGAR</button>
+                            <button class="agregar" onclick="ventanaSeccion('.conteiner-asignacion', '.BRS-asignacion', 'subir')" type="button">AGREGAR</button>
                         </div>
                     </form>
                     <table>
@@ -361,21 +353,26 @@
 
                         <label for="ci-asignacion">Cedula</label>
                         <input 
-                            name="ci-asignacion" 
-                            type="text" 
-                            placeholder="Cédula"
-                            maxlength="8"> 
+                            name="ci-asignacion"
+                            list="ci-asignacion"
+                            type="text"
+                            placeholder="00000000"
+                            maxlength="8">
+                        <datalist id="ci-asignacion"></datalist> 
 
                         <label for="matricula-asignacion">Matrícula</label>
                         <input 
-                            name="matricula-asignacion" 
-                            type="text" 
-                            placeholder="Matrícula"
+                            name="matricula-asignacion"
+                            list="matricula-asignacion"
+                            type="text"
+                            placeholder="SRE0000"
                             maxlength="7">
+                        <datalist id="matricula-asignacion"></datalist>
 
                         <div class="buttons">
                             <button class="cancel_button" type="button">Atras</button>   
                             <button class="subir_datos" type="button" onclick="btn_switch('chofer')">Agregar</button> 
+                            <button class="modificar_datos" type="button">Modificar</button>
                         </div>                   
                     </form>
                 </div>
@@ -443,7 +440,7 @@
                         <select name="ln-particular" >
                             <option value="">-- Seleccione opción</option>
                             <option value="1">SI</option>
-                            <option value="0">NO</option>
+                            <option value="0" selected>NO</option>
                         </select>
 
                         <div class="buttons">
@@ -485,37 +482,17 @@
                 </div>
                 <div class="block_relative_section BRS-empresa">
                     <form class="alert_section">
+                        <label for="rut-empresa">RUT</label>
+                        <input 
+                            name="rut-empresa" 
+                            type="text"  
+                            placeholder="210000000000"
+                            maxlength="12">
+
                         <div class="conteiner_form">
                             <div>
-                                <label for="rut-empresa">RUT</label>
-                                <input 
-                                    name="rut-empresa" 
-                                    type="text"  
-                                    placeholder="210000000000"
-                                    maxlength="12">
-                                    
-                                <label for="listanegra-empresa">Lista negra</label>
-                                <select name="listanegra-empresa">
-                                    <option value="">--Seleccione opción</option>
-                                    <option value="1">SI</option>
-                                    <option value="0">NO</option>
-                                </select>
-
-                                <label for="fantasia-empresa">Nombre fantasía</label>
-                                <input 
-                                    name="fantasia-empresa" 
-                                    type="text"
-                                    maxlength="70"
-                                    placeholder="McDonald's">
                                 
-                                <label for="razonsocial-empresa">Razón social</label>
-                                <input 
-                                    name="razonsocial-empresa" 
-                                    type="text"
-                                    maxlength="70"
-                                    placeholder="Restaurantes McDonald's S.A.">     
-                            </div>
-                            <div>
+
                                 <label for="direccion-empresa">Dirección</label>
                                 <input 
                                     name="direccion-empresa"
@@ -529,7 +506,6 @@
                                     type="text" 
                                     placeholder="12345678 | +59812345678 | 012 345 678"
                                     maxlength="12">
-
                                 <label for="correo-empresa">Correo</label>
                                 <input 
                                     name="correo-empresa" 
@@ -537,23 +513,44 @@
                                     maxlength="125"
                                     placeholder="correo@correo.com">
 
+                                <label for="listanegra-empresa">Lista negra</label>
+                                <select name="listanegra-empresa">
+                                    <option value="">--Seleccione opción</option>
+                                    <option value="1">SI</option>
+                                    <option value="0" selected>NO</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="fantasia-empresa">Nombre fantasía</label>
+                                <input 
+                                    name="fantasia-empresa" 
+                                    type="text"
+                                    maxlength="70"
+                                    placeholder="McDonald's">
+                                
+                                <label for="razonsocial-empresa">Razón social</label>
+                                <input 
+                                    name="razonsocial-empresa" 
+                                    type="text"
+                                    maxlength="70"
+                                    placeholder="Restaurantes McDonald's S.A.">
+                                    
                                 <label for="encargado-empresa">Encargado de pagos</label>
                                 <input 
                                     name="encargado-empresa" 
                                     type="text"
                                     maxlength="70"
-                                    placeholder="">
+                                    placeholder=""> 
 
+                                <label for="autorizado-empresa">Autorizado</label>
+                                <input 
+                                    name="autorizado-empresa" 
+                                    type="text"
+                                    maxlength="70"
+                                    placeholder="">
                             </div>
                         </div>
                         
-                        <label for="autorizado-empresa">Autorizado</label>
-                        <input 
-                            name="autorizado-empresa" 
-                            type="text"
-                            maxlength="70"
-                            placeholder="">
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>   
@@ -593,33 +590,45 @@
                 </div>
                 <div class="block_relative_section BRS-reserva">
                     <form class="alert_section">
+                        <div class="conteiner_form">
+                            <div>
+                                <label for="nombre-servicio">Nombre del pasajero</label>
+                                <input 
+                                    name="nombre-servicio"
+                                    type="text"
+                                    placeholder="John"
+                                    maxlength="70">
 
-                        <label for="nombre-servicio">Nombre del pasajero</label>
-                        <input 
-                            name="nombre-servicio"
-                            type="text"
-                            placeholder="John"
-                            maxlength="70">
+                                <label for="forma-de-pago">Forma de pago</label>
+                                <select name="forma-de-pago">
+                                    <option value="contado">Contado</option>
+                                    <option value="tarjeta">Tarjeta</option>
+                                    <option value="transferencia">Transferencia</option>
+                                    <option value="corriente">Cuenta Corriente</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="apellido-servicio">Apellido del pasajero</label>
+                                <input 
+                                    name="apellido-servicio" 
+                                    type="text"
+                                    placeholder="White"
+                                    maxlength="70">
 
-                        <label for="apellido-servicio">Apellido del pasajero</label>
-                        <input 
-                            name="apellido-servicio" 
-                            type="text"
-                            placeholder="White"
-                            maxlength="70">
-
-                        <label for="monto-servicio">Monto</label>
-                        <input 
-                            name="monto-servicio" 
-                            type="number">
-
+                                <label for="monto-servicio">Monto</label>
+                                <input 
+                                    name="monto-servicio" 
+                                    type="number">
+                            </div>
+                        </div>
                         <div class="conteiner_form">
                             <div>
                                 <label for="cliente-reserva">Cliente</label>
                                 <input 
+                                    list="cliente-reserva"
                                     name="cliente-reserva"
-                                    type="number"
-                                    placeholder="Seleccione cliente de la sección Empresa/Particular">
+                                    type="text">
+                                <datalist id="cliente-reserva"></datalist>
                                 
                                 <label for="origen-servicio">Origen</label>
                                 <input 
@@ -627,62 +636,43 @@
                                     type="text"
                                     placeholder="Carlos de la Vega 5348"
                                     maxlength="70">
-
-                                <label for="fecha-reserva" style="border-radius: 10px">Fecha de reserva</label>
-                                <input 
-                                    style="background: none; border: none"
-                                    name="fecha-reserva" 
-                                    type="text" 
-                                    value="<?php echo date("Y-m-d")?>"
-                                    readonly>
-
-                                <label for="hora-reserva" style="border-radius: 10px">Hora de reserva</label>
-                                <input 
-                                    style="background: none; border: none"
-                                    name="hora-reserva" 
-                                    type="text" 
-                                    value="<?php echo date("H:i:s")?>"
-                                    readonly>
-
+                                    
                             </div>
-                            <div>
-                                
-                                <label for="tel-cliente-servicio">Teléfono del pasajero</label>
+                            <div>              
+                                <label for="fecha-servicio">Fecha del viaje</label>
                                 <input 
-                                    name="tel-cliente-servicio" 
+                                    name="fecha-servicio" 
                                     type="text"
-                                    placeholder="012345678 | +59812345678 | 012 345 678"
-                                    maxlength="12">
+                                    placeholder="YY-MM-DD | <?php echo date("Y-m-d")?>"
+                                    value="<?php echo date("Y-m-d")?>">
 
+                                <label for="hora-servicio">Hora del viaje</label>
+                                <input 
+                                    name="hora-servicio"
+                                    type="text"
+                                    placeholder="HH:MM | <?php echo date("H:i")?> "
+                                    value="<?php echo date("H:i")?>">
+                            </div>
+                        </div>
+                        <div class="conteiner_form">
+                            <div>
                                 <label for="destino-servicio">Destino</label>
                                 <input 
                                     name="destino-servicio" 
                                     type="text"
                                     placeholder="18 de Julio"
                                     maxlength="70">
-
-                                <label for="fecha-servicio">Fecha del viaje</label>
-                                <input 
-                                    name="fecha-servicio" 
-                                    type="text"
-                                    value="<?php echo date("Y-m-d")?>">
-
-                                <label for="hora-servicio">Hora del viaje</label>
-                                <input 
-                                    name="hora-servicio"
-                                    type="time"
-                                    value="<?php echo date("H:i:s")?>">
+                            </div>
+                            <div>
+                                <label for="chofer-realizan">Chofer</label>
+                                <input
+                                    list="chofer-realizan"
+                                    name="chofer-realizan" 
+                                    type="text">
+                                <datalist id="chofer-realizan"></datalist>
 
                             </div>
                         </div>
-
-                        <label for="chofer-realizan">Chofer</label>
-                        <input
-                            name="chofer-realizan"
-                            type="text"
-                            placeholder="12345678"
-                            maxlength="8">
-
                         <label for="comentario-servicio">Comentario</label>
                         <textarea name="comentario-servicio" maxlength="100"></textarea>
                         <div class="buttons">
@@ -748,12 +738,12 @@
                                 </select>  
                             </div>
                             <div> 
-                                <label for="matricula-gdm" >Matrícula</label>
-                                <input
-                                    name="matricula-gdm" 
-                                    type="text"
-                                    placeholder="SRC4040"
-                                    maxlength="7">
+                                <label for="matricula-gdm">Coche</label>
+                                <input 
+                                    list="matricula-gdm"
+                                    name="matricula-gdm"
+                                    type="text">
+                                <datalist id="matricula-gdm"></datalist>
 
                                 <label for="importe-gdm">Importe</label>
                                 <input 

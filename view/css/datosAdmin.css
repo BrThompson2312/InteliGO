@@ -73,10 +73,10 @@
   background: #cc9a06 !important;
 }
 .datos-admin .eliminarRegistro {
-  background: #dc3545 !important;
+  background: #e22235 !important;
 }
 .datos-admin .eliminarRegistro:hover {
-  background: #7e1d27 !important;
+  background: #b91c2b !important;
 }
 .datos-admin :where(.consultaRegistro, .modificarRegistro, .eliminarRegistro){
   display: table-cell !important;
@@ -85,10 +85,6 @@
   width: 50px;
 }
 :where(.registro-operadores, .registro-choferes, .registro-coches, .registro-asignacion) .consultaRegistro {
-  display: none !important;
-}
-
-:where(.registro-asignacion) .modificarRegistro {
   display: none !important;
 }
 
@@ -156,9 +152,4 @@
 }
 .listanegra-no {
   background-color: red;
-}
-
-/* Deleted */
-.registro-deleted-operadores{
-  display: none;
 }

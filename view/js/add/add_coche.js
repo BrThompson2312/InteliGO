@@ -1,5 +1,3 @@
-import {rut_conexion, alertSuccess} from "../add_all.js";
-
 export function add_coche(parent){
 
     let matricula = document.getElementsByName('matricula-coche')[0].value;

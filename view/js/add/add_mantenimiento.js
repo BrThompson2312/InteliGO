@@ -1,5 +1,3 @@
-import {rut_conexion, alertSuccess} from "../add_all.js";
-
 export function add_mantenimiento(parent){
 
     let codigo = document.getElementsByName('codigo-gdm')[0].value;
@@ -33,6 +31,7 @@ export function add_mantenimiento(parent){
                     comentario: comentario,
                 },
                 success: function(response){
+                    alert(response)
                     if(response == true){
                         alertSuccess('success');
                         document.querySelector(`${parent} .alert_section`).reset();

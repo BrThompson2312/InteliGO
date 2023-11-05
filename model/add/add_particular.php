@@ -6,9 +6,8 @@ $telefono   = $_POST['telefono'];
 $nombre     = $_POST['nombre'];
 $apellido   = $_POST['apellido'];
 $direccion  = $_POST['direccion'];
-$listanegra = $_POST['listanegra'];
 
-$query_cliente = "INSERT INTO cliente VALUES (0, '$listanegra', '$direccion', 1)";
+$query_cliente = "INSERT INTO cliente VALUES (0, 0, '$direccion', 1)";
 
 if(mysqli_query($conn, $query_cliente)) {
     $query_max_cliente  = "SELECT max(cod_cliente) as codigo from cliente" ;

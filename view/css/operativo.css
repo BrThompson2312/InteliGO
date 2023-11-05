@@ -7,15 +7,10 @@
   background: #350352
 }
 .alert_section {
-  background: rgba(20, 20, 20, 0.5);
-  border: 5px double var(--bg-operador);
+  border-left: 20px double var(--bg-operador);
 }
 .alert_section label {
   background: var(--bg-operador);
-  border-radius: 10px 10px 0px 0px;
-}
-.alert_section :where(label, input, textarea, select) {
-  background: rgba(5, 5, 5, 1);
 }
 nav {
   border-right: 5px solid var(--bg-operador);

@@ -18,7 +18,7 @@ bloque[0].style.display = "block";
 
 function consultas(url, registro){
     $.ajax({
-        url: url,
+        url: `../../model/read/read_${url}`,
         type: 'POST',
         success: function(response){
             let block = JSON.parse(response);
@@ -27,32 +27,31 @@ function consultas(url, registro){
     })
 }
 
-let rutaConsulta = '../../model/read/read_';
 function llamado(rel){
     switch (rel) {
         case '#operador':
-            consultas(`${rutaConsulta}operador.php`, '.registro-operadores');
+            consultas(`operador.php`, '.registro-operadores');
         break;
         case '#chofer':
-            consultas(`${rutaConsulta}chofer.php`, '.registro-choferes');
+            consultas(`chofer.php`, '.registro-choferes');
         break;
         case '#coche':
-            consultas(`${rutaConsulta}coche.php`, '.registro-coches');
+            consultas(`coche.php`, '.registro-coches');
         break;
         case '#asignacion':
-            consultas(`${rutaConsulta}asignacion.php`, '.registro-asignacion');
+            consultas(`asignacion.php`, '.registro-asignacion');
         break;
         case '#particular':
-            consultas(`${rutaConsulta}particular.php`, '.registro-cliente');
+            consultas(`particular.php`, '.registro-cliente');
         break;
         case '#empresa':
-            consultas(`${rutaConsulta}empresa.php`, '.registro-empresa');
+            consultas(`empresa.php`, '.registro-empresa');
         break;
         case '#reserva':
-            consultas(`${rutaConsulta}reserva.php`, '.registro-reserva');
+            consultas(`reserva.php`, '.registro-reserva');
         break;
         case '#gastos-de-mantenimiento':
-            consultas(`${rutaConsulta}mantenimiento.php`, '.registro-GDM');
+            consultas(`mantenimiento.php`, '.registro-GDM');
         break;
     }
 }
@@ -108,7 +107,7 @@ function ventanaSeccion(containerSection, windowOpened, mode){
     document.querySelector(windowOpened).style.display = 'flex';
 
     let modificar_datos = document.querySelector(`${windowOpened} .modificar_datos`);
-    let subir_datos     = document.querySelector(`${windowOpened} .subir_datos`);
+    let subir_datos = document.querySelector(`${windowOpened} .subir_datos`);
 
     switch(mode) {
         case 'subir':
@@ -122,7 +121,6 @@ function ventanaSeccion(containerSection, windowOpened, mode){
             subir_datos.style.display = "none";
         break;
     }
-    
     let wop = document.querySelector(windowOpened);
     wop.querySelector('.cancel_button').onclick = function() {
         document.querySelector(containerSection).style.display = 'block';
@@ -131,6 +129,7 @@ function ventanaSeccion(containerSection, windowOpened, mode){
         wop.querySelector('.alert_section').reset();
     }
     navbar();
+    
 }
 
 // Popup de confirmación de salida

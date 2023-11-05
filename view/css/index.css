@@ -41,7 +41,7 @@ body img {
   }
 }
 main {
-  background: rgba(20, 20, 20, 0.5);
+  background: rgba(20, 20, 20, 0.2);
   padding: 1em;
   border-radius: 10px;
   display: flex;
@@ -102,7 +102,11 @@ form {
   justify-content: center;
   position: relative;
   opacity: 1;
-  transition: background-color .2s;
+  transition: background .4s, color .4s;
+}
+#login-user:hover {
+  background: rgb(0, 136, 255);
+  color: white;
 }
 #login-user ion-icon {
   position: absolute;
@@ -134,7 +138,7 @@ form {
 .form-group input {
   background-color: transparent;
   border: none;
-  border-bottom: 10px double rgba(255, 255, 255, 0.5);
+  border-bottom: 5px double rgba(255, 255, 255, 0.5);
   color: white;
   padding: 10px;
   margin-top: 10px;

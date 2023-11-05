@@ -47,6 +47,14 @@ function tableData(parametro, jsonObj){
                             'Año: ' + jsonObj[i].col4
                         )
                         break;
+                    
+                    case '.registro-asignacion':
+                        alert(
+                            'Cedula: ' + jsonObj[i].col1 + '\n' +
+                            'Chofer: ' + jsonObj[i].col2 + '\n' +
+                            'Coche ' + jsonObj[i].col3
+                        );                                  
+                        break;
 
                     case '.registro-cliente':
                         alert(
@@ -61,15 +69,15 @@ function tableData(parametro, jsonObj){
 
                     case '.registro-empresa':
                         alert(
-                            'RUT: ' + jsonObj[i].col1 + '\n' +
-                            'Lista negra: ' + jsonObj[i].col2 + '\n' +
+                            'Nro_cliente: ' + jsonObj[i].col1 + '\n' +
+                            'RUT: ' + jsonObj[i].col2 + '\n' +
                             'Nombre fantasia: ' + jsonObj[i].col3 + '\n' +
-                            'Dirección: ' + jsonObj[i].col4 + '\n' +
-                            'Teléfono: ' + jsonObj[i].col5 + '\n' +
-                            'Razon Social: ' + jsonObj[i].col6 + '\n' +
-                            'Correo: ' + jsonObj[i].col7 + '\n' +
-                            'Encargado de pagos: ' + jsonObj[i].col8 + '\n' +
-                            'Autorizado: ' + jsonObj[i].col9
+                            'Correo: ' + jsonObj[i].col4 + '\n' +
+                            'Direccion: ' + jsonObj[i].col5 + '\n' +
+                            'Razon social: ' + jsonObj[i].col6 + '\n' +
+                            'Encargado de pagos: ' + jsonObj[i].col7 + '\n' +
+                            'Autorizado: ' + jsonObj[i].col8 + '\n' +
+                            'Telefono: ' + jsonObj[i].col9
                         );
                         break;
 
@@ -103,6 +111,7 @@ function tableData(parametro, jsonObj){
                             'Fecha: ' + jsonObj[i].col7
                         )
                         break;
+                    
                 }
             }
 
@@ -111,7 +120,6 @@ function tableData(parametro, jsonObj){
             ventanaSeccion(container, block, 'modificar');
 
             let fields = document.querySelectorAll(`${block} label, ${block} input, ${block} select, ${block} textarea`);
-
             let inputException;
             let labelException;
             
@@ -121,25 +129,24 @@ function tableData(parametro, jsonObj){
 
             let arrInputs= [];
             for (let i = 0; i < exception.length; i++) {
-                console.log(exception[i]);
+                // console.log(exception[i]);
                 inputException = document.querySelector(`input[name="${exception[i]}"]`);
-                if(inputException==null) {
+                if(inputException == null) {
                     inputException = document.querySelector(`select[name="${exception[i]}"]`);
                 }
-                if(inputException==null) {
+                if(inputException == null) {
                     inputException = document.querySelector(`textarea[name="${exception[i]}"]`);
-                    //textareaException.style.display = "block";
                 }   
                 inputException.style.display = "block";
                 arrInputs.push(inputException);
+                console.log(arrInputs[i])
                 labelException = document.querySelector(`label[for="${exception[i]}"]`);
                 labelException.style.display = "block";
-                
             }
 
             let modificar_datos = document.querySelector(`${block} .modificar_datos`);
                 modificar_datos.onclick = function() {
-                    let errores=false;
+                    let errores = false;
                     for (let i = 0; i < arrInputs.length; i++) {
                         console.log(arrInputs[i].value);
                         if (arrInputs[i].value == '') {
@@ -148,156 +155,139 @@ function tableData(parametro, jsonObj){
                         }
                     }
 
+                    function upd_block(url, obj, rel) {
+                        $.ajax({
+                            url: `../../model/update/upd_${url}`,
+                            type: 'POST',
+                            data: JSON.stringify(obj), 
+                            success: function(response) {
+                                alert(response);
+                                // response == true ? alertSuccess('modify') : alertSuccess('error');
+                                if (response == true) {
+                                    alertSuccess('modify');
+                                    document.querySelector(container).style.display = 'block';
+                                    document.querySelector(block).style.display = 'none';
+                                    llamado(rel)
+                                } else {
+                                    alertSuccess('error');
+                                }
+                            },
+                            error: function() {
+                                alert('Error');
+                            }
+                       })
+                    }
+
                     if(errores) {
-                        alert('No puede dejar campos vacios');
+                        alertSuccess('incompleted');
                     } else {
                         switch (block) {
                             case '.BRS-operador':
-                                $.ajax({
-                                    url: '../../model/update/upd_operador.php',
-                                    type: 'POST',
-                                    data: {
-                                        cedula: jsonObj[i].col1,
-                                        nombre: arrInputs[0].value,
-                                        contrasena: arrInputs[1].value,
-                                    },
-                                    success: function(response) {
-                                        alert(response);
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+
+                                const operador = {
+                                    cedula: jsonObj[i].col1,
+                                    nombre: arrInputs[0].value,
+                                    contrasena: arrInputs[1].value,
+                                }
+                                upd_block('operador.php', operador, '#operador');
+
                             break;
                             case '.BRS-choferes':
-                                $.ajax({
-                                    url: '../../model/update/upd_chofer.php',
-                                    type: 'POST',
-                                    data: {
-                                        cedula: jsonObj[i].col4,
-                                        telefono: arrInputs[0].value,
-                                        nombre: arrInputs[1].value,
-                                        apellido: arrInputs[2].value,
-                                    },
-                                    success: function(response) {
-                                        alert(response);
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+
+                                const chofer = {
+                                    telefono: arrInputs[0].value,
+                                    nombre: arrInputs[1].value,
+                                    apellido: arrInputs[2].value,
+                                    cedula: jsonObj[i].col4,
+                                }
+                                upd_block('chofer.php', chofer, '#chofer');
+                                
                             break;
                             case '.BRS-coches':
-                                $.ajax({
-                                    url: '../../model/update/upd_coche.php',
-                                    type: 'POST',
-                                    data: {
-                                        matricula: jsonObj[i].col1,
-                                        marca: arrInputs[0].value,
-                                        modelo: arrInputs[1].value,
-                                        año: arrInputs[2].value,
-                                    },
-                                    success: function(response) {
-                                        alert(response);
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+                                
+                                const coche = {
+                                    matricula: jsonObj[i].col1,
+                                    marca: arrInputs[0].value,
+                                    modelo: arrInputs[1].value,
+                                    año: arrInputs[2].value,
+                                }
+                                upd_block('coche.php', coche, '#coche');
+
+                            break;
+
+                            case '.BRS-asignacion':
+
+                                const asignacion = {
+                                    cedula: jsonObj[i].col1,
+                                    coche: arrInputs[0].value,
+                                }
+                                upd_block('asignacion.php', asignacion, '#asignacion');
+                            
                             break;
                             case '.BRS-cliente':
-                                $.ajax({
-                                    url: '../../model/update/upd_particular.php',
-                                    type: 'POST',
-                                    data: {
-                                        cod: jsonObj[i].col1,
-                                        nombre: arrInputs[0].value,
-                                        apellido: arrInputs[1].value,
-                                        direccion: arrInputs[2].value,
-                                        listanegra: arrInputs[3].value,
-                                    },
-                                    success: function(response) {
-                                        alert(response);
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+                                
+                                const cliente = {
+                                    cod: jsonObj[i].col1,
+                                    telefono: arrInputs[0].value,
+                                    nombre: arrInputs[1].value,
+                                    apellido: arrInputs[2].value,
+                                    direccion: arrInputs[3].value,
+                                    listanegra: arrInputs[4].value,
+                                }
+                                upd_block('particular.php', cliente, '#particular');
+
                             break;
                             case '.BRS-empresa':
-                                $.ajax({
-                                    url: '../../model/update/upd_empresa.php',
-                                    type: 'POST',
-                                    data: {
-                                        cod: jsonObj[i].col1,
-                                        listanegra: arrInputs[0].value,
-                                        fantasia: arrInputs[1].value,
-                                        razonsocial: arrInputs[2].value,
-                                        direccion: arrInputs[3].value,
-                                        correo: arrInputs[4].value,
-                                        encargado: arrInputs[5].value,
-                                        autorizado: arrInputs[6].value,
-                                    },
-                                    success: function(response) {
-                                        alert(response);
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+                                
+                                const empresa = {
+                                    cod: jsonObj[i].col10,
+                                    listanegra: arrInputs[0].value,
+                                    fantasia: arrInputs[1].value,
+                                    razonsocial: arrInputs[2].value,
+                                    direccion: arrInputs[3].value,
+                                    telefono: arrInputs[4].value,
+                                    correo: arrInputs[5].value,
+                                    encargado: arrInputs[6].value,
+                                    autorizado: arrInputs[7].value,
+                                }
+                                upd_block('empresa.php', empresa, '#empresa');
+
                             break;
                             case '.BRS-reserva':
-                                $.ajax({
-                                    url: '../../model/update/upd_reserva.php',
-                                    type: 'POST',
-                                    data: {
-                                        cod: jsonObj[i].col14,
-                                        nombre: arrInputs[0].value,
-                                        apellido: arrInputs[1].value,
-                                        monto: arrInputs[2].value,
-                                        cliente: arrInputs[3].value,
-                                        origen: arrInputs[4].value,
-                                        destino: arrInputs[5].value,
-                                        fecha: arrInputs[6].value,
-                                        hora: arrInputs[7].value,
-                                        comentario: arrInputs[8].value,
-                                    },
-                                    success: function(response) {
-                                        if (response == true) {
-                                            alert('Reserva modificada correctamente');
-                                        } else {
-                                            alert('Error al modificar reserva');
-                                        }
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+                                
+                                const reserva = {
+                                    cod: jsonObj[i].col14,
+                                    nombre: arrInputs[0].value,
+                                    forma_pago: arrInputs[1].value,
+                                    apellido: arrInputs[2].value,
+                                    monto: arrInputs[3].value,
+                                    cliente: arrInputs[4].value,
+                                    origen: arrInputs[5].value,
+                                    destino: arrInputs[6].value,
+                                    chofer: arrInputs[7].value,
+                                    fecha: arrInputs[8].value,
+                                    hora: arrInputs[9].value,
+                                    comentario: arrInputs[10].value,
+                                }
+                                upd_block('reserva.php', reserva, '#reserva');
+
                             break;
                             case '.BRS-GDM':
-                                $.ajax({
-                                    url: '../../model/update/upd_mantenimiento.php',
-                                    type: 'POST',
-                                    data: {
-                                        cod: jsonObj[i].col1,
-                                        concepto: arrInputs[0].value,
-                                        importe: arrInputs[1].value,
-                                        fecha: arrInputs[2].value,
-                                        taller: arrInputs[3].value,
-                                        comentario: arrInputs[4].value,
-                                    },
-                                    success: function(response) {
-                                        alert(response);
-                                    },
-                                    error: function() {
-                                        alert('No hay conexión');
-                                    }
-                               })
+                                
+                                const gdm = {
+                                    cod: jsonObj[i].col1,
+                                    concepto: arrInputs[0].value,
+                                    importe: arrInputs[1].value,
+                                    fecha: arrInputs[2].value,
+                                    taller: arrInputs[3].value,
+                                    comentario: arrInputs[4].value,
+                                }
+                                upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento');
+
                             break;
                         }                       
                     }
                 }
-
         }
 
         let modificar = document.createElement('td');
@@ -315,7 +305,7 @@ function tableData(parametro, jsonObj){
                             'nombre-operador',
                             'contrasena-operador'
                         ];
-                        modBlock('.conteiner-operador', '.BRS-operador', exception); 
+                        modBlock('.conteiner-operador', '.BRS-operador', exception);
                         break;
 
                     case '.registro-choferes':
@@ -336,8 +326,16 @@ function tableData(parametro, jsonObj){
                         modBlock('.conteiner-coche',  '.BRS-coches', exception);
                         break;
 
+                    case '.registro-asignacion':
+                        exception = [
+                            'matricula-asignacion'
+                        ];
+                        modBlock('.conteiner-asignacion',  '.BRS-asignacion', exception);
+                        break;
+
                     case '.registro-cliente':
                         exception = [
+                            'tel-particular',
                             'nombre-particular', 
                             'apellido-particular',
                             'direccion-particular',
@@ -352,6 +350,7 @@ function tableData(parametro, jsonObj){
                             'fantasia-empresa', 
                             'razonsocial-empresa',
                             'direccion-empresa',
+                            'tel-empresa',
                             'correo-empresa',
                             'encargado-empresa',
                             'autorizado-empresa'
@@ -361,12 +360,14 @@ function tableData(parametro, jsonObj){
 
                     case '.registro-reserva':
                         exception = [
-                            'nombre-servicio', 
+                            'nombre-servicio',
+                            'forma-de-pago',
                             'apellido-servicio',
                             'monto-servicio',
                             'cliente-reserva',
                             'origen-servicio',
                             'destino-servicio',
+                            'chofer-realizan',
                             'fecha-servicio',
                             'hora-servicio',
                             'comentario-servicio'
@@ -410,7 +411,9 @@ function tableData(parametro, jsonObj){
                             break;
 
                         case '.registro-asignacion':
-                            deleteBlock(`${rutaDelete}asignacion.php`, jsonObj[i].col1, 'asignacion.php', '.registro-asignacion')
+                            if (confirm('Si elimina este registro posiblemente esté eliminando una reserva, desea continuar?')) {
+                                deleteBlock(`${rutaDelete}asignacion.php`, jsonObj[i].col1, 'asignacion.php', '.registro-asignacion')
+                            }
                             break;
 
                         case '.registro-cliente':
@@ -422,7 +425,7 @@ function tableData(parametro, jsonObj){
                             break;
 
                         case '.registro-reserva':
-                            deleteBlock(`${rutaDelete}reserva.php`, jsonObj[i].col11, 'reserva.php', '.registro-reserva')
+                            deleteBlock(`${rutaDelete}reserva.php`, jsonObj[i].col14, 'reserva.php', '.registro-reserva')
                             break;
                 
                         case '.registro-GDM':
@@ -485,11 +488,11 @@ function deleteBlock(url, send, read_block, block) {
         },
         success: function(response){
             if(response == 1) {
-                alert('Registro eliminado correctamente')
+                alertSuccess('trashed');
             } else {
-                alert('Error al eliminar el registro');
+                alertSuccess('error');
             }
-            consultas(`${rutaConsulta}${read_block}`, `${block}`)
+            consultas(read_block, block)
         },
         error: function(reject){
             alert(reject);
@@ -517,3 +520,87 @@ function addBackRegister(matricula) {
     })
 }
 
+let rut_conexion = '../../model/add/add_';
+let alert_success       = document.querySelector('#alert-add');
+function alertSuccess(type_alert) {
+    alert_success.style.display = "block";
+    alert_success.className = null;
+    switch(type_alert){
+        case 'success':
+            alert_success.classList.add('alert-success');
+            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-check fa-1x"></i> Campos ingresados correctamente';
+            break;
+        case 'incompleted':
+            alert_success.classList.add('alert-info');
+            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-info fa-1x"></i> Campos incompletos';
+            break;
+        case 'warning':
+            alert_success.classList.add('alert-warning');
+            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-triangle-exclamation fa-1x"></i> Campos erroneos';
+            break;
+        case 'error':
+            alert_success.classList.add('alert-danger');
+            alert_success.innerHTML = `<i style="margin-right: 12px;" class="fa fa-circle-exclamation fa-1x"></i> Error`;
+            break;
+        case 'modify':
+            alert_success.classList.add('alert-modify');
+            alert_success.innerHTML = `<i style="margin-right: 12px;" class="fa fa-pen-to-square fa-1x"></i> Modificado con éxito`;
+            break;
+        case 'trashed':
+            alert_success.classList.add('alert-trashed');
+            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-trash fa-1x"></i> Eliminado exitosamente';
+            break;
+    }
+    alert_success.style.animation = "alert 0.5s ease";
+    alert_success.addEventListener("animationend",function(){
+        setTimeout(function () {
+            alert_success.style.animation = "des_alert 0.5s ease";
+            setTimeout(function () {
+                alert_success.style.display = "none";
+            }, 500);
+        }, 500);
+    })
+}
+
+function data_matricula(datalist) {
+    let data_matricula = document.querySelector(`${datalist}`);
+    $.ajax({
+        url: '../../model/read/matriculaCoche.php',
+        type: 'POST',
+        success: function(response) {
+            let matricula = JSON.parse(response);
+            for (let i = 0; i < matricula.length; i++) {
+                let option = document.createElement('option');
+                option.value = matricula[i].matricula;
+                data_matricula.appendChild(option);
+            }
+        },
+        error: function() {
+            alert('No hay conexión');
+        }
+    })
+}
+data_matricula('#matricula-asignacion');
+data_matricula('#matricula-gdm');
+
+function data_cedula(datalist) {
+    let data_cedula = document.querySelector(`${datalist}`);
+    $.ajax({
+        url: `../../model/read/cedulaChofer.php`,
+        type: 'POST',
+        success: function(response) {
+            let cedula = JSON.parse(response);
+            for (let i = 0; i < cedula.length; i++) {
+                let option = document.createElement('option');
+                option.value = cedula[i].cedula;
+                data_cedula.appendChild(option);
+            }
+        },
+        error: function() {
+            alert('No hay conexión');
+        }
+    })
+}
+data_cedula('#ci-asignacion');
+data_cedula('#chofer-realizan')
+data_cedula('#cliente-reserva');

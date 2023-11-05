@@ -5,7 +5,7 @@ $nombre     = $_POST['nombre'];
 $apellido   = $_POST['apellido'];
 $cedula     = $_POST['cedula'];
 
-$query  = "INSERT INTO chofer VALUES ('$cedula', '$nombre', '$apellido', 1)";
+$query  = "INSERT INTO chofer VALUES ('$cedula', '$nombre', '$apellido', NULL, 1)";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

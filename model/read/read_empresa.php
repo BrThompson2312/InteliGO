@@ -1,9 +1,10 @@
 <?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
 $query = 
-'SELECT empresa.cod_cliente as nro_empresa, rut, razon_social, nombre_fantasia, correo, encargado_de_pagos, autorizado, activo, direccion from empresa
+'SELECT empresa.cod_cliente, telefono, empresa.cod_cliente as nro_empresa, rut, razon_social, nombre_fantasia, correo, encargado_de_pagos, autorizado, activo, direccion from empresa
 JOIN cliente on cliente.cod_cliente = empresa.cod_cliente
-where activo = 1';
+JOIN telefono_cliente on telefono_cliente.cod_cliente = empresa.cod_cliente
+WHERE activo = 1;';
 
 $result = mysqli_query($conn, $query);
 $json = array();
@@ -17,9 +18,10 @@ if($result){
             'col4' => $row['correo'],
             'col5' => $row['direccion'],
             'col6' => $row['razon_social'],
-            'col7' => $row['correo'],
-            'col8' => $row['encargado_de_pagos'],
-            'col9' => $row['autorizado'],
+            'col7' => $row['encargado_de_pagos'],
+            'col8' => $row['autorizado'],
+            'col9' => $row['telefono'],
+            'col10' => $row['cod_cliente']
         );
     }
     echo json_encode($json);
