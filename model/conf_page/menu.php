@@ -627,7 +627,8 @@
                                 <input 
                                     list="cliente-reserva"
                                     name="cliente-reserva"
-                                    type="text">
+                                    type="text"
+                                    placeholder="Ingrese o Seleccione Cliente">
                                 <datalist id="cliente-reserva"></datalist>
                                 
                                 <label for="origen-servicio">Origen</label>
@@ -668,7 +669,8 @@
                                 <input
                                     list="chofer-realizan"
                                     name="chofer-realizan" 
-                                    type="text">
+                                    type="text"
+                                    placeholder="Ingrese o Seleccione Chofer">
                                 <datalist id="chofer-realizan"></datalist>
 
                             </div>
@@ -742,7 +744,8 @@
                                 <input 
                                     list="matricula-gdm"
                                     name="matricula-gdm"
-                                    type="text">
+                                    type="text"
+                                    placeholder="Ingrese o Seleccione Coche">
                                 <datalist id="matricula-gdm"></datalist>
 
                                 <label for="importe-gdm">Importe</label>
@@ -753,11 +756,6 @@
                                     
                             </div>     
                         </div>
-                        <label for="fecha-gdm">Fecha</label>
-                        <input 
-                            name="fecha-gdm" 
-                            type="text"
-                            value="<?php echo date("Y-m-d")?>">
                             
                         <label for="taller-gdm">Taller</label>
                         <input 

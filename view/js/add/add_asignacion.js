@@ -19,7 +19,7 @@ export function add_asignacion(parent){
                         alertSuccess('success');
                         document.querySelector(`${parent} .alert_section`).reset();
                     } else {
-                        alertSuccess('error');
+                        alertSuccess('asigned');
                     }
                 },
                 error: function(reject){

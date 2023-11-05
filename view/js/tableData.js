@@ -161,13 +161,13 @@ function tableData(parametro, jsonObj){
                             type: 'POST',
                             data: JSON.stringify(obj), 
                             success: function(response) {
-                                alert(response);
-                                // response == true ? alertSuccess('modify') : alertSuccess('error');
+                                // alert(response);
                                 if (response == true) {
                                     alertSuccess('modify');
                                     document.querySelector(container).style.display = 'block';
                                     document.querySelector(block).style.display = 'none';
-                                    llamado(rel)
+                                    llamado(rel);
+                                    document.querySelector(`${block} .alert_section`).reset();
                                 } else {
                                     alertSuccess('error');
                                 }
@@ -550,6 +550,10 @@ function alertSuccess(type_alert) {
             alert_success.classList.add('alert-trashed');
             alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-trash fa-1x"></i> Eliminado exitosamente';
             break;
+        case 'asigned':
+            alert_success.classList.add('alert-warning');
+            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-triangle-exclamation fa-1x"></i> Chofer no disponible';
+            break;
     }
     alert_success.style.animation = "alert 0.5s ease";
     alert_success.addEventListener("animationend",function(){
@@ -572,6 +576,7 @@ function data_matricula(datalist) {
             for (let i = 0; i < matricula.length; i++) {
                 let option = document.createElement('option');
                 option.value = matricula[i].matricula;
+                option.textContent = `${matricula[i].marca} ${matricula[i].modelo}`;
                 data_matricula.appendChild(option);
             }
         },
@@ -590,9 +595,11 @@ function data_cedula(datalist) {
         type: 'POST',
         success: function(response) {
             let cedula = JSON.parse(response);
+            data_cedula.innerHTML = '';
             for (let i = 0; i < cedula.length; i++) {
                 let option = document.createElement('option');
                 option.value = cedula[i].cedula;
+                option.textContent = `${cedula[i].nombre} ${cedula[i].apellido}`;
                 data_cedula.appendChild(option);
             }
         },
@@ -603,4 +610,25 @@ function data_cedula(datalist) {
 }
 data_cedula('#ci-asignacion');
 data_cedula('#chofer-realizan')
-data_cedula('#cliente-reserva');
+
+function data_codCliente(datalist) {
+    let cod = document.querySelector(`${datalist}`);
+    $.ajax({
+        url: `../../model/read/codCliente.php`,
+        type: 'POST',
+        success: function(response) {
+            let cod_cliente = JSON.parse(response);
+            for (let i = 0; i < cod_cliente.length; i++) {
+                console.log(cod_cliente[i])
+                let option = document.createElement('option');
+                option.value = cod_cliente[i].cod_cliente;
+                option.textContent = `${cod_cliente[i].col1} ${cod_cliente[i].col2}`;
+                cod.appendChild(option);
+            }
+        },
+        error: function() {
+            alert('No hay conexión');
+        }
+    })
+}
+data_codCliente('#cliente-reserva');

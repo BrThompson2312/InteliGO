@@ -2,7 +2,6 @@
 
 $cod        = $_POST['codigo'];
 $matricula  = $_POST['matricula'];
-$fecha      = $_POST['fecha'];
 $concepto   = $_POST['concepto'];
 $importe    = $_POST['importe'];
 $taller     = $_POST['taller'];
@@ -12,7 +11,7 @@ $query_mantenimiento = "INSERT INTO mantenimiento VALUES ('$cod', '$concepto','$
 $result_mantenimiento  = mysqli_query($conn, $query_mantenimiento);
 if ($result_mantenimiento){
 
-    $query_necesitan = "INSERT INTO necesitan VALUES ('$cod','$matricula','$fecha')";
+    $query_necesitan = "INSERT INTO necesitan VALUES ('$cod','$matricula', now())";
     $result_necesitan = mysqli_query($conn, $query_necesitan);
     if ($result_necesitan) {
 
@@ -20,16 +19,8 @@ if ($result_mantenimiento){
         $result_coche = mysqli_query($conn, $query_coche);
         if ($result_coche) {
 
-            $query_maneja = "DELETE FROM maneja WHERE matricula = '$matricula'"; 
-            $result_maneja = mysqli_query($conn, $query_maneja);
-            if ($result_maneja) {
-                echo true;
-            } else {
-                mysqli_query($conn, "DELETE FROM necesitan where cod_mantenimiento = $cod");
-                mysqli_query($conn, "DELETE FROM mantenimiento where cod_mantenimiento = $cod");
-                mysqli_query($conn, "UPDATE coches SET activo = 1 WHERE matricula = '$matricula'");
-                echo 'Error Maneja'.mysqli_error($conn);
-            }
+            echo true;
+
         } else {
             mysqli_query($conn, "DELETE FROM necesitan where cod_mantenimiento = $cod");
             mysqli_query($conn, "DELETE FROM mantenimiento where cod_mantenimiento = $cod");
