@@ -1,4 +1,4 @@
-/* Alert SALIR */
+@import 'uniStyles.css'; 
 #alert-salir {
     background-color: rgba(48, 48, 48, 0.5);
     color: white;
@@ -79,93 +79,33 @@
         transform: translate(-50%, -50%);
     }
 }
-#alert-add {
-    font-family: 'Inter-SemiBold';
-    padding: 20px;
-    border-radius: 6px;
-    display: none;
-    gap: 10px;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    font-weight: bold;
-    transition: opacity 0.6s;
-    animation: alert 0.5s ease;
+.alert-filtrar {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(60, 60, 60, 1);
+    color: white;
+    flex-direction: column;
+    animation: ani_filtrar 0.5s ease;
 }
-@media (max-width: 600px){
-    #alert-add {
-        width: 80%;
-    }
+.alert-filtrar .filter-block {
+    display: flex;
+    overflow: auto;
 }
-
-:root {
-    --alert-success: #04AA6D;
-    --alert-info: #2196F3;
-    --alert-danger: #f44336;
-    --alert-warning: #ff9900;
-    --alert-modify: darkgoldenrod;
-    --alert-trashed: #b91c2b;
+.alert-filtrar .filter-block div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
-.alert-success {
-    border: 1px solid var(--alert-success);
-    border-left: 9px solid var(--alert-success);
-    background: white;
-    color: var(--alert-success);
+.alert-filtrar .filter-block div :where(input, label, select) {
+    margin: 0;
 }
-.alert-info {
-    border: 1px solid var(--alert-info);
-    border-left: 9px solid var(--alert-info);
-    background: white;
-    color: var(--alert-info);
-}
-.alert-danger {
-    border: 1px solid var(--alert-danger);
-    border-left: 9px solid var(--alert-danger);
-    background: white;
-    color: var(--alert-danger);
-}
-.alert-warning {
-    border: 1px solid var(--alert-warning);
-    border-left: 9px solid var(--alert-warning);
-    background: white;
-    color: var(--alert-warning);
-}
-.alert-modify {
-    border: 1px solid var(--alert-modify);
-    border-left: 9px solid var(--alert-modify);
-    background: white;
-    color: var(--alert-modify);
-}
-.alert-trashed {
-    border: 1px solid var(--alert-trashed);
-    border-left: 9px solid var(--alert-trashed);
-    background: white;
-    color: var(--alert-trashed);
-}
-
-@keyframes alert {
+@keyframes ani_filtrar {
     0% {
-        top: 0%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: -100%
     }
     100% {
-        top: 10%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-@keyframes des_alert {
-    0% {
-        top: 10%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    100% {
-        top: -20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 0%
     }
 }

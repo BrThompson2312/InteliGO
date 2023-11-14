@@ -11,6 +11,9 @@
     <script src="view/js/jquery.min.js"></script>
 </head>
 <body>
+    <section id="alert-add">
+        <i class="fa fa-check fa-1x"></i> 
+    </section>
     <main>
         <div class="inteligo-login">
             <img src="view/img/logofinal/blackLogo.png">
@@ -34,6 +37,7 @@
             </button>
         </form>
     </main>
+    <script src="view/js/uniAlerts.js"></script>
     <script src="view/js/login.js"></script>
 </body>
 </html>

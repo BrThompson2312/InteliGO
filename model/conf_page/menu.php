@@ -29,7 +29,6 @@
 <body>
     <section id="alert-add">
         <i class="fa fa-check fa-1x"></i> 
-        <p>Se ha agregado correctamente</p>
     </section>
     <section id="alert-salir">  
         <div>
@@ -137,7 +136,23 @@
                         <ion-icon name="people" class="navbar_icon"></ion-icon>
                         <h2>OPERADORES</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Cedula</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Nombre del Operador</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Fecha de Ingreso</label>
+                                <input class="ex-filt" type="text" placeholder="<?php echo date("Y-m-d h:m:s")?>">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-operador', '.BRS-operador', 'subir')" type="button">AÑADIR</button>
@@ -162,20 +177,17 @@
                             type="text" 
                             placeholder="12345678"
                             maxlength="8">
-
                         <label for="nombre-operador">Nombre de usuario</label>
                         <input 
                             name="nombre-operador" 
                             type="text" 
                             placeholder="John" 
                             maxlength="70">
-
                         <label for="contrasena-operador">Contraseña</label>
                         <input 
                             name="contrasena-operador" 
                             type="password" 
                             maxlength="16">
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
@@ -185,7 +197,6 @@
                 </div>
             </section>
         <!-- Fin OPERADORES -->
-
         <?php
             }
         ?>
@@ -197,7 +208,27 @@
                         <i class="fi fi-ss-steering-wheel navbar_icon"></i>
                         <h2>CHOFERES</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Teléfono</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Nombre</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Apellido</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Cedula</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-chofer', '.BRS-choferes', 'subir')" type="button">AÑADIR</button>
@@ -217,35 +248,30 @@
                 </div>
                 <div class="block_relative_section BRS-choferes">
                     <form class="alert_section">
-
                         <label for="tel-chofer">Teléfono</label>
                         <input
                             name="tel-chofer" 
                             type="text" 
                             placeholder=" 012345678 | +59812345678 | 012 345 678"
                             maxlength="12">
-
                         <label for="nombre-chofer">Nombre</label>
                         <input 
                             name="nombre-chofer" 
                             type="text"
                             placeholder="John" 
                             maxlength="35">
-
                         <label for="apellido-chofer">Apellido</label>
                         <input 
                             name="apellido-chofer" 
                             type="text"
                             placeholder="White" 
                             maxlength="35">
- 
                         <label for="ci-chofer">Cedula</label>
                         <input 
                             name="ci-chofer" 
                             type="text" 
                             placeholder="12345678" 
                             maxlength="8">
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
@@ -257,14 +283,34 @@
         <!-- Fin CHOFERES -->
 
         <!-- Inicio COCHES -->
-        <section class="bloque" id="coche">
+            <section class="bloque" id="coche">
                 <div class="conteiner-section conteiner-coche">
                     <div class="titulo-section">
                         <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
                         <i class="fi fi-ss-steering-wheel navbar_icon"></i>
                         <h2>COCHES</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Matrícula</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Marca</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Modelo</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Año</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
                             <button class="filtrar" type="button"> FILTRAR </button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-coche', '.BRS-coches','subir')" type="button">AÑADIR</button>
@@ -284,35 +330,30 @@
                 </div>
                 <div class="block_relative_section BRS-coches">
                     <form class="alert_section">
-
                         <label for="matricula-coche">Matrícula</label>
                         <input 
                             name="matricula-coche" 
                             type="text" 
                             placeholder="SRC4040" 
                             maxlength="7">
-
                         <label for="marca-coche">Marca</label>
                         <input 
-                        name="marca-coche"
-                        type="text"
-                        placeholder="Toyota"
-                        maxlength="20">
-
+                            name="marca-coche"
+                            type="text"
+                            placeholder="Toyota"
+                            maxlength="20">
                         <label for="modelo-coche">Modelo</label>
                         <input 
                             name="modelo-coche" 
                             type="text" 
                             placeholder="ToyotaOne"
                             maxlength="20">     
-                        
                         <label for="año-coche">Año</label>
                         <input 
                             name="año-coche" 
                             type="text" 
                             placeholder="2023"
                             maxlength="4">
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
@@ -322,7 +363,6 @@
                 </div>
             </section>
         <!-- Fin COCHES -->
-
          <!-- Inicio ASIGNACIONES -->
             <section class="bloque" id="asignacion">
                 <div class="conteiner-section conteiner-asignacion">
@@ -331,9 +371,25 @@
                         <i class="fa-solid fa-clipboard-list navbar_icon"></i>
                         <h2>ASIGNACIONES</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Cedula</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Chofer</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Coche</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
-                            <button class="filtrar"> FILTRAR </button>
+                            <button class="filtrar" type="button"></button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-asignacion', '.BRS-asignacion', 'subir')" type="button">AGREGAR</button>
                         </div>
                     </form>
@@ -350,7 +406,6 @@
                 </div>
                 <div class="block_relative_section BRS-asignacion">
                     <form class="alert_section">
-
                         <label for="ci-asignacion">Cedula</label>
                         <input 
                             name="ci-asignacion"
@@ -359,7 +414,6 @@
                             placeholder="00000000"
                             maxlength="8">
                         <datalist id="ci-asignacion"></datalist> 
-
                         <label for="matricula-asignacion">Matrícula</label>
                         <input 
                             name="matricula-asignacion"
@@ -368,7 +422,6 @@
                             placeholder="SRE0000"
                             maxlength="7">
                         <datalist id="matricula-asignacion"></datalist>
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Atras</button>   
                             <button class="subir_datos" type="button" onclick="btn_switch('chofer')">Agregar</button> 
@@ -378,7 +431,6 @@
                 </div>
             </section>
         <!-- Fin ASIGNACIONES -->
-
         <!-- Inicio PARTICULARES -->
             <section class="bloque" id="particular">
                 <div class="conteiner-section conteiner-cliente">
@@ -387,9 +439,33 @@
                         <i class="fa-solid fa-person navbar_icon"></i>
                         <h2>PARTICULARES</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Nro_cliente</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Teléfono</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Nombre</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Apellido</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Dirección</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
-                            <button class="filtrar">FILTRAR</button>
+                            <button class="filtrar" type="button"></button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-cliente', '.BRS-cliente', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
@@ -414,35 +490,30 @@
                             type="text"
                             maxlength="12"
                             placeholder="012345678 | +59812345678 | 012 345 678">
-                        
                         <label for="nombre-particular">Nombre</label>
                         <input 
                             name="nombre-particular" 
                             type="text" 
                             maxlength="70"
                             placeholder="White">
-
                         <label for="apellido-particular">Apellido</label>
                         <input 
                             name="apellido-particular" 
                             type="text" 
                             placeholder="White"
                             maxlength="70">
-
                         <label for="direccion-particular">Dirección</label>
                         <input 
                             name="direccion-particular" 
                             type="text"
                             maxlength="50"
                             placeholder="Carlos de la Vega Yugoeslavia 0000">
-
                         <label for="ln-particular">Lista negra</label>
                         <select name="ln-particular" >
                             <option value="">-- Seleccione opción</option>
                             <option value="1">SI</option>
                             <option value="0" selected>NO</option>
                         </select>
-
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>
                             <button class="subir_datos" type="button">Agregar</button>
@@ -452,7 +523,6 @@
                 </div>
             </section>
         <!-- Fin PARTICULARES -->
-
         <!-- Inicio EMPRESA -->
             <section class="bloque" id="empresa">
                 <div class="conteiner-section conteiner-empresa">
@@ -461,9 +531,49 @@
                         <i class="fa-solid fa-building navbar_icon"></i>
                         <h2>EMPRESAS</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Nro_cliente</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>RUT</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Nombre</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Correo</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Direccion</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Razón social</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Encargado de pagos</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Autorizado</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Teléfono</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
-                            <button class="filtrar">FILTRAR</button>
+                            <button class="filtrar" type="button"></button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-empresa', '.BRS-empresa', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
@@ -488,11 +598,8 @@
                             type="text"  
                             placeholder="210000000000"
                             maxlength="12">
-
                         <div class="conteiner_form">
                             <div>
-                                
-
                                 <label for="direccion-empresa">Dirección</label>
                                 <input 
                                     name="direccion-empresa"
@@ -512,7 +619,6 @@
                                     type="email"
                                     maxlength="125"
                                     placeholder="correo@correo.com">
-
                                 <label for="listanegra-empresa">Lista negra</label>
                                 <select name="listanegra-empresa">
                                     <option value="">--Seleccione opción</option>
@@ -527,21 +633,18 @@
                                     type="text"
                                     maxlength="70"
                                     placeholder="McDonald's">
-                                
                                 <label for="razonsocial-empresa">Razón social</label>
                                 <input 
                                     name="razonsocial-empresa" 
                                     type="text"
                                     maxlength="70"
                                     placeholder="Restaurantes McDonald's S.A.">
-                                    
                                 <label for="encargado-empresa">Encargado de pagos</label>
                                 <input 
                                     name="encargado-empresa" 
                                     type="text"
                                     maxlength="70"
                                     placeholder=""> 
-
                                 <label for="autorizado-empresa">Autorizado</label>
                                 <input 
                                     name="autorizado-empresa" 
@@ -550,7 +653,6 @@
                                     placeholder="">
                             </div>
                         </div>
-                        
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>   
@@ -569,9 +671,69 @@
                         <i class="fa-solid fa-calendar-days navbar_icon"></i>
                         <h2>RESERVAS</h2>
                     </div>
-                    <form action="GET">
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Cliente</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Nombre</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Origen</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Destino</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Chofer</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Cedula Chofer</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Apellido pasajero</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Fecha de reserva</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Hora de reserva</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Fecha de servicio</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Hora de servicio</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Comentario</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Monto</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Cod Servicio</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                        </div>
+                    </div>
+                    <form>
                         <div class="inputs-busqueda">
-                            <button class="filtrar">FILTRAR</button>
+                            <button class="filtrar" type="button"></button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-reserva', '.BRS-reserva', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
@@ -598,7 +760,6 @@
                                     type="text"
                                     placeholder="John"
                                     maxlength="70">
-
                                 <label for="forma-de-pago">Forma de pago</label>
                                 <select name="forma-de-pago">
                                     <option value="contado">Contado</option>
@@ -614,7 +775,6 @@
                                     type="text"
                                     placeholder="White"
                                     maxlength="70">
-
                                 <label for="monto-servicio">Monto</label>
                                 <input 
                                     name="monto-servicio" 
@@ -630,14 +790,12 @@
                                     type="text"
                                     placeholder="Ingrese o Seleccione Cliente">
                                 <datalist id="cliente-reserva"></datalist>
-                                
                                 <label for="origen-servicio">Origen</label>
                                 <input 
                                     name="origen-servicio" 
                                     type="text"
                                     placeholder="Carlos de la Vega 5348"
                                     maxlength="70">
-                                    
                             </div>
                             <div>              
                                 <label for="fecha-servicio">Fecha del viaje</label>
@@ -672,7 +830,6 @@
                                     type="text"
                                     placeholder="Ingrese o Seleccione Chofer">
                                 <datalist id="chofer-realizan"></datalist>
-
                             </div>
                         </div>
                         <label for="comentario-servicio">Comentario</label>
@@ -686,7 +843,6 @@
                 </div>
             </section>
         <!-- Fin RESERVA -->
-
         <!-- Inicio GASTOS DE MANTENIMIENTO -->
             <section class="bloque" id="gastos-de-mantenimiento">
                 <div class="conteiner-section conteiner-GDM">
@@ -695,9 +851,53 @@
                         <i class="fa-solid fa-wrench navbar_icon"></i>
                         <h2>MANTENIMIENTO</h2>
                     </div>
+                    <div class="alert-filtrar">
+                        <div class="filter-block">
+                            <div>
+                                <label>Cod-factura</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Matrícula</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Concepto</label>
+                                <select class="ex-filt">
+                                    <option value="">--Por favor elija una opción</option>
+                                    <option value="Gasoil">Gasoil</option>
+                                    <option value="Cambio de aceite">Cambio de aceite</option>
+                                    <option value="Electricista">Electricista</option>
+                                    <option value="Alineacion balanceo">Alineación y balanceo</option>
+                                    <option value="Gomeria">Gomería</option>
+                                    <option value="Cambio correa">Cambio de correa</option>
+                                    <option value="Frenos">Frenos</option>
+                                    <option value="Embrague">Embrague</option>
+                                    <option value="Chapista">Chapista</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Comentario</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Importe total</label>
+                                <input class="ex-filt" type="number">
+                            </div>
+                            <div>
+                                <label>Taller</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Fecha</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                        </div>
+                    </div>
                     <form>
                         <div class="inputs-busqueda">
-                            <button class="filtrar">FILTRAR</button>
+                            <button class="filtrar" type="button">FILTRAR</button>
                             <button class="agregar" onclick="ventanaSeccion('.conteiner-GDM', '.BRS-GDM', 'subir')" type="button">AÑADIR</button>
                         </div>
                     </form>
@@ -716,6 +916,13 @@
                 </div>
                 <div class="block_relative_section BRS-GDM">
                     <form class="alert_section">
+                        <label for="matricula-gdm">Coche</label>
+                        <input 
+                            list="matricula-gdm"
+                            name="matricula-gdm"
+                            type="text"
+                            placeholder="Ingrese o Seleccione Coche">
+                        <datalist id="matricula-gdm"></datalist>
                         <div class="conteiner_form">
                             <div>
                                 <label for="codigo-gdm">Cod-factura</label>
@@ -723,7 +930,6 @@
                                     name="codigo-gdm" 
                                     type="number"
                                     placeholder="0000">
-                                    
                                 <label for="concepto-gdm">Concepto</label>
                                 <select name="concepto-gdm">
                                     <option value="">--Por favor elija una opción</option>
@@ -740,38 +946,26 @@
                                 </select>  
                             </div>
                             <div> 
-                                <label for="matricula-gdm">Coche</label>
-                                <input 
-                                    list="matricula-gdm"
-                                    name="matricula-gdm"
-                                    type="text"
-                                    placeholder="Ingrese o Seleccione Coche">
-                                <datalist id="matricula-gdm"></datalist>
-
                                 <label for="importe-gdm">Importe</label>
                                 <input 
                                     name="importe-gdm"
                                     type="number"
-                                    placeholder="00000">
-                                    
+                                    placeholder="Ingrese Importe">
+                                <label for="taller-gdm">Taller</label>
+                                <input 
+                                    name="taller-gdm" 
+                                    type="text"
+                                    placeholder="Taller"
+                                    maxlength="70">
                             </div>     
                         </div>
-                            
-                        <label for="taller-gdm">Taller</label>
-                        <input 
-                            name="taller-gdm" 
-                            type="text"
-                            placeholder="Taller"
-                            maxlength="70">
-
                         <label for="comentario-gdm">Comentario</label>
                         <textarea 
                             name="comentario-gdm"
                             type="text"
                             placeholder="Comentario"
                             maxlength="100">
-                        </textarea> 
-
+                        </textarea>
                         <div class="buttons">
                             <button class="cancel_button" type="button">Cancelar</button>   
                             <button class="subir_datos" type="button">Agregar</button>
@@ -797,8 +991,10 @@
             </section>
         <!-- ACERCA DE -->
     </main>
+    <script src="../../view/js/uniAlerts.js"></script>
     <script src="../../view/js/tableData.js"></script>
     <script src="../../view/js/consultar.js"></script>
     <script type="module" src="../../view/js/add_all.js"></script>
+    <script type="module" src="../../view/js/filter_all.js"></script>
 </body>
 </html>

@@ -2,8 +2,6 @@ let pass = document.querySelector("#pass");
 function seeingPassword() {
     var eye = document.getElementById("seePass");
     var not_eye = document.getElementById("not-seePass");
-    
-
     if (pass.type == "password") {
         eye.style.opacity = "0";
         not_eye.style.opacity = "1";
@@ -20,7 +18,7 @@ let login_user = document.querySelector("#login-user");
     login_user.onclick = function(event){
         event.preventDefault()
         if (cedula.value == '' || pass.value == ''){
-            alert('campos vacios')
+            alertSuccess('incompleted');
         } else {
             $.ajax({
                 url: 'model/conf_page/login.php',
@@ -32,7 +30,7 @@ let login_user = document.querySelector("#login-user");
                    if (response == true){
                         window.location.href = 'model/conf_page/menu.php';
                    } else {
-                       alert('Error al iniciar sesión');
+                       alertSuccess('wrongLogin');
                    }
                 }
             })

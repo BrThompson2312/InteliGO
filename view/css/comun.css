@@ -216,7 +216,7 @@ main {
   display: flex;
   gap: 10px;
 }
-.inputs-busqueda button {
+.filtrar, .agregar, .eliminados {
   width: 100%;
   padding: 1em;
   cursor: pointer;
@@ -225,14 +225,14 @@ main {
   color: white;
   font-weight: bold;
 }
-.inputs-busqueda :where(.filtrar, .agregar, .eliminados) {
+:where(.filtrar, .agregar, .eliminados) {
   font-size: 1em;
   transition: background-color 0.3s;
 }
-.inputs-busqueda .filtrar {
+.filtrar {
   background-color: gray;
 }
-.inputs-busqueda .filtrar:hover {
+.filtrar:hover {
   background-color: rgb(160, 160, 160);
 }
 .inputs-busqueda .agregar {

@@ -1,4 +1,5 @@
 @import 'fonts.css';
+@import 'uniStyles.css';
 html, body {
   padding: 0;
   margin: 0;
@@ -41,7 +42,7 @@ body img {
   }
 }
 main {
-  background: rgba(20, 20, 20, 0.2);
+  background: rgba(20, 20, 20, 0.5);
   padding: 1em;
   border-radius: 10px;
   display: flex;

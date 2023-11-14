@@ -270,7 +270,7 @@ insert into maneja VALUES ('45678901' , 'SRE6543');
 create table IF NOT EXISTS necesitan (
 	cod_mantenimiento INT,
 	matricula VARCHAR(7) UNIQUE,
-	fecha DATE,
+	fecha DATETIME,
     PRIMARY KEY (cod_mantenimiento, matricula),
     FOREIGN KEY (cod_mantenimiento) REFERENCES mantenimiento (cod_mantenimiento),
 	FOREIGN KEY (matricula) REFERENCES coches (matricula)

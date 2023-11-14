@@ -299,6 +299,11 @@ function tableData(parametro, jsonObj){
 
             let exception = [];
             modificar.onclick = function() {
+                data_matricula('#matricula-asignacion');
+                data_matricula('#matricula-gdm');
+                data_codCliente('#cliente-reserva');
+                data_cedula('#ci-asignacion');
+                data_cedula('#chofer-realizan');
                 switch (parametro) {
                     case '.registro-operadores':
                         exception = [
@@ -377,13 +382,13 @@ function tableData(parametro, jsonObj){
 
                     case '.registro-GDM':
                         exception = [
+                            'codigo-gdm',
                             'concepto-gdm',
                             'importe-gdm',
-                            'fecha-gdm',
                             'taller-gdm',
                             'comentario-gdm'
                         ];
-                        modBlock('.conteiner-GDM',  '.BRS-GDM', exception);
+                        modBlock('.conteiner-GDM', '.BRS-GDM', exception);
                 }
             }
 
@@ -521,50 +526,7 @@ function addBackRegister(matricula) {
 }
 
 let rut_conexion = '../../model/add/add_';
-let alert_success       = document.querySelector('#alert-add');
-function alertSuccess(type_alert) {
-    alert_success.style.display = "block";
-    alert_success.className = null;
-    switch(type_alert){
-        case 'success':
-            alert_success.classList.add('alert-success');
-            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-check fa-1x"></i> Campos ingresados correctamente';
-            break;
-        case 'incompleted':
-            alert_success.classList.add('alert-info');
-            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-info fa-1x"></i> Campos incompletos';
-            break;
-        case 'warning':
-            alert_success.classList.add('alert-warning');
-            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-triangle-exclamation fa-1x"></i> Campos erroneos';
-            break;
-        case 'error':
-            alert_success.classList.add('alert-danger');
-            alert_success.innerHTML = `<i style="margin-right: 12px;" class="fa fa-circle-exclamation fa-1x"></i> Error`;
-            break;
-        case 'modify':
-            alert_success.classList.add('alert-modify');
-            alert_success.innerHTML = `<i style="margin-right: 12px;" class="fa fa-pen-to-square fa-1x"></i> Modificado con éxito`;
-            break;
-        case 'trashed':
-            alert_success.classList.add('alert-trashed');
-            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-trash fa-1x"></i> Eliminado exitosamente';
-            break;
-        case 'asigned':
-            alert_success.classList.add('alert-warning');
-            alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-triangle-exclamation fa-1x"></i> Chofer no disponible';
-            break;
-    }
-    alert_success.style.animation = "alert 0.5s ease";
-    alert_success.addEventListener("animationend",function(){
-        setTimeout(function () {
-            alert_success.style.animation = "des_alert 0.5s ease";
-            setTimeout(function () {
-                alert_success.style.display = "none";
-            }, 500);
-        }, 500);
-    })
-}
+
 
 function data_matricula(datalist) {
     let data_matricula = document.querySelector(`${datalist}`);
@@ -585,8 +547,7 @@ function data_matricula(datalist) {
         }
     })
 }
-data_matricula('#matricula-asignacion');
-data_matricula('#matricula-gdm');
+
 
 function data_cedula(datalist) {
     let data_cedula = document.querySelector(`${datalist}`);
@@ -608,8 +569,7 @@ function data_cedula(datalist) {
         }
     })
 }
-data_cedula('#ci-asignacion');
-data_cedula('#chofer-realizan')
+
 
 function data_codCliente(datalist) {
     let cod = document.querySelector(`${datalist}`);
@@ -619,7 +579,6 @@ function data_codCliente(datalist) {
         success: function(response) {
             let cod_cliente = JSON.parse(response);
             for (let i = 0; i < cod_cliente.length; i++) {
-                console.log(cod_cliente[i])
                 let option = document.createElement('option');
                 option.value = cod_cliente[i].cod_cliente;
                 option.textContent = `${cod_cliente[i].col1} ${cod_cliente[i].col2}`;
@@ -631,4 +590,5 @@ function data_codCliente(datalist) {
         }
     })
 }
-data_codCliente('#cliente-reserva');
+
+let ex_filt = document.querySelectorAll('.ex-filt');

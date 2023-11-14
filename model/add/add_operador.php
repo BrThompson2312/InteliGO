@@ -1,6 +1,4 @@
-<?php require_once '../conf_page/conexion.php';
-
-ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
 $cedula = $_POST['cedula'];
 $nombre = $_POST['nombre'];

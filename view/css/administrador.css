@@ -9,11 +9,16 @@
 .alert_section {
   border-left: 20px double var(--bg-administrador);
 }
-.alert_section label {
+.alert_section label, .alert-filtrar label {
   background: var(--bg-administrador);
 }
 nav {
   border-right: 5px solid var(--bg-administrador);
+}
+.alert-filtrar {
+  border: none;
+  border-top: 5px solid var(--bg-administrador);
+  border-bottom: 5px solid var(--bg-administrador);
 }
 .spanPromotion {
   background: var(--bg-administrador);

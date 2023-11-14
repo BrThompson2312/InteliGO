@@ -1,6 +1,4 @@
-<?php require_once '../conf_page/conexion.php';
-
-ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
 
 $telefono   = $_POST['telefono'];
 $nombre     = $_POST['nombre'];

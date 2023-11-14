@@ -22,7 +22,7 @@ function consultas(url, registro){
         type: 'POST',
         success: function(response){
             let block = JSON.parse(response);
-            tableData(registro, block);
+            tableData(registro, block)
         }
     })
 }
@@ -31,28 +31,35 @@ function llamado(rel){
     switch (rel) {
         case '#operador':
             consultas(`operador.php`, '.registro-operadores');
-        break;
+            break;
+
         case '#chofer':
             consultas(`chofer.php`, '.registro-choferes');
-        break;
+            break;
+
         case '#coche':
             consultas(`coche.php`, '.registro-coches');
-        break;
+            break;
+
         case '#asignacion':
             consultas(`asignacion.php`, '.registro-asignacion');
-        break;
+            break;
+
         case '#particular':
             consultas(`particular.php`, '.registro-cliente');
-        break;
+            break;
+
         case '#empresa':
             consultas(`empresa.php`, '.registro-empresa');
-        break;
+            break;
+
         case '#reserva':
             consultas(`reserva.php`, '.registro-reserva');
-        break;
+            break;
+
         case '#gastos-de-mantenimiento':
             consultas(`mantenimiento.php`, '.registro-GDM');
-        break;
+            break;
     }
 }
 
@@ -114,6 +121,11 @@ function ventanaSeccion(containerSection, windowOpened, mode){
             modificar_datos.style.display = "none";
             subir_datos.style.display = "block";
             labelInput(windowOpened);
+            data_matricula('#matricula-asignacion');
+            data_matricula('#matricula-gdm');
+            data_codCliente('#cliente-reserva');
+            data_cedula('#ci-asignacion');
+            data_cedula('#chofer-realizan');
         break;
 
         case 'modificar':
