@@ -7,5 +7,6 @@ for (let i = 0; i < ex_filt.length; i++){
         particular.nombre = data[2].value,
         particular.apellido = data[3].value,
         particular.direccion = data[4].value
+        particular.listanegra = data[5].value
     })
 }

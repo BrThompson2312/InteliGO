@@ -28,7 +28,7 @@
             <div class="form-group">
                 <ion-icon id="not-seePass" name="eye-off"></ion-icon>
                 <ion-icon id="seePass" name="eye" onclick="seeingPassword()"></ion-icon>
-                <input type="password" name="pass" id="pass" required>
+                <input type="password" name="pass" id="pass" maxlength="16" required>
                 <label for="pass"> Contraseña </label>
             </div>
             <button type="submit" id="login-user">

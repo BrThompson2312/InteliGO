@@ -6,9 +6,19 @@ $cedula     = $data['cedula'];
 $nombre     = $data['nombre'];
 $fechaing   = $data['fechaing'];
 
+$arrCond = array();
+if ($cedula) $arrCond[] = "cedula LIKE '$cedula%'";
+if ($nombre) $arrCond[] = "nombre_usuario LIKE '$nombre%'";
+if ($fechaing) $arrCond[] = "fecha_ingreso LIKE '$fechaing%'";
+
+$condicion = '';
+if (count($arrCond) > 0) {
+    $condicion = " AND " . implode(" AND ", $arrCond);
+}
+
 $query_cedula = 
 "SELECT cedula, nombre_usuario, fecha_ingreso FROM usuario
-WHERE rol_usuario = 'operador' AND activo = 1 AND cedula LIKE '$cedula%' AND nombre_usuario LIKE '$nombre%' AND fecha_ingreso LIKE '$fechaing%'";
+WHERE rol_usuario = 'operador' AND activo = 1 $condicion";
 
 $array = array();
 

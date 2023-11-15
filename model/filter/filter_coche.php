@@ -7,12 +7,18 @@ $marca      = $data['marca'];
 $modelo     = $data['modelo'];
 $año        = $data['año'];
 
-$query = 
-"SELECT matricula, marca, modelo, año FROM coches WHERE matricula LIKE '$matricula%'
-AND marca LIKE '$marca%'
-AND modelo LIKE '$modelo%'
-AND año LIKE '$año%'
-AND activo = 1";
+$arrCond = array();
+if ($matricula) $arrCond[] = "matricula LIKE '$matricula%'";
+if ($marca) $arrCond[] = "marca LIKE '$marca%'";
+if ($modelo) $arrCond[] = "modelo LIKE '$modelo%'";
+if ($año) $arrCond[] = "año LIKE '$año%'";
+
+$condicion = '';
+if (count($arrCond) > 0) {
+    $condicion = " AND " . implode(" AND ", $arrCond);
+}
+
+$query = "SELECT matricula, marca, modelo, año FROM coches WHERE activo = 1 $condicion";
 
 $result = mysqli_query($conn, $query);
 $json = array();

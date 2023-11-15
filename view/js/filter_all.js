@@ -4,6 +4,7 @@ import {coche} from './filter/filter_coche.js';
 import {asignacion} from './filter/filter_asignacion.js';
 import {particular} from './filter/filter_particular.js';
 import {empresa} from './filter/filter_empresa.js';
+import {reserva} from './filter/filter_reserva.js';
 import {mantenimiento} from './filter/filter_mantenimiento.js';
 
 let route_filter = '../../model/filter/'
@@ -67,8 +68,9 @@ function filter_appear(block) {
                     filter_blocks('filter_empresa.php', empresa, '.registro-empresa');
                     break;
 
-                // // case '#reserva':
-                // //     break;
+                case '#reserva':
+                    filter_blocks('filter_reserva.php', reserva, '.registro-reserva');
+                    break;
 
                 case '#gastos-de-mantenimiento':
                     filter_blocks('filter_mantenimiento.php', mantenimiento, '.registro-GDM');

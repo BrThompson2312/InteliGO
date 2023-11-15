@@ -461,6 +461,14 @@
                                 <label>Dirección</label>
                                 <input class="ex-filt" type="text">
                             </div>
+                            <div>
+                                <label>Lista negra</label>
+                                <select class="ex-filt">
+                                    <option value="">--Seleccione opción</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <form>
@@ -662,7 +670,6 @@
                 </div>
             </section>
         <!-- Fin EMPRESA -->
-
         <!-- Inicio RESERVA -->
             <section class="bloque" id="reserva">
                 <div class="conteiner-section conteiner-reserva">
@@ -678,16 +685,20 @@
                                 <input class="ex-filt" type="number">
                             </div>
                             <div>
-                                <label>Nombre</label>
+                                <label>Nombre pasajero</label>
+                                <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Apellido pasajero</label>
                                 <input class="ex-filt" type="text">
                             </div>
                             <div>
                                 <label>Origen</label>
-                                <input class="ex-filt" type="number">
+                                <input class="ex-filt" type="text">
                             </div>
                             <div>
                                 <label>Destino</label>
-                                <input class="ex-filt" type="number">
+                                <input class="ex-filt" type="text">
                             </div>
                             <div>
                                 <label>Chofer</label>
@@ -697,13 +708,10 @@
                                 <label>Cedula Chofer</label>
                                 <input class="ex-filt" type="number">
                             </div>
-                            <div>
-                                <label>Apellido pasajero</label>
-                                <input class="ex-filt" type="number">
-                            </div>
+                            
                             <div>
                                 <label>Fecha de reserva</label>
-                                <input class="ex-filt" type="number">
+                                <input class="ex-filt" type="text">
                             </div>
                             <div>
                                 <label>Hora de reserva</label>
@@ -711,7 +719,7 @@
                             </div>
                             <div>
                                 <label>Fecha de servicio</label>
-                                <input class="ex-filt" type="number">
+                                <input class="ex-filt" type="text">
                             </div>
                             <div>
                                 <label>Hora de servicio</label>

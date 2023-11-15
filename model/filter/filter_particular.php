@@ -7,16 +7,24 @@ $telefono   = $data['telefono'];
 $nombre     = $data['nombre'];
 $apellido   = $data['apellido'];
 $direccion  = $data['direccion'];
+$listanegra = $data['listanegra'];
+
+$arrCond = array();
+if ($cliente) $arrCond[] = "particular.cod_cliente LIKE '$cliente%'";
+if ($telefono) $arrCond[] = "telefono LIKE '$telefono%'";
+if ($nombre) $arrCond[] = "nombre LIKE '$nombre%'";
+if ($apellido) $arrCond[] = "apellido LIKE '$apellido%'";
+if ($direccion) $arrCond[] = "direccion LIKE '$direccion%'";
+
+$condicion = '';
+if (count($arrCond) > 0){
+    $condicion = " AND " .implode(" AND ", $arrCond);
+}
 
 $query = "SELECT particular.cod_cliente as nro_particular, telefono, nombre, apellido, direccion, lista_negra FROM particular
 JOIN cliente on cliente.cod_cliente = particular.cod_cliente
 JOIN telefono_cliente on telefono_cliente.cod_cliente = particular.cod_cliente
-WHERE activo = 1 
-AND particular.cod_cliente LIKE '$cliente%' 
-AND telefono LIKE '$telefono%'
-AND nombre LIKE '$nombre%'
-AND apellido LIKE '$apellido%'
-AND direccion LIKE '$direccion%'";
+WHERE activo = 1 AND lista_negra = '$listanegra' $condicion";
 
 $result = mysqli_query($conn, $query);
 $json = array();
@@ -36,6 +44,5 @@ if ($result) {
 } else {
     echo 'No hay conexión';
 }
-
 
 ?>

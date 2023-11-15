@@ -6,12 +6,19 @@ $cedula = $data['cedula'];
 $chofer = $data['chofer'];
 $coche  = $data['coche'];
 
+$arrCond = array();
+if ($chofer) $arrCond[] = "nombre LIKE '$chofer%'";
+if ($coche) $arrCond[] = "matricula LIKE '$coche%'";
+
+$condicion = '';
+if (count($arrCond) > 0) {
+    $condicion = " AND " . implode(" AND ", $arrCond);
+}
+
 $query = 
 "SELECT maneja.cedula, nombre, matricula FROM maneja
 JOIN chofer ON chofer.cedula = maneja.cedula
-WHERE maneja.cedula LIKE '$cedula%'
-AND nombre LIKE '$chofer%'
-AND matricula LIKE '$coche%'";
+WHERE maneja.cedula LIKE '$cedula%' $condicion";
 
 $result = mysqli_query($conn, $query);
 $json = array();

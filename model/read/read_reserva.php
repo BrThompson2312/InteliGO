@@ -10,7 +10,7 @@ Se.fecha AS fecha_viaje,
 Re.fecha AS fecha_reserva, destino, 
 Re.hora AS hora_reserva, 
 Se.hora AS hora_servicio, 
-comentario, nombre_pasajero, apellido_pasajero, monto, F.cod_pago FROM servicio Se
+comentario, nombre_pasajero, apellido_pasajero, F.monto, F.cod_pago FROM servicio Se
 JOIN reserva Re ON Re.cod_servicio = Se.cod_servicio
 JOIN cliente Cli ON Cli.cod_cliente = Re.cod_cliente
 JOIN realizan Rea ON Rea.cod_servicio = Se.cod_servicio
