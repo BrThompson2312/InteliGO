@@ -88,18 +88,19 @@ create table IF NOT EXISTS servicio (
 	nombre_pasajero VARCHAR(35) NOT NULL,
 	apellido_pasajero VARCHAR(35) NOT NULL,
     activo BOOLEAN DEFAULT 1,
+    monto FLOAT NOT NULL, 
 	PRIMARY KEY (cod_servicio)
 );
-INSERT INTO servicio VALUES (0, 'Carlos de la Vega', '18 de Julio', '2023-09-15','14:00:00','sc', 'Ruben', 'Gomez', 1); 
-INSERT INTO servicio VALUES (0, 'Avenida Libertad', 'Plaza Independencia', '2023-09-16', '15:00:00','viaje de negocios', 'Laura', 'Fernández', 1);
-INSERT INTO servicio VALUES (0, 'Estación Central', 'Terminal Tres Cruces', '2023-09-17', '15:00:00','viaje de compras', 'Pablo', 'Martínez', 1);
-INSERT INTO servicio VALUES (0, 'Parque Rodó', 'Pocitos', '2023-09-18',' 18:40:00','paseo familiar', 'Ana', 'López', 1);
-INSERT INTO servicio VALUES (0, 'Carrasco', 'Canelones', '2023-09-19', '13:00:00', 'viaje de vacaciones', 'Diego', 'Rodríguez', 1);
-INSERT INTO servicio VALUES (0, 'Palermo', 'Parque Batlle', '2023-09-20', '11:00:00', 'cita médica', 'María', 'Pérez', 1);
-INSERT INTO servicio VALUES (0, 'Tres Cruces', 'Cerro', '2023-09-21', '15:00:00','viaje de estudios', 'Javier', 'Hernández', 1);
-INSERT INTO servicio VALUES (0, 'Ciudad Vieja', 'Punta Carretas', '2023-09-22', '20:00:00','paseo turístico', 'Elena', 'García', 1);
-INSERT INTO servicio VALUES (0, 'Buceo', 'Malvín', '2023-09-23', '19:40:00', 'visita a amigos', 'Luis', 'Silva', 1);
-INSERT INTO servicio VALUES (0, 'Barrio Sur', 'La Comercial', '2023-09-24', '17:40:00','compras', 'Carolina', 'Gutiérrez', 1);
+INSERT INTO servicio VALUES (0, 'Carlos de la Vega', '18 de Julio', '2023-09-15','14:00:00','sc', 'Ruben', 'Gomez', 1, 200); 
+INSERT INTO servicio VALUES (0, 'Avenida Libertad', 'Plaza Independencia', '2023-09-16', '15:00:00','viaje de negocios', 'Laura', 'Fernández', 1, 300);
+INSERT INTO servicio VALUES (0, 'Estación Central', 'Terminal Tres Cruces', '2023-09-17', '15:00:00','viaje de compras', 'Pablo', 'Martínez', 1, 400);
+INSERT INTO servicio VALUES (0, 'Parque Rodó', 'Pocitos', '2023-09-18',' 18:40:00','paseo familiar', 'Ana', 'López', 1, 500);
+INSERT INTO servicio VALUES (0, 'Carrasco', 'Canelones', '2023-09-19', '13:00:00', 'viaje de vacaciones', 'Diego', 'Rodríguez', 1, 600);
+INSERT INTO servicio VALUES (0, 'Palermo', 'Parque Batlle', '2023-09-20', '11:00:00', 'cita médica', 'María', 'Pérez', 1, 700);
+INSERT INTO servicio VALUES (0, 'Tres Cruces', 'Cerro', '2023-09-21', '15:00:00','viaje de estudios', 'Javier', 'Hernández', 1, 800);
+INSERT INTO servicio VALUES (0, 'Ciudad Vieja', 'Punta Carretas', '2023-09-22', '20:00:00','paseo turístico', 'Elena', 'García', 1, 900);
+INSERT INTO servicio VALUES (0, 'Buceo', 'Malvín', '2023-09-23', '19:40:00', 'visita a amigos', 'Luis', 'Silva', 1, 1000);
+INSERT INTO servicio VALUES (0, 'Barrio Sur', 'La Comercial', '2023-09-24', '17:40:00','compras', 'Carolina', 'Gutiérrez', 1, 1100);
 
 create table IF NOT EXISTS usuario (
 	cedula INT,
@@ -199,16 +200,16 @@ create table IF NOT EXISTS forma_pago (
     tiempo TIME,
 	PRIMARY KEY (cod_pago)
 );
-insert into forma_pago values (0, '200', NULL);
-insert into forma_pago values (0, '350', NULL);
-insert into forma_pago values (0, '866', NULL);
-insert into forma_pago values (0, '500', NULL);
-insert into forma_pago values (0, '700', NULL);
-insert into forma_pago values (0, '200', NULL);
-insert into forma_pago values (0, '100', NULL);
-insert into forma_pago values (0, '900', NULL);
-insert into forma_pago values (0, '900', NULL);
-insert into forma_pago values (0, '9000.50', NULL);
+INSERT INTO forma_pago values (0, '200', NULL);
+INSERT INTO forma_pago values (0, '350', NULL);
+INSERT INTO forma_pago values (0, '866', NULL);
+INSERT INTO forma_pago values (0, '500', NULL);
+INSERT INTO forma_pago values (0, '700', NULL);
+INSERT INTO forma_pago values (0, '200', NULL);
+INSERT INTO forma_pago values (0, '100', NULL);
+INSERT INTO forma_pago values (0, '900', NULL);
+INSERT INTO forma_pago values (0, '900', NULL);
+INSERT INTO forma_pago values (0, '9000.50', NULL);
 
 create table IF NOT EXISTS cuenta_corriente (
 	cod_pago INT,
@@ -261,11 +262,11 @@ create table IF NOT EXISTS maneja (
 	FOREIGN KEY (cedula) REFERENCES chofer (cedula),
 	FOREIGN KEY (matricula) REFERENCES coches (matricula)
 );
-insert into maneja VALUES ('12341234' , 'SRE6544');
-insert into maneja VALUES ('12345678' , 'SRE4334');
-insert into maneja VALUES ('23456789' , 'SRE5678');
-insert into maneja VALUES ('34567890' , 'SRE6543');
-insert into maneja VALUES ('45678901' , 'SRE6543');
+INSERT INTO maneja VALUES ('12341234' , 'SRE6544');
+INSERT INTO maneja VALUES ('12345678' , 'SRE4334');
+INSERT INTO maneja VALUES ('23456789' , 'SRE5678');
+INSERT INTO maneja VALUES ('34567890' , 'SRE6543');
+INSERT INTO maneja VALUES ('45678901' , 'SRE6543');
 
 create table IF NOT EXISTS necesitan (
 	cod_mantenimiento INT,
@@ -353,3 +354,350 @@ create table IF NOT EXISTS administra (
     FOREIGN KEY (cedula) REFERENCES usuario (cedula),
     FOREIGN KEY (cod_servicio) REFERENCES servicio (cod_servicio)
 );
+
+-- ======================================== Consultas WEB ======================================================
+-- Operadores:
+SELECT * FROM usuario 
+WHERE activo = 1;
+    
+    -- Filtro Operador: 
+    SELECT cedula, nombre_usuario, fecha_ingreso FROM usuario
+	WHERE rol_usuario = 'operador' 
+    AND activo 
+    AND cedula LIKE '$cedula'
+    AND nombre_usuario LIKE '$nombre'
+    AND fecha_ingreso LIKE '$fechaing';
+
+-- Choferes:
+SELECT 
+	chofer.cedula, 
+	nombre, 
+	apellido, 
+	telefono 
+FROM chofer
+JOIN tel_chofer ON tel_chofer.cedula = chofer.cedula
+WHERE activo = 1;
+    
+    -- Filtro Chofer:
+    SELECT 
+		telefono, 
+		nombre, 
+        apellido, 
+        chofer.cedula 
+	FROM chofer 
+	JOIN tel_chofer ON tel_chofer.cedula = chofer.cedula 
+    WHERE activo = 1
+    AND telefono LIKE '$telefono%'
+    AND nombre LIKE '$nombre%'
+    AND apellido LIKE '$apellido'
+    AND chofer.cedula LIKE '$cedula';
+    
+-- Coches:
+SELECT 
+	matricula, 
+	modelo, 
+	marca, 
+	año 
+FROM coches 
+WHERE activo = 1;
+    
+    -- Filtro Coche:
+    SELECT matricula, marca, modelo, año FROM coches 
+    WHERE activo = 1
+    AND matricula LIKE '$matricula'
+    AND marca LIKE '$marca'
+    AND modelo LIKE '$modelo'
+    AND año LIKE '$año';
+
+-- Asignaciones:
+SELECT 
+	c.nombre AS chofer_nombre, 
+	co.matricula, 
+	c.cedula
+FROM chofer c 
+JOIN maneja m ON m.cedula = c.cedula
+JOIN coches co ON co.matricula = m.matricula
+JOIN tel_chofer t ON t.cedula = c.cedula;
+    
+    -- Filtro Asignación:
+    SELECT 
+		maneja.cedula, 
+        nombre, 
+        matricula 
+	FROM maneja
+	JOIN chofer ON chofer.cedula = maneja.cedula
+	WHERE maneja.cedula LIKE '$cedula%'
+    AND nombre LIKE '$chofer%'
+    AND matricula LIKE '$matricula%';
+
+-- Particulares: 
+SELECT 
+	particular.cod_cliente AS nro_particular, 
+	telefono, 
+	nombre, 
+	apellido, 
+	direccion, 
+	lista_negra 
+FROM particular
+JOIN cliente on cliente.cod_cliente = particular.cod_cliente
+JOIN telefono_cliente on telefono_cliente.cod_cliente = particular.cod_cliente
+WHERE activo = 1;
+
+	-- Filtro Particular:
+    SELECT 
+		particular.cod_cliente as nro_particular, 
+		telefono, 
+        nombre, 
+        apellido, 
+        direccion, 
+        lista_negra 
+	FROM particular
+	JOIN cliente on cliente.cod_cliente = particular.cod_cliente
+	JOIN telefono_cliente on telefono_cliente.cod_cliente = particular.cod_cliente
+	WHERE activo = 1
+    AND particular.cod_cliente LIKE '$cliente'
+    AND telefono LIKE '$telefono'
+    AND nombre LIKE '$nombre'
+    AND apellido LIKE '$apellido'
+    AND direccion LIKE '$direccion';
+
+-- Empresas:
+SELECT 
+	empresa.cod_cliente, 
+	telefono, 
+	empresa.cod_cliente AS nro_empresa, 
+	rut, razon_social, 
+	nombre_fantasia, 
+	correo, 
+	encargado_de_pagos, 
+	autorizado, 
+	activo, 
+	direccion, 
+	lista_negra 
+FROM empresa
+JOIN cliente ON cliente.cod_cliente = empresa.cod_cliente
+JOIN telefono_cliente ON telefono_cliente.cod_cliente = empresa.cod_cliente
+WHERE activo = 1;
+
+	-- Filtro Empresa
+    SELECT 
+		empresa.cod_cliente, 
+        telefono, 
+        empresa.cod_cliente as nro_empresa, 
+        rut, 
+        razon_social, 
+        nombre_fantasia, 
+        correo, 
+        encargado_de_pagos, 
+        autorizado, 
+        activo, 
+        direccion, 
+        lista_negra 
+	FROM empresa
+	JOIN cliente on cliente.cod_cliente = empresa.cod_cliente
+	JOIN telefono_cliente on telefono_cliente.cod_cliente = empresa.cod_cliente
+	WHERE activo = 1
+    AND empresa.cod_cliente LIKE '$cliente%'
+    AND rut LIKE '$rut%'
+    AND nombre_fantasia LIKE '$nombre%'
+    AND correo LIKE '$correo%'
+    AND direccion LIKE '$direccion%'
+    AND razon_social LIKE '$razonsocial%'
+    AND encargado_de_pagos LIKE '$encargado%'
+    AND autorizado LIKE '$autorizado%'
+    AND telefono LIKE '$telefono%'
+    AND lista_negra = 0 or 1;
+
+-- Reservas:
+SELECT 
+	Re.cod_servicio AS cod_servicio,
+	Re.cod_cliente AS cod_cliente, 
+	Rea.cedula AS cedula_chofer, 
+	Ch.nombre AS chofer_nombre, origen, 
+	Se.fecha AS fecha_viaje, 
+	Re.fecha AS fecha_reserva, destino, 
+	Re.hora AS hora_reserva, 
+	Se.hora AS hora_servicio, 
+	comentario, 
+	nombre_pasajero, 
+	apellido_pasajero, 
+	F.monto, 
+	F.cod_pago 
+FROM servicio Se
+JOIN reserva Re ON Re.cod_servicio = Se.cod_servicio
+JOIN cliente Cli ON Cli.cod_cliente = Re.cod_cliente
+JOIN realizan Rea ON Rea.cod_servicio = Se.cod_servicio
+JOIN chofer Ch ON Ch.cedula = Rea.cedula
+JOIN pago_con Pc ON Pc.cod_servicio = Se.cod_servicio
+JOIN forma_pago F ON F.cod_pago = Pc.cod_pago
+WHERE Se.activo = 1;
+
+	-- Filtro Reserva:
+    SELECT 
+		Re.cod_servicio AS cod_servicio,
+		Re.cod_cliente AS cod_cliente, 
+		Rea.cedula AS cedula_chofer, 
+		Ch.nombre AS chofer_nombre, origen, 
+		Se.fecha AS fecha_viaje, 
+		Re.fecha AS fecha_reserva, destino, 
+		Re.hora AS hora_reserva, 
+		Se.hora AS hora_servicio, 
+		comentario, 
+        nombre_pasajero, 
+        apellido_pasajero, 
+        Se.monto, 
+        F.cod_pago 
+	FROM servicio Se
+	JOIN reserva Re ON Re.cod_servicio = Se.cod_servicio
+	JOIN cliente Cli ON Cli.cod_cliente = Re.cod_cliente
+	JOIN realizan Rea ON Rea.cod_servicio = Se.cod_servicio
+	JOIN chofer Ch ON Ch.cedula = Rea.cedula
+	JOIN pago_con Pc ON Pc.cod_servicio = Se.cod_servicio
+	JOIN forma_pago F ON F.cod_pago = Pc.cod_pago
+	WHERE Se.activo = 1
+    AND Re.cod_cliente LIKE '$cliente%'
+    AND nombre_pasajero LIKE '$nombre%'
+    AND apellido_pasajero LIKE '$apellido%'
+    AND origen LIKE '$origen%'
+    AND destino LIKE '$destino%'
+    AND Rea.cedula LIKE '$cedulaChofe%'
+    AND Ch.nombre LIKE '$chofer%'
+    AND Re.fecha LIKE '$fechaReserva%'
+    AND Re.hora LIKE '$horaReserva%'
+    AND comentario LIKE '$comentario%'
+    AND Se.monto LIKE '$monto%'
+    AND Re.cod_servicio LIKE '$codServicio%';
+
+-- Mantenimiento:
+SELECT 
+	mantenimiento.cod_mantenimiento, 
+	matricula, 
+	tipo_mantenimiento, 
+	gastos_mantenimiento, 
+	comentarios, 
+	taller, 
+	fecha 
+FROM mantenimiento
+JOIN necesitan ON necesitan.cod_mantenimiento = mantenimiento.cod_mantenimiento
+WHERE activo = 1;
+
+	-- Filtro Mantenimiento:
+    SELECT 
+		mantenimiento.cod_mantenimiento, 
+        matricula, 
+        tipo_mantenimiento, 
+        gastos_mantenimiento, 
+        comentarios, 
+        taller, 
+        fecha 
+	FROM mantenimiento
+	JOIN necesitan ON necesitan.cod_mantenimiento = mantenimiento.cod_mantenimiento 
+    WHERE activo = 1
+    AND mantenimiento.cod_mantenimiento LIKE '$codigo%'
+    AND matricula LIKE '$matricula%'
+    AND tipo_mantenimiento LIKE '$concepto%'
+    AND comentarios LIKE '$comentario%'
+    AND taller LIKE '$taller%'
+    AND fecha LIKE '$fecha%';
+
+-- ======================================== SEGUNDA ENTREGA ======================================================
+-- 1) Facturación por auto:
+SELECT 
+	Ma.matricula, 
+	SUM(Se.monto) AS facturacionCoche 
+FROM servicio Se
+JOIN realizan Re ON Re.cod_servicio = Se.cod_servicio
+JOIN maneja Ma ON Ma.cedula = Re.cedula
+JOIN coches Co ON Co.matricula = Ma.matricula
+GROUP BY Ma.matricula;
+
+-- 2) Facturación por chofer
+SELECT 
+	Ch.nombre, 
+	SUM(Se.monto) AS facturacionCoche 
+FROM servicio Se
+JOIN realizan Re ON Re.cod_servicio = Se.cod_servicio
+JOIN maneja Ma ON Ma.cedula = Re.cedula
+JOIN chofer Ch ON Ch.cedula = Ma.cedula
+GROUP BY Ch.nombre;
+
+-- 3) Datos de los viajes de un cliente determinado
+SELECT * FROM servicio s
+JOIN reserva r ON r.cod_servicio = s.cod_servicio
+JOIN cliente c ON c.cod_cliente = r.cod_cliente 
+WHERE c.cod_cliente = '3';
+
+-- 4) Datos de un viaje determinado
+SELECT * FROM servicio s
+WHERE s.cod_servicio = '3';
+
+-- 5)  Datos de los últimos 5 viajes realizados
+SELECT * FROM servicio
+ORDER BY fecha DESC
+LIMIT 5;
+
+-- 6) Búsqueda de viajes por fecha
+SELECT * FROM servicio
+WHERE fecha = '2023-09-24';
+
+-- 7) Consultas realizadas para hacer un login efectivo
+SELECT * FROM usuario
+WHERE nombre_usuario = 'root' AND contrasena = 'root';
+
+-- 8) Total de facturación diario, mensual y anual. 
+	-- Diario : 
+	SELECT SUM(s.monto) FROM servicio s 
+	WHERE fecha = 'Fecha que deseo ver';
+
+	-- Mensual :
+	SELECT SUM(s.monto) FROM servicio s 
+	WHERE MONTH(fecha) = 'Mes que deseo ver'
+	GROUP BY MONTH(Fecha);
+
+	-- Anual : 
+	SELECT SUM(s.monto) FROM servicio s 
+	WHERE YEAR(fecha) = 'Año que deseo ver'
+	GROUP BY YEAR(Fecha);
+
+-- 9) Cantidad de viajes realizados por cada chofer entre dos fechas.
+SELECT 
+	c.cedula, 
+	COUNT(s.cod_servicio) 
+FROM servicio s
+JOIN realizan r ON r.cod_servicio = s.cod_servicio
+JOIN maneja m ON m.cedula = r.cedula
+JOIN chofer c ON c.cedula = m.cedula
+WHERE s.fecha BETWEEN '2023-09-24' AND '2023-12-30'
+GROUP BY c.cedula;
+
+-- ============================================= TERCER ENTREGA =======================================================
+-- Una vista a elección debidamente fundamentada.
+CREATE VIEW vistaMantenimiento AS 
+SELECT
+	c.matricula,
+	c. modelo, 
+	m. cod_mantenimiento,
+	m. gastos_mantenimiento,
+	m.activo AS mantenimiento_activo,
+	c.activo AS coche_activo 
+FROM coches c
+JOIN mantenimiento m ON c.matricula; 
+
+-- Una subconsulta que obtenga información pertinente a la trazabilidad de los viajes de un cliente determinado.
+SELECT * FROM servicio
+WHERE nombre_pasajero = ( SELECT nombre_pasajero FROM servicio WHERE nombre_pasajero = 'Ruben' group by nombre_pasajero);
+
+--  Una subconsulta que obtenga información pertinente a la trazabilidad de los viajes de un chofer determinado.
+SELECT 
+	s.cod_servicio,
+	s.origen,
+	s.destino,
+	s.fecha,
+	s.hora,
+	s.comentario,
+	s.nombre_chofer,
+	s.nombre_pasajero,
+	s.apellido_pasajero, 
+	s.activo 
+FROM servicio s
+WHERE nombre_chofer = ( SELECT nombre_chofer FROM servicio WHERE nombre_chofer = 'Bruno' group by nombre_chofer);
