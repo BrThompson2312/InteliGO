@@ -9,11 +9,16 @@
 .alert_section {
   border-left: 20px double var(--bg-operador);
 }
-.alert_section label {
+.alert_section label, .alert-filtrar label {
   background: var(--bg-operador);
 }
 nav {
   border-right: 5px solid var(--bg-operador);
+}
+.alert-filtrar {
+  border: none;
+  border-top: 5px solid var(--bg-operador);
+  border-bottom: 5px solid var(--bg-operador);
 }
 .spanPromotion {
   background: var(--bg-operador);

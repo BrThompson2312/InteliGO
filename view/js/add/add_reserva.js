@@ -7,6 +7,7 @@ export function add_reserva(parent){
     let comentario      = document.getElementsByName('comentario-servicio')[0].value;
     let nombre          = document.getElementsByName('nombre-servicio')[0].value;
     let apellido        = document.getElementsByName('apellido-servicio')[0].value;
+    let formaPago       = document.getElementsByName('forma-de-pago')[0].value
     let monto           = document.getElementsByName('monto-servicio')[0].value;
     let chofer          = document.getElementsByName('chofer-realizan')[0].value;
     let cliente         = document.getElementsByName('cliente-reserva')[0].value;
@@ -19,6 +20,7 @@ export function add_reserva(parent){
         || comentario == ''
         || nombre == ''
         || apellido == ''
+        || formaPago == ''
         || monto == ''
         || chofer == ''
         || cliente == ''
@@ -39,11 +41,13 @@ export function add_reserva(parent){
                 comentario: comentario,
                 nombre: nombre,
                 apellido: apellido,
+                formaPago: formaPago,
                 monto: monto,
                 chofer: chofer,
                 cliente: cliente,
             },
             success: function(response){
+                alert(response);
                 if (response == true ){
                     alertSuccess('success');
                     document.querySelector(`${parent} .alert_section`).reset();

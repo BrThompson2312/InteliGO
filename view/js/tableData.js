@@ -29,7 +29,6 @@ function tableData(parametro, jsonObj){
                             'Fecha de ingreso: ' + jsonObj[i].col3
                         );
                         break;
-
                     case '.registro-choferes':
                         alert(
                             'Teléfono: ' + jsonObj[i].col1 + '\n' +
@@ -38,7 +37,6 @@ function tableData(parametro, jsonObj){
                             'Coche: ' + jsonObj[i].col4
                         );
                         break;
-
                     case '.registro-coches':
                         alert(
                             'matricula: ' + jsonObj[i].col1 + '\n' +
@@ -47,7 +45,6 @@ function tableData(parametro, jsonObj){
                             'Año: ' + jsonObj[i].col4
                         )
                         break;
-                    
                     case '.registro-asignacion':
                         alert(
                             'Cedula: ' + jsonObj[i].col1 + '\n' +
@@ -55,7 +52,6 @@ function tableData(parametro, jsonObj){
                             'Coche ' + jsonObj[i].col3
                         );                                  
                         break;
-
                     case '.registro-cliente':
                         alert(
                             'Cliente: ' + jsonObj[i].col1 + '\n' +
@@ -66,7 +62,6 @@ function tableData(parametro, jsonObj){
                             'Lista Negra: ' + jsonObj[i].col6
                         )
                         break;
-
                     case '.registro-empresa':
                         alert(
                             'Nro_cliente: ' + jsonObj[i].col1 + '\n' +
@@ -77,10 +72,10 @@ function tableData(parametro, jsonObj){
                             'Razon social: ' + jsonObj[i].col6 + '\n' +
                             'Encargado de pagos: ' + jsonObj[i].col7 + '\n' +
                             'Autorizado: ' + jsonObj[i].col8 + '\n' +
-                            'Telefono: ' + jsonObj[i].col9
+                            'Telefono: ' + jsonObj[i].col9 + '\n' +
+                            'Lista negra: ' + jsonObj[i].col10
                         );
                         break;
-
                     case '.registro-reserva':
                         alert(
                             'Cliente: ' + jsonObj[i].col1 + '\n' +
@@ -99,7 +94,6 @@ function tableData(parametro, jsonObj){
                             'COD SERVICIO: ' + jsonObj[i].col14
                         );
                         break;
-
                     case '.registro-GDM':
                         alert(
                             'COD-FACTURA: ' + jsonObj[i].col1 + '\n' +
@@ -114,22 +108,16 @@ function tableData(parametro, jsonObj){
                     
                 }
             }
-
         function modBlock(container, block, exception) {
-            
             ventanaSeccion(container, block, 'modificar');
-
             let fields = document.querySelectorAll(`${block} label, ${block} input, ${block} select, ${block} textarea`);
             let inputException;
             let labelException;
-            
             for (let i = 0; i < fields.length; i++) {
                 fields[i].style.display = "none";
             }
-
             let arrInputs= [];
             for (let i = 0; i < exception.length; i++) {
-                // console.log(exception[i]);
                 inputException = document.querySelector(`input[name="${exception[i]}"]`);
                 if(inputException == null) {
                     inputException = document.querySelector(`select[name="${exception[i]}"]`);
@@ -139,11 +127,9 @@ function tableData(parametro, jsonObj){
                 }   
                 inputException.style.display = "block";
                 arrInputs.push(inputException);
-                console.log(arrInputs[i])
                 labelException = document.querySelector(`label[for="${exception[i]}"]`);
                 labelException.style.display = "block";
             }
-
             let modificar_datos = document.querySelector(`${block} .modificar_datos`);
                 modificar_datos.onclick = function() {
                     let errores = false;
@@ -154,14 +140,12 @@ function tableData(parametro, jsonObj){
                             break;
                         }
                     }
-
                     function upd_block(url, obj, rel) {
                         $.ajax({
                             url: `../../model/update/upd_${url}`,
                             type: 'POST',
                             data: JSON.stringify(obj), 
                             success: function(response) {
-                                // alert(response);
                                 if (response == true) {
                                     alertSuccess('modify');
                                     document.querySelector(container).style.display = 'block';
@@ -183,17 +167,14 @@ function tableData(parametro, jsonObj){
                     } else {
                         switch (block) {
                             case '.BRS-operador':
-
                                 const operador = {
                                     cedula: jsonObj[i].col1,
                                     nombre: arrInputs[0].value,
                                     contrasena: arrInputs[1].value,
                                 }
                                 upd_block('operador.php', operador, '#operador');
-
                             break;
                             case '.BRS-choferes':
-
                                 const chofer = {
                                     telefono: arrInputs[0].value,
                                     nombre: arrInputs[1].value,
@@ -201,10 +182,8 @@ function tableData(parametro, jsonObj){
                                     cedula: jsonObj[i].col4,
                                 }
                                 upd_block('chofer.php', chofer, '#chofer');
-                                
                             break;
                             case '.BRS-coches':
-                                
                                 const coche = {
                                     matricula: jsonObj[i].col1,
                                     marca: arrInputs[0].value,
@@ -212,20 +191,15 @@ function tableData(parametro, jsonObj){
                                     año: arrInputs[2].value,
                                 }
                                 upd_block('coche.php', coche, '#coche');
-
                             break;
-
                             case '.BRS-asignacion':
-
                                 const asignacion = {
                                     cedula: jsonObj[i].col1,
                                     coche: arrInputs[0].value,
                                 }
                                 upd_block('asignacion.php', asignacion, '#asignacion');
-                            
                             break;
                             case '.BRS-cliente':
-                                
                                 const cliente = {
                                     cod: jsonObj[i].col1,
                                     telefono: arrInputs[0].value,
@@ -235,10 +209,8 @@ function tableData(parametro, jsonObj){
                                     listanegra: arrInputs[4].value,
                                 }
                                 upd_block('particular.php', cliente, '#particular');
-
                             break;
                             case '.BRS-empresa':
-                                
                                 const empresa = {
                                     cod: jsonObj[i].col10,
                                     listanegra: arrInputs[0].value,
@@ -251,10 +223,8 @@ function tableData(parametro, jsonObj){
                                     autorizado: arrInputs[7].value,
                                 }
                                 upd_block('empresa.php', empresa, '#empresa');
-
                             break;
                             case '.BRS-reserva':
-                                
                                 const reserva = {
                                     cod: jsonObj[i].col14,
                                     nombre: arrInputs[0].value,
@@ -270,10 +240,8 @@ function tableData(parametro, jsonObj){
                                     comentario: arrInputs[10].value,
                                 }
                                 upd_block('reserva.php', reserva, '#reserva');
-
                             break;
                             case '.BRS-GDM':
-                                
                                 const gdm = {
                                     cod: jsonObj[i].col1,
                                     concepto: arrInputs[0].value,
@@ -283,20 +251,17 @@ function tableData(parametro, jsonObj){
                                     comentario: arrInputs[4].value,
                                 }
                                 upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento');
-
                             break;
                         }                       
                     }
                 }
         }
-
         let modificar = document.createElement('td');
             modificar.classList.add('modificarRegistro');
             modificar.title = "Modificar";
             let simb_modificar = document.createElement('i');
             modificar.appendChild(simb_modificar);
             simb_modificar.classList.add('fa-solid', 'fa-pen-to-square');
-
             let exception = [];
             modificar.onclick = function() {
                 data_matricula('#matricula-asignacion');
@@ -312,7 +277,6 @@ function tableData(parametro, jsonObj){
                         ];
                         modBlock('.conteiner-operador', '.BRS-operador', exception);
                         break;
-
                     case '.registro-choferes':
                         exception = [
                             'tel-chofer',

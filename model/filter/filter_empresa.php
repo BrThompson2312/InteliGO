@@ -2,26 +2,35 @@
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$cliente = $data['cliente'];
-$rut = $data['rut'];
-$nombre = $data['nombre'];
-$correo = $data['correo'];
-$direccion = $data['direccion'];
-$razonsocial = $data['razonsocial'];
-$encargado = $data['encargado'];
-$autorizado = $data['autorizado'];
-$telefono = $data['telefono'];
+$cliente        = $data['cliente'];
+$rut            = $data['rut'];
+$nombre         = $data['nombre'];
+$correo         = $data['correo'];
+$direccion      = $data['direccion'];
+$razonsocial    = $data['razonsocial'];
+$encargado      = $data['encargado'];
+$autorizado     = $data['autorizado'];
+$telefono       = $data['telefono'];
+$listanegra     = $data['listanegra'];
 
 $arrCond = array();
-if ($cliente) $arrCond[] = "empresa.cod_cliente LIKE '$cliente%'";
-if ($rut) $arrCond[] = "rut LIKE '$rut%'";
-if ($nombre) $arrCond[] = "nombre_fantasia LIKE '$nombre%'";
-if ($correo) $arrCond[] = "correo LIKE '$correo%'";
-if ($direccion) $arrCond[] = "direccion LIKE '$direccion%'";
-if ($razonsocial) $arrCond[] = "razon_social LIKE '$razonsocial%'";
-if ($encargado) $arrCond[] = "encargado_de_pagos LIKE '$encargado%'";
-if ($autorizado) $arrCond[] = "autorizado_de_pagos LIKE '$autorizado%'";
-if ($telefono) $arrCond[] = "telefono LIKE '$telefono%'";
+if ($cliente) $arrCond[]        = "empresa.cod_cliente LIKE '$cliente%'";
+if ($rut) $arrCond[]            = "rut LIKE '$rut%'";
+if ($nombre) $arrCond[]         = "nombre_fantasia LIKE '$nombre%'";
+if ($correo) $arrCond[]         = "correo LIKE '$correo%'";
+if ($direccion) $arrCond[]      = "direccion LIKE '$direccion%'";
+if ($razonsocial) $arrCond[]    = "razon_social LIKE '$razonsocial%'";
+if ($encargado) $arrCond[]      = "encargado_de_pagos LIKE '$encargado%'";
+if ($autorizado) $arrCond[]     = "autorizado LIKE '$autorizado%'";
+if ($telefono) $arrCond[]       = "telefono LIKE '$telefono%'";
+if ($listanegra==1 || $listanegra==0) $arrCond[] = "lista_negra='$listanegra'";
+// if ($listanegra == 0) {
+//     $arrCond[] = "lista_negra = 0";
+// } else if ($listanegra == 1) {
+//     $arrCond[] = "lista_negra = 1";
+// } else if ($listanegra == 2) {
+//     $arrCond[] = "lista_negra LIKE 0 or 1";
+// }
 
 $condicion = '';
 if (count($arrCond) > 0){
@@ -29,7 +38,19 @@ if (count($arrCond) > 0){
 }
 
 $query = 
-"SELECT empresa.cod_cliente, telefono, empresa.cod_cliente as nro_empresa, rut, razon_social, nombre_fantasia, correo, encargado_de_pagos, autorizado, activo, direccion from empresa
+"SELECT 
+    empresa.cod_cliente as nro_empresa, 
+    telefono, 
+    rut, 
+    razon_social, 
+    nombre_fantasia, 
+    correo, 
+    encargado_de_pagos, 
+    autorizado, 
+    activo, 
+    direccion, 
+    lista_negra
+FROM empresa
 JOIN cliente on cliente.cod_cliente = empresa.cod_cliente
 JOIN telefono_cliente on telefono_cliente.cod_cliente = empresa.cod_cliente
 WHERE activo = 1 $condicion";
@@ -49,12 +70,12 @@ if($result){
             'col7' => $row['encargado_de_pagos'],
             'col8' => $row['autorizado'],
             'col9' => $row['telefono'],
-            'col10' => $row['cod_cliente']
+            'col10' => $row['lista_negra']
         );
     }
     echo json_encode($json);
 } else {
-    echo 'Error';
+    echo 'Error de conexión a la BD';
 };
 
 ?>

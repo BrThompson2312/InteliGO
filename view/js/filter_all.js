@@ -87,6 +87,7 @@ function filter_appear(block) {
 }
 
 function btn_filter_block(block) {
+    if( document.querySelector(`${block}`)==null) return;
     let btn_filter = document.querySelector(`${block} .inputs-busqueda .filtrar`);
         btn_filter.onclick = function() {
             filter_appear(`${block}`);

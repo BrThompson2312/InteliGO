@@ -4,17 +4,18 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $cliente        = $data['cliente'];
 $nombre         = $data['nombre'];
-$apellido       = $data['apellido'];
 $origen         = $data['origen'];
 $destino        = $data['destino'];
 $chofer         = $data['chofer'];
 $cedulaChofer   = $data['cedulaChofer'];
+$apellido       = $data['apellido'];
 $fechaReserva   = $data['fechaReserva'];
 $horaReserva    = $data['horaReserva'];
 $fechaServicio  = $data['fechaServicio'];
 $horaServicio   = $data['horaServicio'];
 $comentario     = $data['comentario'];
 $monto          = $data['monto'];
+$formaPago      = $data['formaPago'];
 $codServicio    = $data['codServicio'];
 
 $arrCond = array();
@@ -81,6 +82,5 @@ if($result){
     }
     echo json_encode($json);
 }
-
 
 ?>

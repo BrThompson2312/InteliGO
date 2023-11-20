@@ -5,7 +5,6 @@
     } else {
         die("Sesión cerrada. Por favor, ingrese usuario y contraseña");
     }
-    $dir = '../../view/css/administrador.css';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +20,7 @@
         }
     ?>
     <link rel="shortcut icon" href="../../view/img/logofinal/logoIco3.ico">
-    <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/4ffb78f01e.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
     <script src="../../view/js/jquery.min.js"></script>
 </head>
@@ -56,15 +54,15 @@
             </div>
         </section>
         <section id="opciones">
-            <button class="opciones-hilera" rel="#inicio" onclick="opcion_menu(this)"> 
-                <i class="fa-solid fa-house"></i>
+            <button class="opciones-hilera" rel="#inicio" onclick="opcion_menu(this)">
+                <i class="fa-solid fa-home"></i>
                 <span>Home</span>
             </button>
             <?php
                 if($tipoUsuario=='administrador') {
                 ?>
                     <button class="opciones-hilera" rel="#operador" onclick="opcion_menu(this)">
-                        <ion-icon name="people"></ion-icon>
+                        <i class="fa-solid fa-user"></i>
                         <span>Operadores</span> 
                     </button>
                 <?php
@@ -133,7 +131,7 @@
                 <div class="conteiner-section conteiner-operador">
                     <div class="titulo-section">
                         <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
-                        <ion-icon name="people" class="navbar_icon"></ion-icon>
+                        <i class="fa-solid fa-user navbar_icon"></i>
                         <h2>OPERADORES</h2>
                     </div>
                     <div class="alert-filtrar">
@@ -464,7 +462,7 @@
                             <div>
                                 <label>Lista negra</label>
                                 <select class="ex-filt">
-                                    <option value="">--Seleccione opción</option>
+                                    <option value="2" selected>Mostrar Todos</option>
                                     <option value="1">SI</option>
                                     <option value="0">NO</option>
                                 </select>
@@ -577,6 +575,14 @@
                                 <label>Teléfono</label>
                                 <input class="ex-filt" type="number">
                             </div>
+                            <div>
+                                <label>Lista negra</label>
+                                <select class="ex-filt">
+                                    <option value="2" selected>Mostrar Todos</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <form>
@@ -629,9 +635,9 @@
                                     placeholder="correo@correo.com">
                                 <label for="listanegra-empresa">Lista negra</label>
                                 <select name="listanegra-empresa">
-                                    <option value="">--Seleccione opción</option>
+                                    <option value="" selected>--Seleccione opción</option>
                                     <option value="1">SI</option>
-                                    <option value="0" selected>NO</option>
+                                    <option value="0">NO</option>
                                 </select>
                             </div>
                             <div>
@@ -689,10 +695,6 @@
                                 <input class="ex-filt" type="text">
                             </div>
                             <div>
-                                <label>Apellido pasajero</label>
-                                <input class="ex-filt" type="text">
-                            </div>
-                            <div>
                                 <label>Origen</label>
                                 <input class="ex-filt" type="text">
                             </div>
@@ -708,7 +710,10 @@
                                 <label>Cedula Chofer</label>
                                 <input class="ex-filt" type="number">
                             </div>
-                            
+                            <div>
+                                <label>Apellido pasajero</label>
+                                <input class="ex-filt" type="text">
+                            </div>
                             <div>
                                 <label>Fecha de reserva</label>
                                 <input class="ex-filt" type="text">
@@ -728,6 +733,15 @@
                             <div>
                                 <label>Comentario</label>
                                 <input class="ex-filt" type="text">
+                            </div>
+                            <div>
+                                <label>Forma_de_pago</label>
+                                <select class="ex-filt">
+                                    <option value="">Mostrar Todos</option>
+                                    <option value="contado">Contado</option>
+                                    <option value="tarjeta">Debito</option>
+                                    <option value="credito">Crédito</option>
+                                </select>
                             </div>
                             <div>
                                 <label>Monto</label>
@@ -770,10 +784,10 @@
                                     maxlength="70">
                                 <label for="forma-de-pago">Forma de pago</label>
                                 <select name="forma-de-pago">
+                                    <option>--Seleccione Forma de Pago</option>
                                     <option value="contado">Contado</option>
-                                    <option value="tarjeta">Tarjeta</option>
-                                    <option value="transferencia">Transferencia</option>
-                                    <option value="corriente">Cuenta Corriente</option>
+                                    <option value="tarjeta">Debito</option>
+                                    <option value="credito">Crédito</option>
                                 </select>
                             </div>
                             <div>

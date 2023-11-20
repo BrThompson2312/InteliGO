@@ -16,7 +16,7 @@ let cont_empresa        = document.querySelector('.BRS-empresa .subir_datos');
 let cont_reserva        = document.querySelector('.BRS-reserva .subir_datos');
 let cont_mantenimiento  = document.querySelector('.BRS-GDM .subir_datos');
 
-if( cont_operador!=null) {
+if(cont_operador!=null) {
     cont_operador.addEventListener('click', function(){
         add_operador('.BRS-operador');
     });

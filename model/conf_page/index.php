@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="view/css/index.css">
     <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
-    <script src="https://kit.fontawesome.com/58fb14bc94.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4ffb78f01e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script src="view/js/jquery.min.js"></script>
 </head>

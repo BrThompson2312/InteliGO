@@ -15,6 +15,13 @@ if ($telefono) $arrCond[] = "telefono LIKE '$telefono%'";
 if ($nombre) $arrCond[] = "nombre LIKE '$nombre%'";
 if ($apellido) $arrCond[] = "apellido LIKE '$apellido%'";
 if ($direccion) $arrCond[] = "direccion LIKE '$direccion%'";
+if ($listanegra == 0){
+    $arrCond[] = "lista_negra LIKE 0";
+} else if ($listanegra == 1){
+    $arrCond[] = "lista_negra LIKE 1";
+} else if ($listanegra == 2) {
+    $arrCond[] = "lista_negra = 0 OR 1";
+}
 
 $condicion = '';
 if (count($arrCond) > 0){
@@ -24,7 +31,7 @@ if (count($arrCond) > 0){
 $query = "SELECT particular.cod_cliente as nro_particular, telefono, nombre, apellido, direccion, lista_negra FROM particular
 JOIN cliente on cliente.cod_cliente = particular.cod_cliente
 JOIN telefono_cliente on telefono_cliente.cod_cliente = particular.cod_cliente
-WHERE activo = 1 AND lista_negra = '$listanegra' $condicion";
+WHERE activo = 1 $condicion";
 
 $result = mysqli_query($conn, $query);
 $json = array();
