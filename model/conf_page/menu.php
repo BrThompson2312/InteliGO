@@ -938,13 +938,6 @@
                 </div>
                 <div class="block_relative_section BRS-GDM">
                     <form class="alert_section">
-                        <label for="matricula-gdm">Coche</label>
-                        <input 
-                            list="matricula-gdm"
-                            name="matricula-gdm"
-                            type="text"
-                            placeholder="Ingrese o Seleccione Coche">
-                        <datalist id="matricula-gdm"></datalist>
                         <div class="conteiner_form">
                             <div>
                                 <label for="codigo-gdm">Cod-factura</label>
@@ -952,35 +945,48 @@
                                     name="codigo-gdm" 
                                     type="number"
                                     placeholder="0000">
-                                <label for="concepto-gdm">Concepto</label>
-                                <select name="concepto-gdm">
-                                    <option value="">--Por favor elija una opción</option>
-                                    <option value="Gasoil">Gasoil</option>
-                                    <option value="Cambio de aceite">Cambio de aceite</option>
-                                    <option value="Electricista">Electricista</option>
-                                    <option value="Alineacion balanceo">Alineación y balanceo</option>
-                                    <option value="Gomeria">Gomería</option>
-                                    <option value="Cambio correa">Cambio de correa</option>
-                                    <option value="Frenos">Frenos</option>
-                                    <option value="Embrague">Embrague</option>
-                                    <option value="Chapista">Chapista</option>
-                                    <option value="Otros">Otros</option>
-                                </select>  
                             </div>
+                            <div>
+                                <label for="matricula-gdm">Coche</label>
+                                <input 
+                                    list="matricula-gdm"
+                                    name="matricula-gdm"
+                                    type="text"
+                                    placeholder="Ingrese o Seleccione Coche">
+                                <datalist id="matricula-gdm"></datalist>
+                            </div>
+                        </div>
+                        <div class="conteiner_form">
                             <div> 
                                 <label for="importe-gdm">Importe</label>
                                 <input 
                                     name="importe-gdm"
                                     type="number"
                                     placeholder="Ingrese Importe">
+                            </div>     
+                            <div>
                                 <label for="taller-gdm">Taller</label>
                                 <input 
                                     name="taller-gdm" 
                                     type="text"
                                     placeholder="Taller"
                                     maxlength="70">
-                            </div>     
+                            </div>
                         </div>
+                        <label for="concepto-gdm">Concepto</label>
+                        <select name="concepto-gdm">
+                            <option value="">--Por favor elija una opción</option>
+                            <option value="Gasoil">Gasoil</option>
+                            <option value="Cambio de aceite">Cambio de aceite</option>
+                            <option value="Electricista">Electricista</option>
+                            <option value="Alineacion balanceo">Alineación y balanceo</option>
+                            <option value="Gomeria">Gomería</option>
+                            <option value="Cambio correa">Cambio de correa</option>
+                            <option value="Frenos">Frenos</option>
+                            <option value="Embrague">Embrague</option>
+                            <option value="Chapista">Chapista</option>
+                            <option value="Otros">Otros</option>
+                        </select>  
                         <label for="comentario-gdm">Comentario</label>
                         <textarea 
                             name="comentario-gdm"

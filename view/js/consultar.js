@@ -94,7 +94,6 @@ function labelInput(windowOpened){
     let input = document.querySelectorAll(`${windowOpened} input`);
     let select = document.querySelectorAll(`${windowOpened} select`);
     let textarea = document.querySelectorAll(`${windowOpened} textarea`);
-
     for (let i = 0; i < label.length; i++){
         label[i].style.display = "block";
     }
@@ -112,10 +111,8 @@ function labelInput(windowOpened){
 function ventanaSeccion(containerSection, windowOpened, mode){
     document.querySelector(containerSection).style.display = 'none';
     document.querySelector(windowOpened).style.display = 'flex';
-
     let modificar_datos = document.querySelector(`${windowOpened} .modificar_datos`);
     let subir_datos = document.querySelector(`${windowOpened} .subir_datos`);
-
     switch(mode) {
         case 'subir':
             modificar_datos.style.display = "none";
@@ -127,7 +124,6 @@ function ventanaSeccion(containerSection, windowOpened, mode){
             data_cedula('#ci-asignacion');
             data_cedula('#chofer-realizan');
         break;
-
         case 'modificar':
             modificar_datos.style.display = "block";
             subir_datos.style.display = "none";

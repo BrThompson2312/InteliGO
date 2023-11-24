@@ -645,9 +645,9 @@ SELECT * FROM usuario
 WHERE nombre_usuario = 'root' AND contrasena = 'root';
 
 -- 8) Total de facturación diario, mensual y anual. 
-	-- Diario : 
-	SELECT SUM(s.monto) FROM servicio s 
-	WHERE fecha = 'Fecha que deseo ver';
+-- 	-- Diario : 
+-- 	SELECT SUM(s.monto) FROM servicio s 
+-- 	WHERE fecha = 'Fecha que deseo ver';
 
 	-- Mensual :
 	SELECT SUM(s.monto) FROM servicio s 
@@ -688,16 +688,16 @@ SELECT * FROM servicio
 WHERE nombre_pasajero = ( SELECT nombre_pasajero FROM servicio WHERE nombre_pasajero = 'Ruben' group by nombre_pasajero);
 
 --  Una subconsulta que obtenga información pertinente a la trazabilidad de los viajes de un chofer determinado.
-SELECT 
-	s.cod_servicio,
-	s.origen,
-	s.destino,
-	s.fecha,
-	s.hora,
-	s.comentario,
-	s.nombre_chofer,
-	s.nombre_pasajero,
-	s.apellido_pasajero, 
-	s.activo 
-FROM servicio s
-WHERE nombre_chofer = ( SELECT nombre_chofer FROM servicio WHERE nombre_chofer = 'Bruno' group by nombre_chofer);
+-- SELECT 
+-- 	s.cod_servicio,
+-- 	s.origen,
+-- 	s.destino,
+-- 	s.fecha,
+-- 	s.hora,
+-- 	s.comentario,
+-- 	s.nombre_chofer,
+-- 	s.nombre_pasajero,
+-- 	s.apellido_pasajero, 
+-- 	s.activo 
+-- FROM servicio s
+-- WHERE nombre_chofer = ( SELECT nombre_chofer FROM servicio WHERE nombre_chofer = 'Bruno' group by nombre_chofer);

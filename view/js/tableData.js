@@ -108,6 +108,14 @@ function tableData(parametro, jsonObj){
                     
                 }
             }
+            
+        
+        let val1 = jsonObj[i].col1;
+        let val2 = jsonObj[i].col2;
+        let val3 = jsonObj[i].col3;
+        let val4 = jsonObj[i].col4;
+        let val5 = jsonObj[i].col5;
+
         function modBlock(container, block, exception) {
             ventanaSeccion(container, block, 'modificar');
             let fields = document.querySelectorAll(`${block} label, ${block} input, ${block} select, ${block} textarea`);
@@ -246,9 +254,8 @@ function tableData(parametro, jsonObj){
                                     cod: jsonObj[i].col1,
                                     concepto: arrInputs[0].value,
                                     importe: arrInputs[1].value,
-                                    fecha: arrInputs[2].value,
-                                    taller: arrInputs[3].value,
-                                    comentario: arrInputs[4].value,
+                                    taller: arrInputs[2].value,
+                                    comentario: arrInputs[3].value,
                                 }
                                 upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento');
                             break;
@@ -346,7 +353,6 @@ function tableData(parametro, jsonObj){
 
                     case '.registro-GDM':
                         exception = [
-                            'codigo-gdm',
                             'concepto-gdm',
                             'importe-gdm',
                             'taller-gdm',
@@ -490,10 +496,9 @@ function addBackRegister(matricula) {
 }
 
 let rut_conexion = '../../model/add/add_';
-
-
 function data_matricula(datalist) {
     let data_matricula = document.querySelector(`${datalist}`);
+    data_matricula.innerHTML = '';
     $.ajax({
         url: '../../model/read/matriculaCoche.php',
         type: 'POST',
@@ -515,6 +520,7 @@ function data_matricula(datalist) {
 
 function data_cedula(datalist) {
     let data_cedula = document.querySelector(`${datalist}`);
+    data_cedula.innerHTML = '';
     $.ajax({
         url: `../../model/read/cedulaChofer.php`,
         type: 'POST',
@@ -537,6 +543,7 @@ function data_cedula(datalist) {
 
 function data_codCliente(datalist) {
     let cod = document.querySelector(`${datalist}`);
+    cod.innerHTML = '';
     $.ajax({
         url: `../../model/read/codCliente.php`,
         type: 'POST',
