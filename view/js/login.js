@@ -28,7 +28,7 @@ let login_user = document.querySelector("#login-user");
                     pass: pass.value
                 }, success: function(response){
                    if (response == true){
-                        window.location.href = 'model/conf_page/menu.php';
+                        window.location.href = 'menu.php';
                    } else {
                        alertSuccess('wrongLogin');
                    }

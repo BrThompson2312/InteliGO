@@ -150,7 +150,7 @@ function tableData(parametro, jsonObj){
                     }
                     function upd_block(url, obj, rel) {
                         $.ajax({
-                            url: `../../model/update/upd_${url}`,
+                            url: `model/update/upd_${url}`,
                             type: 'POST',
                             data: JSON.stringify(obj), 
                             success: function(response) {
@@ -368,7 +368,7 @@ function tableData(parametro, jsonObj){
             let simb_eliminar = document.createElement('i');
             eliminar.appendChild(simb_eliminar);
             simb_eliminar.classList.add('fa-solid', 'fa-trash');
-            let rutaDelete = '../../model/del/del_';
+            let rutaDelete = 'model/del/del_';
             eliminar.onclick = function() {
                 let alertConfirmDelete = confirm('¿Está seguro de eliminar este registro?');
                 if (alertConfirmDelete == true) {
@@ -477,7 +477,7 @@ function deleteBlock(url, send, read_block, block) {
 
 function addBackRegister(matricula) {
     $.ajax({
-        url: '../../model/add/add_cocheMan.php',
+        url: 'model/add/add_cocheMan.php',
         type: 'POST',
         data: {
             matricula: matricula
@@ -495,12 +495,12 @@ function addBackRegister(matricula) {
     })
 }
 
-let rut_conexion = '../../model/add/add_';
+let rut_conexion = 'model/add/add_';
 function data_matricula(datalist) {
     let data_matricula = document.querySelector(`${datalist}`);
     data_matricula.innerHTML = '';
     $.ajax({
-        url: '../../model/read/matriculaCoche.php',
+        url: 'model/read/matriculaCoche.php',
         type: 'POST',
         success: function(response) {
             let matricula = JSON.parse(response);
@@ -522,7 +522,7 @@ function data_cedula(datalist) {
     let data_cedula = document.querySelector(`${datalist}`);
     data_cedula.innerHTML = '';
     $.ajax({
-        url: `../../model/read/cedulaChofer.php`,
+        url: `model/read/cedulaChofer.php`,
         type: 'POST',
         success: function(response) {
             let cedula = JSON.parse(response);
@@ -545,7 +545,7 @@ function data_codCliente(datalist) {
     let cod = document.querySelector(`${datalist}`);
     cod.innerHTML = '';
     $.ajax({
-        url: `../../model/read/codCliente.php`,
+        url: `model/read/codCliente.php`,
         type: 'POST',
         success: function(response) {
             let cod_cliente = JSON.parse(response);

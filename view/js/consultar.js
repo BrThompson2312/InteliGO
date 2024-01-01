@@ -18,7 +18,7 @@ bloque[0].style.display = "block";
 
 function consultas(url, registro){
     $.ajax({
-        url: `../../model/read/read_${url}`,
+        url: `model/read/read_${url}`,
         type: 'POST',
         success: function(response){
             let block = JSON.parse(response);

@@ -7,7 +7,7 @@ import {empresa} from './filter/filter_empresa.js';
 import {reserva} from './filter/filter_reserva.js';
 import {mantenimiento} from './filter/filter_mantenimiento.js';
 
-let route_filter = '../../model/filter/'
+let route_filter = 'model/filter/'
 function filter_blocks(route, obj, register) {
     for (let i = 0; i < ex_filt.length; i++) {
         ex_filt[i].addEventListener('input', function(){

@@ -35,5 +35,4 @@ if ($result_empresa) {
 
 echo json_encode($cliente);
 
-
 ?>
