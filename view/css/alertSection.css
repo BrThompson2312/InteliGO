@@ -9,28 +9,27 @@
 }
 .alert_section {
     background: rgba(20, 20, 20, 1);
-    border-radius: 0em 1em 1em 0em;
     color: white;
-    height: 80%;
-    width: 80%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0em 1em 1em 0em;
     overflow: auto;
     display: flex;
     flex-direction: column;
     padding: 1em;
 }
-:where(.alert_section, .alert-filtrar) label {
+:is(.alert_section, .alert-filtrar) label {
     font-family: "Inter-Bold";
     text-transform: uppercase;
     border-radius: 10px 10px 0px 0px;
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 10px 5px 0px 5px;
     padding: 5px;
     display: flex;
     align-items: center;
     font-weight: bold;
 }
-:where(.alert_section, .alert-filtrar) :where(label, input, textarea, select){
+:is(.alert_section, .alert-filtrar) :where(label, input, textarea, select){
     border-radius: 0px 0px 10px 10px;
     color: white;
     border: none;
@@ -38,45 +37,36 @@
     font-size: 1em;
     transition: background-color .1s;
 }
-:where(.alert_section, .alert-filtrar) :where(input, textarea, select){
+:is(.alert_section, .alert-filtrar) :where(input, textarea, select){
     background: rgba(0, 0, 0, 0.8);
-    margin-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 10px 5px;
     padding: 1em;
     border-top: none;
-}
-.alert_section select option {
-    color: white;
 }
 .alert_section textarea {
     resize: none;
     overflow: hidden;
     padding-block: 5em;
 }
-
-/* CONTEINER FORM */
-    .alert_section .conteiner_form {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        width: 100%;
-    }
-    .alert_section .conteiner_form div:where(:nth-child(1),:nth-child(2),:nth-child(3)){
-        display: grid;
-    }
-    .alert_section .conteiner_form div:nth-child(1){
-        grid-column: 1;
-        grid-row: 1;
-    }
-    .alert_section .conteiner_form div:nth-child(2){
-        grid-column: 2/3;
-        grid-row: 1;
-    }
-    .alert_section .conteiner_form label {
-        margin-bottom: 0;
-    }
-/* CONTEINER FORM */
-
+.alert_section .conteiner_form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.alert_section .conteiner_form div:where(:nth-child(1),:nth-child(2),:nth-child(3)){
+    display: grid;
+}
+.alert_section .conteiner_form div:nth-child(1){
+    grid-column: 1;
+    grid-row: 1;
+}
+.alert_section .conteiner_form div:nth-child(2){
+    grid-column: 2/3;
+    grid-row: 1;
+}
+.alert_section .conteiner_form label {
+    margin-bottom: 0;
+}
 .buttons {
     display: flex;
     flex-direction: row;
@@ -94,51 +84,56 @@
     width: 100%;
     transition: background .2s;
 }
+.alert_section .buttons :is(.cancel_button, .subir_datos, .modificar_datos) {
+    background: var(--color);
+    color: var(--color-let);
+}
+.alert_section .buttons :is(.cancel_button, .subir_datos, .modificar_datos):hover {
+    background: var(--color);
+    color: var(--color-let);
+}
 .alert_section .buttons .cancel_button {
-    background: rgb(153, 11, 11);
-    color: rgb(246, 130, 130);
+    --color: rgb(153, 11, 11);
+    --color-let: rgb(246, 130, 130)
 }
 .alert_section .buttons .cancel_button:hover {
-    background: rgb(106, 3, 3);
-    color: white;
+    --color: rgb(106, 3, 3);
+    --color-let: white;
 }
 .alert_section .buttons .subir_datos{
-    background: rgb(4, 71, 4);
-    color: rgb(106, 185, 106); 
+    --color: rgb(4, 71, 4);;
+    --color-let: rgb(106, 185, 106);
 }
 .alert_section .buttons .subir_datos:hover{
-    background: rgb(4, 50, 4);
-    color: white;
+    --color: rgb(4, 50, 4);
+    --color-let: white;
 }
 .alert_section .buttons .modificar_datos{
     display: none;
-    background: darkgoldenrod;
-    color: rgb(255, 224, 146); 
+    --color: darkgoldenrod;
+    --color-let: rgb(255, 224, 146); 
 }
 .alert_section .buttons .modificar_datos:hover {
-    background: rgb(136, 100, 10);
-    color: white; 
+    --color: rgb(136, 100, 10);
+    --color-let: white; 
 }
-
 @media (max-width: 600px){
-    /* CONTEINER FORM */
-        .alert_section .conteiner_form {
-            grid-gap: 0em;
-        }
-        .alert_section .conteiner_form div:nth-child(1){
-            grid-column: 1/3;
-            grid-row: 1;
-        }
-        .alert_section .conteiner_form div:nth-child(2){
-            grid-column: 1/3;
-            grid-row: 2;
-        }
-        .alert_section .conteiner_form div:nth-child(3){
-            grid-column: 1/3;
-            grid-row: 3;
-        }
-        .alert_section .conteiner_form :where(input, select, textarea) {
-            margin-bottom: 1em;
-        }
-    /* CONTEINER FORM */
+    .alert_section .conteiner_form {
+        grid-gap: 0em;
+    }
+    .alert_section .conteiner_form div:nth-child(1){
+        grid-column: 1/3;
+        grid-row: 1;
+    }
+    .alert_section .conteiner_form div:nth-child(2){
+        grid-column: 1/3;
+        grid-row: 2;
+    }
+    .alert_section .conteiner_form div:nth-child(3){
+        grid-column: 1/3;
+        grid-row: 3;
+    }
+    .alert_section .conteiner_form :where(input, select, textarea) {
+        margin-bottom: 1em;
+    }
 }

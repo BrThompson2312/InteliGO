@@ -1,4 +1,8 @@
-<?php require_once 'conexion.php'; ini_set('display_errors','on');
+<?php 
+
+require_once 'conexion.php'; 
+
+ini_set('display_errors','on');
 
 session_start();
 

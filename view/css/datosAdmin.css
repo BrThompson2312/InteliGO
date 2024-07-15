@@ -12,7 +12,7 @@
 .consultas td:nth-child(2) {
   background-color: #BDBDBD;
 }
-.consultas td:nth-child(3), .consultas td:nth-child(4), .consultas td:nth-child(5) {
+.consultas :is(td:nth-child(3), td:nth-child(4), td:nth-child(5)) {
   width: 50px;
 }
 .conteiner-section {
@@ -60,34 +60,33 @@
   background: #adb5bd;
 }
 .datos-admin .consultaRegistro {
-  background: #2eb405 !important;
   display: table-cell;
 }
-.datos-admin .consultaRegistro:hover {
-  background: #31a001 !important;
-}
-.datos-admin .modificarRegistro {
-  background: #ffc107 !important;
-}
-.datos-admin .modificarRegistro:hover {
-  background: #cc9a06 !important;
-}
-.datos-admin .eliminarRegistro {
-  background: #e22235 !important;
-}
-.datos-admin .eliminarRegistro:hover {
-  background: #b91c2b !important;
-}
-.datos-admin :where(.consultaRegistro, .modificarRegistro, .eliminarRegistro){
+.datos-admin :is(.consultaRegistro, .modificarRegistro, .eliminarRegistro) {
+  background: var(--color);
   display: table-cell !important;
   text-align: center;
   cursor: pointer;
   width: 50px;
 }
+.datos-admin :is(.consultaRegistro, .modificarRegistro, .eliminarRegistro):hover {
+  background: var(--color-hov);
+}
+.consultaRegistro {
+  --color: green;
+  --color-hov: darkgreen;
+}
+.modificarRegistro {
+  --color: yellow;
+  --color-hov: gold
+}
+.eliminarRegistro {
+  --color: red;
+  --color-hov: darkred;
+}
 :where(.registro-operadores, .registro-choferes, .registro-coches, .registro-asignacion) .consultaRegistro {
   display: none !important;
 }
-
 @media (max-width: 700px){
   .datos-admin .consultaRegistro {
     display: table-cell !important;
@@ -135,7 +134,6 @@
     display: none;
   }
 }
-
 .reserva-particular, .reserva-empresa, .listanegra-si, .listanegra-no {
   color: white;
   border-radius: 10px;

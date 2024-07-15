@@ -1,26 +1,52 @@
 function tableData(parametro, jsonObj){
-    let registro_seccion = document.querySelector(parametro);      
-    registro_seccion.innerHTML = '';
+    let registro_seccion = document.querySelector(parametro);    
+        registro_seccion.innerHTML = "";
     for (let i = 0; i < jsonObj.length; i++){
-        let registro = document.createElement('tr');
-        registro.classList.add('datos-admin');
-        registro_seccion.appendChild(registro);
 
-        let consultar = document.createElement('td');
-            consultar.classList.add('consultaRegistro');
-            consultar.style.display = "table-cell";
-            let simb_consultar = document.createElement('i');
-            consultar.appendChild(simb_consultar);
-            consultar.title = "Mas información";
-            simb_consultar.classList.add('fa-solid','fa-eye');
+        let new_consultar = ` 
+            <td title="Mas informacion" class="consultaRegistro" style="display: table-cell">
+                <i class="fa-solid fa-eye"></i>
+            </td>`
 
-        let col1 = document.createElement('td');
-        let col2 = document.createElement('td');
-        let col3 = document.createElement('td');
-        let col4 = document.createElement('td');
-        let col5 = document.createElement('td');
+        let new_eliminar = `
+            <td title="Eliminar" class="eliminarRegistro">
+                <i class="fa-solid fa-trash"></i>
+            </td>`;
 
-            consultar.onclick = function(){
+        let new_modificar = `
+            <td title="Modificar" class="modificarRegistro">
+                <i class="fa-solid fa-pen-to-square"></i>
+                </td>`
+                
+        let cols_op = `
+            ${new_consultar}
+            ${new_modificar}
+            ${new_eliminar}`
+
+        let row = "";
+            row = `
+            <tr class="datos-admin">
+                <td>${jsonObj[i].col1}</td>
+                <td>${jsonObj[i].col2}</td>
+                <td>${jsonObj[i].col3}</td>`
+
+        switch(parametro){
+
+            case '.registro-choferes': case '.registro-coches':
+                row += `<td>${jsonObj[i].col4}</td>`; break;
+
+            default:
+                row += `
+                    <td>${jsonObj[i].col4}</td>
+                    <td>${jsonObj[i].col5}</td>`; break;
+        }
+
+        row += cols_op
+        registro_seccion.innerHTML += row;
+
+        let btn_consultar = document.querySelectorAll(".consultaRegistro")
+        for (let k = 0; k < btn_consultar.length; k++) {
+            btn_consultar[k].onclick = function() {
                 switch(parametro){
                     case '.registro-operadores':
                         alert(
@@ -105,16 +131,138 @@ function tableData(parametro, jsonObj){
                             'Fecha: ' + jsonObj[i].col7
                         )
                         break;
-                    
+                }
+            };
+        }
+
+        // Modificar 
+        let btn_modificar = document.querySelectorAll(".modificarRegistro")
+        for (let k = 0; k < btn_modificar.length; k++) {
+            btn_modificar[k].onclick = function() {
+                alert("")
+                data_matricula('#matricula-asignacion');
+                data_matricula('#matricula-gdm');
+                data_codCliente('#cliente-reserva');
+                data_cedula('#ci-asignacion');
+                data_cedula('#chofer-realizan');
+                switch (parametro) {
+                    case '.registro-operadores':
+                        exception = [
+                            'nombre-operador',
+                            'contrasena-operador'
+                        ];
+                        modBlock('.conteiner-operador', '.BRS-operador', exception); break;
+                    case '.registro-choferes':
+                        exception = [
+                            'tel-chofer',
+                            'nombre-chofer', 
+                            'apellido-chofer'  
+                        ];
+                        modBlock('.conteiner-chofer',  '.BRS-choferes', exception); break;
+
+                    case '.registro-coches':
+                        exception = [
+                            'marca-coche', 
+                            'modelo-coche',
+                            'año-coche'
+                        ];
+                        modBlock('.conteiner-coche',  '.BRS-coches', exception); break;
+
+                    case '.registro-asignacion':
+                        exception = [
+                            'matricula-asignacion'
+                        ];
+                        modBlock('.conteiner-asignacion',  '.BRS-asignacion', exception); break;
+
+                    case '.registro-cliente':
+                        exception = [
+                            'tel-particular',
+                            'nombre-particular', 
+                            'apellido-particular',
+                            'direccion-particular',
+                            'ln-particular'
+                        ];
+                        modBlock('.conteiner-cliente',  '.BRS-cliente', exception); break;
+
+                    case '.registro-empresa':
+                        exception = [
+                            'listanegra-empresa',
+                            'fantasia-empresa', 
+                            'razonsocial-empresa',
+                            'direccion-empresa',
+                            'tel-empresa',
+                            'correo-empresa',
+                            'encargado-empresa',
+                            'autorizado-empresa'
+                        ];
+                        modBlock('.conteiner-empresa',  '.BRS-empresa', exception); break;
+
+                    case '.registro-reserva':
+                        exception = [
+                            'nombre-servicio',
+                            'forma-de-pago',
+                            'apellido-servicio',
+                            'monto-servicio',
+                            'cliente-reserva',
+                            'origen-servicio',
+                            'destino-servicio',
+                            'chofer-realizan',
+                            'fecha-servicio',
+                            'hora-servicio',
+                            'comentario-servicio'
+                        ];
+                        modBlock('.conteiner-reserva',  '.BRS-reserva', exception); break;
+
+                    case '.registro-GDM':
+                        exception = [
+                            'concepto-gdm',
+                            'importe-gdm',
+                            'taller-gdm',
+                            'comentario-gdm'
+                        ];
+                        modBlock('.conteiner-GDM', '.BRS-GDM', exception); break;
                 }
             }
-            
-        
-        let val1 = jsonObj[i].col1;
-        let val2 = jsonObj[i].col2;
-        let val3 = jsonObj[i].col3;
-        let val4 = jsonObj[i].col4;
-        let val5 = jsonObj[i].col5;
+        }
+
+        // Eliminar
+        let btn_eliminar = document.querySelectorAll(".eliminarRegistro")
+        let rutaDelete = 'model/del/del_';
+        for (let k = 0; k < btn_eliminar.length; k++) {
+            btn_eliminar[k].onclick = function() {
+                let alertConfirmDelete = confirm('¿Está seguro de eliminar este registro?');
+                if (alertConfirmDelete == true) {
+                    switch(parametro){
+                        case '.registro-operadores':
+                            deleteBlock(`${rutaDelete}operador.php`, jsonObj[i].col1, 'operador.php', '.registro-operadores'); break;
+
+                        case '.registro-choferes':
+                            deleteBlock(`${rutaDelete}chofer.php`, jsonObj[i].col4, 'chofer.php', '.registro-choferes'); break;
+
+                        case '.registro-coches':
+                            deleteBlock(`${rutaDelete}coche.php`, jsonObj[i].col1, 'coche.php', '.registro-coches'); break;
+
+                        case '.registro-asignacion':
+                            if (confirm('Si elimina este registro posiblemente esté eliminando una reserva, desea continuar?')) {
+                                deleteBlock(`${rutaDelete}asignacion.php`, jsonObj[i].col1, 'asignacion.php', '.registro-asignacion')
+                            } break;
+
+                        case '.registro-cliente':
+                            deleteBlock(`${rutaDelete}particular.php`, jsonObj[i].col1, 'particular.php', '.registro-cliente'); break;
+                        
+                        case '.registro-empresa':
+                            deleteBlock(`${rutaDelete}empresa.php`, jsonObj[i].col1, 'empresa.php', '.registro-empresa'); break;
+
+                        case '.registro-reserva':
+                            deleteBlock(`${rutaDelete}reserva.php`, jsonObj[i].col14, 'reserva.php', '.registro-reserva'); break;
+                
+                        case '.registro-GDM':
+                            deleteBlock(`${rutaDelete}mantenimiento.php`, jsonObj[i].col1, 'mantenimiento.php', '.registro-GDM');
+                            addBackRegister(jsonObj[i].col2); break;
+                    }
+                }
+            }
+        } 
 
         function modBlock(container, block, exception) {
             ventanaSeccion(container, block, 'modificar');
@@ -140,34 +288,30 @@ function tableData(parametro, jsonObj){
             }
             let modificar_datos = document.querySelector(`${block} .modificar_datos`);
                 modificar_datos.onclick = function() {
+
                     let errores = false;
                     for (let i = 0; i < arrInputs.length; i++) {
-                        console.log(arrInputs[i].value);
                         if (arrInputs[i].value == '') {
                             errores = true;
                             break;
                         }
                     }
+
                     function upd_block(url, obj, rel) {
-                        $.ajax({
-                            url: `model/update/upd_${url}`,
-                            type: 'POST',
-                            data: JSON.stringify(obj), 
-                            success: function(response) {
-                                if (response == true) {
-                                    alertSuccess('modify');
-                                    document.querySelector(container).style.display = 'block';
-                                    document.querySelector(block).style.display = 'none';
-                                    llamado(rel);
-                                    document.querySelector(`${block} .alert_section`).reset();
-                                } else {
-                                    alertSuccess('error');
-                                }
-                            },
-                            error: function() {
-                                alert('Error');
-                            }
+                       fetch(`model/update/upd_${url}`, { method: 'POST', body: JSON.stringify(obj) })
+                       .then(res => res.json())
+                       .then(res => {
+                        if (res == true) {
+                            alertSuccess('modify');
+                            document.querySelector(container).style.display = 'block';
+                            document.querySelector(block).style.display = 'none';
+                            llamado(rel);
+                            document.querySelector(`${block} .alert_section`).reset();
+                        } else {
+                            alertSuccess('error');
+                        }
                        })
+                       .catch(rej => alert(rej))
                     }
 
                     if(errores) {
@@ -180,8 +324,8 @@ function tableData(parametro, jsonObj){
                                     nombre: arrInputs[0].value,
                                     contrasena: arrInputs[1].value,
                                 }
-                                upd_block('operador.php', operador, '#operador');
-                            break;
+                                upd_block('operador.php', operador, '#operador'); break;
+
                             case '.BRS-choferes':
                                 const chofer = {
                                     telefono: arrInputs[0].value,
@@ -189,8 +333,8 @@ function tableData(parametro, jsonObj){
                                     apellido: arrInputs[2].value,
                                     cedula: jsonObj[i].col4,
                                 }
-                                upd_block('chofer.php', chofer, '#chofer');
-                            break;
+                                upd_block('chofer.php', chofer, '#chofer'); break;
+
                             case '.BRS-coches':
                                 const coche = {
                                     matricula: jsonObj[i].col1,
@@ -198,15 +342,15 @@ function tableData(parametro, jsonObj){
                                     modelo: arrInputs[1].value,
                                     año: arrInputs[2].value,
                                 }
-                                upd_block('coche.php', coche, '#coche');
-                            break;
+                                upd_block('coche.php', coche, '#coche'); break;
+
                             case '.BRS-asignacion':
                                 const asignacion = {
                                     cedula: jsonObj[i].col1,
                                     coche: arrInputs[0].value,
                                 }
-                                upd_block('asignacion.php', asignacion, '#asignacion');
-                            break;
+                                upd_block('asignacion.php', asignacion, '#asignacion'); break;
+
                             case '.BRS-cliente':
                                 const cliente = {
                                     cod: jsonObj[i].col1,
@@ -216,8 +360,8 @@ function tableData(parametro, jsonObj){
                                     direccion: arrInputs[3].value,
                                     listanegra: arrInputs[4].value,
                                 }
-                                upd_block('particular.php', cliente, '#particular');
-                            break;
+                                upd_block('particular.php', cliente, '#particular'); break;
+
                             case '.BRS-empresa':
                                 const empresa = {
                                     cod: jsonObj[i].col10,
@@ -230,8 +374,8 @@ function tableData(parametro, jsonObj){
                                     encargado: arrInputs[6].value,
                                     autorizado: arrInputs[7].value,
                                 }
-                                upd_block('empresa.php', empresa, '#empresa');
-                            break;
+                                upd_block('empresa.php', empresa, '#empresa'); break;
+
                             case '.BRS-reserva':
                                 const reserva = {
                                     cod: jsonObj[i].col14,
@@ -247,8 +391,8 @@ function tableData(parametro, jsonObj){
                                     hora: arrInputs[9].value,
                                     comentario: arrInputs[10].value,
                                 }
-                                upd_block('reserva.php', reserva, '#reserva');
-                            break;
+                                upd_block('reserva.php', reserva, '#reserva'); break;
+
                             case '.BRS-GDM':
                                 const gdm = {
                                     cod: jsonObj[i].col1,
@@ -257,275 +401,60 @@ function tableData(parametro, jsonObj){
                                     taller: arrInputs[2].value,
                                     comentario: arrInputs[3].value,
                                 }
-                                upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento');
-                            break;
+                                upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento'); break;
+
                         }                       
                     }
                 }
         }
-        let modificar = document.createElement('td');
-            modificar.classList.add('modificarRegistro');
-            modificar.title = "Modificar";
-            let simb_modificar = document.createElement('i');
-            modificar.appendChild(simb_modificar);
-            simb_modificar.classList.add('fa-solid', 'fa-pen-to-square');
-            let exception = [];
-            modificar.onclick = function() {
-                data_matricula('#matricula-asignacion');
-                data_matricula('#matricula-gdm');
-                data_codCliente('#cliente-reserva');
-                data_cedula('#ci-asignacion');
-                data_cedula('#chofer-realizan');
-                switch (parametro) {
-                    case '.registro-operadores':
-                        exception = [
-                            'nombre-operador',
-                            'contrasena-operador'
-                        ];
-                        modBlock('.conteiner-operador', '.BRS-operador', exception);
-                        break;
-                    case '.registro-choferes':
-                        exception = [
-                            'tel-chofer',
-                            'nombre-chofer', 
-                            'apellido-chofer'  
-                        ];
-                        modBlock('.conteiner-chofer',  '.BRS-choferes', exception);
-                        break;
-
-                    case '.registro-coches':
-                        exception = [
-                            'marca-coche', 
-                            'modelo-coche',
-                            'año-coche'
-                        ];
-                        modBlock('.conteiner-coche',  '.BRS-coches', exception);
-                        break;
-
-                    case '.registro-asignacion':
-                        exception = [
-                            'matricula-asignacion'
-                        ];
-                        modBlock('.conteiner-asignacion',  '.BRS-asignacion', exception);
-                        break;
-
-                    case '.registro-cliente':
-                        exception = [
-                            'tel-particular',
-                            'nombre-particular', 
-                            'apellido-particular',
-                            'direccion-particular',
-                            'ln-particular'
-                        ];
-                        modBlock('.conteiner-cliente',  '.BRS-cliente', exception);
-                        break;
-
-                    case '.registro-empresa':
-                        exception = [
-                            'listanegra-empresa',
-                            'fantasia-empresa', 
-                            'razonsocial-empresa',
-                            'direccion-empresa',
-                            'tel-empresa',
-                            'correo-empresa',
-                            'encargado-empresa',
-                            'autorizado-empresa'
-                        ];
-                        modBlock('.conteiner-empresa',  '.BRS-empresa', exception);
-                        break;
-
-                    case '.registro-reserva':
-                        exception = [
-                            'nombre-servicio',
-                            'forma-de-pago',
-                            'apellido-servicio',
-                            'monto-servicio',
-                            'cliente-reserva',
-                            'origen-servicio',
-                            'destino-servicio',
-                            'chofer-realizan',
-                            'fecha-servicio',
-                            'hora-servicio',
-                            'comentario-servicio'
-                        ];
-                        modBlock('.conteiner-reserva',  '.BRS-reserva', exception);
-                        break;
-
-                    case '.registro-GDM':
-                        exception = [
-                            'concepto-gdm',
-                            'importe-gdm',
-                            'taller-gdm',
-                            'comentario-gdm'
-                        ];
-                        modBlock('.conteiner-GDM', '.BRS-GDM', exception);
-                }
-            }
-
-        let eliminar = document.createElement('td');
-            eliminar.classList.add('eliminarRegistro');
-            eliminar.title = "Eliminar";
-            let simb_eliminar = document.createElement('i');
-            eliminar.appendChild(simb_eliminar);
-            simb_eliminar.classList.add('fa-solid', 'fa-trash');
-            let rutaDelete = 'model/del/del_';
-            eliminar.onclick = function() {
-                let alertConfirmDelete = confirm('¿Está seguro de eliminar este registro?');
-                if (alertConfirmDelete == true) {
-                    switch(parametro){
-                        case '.registro-operadores':
-                            deleteBlock(`${rutaDelete}operador.php`, jsonObj[i].col1, 'operador.php', '.registro-operadores');
-                            break;
-
-                        case '.registro-choferes':
-                            deleteBlock(`${rutaDelete}chofer.php`, jsonObj[i].col4, 'chofer.php', '.registro-choferes')
-                            break;
-
-                        case '.registro-coches':
-                            deleteBlock(`${rutaDelete}coche.php`, jsonObj[i].col1, 'coche.php', '.registro-coches');
-                            break;
-
-                        case '.registro-asignacion':
-                            if (confirm('Si elimina este registro posiblemente esté eliminando una reserva, desea continuar?')) {
-                                deleteBlock(`${rutaDelete}asignacion.php`, jsonObj[i].col1, 'asignacion.php', '.registro-asignacion')
-                            }
-                            break;
-
-                        case '.registro-cliente':
-                            deleteBlock(`${rutaDelete}particular.php`, jsonObj[i].col1, 'particular.php', '.registro-cliente')
-                            break;
-                        
-                        case '.registro-empresa':
-                            deleteBlock(`${rutaDelete}empresa.php`, jsonObj[i].col1, 'empresa.php', '.registro-empresa')
-                            break;
-
-                        case '.registro-reserva':
-                            deleteBlock(`${rutaDelete}reserva.php`, jsonObj[i].col14, 'reserva.php', '.registro-reserva')
-                            break;
-                
-                        case '.registro-GDM':
-                            deleteBlock(`${rutaDelete}mantenimiento.php`, jsonObj[i].col1, 'mantenimiento.php', '.registro-GDM');
-                            addBackRegister(jsonObj[i].col2);
-                            break;
-                    }
-                }
-            }
-
-        switch(parametro){
-            case '.registro-operadores':
-            case '.registro-asignacion':
-                col1.textContent = jsonObj[i].col1;
-                col2.textContent = jsonObj[i].col2;
-                col3.textContent = jsonObj[i].col3;
-                registro.appendChild(col1);
-                registro.appendChild(col2);
-                registro.appendChild(col3);
-                break;
-
-            case '.registro-choferes':
-            case '.registro-coches':
-                col1.textContent = jsonObj[i].col1;
-                col2.textContent = jsonObj[i].col2;
-                col3.textContent = jsonObj[i].col3;
-                col4.textContent = jsonObj[i].col4;
-                registro.appendChild(col1);
-                registro.appendChild(col2);
-                registro.appendChild(col3);
-                registro.appendChild(col4);
-                break;
-
-            default:
-                col1.textContent = jsonObj[i].col1;
-                col2.textContent = jsonObj[i].col2;
-                col3.textContent = jsonObj[i].col3;
-                col4.textContent = jsonObj[i].col4;
-                col5.textContent = jsonObj[i].col5;
-                registro.appendChild(col1);
-                registro.appendChild(col2);
-                registro.appendChild(col3);
-                registro.appendChild(col4);
-                registro.appendChild(col5); 
-                break;
-        }
-
-        registro.appendChild(consultar);
-        registro.appendChild(modificar);
-        registro.appendChild(eliminar);
+        let exception = [];
     }
 }
 
-function deleteBlock(url, send, read_block, block) {
-    $.ajax({
-        url: url,
-        type: 'POST',
-        data: {
-            send: send
-        },
-        success: function(response){
-            if(response == 1) {
-                alertSuccess('trashed');
-            } else {
-                alertSuccess('error');
-            }
-            consultas(read_block, block)
-        },
-        error: function(reject){
-            alert(reject);
-        }
+function deleteBlock (url, send, read_block, block) {
+    fetch(url, {method: 'POST', body: JSON.stringify( {send: send} )})
+    .then(res => res.json())
+    .then(res => {
+        if (res == 1) alertSuccess('trashed'); else alertSuccess('error')
+        consultas(read_block, block)
     })
+    .catch(rej => alert(rej))
 }
 
 function addBackRegister(matricula) {
-    $.ajax({
-        url: 'model/add/add_cocheMan.php',
-        type: 'POST',
-        data: {
-            matricula: matricula
-        },
-        success: function(response) {
-            if (response == true) {
-                alert('Coche agregado correctamente');
-            } else {
-                alert('Error al agregar coche');
-            }
-        },
-        error: function(response) {
-            alert(response);
-        }
+    fetch("model/add/add_cocheMan.php", {method: 'POST', body: JSON.stringify( {matricula: matricula} )})
+    .then(res => res.json())
+    .then(res => {
+        if (response == true) alert("Coche agregado correctamente"); else alert("Error al agregar coche")
     })
+    .catch(rej => alert(rej))
 }
 
 let rut_conexion = 'model/add/add_';
 function data_matricula(datalist) {
-    let data_matricula = document.querySelector(`${datalist}`);
-    data_matricula.innerHTML = '';
-    $.ajax({
-        url: 'model/read/matriculaCoche.php',
-        type: 'POST',
-        success: function(response) {
-            let matricula = JSON.parse(response);
-            for (let i = 0; i < matricula.length; i++) {
-                let option = document.createElement('option');
-                option.value = matricula[i].matricula;
-                option.textContent = `${matricula[i].marca} ${matricula[i].modelo}`;
-                data_matricula.appendChild(option);
-            }
-        },
-        error: function() {
-            alert('No hay conexión');
+    let data_matricula = document.querySelector(datalist)
+        data_matricula.innerHTML = '';
+    fetch("model/read/matriculaCoche.php", {method: 'POST'})
+    .then(res => res.json())
+    .then(res => {
+        let matricula = JSON.parse(res);
+        for (let i = 0; i < matricula.length; i++) {
+            let option = document.createElement('option');
+            option.value = matricula[i].matricula;
+            option.textContent = `${matricula[i].marca} ${matricula[i].modelo}`;
+            data_matricula.appendChild(option);
         }
     })
+    .catch(rej => alert(rej))
 }
 
-
 function data_cedula(datalist) {
-    let data_cedula = document.querySelector(`${datalist}`);
-    data_cedula.innerHTML = '';
-    $.ajax({
-        url: `model/read/cedulaChofer.php`,
-        type: 'POST',
-        success: function(response) {
-            let cedula = JSON.parse(response);
+    let data_cedula = document.querySelector(datalist);
+        data_cedula.innerHTML = '';
+    fetch("model/read/cedulaChofer.php", {method: 'POST'})
+    .then(res => res.json())
+    .then(res => {
+        let cedula = JSON.parse(res);
             data_cedula.innerHTML = '';
             for (let i = 0; i < cedula.length; i++) {
                 let option = document.createElement('option');
@@ -533,33 +462,26 @@ function data_cedula(datalist) {
                 option.textContent = `${cedula[i].nombre} ${cedula[i].apellido}`;
                 data_cedula.appendChild(option);
             }
-        },
-        error: function() {
-            alert('No hay conexión');
-        }
     })
+    .catch(rej => alert(rej))
 }
 
-
 function data_codCliente(datalist) {
-    let cod = document.querySelector(`${datalist}`);
-    cod.innerHTML = '';
-    $.ajax({
-        url: `model/read/codCliente.php`,
-        type: 'POST',
-        success: function(response) {
-            let cod_cliente = JSON.parse(response);
-            for (let i = 0; i < cod_cliente.length; i++) {
-                let option = document.createElement('option');
-                option.value = cod_cliente[i].cod_cliente;
-                option.textContent = `${cod_cliente[i].col1} ${cod_cliente[i].col2}`;
-                cod.appendChild(option);
-            }
-        },
-        error: function() {
-            alert('No hay conexión');
+    let cod = document.querySelector(datalist);
+        cod.innerHTML = '';
+
+    fetch("model/read/codCliente.php", { method: 'POST'})
+    .then(res => res.json())
+    .then(res => {
+        let cod_cliente = JSON.parse(res);
+        for (let i = 0; i < cod_cliente.length; i++) {
+            let option = document.createElement('option');
+            option.value = cod_cliente[i].cod_cliente;
+            option.textContent = `${cod_cliente[i].col1} ${cod_cliente[i].col2}`;
+            cod.appendChild(option);
         }
     })
+    .catch(rej => alert(rej))
 }
 
 let ex_filt = document.querySelectorAll('.ex-filt');

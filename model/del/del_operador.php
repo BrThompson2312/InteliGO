@@ -1,6 +1,10 @@
-<?php require_once '../conf_page/conexion.php';
+<?php 
 
-$cedula = $_POST['send'];
+require_once '../conf_page/conexion.php';
+
+$data = json_decode(file_get_contents("php://input"), true);
+
+$cedula = $data['send'];
 
 $query = "UPDATE usuario SET activo = 0 WHERE cedula = '$cedula'";
 $result = mysqli_query($conn, $query);
@@ -10,5 +14,7 @@ if ($result) {
 } else {
     echo false;
 }
+
+// echo $cedula
 
 ?>

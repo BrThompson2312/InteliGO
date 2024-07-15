@@ -26,20 +26,21 @@ $json = array();
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['cod_cliente'],
-            'col2' => $row['nombre_pasajero'],
-            'col3' => $row['origen'],
-            'col4' => $row['destino'],
-            'col5' => $row['chofer_nombre'],
-            'col6' => $row['cedula_chofer'],
-            'col7' => $row['apellido_pasajero'],
-            'col8' => $row['fecha_reserva'],
-            'col9' => $row['hora_reserva'],
-            'col10' => $row['fecha_viaje'],
-            'col11' => $row['hora_servicio'],
-            'col12' => $row['comentario'],
-            'col13' => $row['monto'],
-            'col14' => $row['cod_servicio'],
+            'data'=>$row[''],
+            // 'col1' => $row['cod_cliente'],
+            // 'col2' => $row['nombre_pasajero'],
+            // 'col3' => $row['origen'],
+            // 'col4' => $row['destino'],
+            // 'col5' => $row['chofer_nombre'],
+            // 'col6' => $row['cedula_chofer'],
+            // 'col7' => $row['apellido_pasajero'],
+            // 'col8' => $row['fecha_reserva'],
+            // 'col9' => $row['hora_reserva'],
+            // 'col10' => $row['fecha_viaje'],
+            // 'col11' => $row['hora_servicio'],
+            // 'col12' => $row['comentario'],
+            // 'col13' => $row['monto'],
+            // 'col14' => $row['cod_servicio'],
         );
     }
     echo json_encode($json);

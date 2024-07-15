@@ -18,7 +18,6 @@
         width: 80%;
     }
 }
-
 :root {
     --alert-success: #04AA6D;
     --alert-info: #2196F3;
@@ -27,43 +26,35 @@
     --alert-modify: darkgoldenrod;
     --alert-trashed: #b91c2b;
 }
-.alert-success {
-    border: 1px solid var(--alert-success);
-    border-left: 9px solid var(--alert-success);
+.alert-success,
+.alert-info,
+.alert-danger,
+.alert-warning,
+.alert-modify,
+.alert-trashed {
+    border: 1px solid var(--color);
+    border-left: 9px solid var(--color);
     background: white;
-    color: var(--alert-success);
+    color: var(--color);
+}
+.alert-success {
+    --color: var(--alert-success);
 }
 .alert-info {
-    border: 1px solid var(--alert-info);
-    border-left: 9px solid var(--alert-info);
-    background: white;
-    color: var(--alert-info);
+    --color: var(--alert-info);
 }
 .alert-danger {
-    border: 1px solid var(--alert-danger);
-    border-left: 9px solid var(--alert-danger);
-    background: white;
-    color: var(--alert-danger);
+    --color: var(--alert-danger);
 }
 .alert-warning {
-    border: 1px solid var(--alert-warning);
-    border-left: 9px solid var(--alert-warning);
-    background: white;
-    color: var(--alert-warning);
+    --color: var(--alert-warning);
 }
 .alert-modify {
-    border: 1px solid var(--alert-modify);
-    border-left: 9px solid var(--alert-modify);
-    background: white;
-    color: var(--alert-modify);
+    --color: var(--alert-modify);
 }
 .alert-trashed {
-    border: 1px solid var(--alert-trashed);
-    border-left: 9px solid var(--alert-trashed);
-    background: white;
-    color: var(--alert-trashed);
+    --color: var(--alert-trashed);
 }
-
 @keyframes alert {
     0% {
         top: 0%;

@@ -24,13 +24,6 @@ if ($encargado) $arrCond[]      = "encargado_de_pagos LIKE '$encargado%'";
 if ($autorizado) $arrCond[]     = "autorizado LIKE '$autorizado%'";
 if ($telefono) $arrCond[]       = "telefono LIKE '$telefono%'";
 if ($listanegra==1 || $listanegra==0) $arrCond[] = "lista_negra='$listanegra'";
-// if ($listanegra == 0) {
-//     $arrCond[] = "lista_negra = 0";
-// } else if ($listanegra == 1) {
-//     $arrCond[] = "lista_negra = 1";
-// } else if ($listanegra == 2) {
-//     $arrCond[] = "lista_negra LIKE 0 or 1";
-// }
 
 $condicion = '';
 if (count($arrCond) > 0){
@@ -61,16 +54,16 @@ $json = array();
 if($result){
     while($row = mysqli_fetch_assoc($result)){
         $json[] = array(
-            'col1' => $row['nro_empresa'],
-            'col2' => $row['rut'],
-            'col3' => $row['nombre_fantasia'],
-            'col4' => $row['correo'],
-            'col5' => $row['direccion'],
-            'col6' => $row['razon_social'],
-            'col7' => $row['encargado_de_pagos'],
-            'col8' => $row['autorizado'],
-            'col9' => $row['telefono'],
-            'col10' => $row['lista_negra']
+            'col1'=>$row['nro_empresa'],
+            'col2'=>$row['rut'],
+            'col3'=>$row['nombre_fantasia'],
+            'col4'=>$row['correo'],
+            'col5'=>$row['direccion'],
+            'col6'=>$row['razon_social'],
+            'col7'=>$row['encargado_de_pagos'],
+            'col8'=>$row['autorizado'],
+            'col9'=>$row['telefono'],
+            'col10'=>$row['lista_negra']
         );
     }
     echo json_encode($json);

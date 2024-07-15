@@ -102,6 +102,3 @@ btn_filter_block('#particular');
 btn_filter_block('#empresa');
 btn_filter_block('#reserva');
 btn_filter_block('#gastos-de-mantenimiento');
-
-
-
