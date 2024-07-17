@@ -1,13 +1,9 @@
-<?php 
-
-require_once 'conexion.php'; 
-
-ini_set('display_errors','on');
+<?php require_once 'conexion.php'; 
 
 session_start();
 
-$user = $_POST['cedula'];
-$pass = $_POST['pass'];
+$user = $data['cedula'];
+$pass = $data['pass'];
 
 $query = "SELECT * FROM view_usuario WHERE cedula = '$user' AND contrasena = '$pass' AND activo = 1";
 

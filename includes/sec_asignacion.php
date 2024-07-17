@@ -1,32 +1,30 @@
 <section class="bloque" id="asignacion">
     <div class="conteiner-section conteiner-asignacion">
+
         <div class="titulo-section">
             <i class="fa-solid fa-bars navbar_block" onclick="nav_block()"></i>
             <i class="fa-solid fa-clipboard-list navbar_icon"></i>
             <h2>ASIGNACIONES</h2>
         </div>
-        <div class="alert-filtrar">
+        
+        <form class="alert-filtrar">
             <div class="filter-block">
-                <div>
-                    <label>Cedula</label>
-                    <input class="ex-filt" type="number">
-                </div>
-                <div>
-                    <label>Chofer</label>
-                    <input class="ex-filt" type="text">
-                </div>
-                <div>
-                    <label>Coche</label>
-                    <input class="ex-filt" type="text">
-                </div>
+                <label>Cedula <input class="ex-filt" type="number"></label>
+                <label>Chofer <input class="ex-filt" type="text"></label>
+                <label>Coche <input class="ex-filt" type="text"></label>
             </div>
-        </div>
+        </form>
+        
         <form>
             <div class="inputs-busqueda">
                 <button class="filtrar" type="button"></button>
-                <button class="agregar" onclick="ventanaSeccion('.conteiner-asignacion', '.BRS-asignacion', 'subir')" type="button">AGREGAR</button>
+                <button 
+                    class="agregar" 
+                    onclick="ventanaSeccion('.conteiner-asignacion', '.BRS-asignacion', 'subir')" 
+                    type="button">AGREGAR</button>
             </div>
         </form>
+        
         <table>
             <thead>
                 <tr class="indicadores">
@@ -37,9 +35,11 @@
             </thead>
             <tbody class="registro-asignacion"></tbody>
         </table>
+
     </div>
     <div class="block_relative_section BRS-asignacion">
         <form class="alert_section">
+
             <label for="ci-asignacion">Cedula</label>
             <input 
                 name="ci-asignacion"
@@ -60,7 +60,8 @@
                 <button class="cancel_button" type="button">Atras</button>   
                 <button class="subir_datos" type="button" onclick="btn_switch('chofer')">Agregar</button> 
                 <button class="modificar_datos" type="button">Modificar</button>
-            </div>                   
+            </div>
+
         </form>
     </div>
 </section>

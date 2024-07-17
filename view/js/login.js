@@ -1,38 +1,26 @@
-let pass = document.querySelector("#pass");
-function seeingPassword() {
-    var eye = document.getElementById("seePass");
-    var not_eye = document.getElementById("not-seePass");
-    if (pass.type == "password") {
-        eye.style.opacity = "0";
-        not_eye.style.opacity = "1";
-        pass.type = "text";
-    } else if (pass.type == "text"){
-        eye.style.opacity = "1";
-        not_eye.style.opacity = "0";
-        pass.type = "password";
-    }
-}
-
-let cedula = document.querySelector('#cedula');
-let login_user = document.querySelector("#login-user");
-    login_user.onclick = function(event){
-        event.preventDefault()
-        if (cedula.value == '' || pass.value == ''){
-            alertSuccess('incompleted');
-        } else {
-            $.ajax({
-                url: 'model/conf_page/login.php',
-                type: 'POST',
-                data: {
-                    cedula: cedula.value,
-                    pass: pass.value
-                }, success: function(response){
-                   if (response == true){
-                        window.location.href = 'menu.php';
-                   } else {
-                       alertSuccess('wrongLogin');
-                   }
-                }
-            })
+document.addEventListener("DOMContentLoaded", function() {
+    let pass = document.querySelector("#pass");
+    let eye = document.querySelector("#eye");
+    eye.addEventListener("click", function() {
+        if (pass.type == "password") {
+            pass.type = "text";
+            return eye.name = "eye-off"; 
         }
+        pass.type = "password";
+        return eye.name = "eye"
+    })
+
+    let cedula = document.querySelector('#cedula');
+    document.querySelector("#btnLogin").onclick = function(e){
+        e.preventDefault()
+    
+        if (cedula.value !== "" && pass.value !== ""){
+            fetch('model/conf_page/login.php', { method: 'POST', body: JSON.stringify({ cedula: cedula.value, pass: pass.value }) })
+            .then(res => res.json())
+            .then(res => {
+                window.location.href = 'menu.php'; 
+            })
+            .catch(rej => alertSuccess('wrongLogin'))
+        } else alertSuccess('incompleted')
     }
+})

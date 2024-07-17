@@ -1,7 +1,8 @@
 export let empresa = {}
+
+let data = document.querySelectorAll('#empresa .ex-filt');
 for (let i = 0; i < ex_filt.length; i++){
     ex_filt[i].addEventListener('input', function(){
-        let data = document.querySelectorAll('#empresa .ex-filt');
         empresa.cliente     = data[0].value;
         empresa.rut         = data[1].value;
         empresa.nombre      = data[2].value;

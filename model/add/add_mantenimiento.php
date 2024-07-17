@@ -1,11 +1,11 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors','on');
+<?php require_once '../conf_page/conexion.php';
 
-$cod        = $_POST['codigo'];
-$matricula  = $_POST['matricula'];
-$concepto   = $_POST['concepto'];
-$importe    = $_POST['importe'];
-$taller     = $_POST['taller'];
-$comentario = $_POST['comentario'];
+$cod        = $data['codigo'];
+$matricula  = $data['matricula'];
+$concepto   = $data['concepto'];
+$importe    = $data['importe'];
+$taller     = $data['taller'];
+$comentario = $data['comentario'];
 
 $query_mantenimiento = "INSERT INTO mantenimiento VALUES ('$cod', '$concepto','$importe','$comentario','$taller', 1)";
 $result_mantenimiento  = mysqli_query($conn, $query_mantenimiento);

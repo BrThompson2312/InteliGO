@@ -80,6 +80,7 @@
     color: white;
     flex-direction: column;
     animation: ani_filtrar 0.5s ease;
+    display: none;
 }
 .alert-filtrar .filter-block {
     display: flex;

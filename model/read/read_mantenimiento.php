@@ -1,5 +1,4 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
-
+<?php require_once '../conf_page/conexion.php';
 $query = 'SELECT mantenimiento.cod_mantenimiento, matricula, tipo_mantenimiento, gastos_mantenimiento, comentarios, taller, fecha from mantenimiento
 join necesitan on necesitan.cod_mantenimiento = mantenimiento.cod_mantenimiento
 WHERE activo = 1;';

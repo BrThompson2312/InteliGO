@@ -1,7 +1,7 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php';
 
-$cedula = $_POST['cedula'];
-$matricula = $_POST['matricula'];
+$cedula     = $data['cedula'];
+$matricula  = $data['matricula'];
 
 $query = "INSERT INTO maneja (cedula, matricula) VALUES ('$cedula', '$matricula')";
 $result = mysqli_query($conn, $query);

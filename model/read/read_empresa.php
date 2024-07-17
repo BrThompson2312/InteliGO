@@ -1,4 +1,4 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php';
 
 $query = 
 'SELECT empresa.cod_cliente, telefono, empresa.cod_cliente as nro_empresa, rut, razon_social, nombre_fantasia, correo, encargado_de_pagos, autorizado, activo, direccion, lista_negra from empresa

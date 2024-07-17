@@ -1,9 +1,9 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php';
 
-$telefono   = $_POST['telefono'];
-$nombre     = $_POST['nombre'];
-$apellido   = $_POST['apellido'];
-$direccion  = $_POST['direccion'];
+$telefono   = $data['telefono'];
+$nombre     = $data['nombre'];
+$apellido   = $data['apellido'];
+$direccion  = $data['direccion'];
 
 $query_cliente = "INSERT INTO cliente VALUES (0, 0, '$direccion', 1)";
 

@@ -1,44 +1,42 @@
 function tableData(parametro, jsonObj){
     let registro_seccion = document.querySelector(parametro);    
         registro_seccion.innerHTML = "";
+
+    let new_consultar = ` 
+    <td title="Mas informacion" class="consultaRegistro" style="display: table-cell">
+        <i class="fa-solid fa-eye"></i>
+    </td>`
+
+    let new_eliminar = `
+    <td title="Eliminar" class="eliminarRegistro">
+        <i class="fa-solid fa-trash"></i>
+    </td>`;
+
+    let new_modificar = `
+    <td title="Modificar" class="modificarRegistro">
+        <i class="fa-solid fa-pen-to-square"></i>
+    </td>`;
+
     for (let i = 0; i < jsonObj.length; i++){
-
-        let new_consultar = ` 
-            <td title="Mas informacion" class="consultaRegistro" style="display: table-cell">
-                <i class="fa-solid fa-eye"></i>
-            </td>`
-
-        let new_eliminar = `
-            <td title="Eliminar" class="eliminarRegistro">
-                <i class="fa-solid fa-trash"></i>
-            </td>`;
-
-        let new_modificar = `
-            <td title="Modificar" class="modificarRegistro">
-                <i class="fa-solid fa-pen-to-square"></i>
-                </td>`
                 
         let cols_op = `
             ${new_consultar}
             ${new_modificar}
             ${new_eliminar}`
 
-        let row = "";
-            row = `
+        let row = `
             <tr class="datos-admin">
                 <td>${jsonObj[i].col1}</td>
                 <td>${jsonObj[i].col2}</td>
                 <td>${jsonObj[i].col3}</td>`
 
         switch(parametro){
-
             case '.registro-choferes': case '.registro-coches':
                 row += `<td>${jsonObj[i].col4}</td>`; break;
-
-            default:
-                row += `
-                    <td>${jsonObj[i].col4}</td>
-                    <td>${jsonObj[i].col5}</td>`; break;
+            // default:
+            //     row += `
+            //         <td>${jsonObj[i].col4}</td>
+            //         <td>${jsonObj[i].col5}</td>`; break;
         }
 
         row += cols_op
@@ -262,16 +260,18 @@ function tableData(parametro, jsonObj){
                     }
                 }
             }
-        } 
+        }
 
         function modBlock(container, block, exception) {
             ventanaSeccion(container, block, 'modificar');
             let fields = document.querySelectorAll(`${block} label, ${block} input, ${block} select, ${block} textarea`);
             let inputException;
             let labelException;
+
             for (let i = 0; i < fields.length; i++) {
                 fields[i].style.display = "none";
             }
+
             let arrInputs= [];
             for (let i = 0; i < exception.length; i++) {
                 inputException = document.querySelector(`input[name="${exception[i]}"]`);
@@ -286,6 +286,7 @@ function tableData(parametro, jsonObj){
                 labelException = document.querySelector(`label[for="${exception[i]}"]`);
                 labelException.style.display = "block";
             }
+
             let modificar_datos = document.querySelector(`${block} .modificar_datos`);
                 modificar_datos.onclick = function() {
 
@@ -295,23 +296,6 @@ function tableData(parametro, jsonObj){
                             errores = true;
                             break;
                         }
-                    }
-
-                    function upd_block(url, obj, rel) {
-                       fetch(`model/update/upd_${url}`, { method: 'POST', body: JSON.stringify(obj) })
-                       .then(res => res.json())
-                       .then(res => {
-                        if (res == true) {
-                            alertSuccess('modify');
-                            document.querySelector(container).style.display = 'block';
-                            document.querySelector(block).style.display = 'none';
-                            llamado(rel);
-                            document.querySelector(`${block} .alert_section`).reset();
-                        } else {
-                            alertSuccess('error');
-                        }
-                       })
-                       .catch(rej => alert(rej))
                     }
 
                     if(errores) {
@@ -402,13 +386,29 @@ function tableData(parametro, jsonObj){
                                     comentario: arrInputs[3].value,
                                 }
                                 upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento'); break;
-
                         }                       
                     }
                 }
         }
         let exception = [];
     }
+}
+
+function upd_block(url, obj, rel) {
+    fetch(`model/update/upd_${url}`, { method: 'POST', body: JSON.stringify(obj) })
+    .then(res => res.json())
+    .then(res => {
+     if (res == true) {
+         alertSuccess('modify');
+         document.querySelector(container).style.display = 'block';
+         document.querySelector(block).style.display = 'none';
+         llamado(rel);
+         document.querySelector(`${block} .alert_section`).reset();
+     } else {
+         alertSuccess('error');
+     }
+    })
+    .catch(rej => alert(rej))
 }
 
 function deleteBlock (url, send, read_block, block) {
@@ -430,7 +430,8 @@ function addBackRegister(matricula) {
     .catch(rej => alert(rej))
 }
 
-let rut_conexion = 'model/add/add_';
+const rut_conexion = 'model/add/add_';
+
 function data_matricula(datalist) {
     let data_matricula = document.querySelector(datalist)
         data_matricula.innerHTML = '';
@@ -485,3 +486,6 @@ function data_codCliente(datalist) {
 }
 
 let ex_filt = document.querySelectorAll('.ex-filt');
+
+let $ = container => document.querySelector(container);
+let $name = container => document.getElementsByName(container)[0].value;

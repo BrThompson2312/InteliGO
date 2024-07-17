@@ -1,6 +1,6 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php';
 
-$matricula = $_POST['matricula'];
+$matricula = $data['matricula'];
 
 $query = "UPDATE coches SET activo = 1 WHERE matricula = '$matricula'";
 $result = mysqli_query($conn, $query);

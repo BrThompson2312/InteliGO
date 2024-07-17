@@ -17,14 +17,9 @@ for (let i = 0; i < bloque.length; i++){
 bloque[0].style.display = "block";
 
 function consultas(url, registro){
-    $.ajax({
-        url: `model/read/read_${url}`,
-        type: 'POST',
-        success: function(response){
-            let block = JSON.parse(response);
-            tableData(registro, block)
-        }
-    })
+    fetch(`model/read/read_${url}`, { method: "POST" })
+    .then(res => res.json())
+    .then(res => tableData(registro, res))
 }
 
 function llamado(rel){
@@ -137,17 +132,15 @@ function ventanaSeccion(containerSection, windowOpened, mode){
         wop.querySelector('.alert_section').reset();
     }
     navbar();
-    
 }
 
-// Popup de confirmación de salida
-    $('#logout').on('click',function(){
-        $('#alert-salir').css('display','grid')
-    })
-    $('#xmark-salir').on('click',function(){
-        $('#alert-salir').css('display','none');
-    });
-
+let alertSalir = document.querySelector("#alert-salir")
+document.querySelector("#logout").onclick = function() {
+    alertSalir.style.display = "grid";
+}
+document.querySelector("#xmark-salir").onclick = function() {
+    alertSalir.style.display = "none";
+}
 
 let nav = document.querySelector('nav');
     nav.style.left = '-200%';

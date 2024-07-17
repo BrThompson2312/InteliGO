@@ -1,4 +1,4 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors','on');
+<?php require_once '../conf_page/conexion.php';
 
 $query = "SELECT cedula, nombre, apellido FROM chofer WHERE activo = 1";
 $result = mysqli_query($conn, $query);

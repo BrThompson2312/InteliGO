@@ -1,4 +1,4 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors','on');
+<?php require_once '../conf_page/conexion.php';
 
 $query_cod = "SELECT cod_cliente FROM cliente WHERE activo = 1";
 

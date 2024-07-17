@@ -1,6 +1,4 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
-
-$data = json_decode(file_get_contents("php://input"), true);
+<?php require_once '../conf_page/conexion.php';
 
 $matricula  = $data['matricula'];
 $marca      = $data['marca'];

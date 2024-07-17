@@ -1,14 +1,14 @@
 <?php require_once '../conf_page/conexion.php';
 
-$rut            = $_POST['rut'];
-$razonsocial    = $_POST['razonsocial'];
-$fantasia       = $_POST['fantasia'];
-$listanegra     = $_POST['listanegra'];
-$direccion      = $_POST['direccion'];
-$telefono       = $_POST['telefono'];
-$correo         = $_POST['correo'];
-$encargado      = $_POST['encargado'];
-$autorizado     = $_POST['autorizado'];
+$rut            = $data['rut'];
+$razonsocial    = $data['razonsocial'];
+$fantasia       = $data['fantasia'];
+$listanegra     = $data['listanegra'];
+$direccion      = $data['direccion'];
+$telefono       = $data['telefono'];
+$correo         = $data['correo'];
+$encargado      = $data['encargado'];
+$autorizado     = $data['autorizado'];
 
 $query_cliente = "INSERT INTO cliente VALUES (0, '$listanegra','$direccion', 1)";
 

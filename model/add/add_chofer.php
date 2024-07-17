@@ -1,9 +1,9 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors', 'on');
+<?php require_once '../conf_page/conexion.php';
 
-$telefono   = $_POST['telefono'];
-$nombre     = $_POST['nombre'];
-$apellido   = $_POST['apellido'];
-$cedula     = $_POST['cedula'];
+$telefono   = $data['telefono'];
+$nombre     = $data['nombre'];
+$apellido   = $data['apellido'];
+$cedula     = $data['cedula'];
 
 $query  = "INSERT INTO chofer VALUES ('$cedula', '$nombre', '$apellido', NULL, 1)";
 $result = mysqli_query($conn, $query);

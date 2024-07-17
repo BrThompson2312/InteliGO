@@ -1,18 +1,18 @@
-<?php require_once '../conf_page/conexion.php'; ini_set('display_errors','on');
+<?php require_once '../conf_page/conexion.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$cod_cliente    = $_POST['cliente'];
-$origen         = $_POST['origen'];
-$destino        = $_POST['destino'];
-$fecha          = $_POST['fecha'];
-$hora           = $_POST['hora'];
-$comentario     = $_POST['comentario'];
-$nombre         = $_POST['nombre'];
-$apellido       = $_POST['apellido'];
-$formaPago      = $_POST['formaPago'];
-$monto          = $_POST['monto'];
-$chofer         = $_POST['chofer'];
+$cod_cliente    = $data['cliente'];
+$origen         = $data['origen'];
+$destino        = $data['destino'];
+$fecha          = $data['fecha'];
+$hora           = $data['hora'];
+$comentario     = $data['comentario'];
+$nombre         = $data['nombre'];
+$apellido       = $data['apellido'];
+$formaPago      = $data['formaPago'];
+$monto          = $data['monto'];
+$chofer         = $data['chofer'];
 
 $query_servicio = "INSERT INTO servicio VALUES (0, '$origen', '$destino', '$fecha', '$hora', '$comentario', '$nombre', '$apellido', 1, '$monto')";
 $result_servicio = mysqli_query($conn, $query_servicio);

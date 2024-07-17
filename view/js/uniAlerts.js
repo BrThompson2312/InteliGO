@@ -1,7 +1,9 @@
 let alert_success = document.querySelector('#alert-add');
 function alertSuccess(type_alert) {
+
     alert_success.style.display = "block";
     alert_success.className = null;
+    
     switch(type_alert){
         case 'success':
             alert_success.classList.add('alert-success');
@@ -36,8 +38,9 @@ function alertSuccess(type_alert) {
             alert_success.innerHTML = '<i style="margin-right: 12px;" class="fa fa-circle-xmark fa-1x"></i> Error al iniciar sesión';
             break;
     }
+
     alert_success.style.animation = "alert 0.5s ease";
-    alert_success.addEventListener("animationend",function(){
+    alert_success.addEventListener("animationend", function(){
         setTimeout(function () {
             alert_success.style.animation = "des_alert 0.5s ease";
             setTimeout(function () {
@@ -45,4 +48,5 @@ function alertSuccess(type_alert) {
             }, 500);
         }, 500);
     })
+    
 }

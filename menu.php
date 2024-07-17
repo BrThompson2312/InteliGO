@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/4ffb78f01e.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-    <script src="view/js/jquery.min.js"></script>
+    <!-- <script src="view/js/jquery.min.js"></script> -->
 </head>
 <body>
     <section id="alert-add">
@@ -36,74 +36,74 @@
         </div>
     </section>
     <nav>
-    <section id="user">
-        <div class="info-user">
-            <i id="active-nav" class="fa-solid fa-bars navbar_hilera"></i>
-            <div>
-                <?php
-                    if ($tipoUsuario == 'administrador') {
-                        ?>
-                            <span class="spanPromotion"><span> <?php echo $_SESSION['nombreUsuario'];?> </span><span> | </span><span> Administrador </span></span>
-                        <?php
-                    } else {
-                        ?>
-                            <span class="spanPromotion"><span> <?php echo $_SESSION['nombreUsuario'];?> </span><span> | </span><span> Operador </span></span>
-                        <?php 
-                    } ?>
+        <section id="user">
+            <div class="info-user">
+                <i id="active-nav" class="fa-solid fa-bars navbar_hilera"></i>
+                <div>
+                    <?php
+                        if ($tipoUsuario == 'administrador') {
+                            ?>
+                                <span class="spanPromotion"><span> <?php echo $_SESSION['nombreUsuario'];?> </span><span> | </span><span> Administrador </span></span>
+                            <?php
+                        } else {
+                            ?>
+                                <span class="spanPromotion"><span> <?php echo $_SESSION['nombreUsuario'];?> </span><span> | </span><span> Operador </span></span>
+                            <?php 
+                        } ?>
+                </div>
             </div>
-        </div>
-    </section>
-    <section id="opciones">
-        <button class="opciones-hilera" rel="#inicio" onclick="opcion_menu(this)">
-            <i class="fa-solid fa-home"></i>
-            <span>Home</span>
-        </button>
-        <?php
-            if($tipoUsuario=='administrador') {
-            ?>
-                <button class="opciones-hilera" rel="#operador" onclick="opcion_menu(this)">
-                    <i class="fa-solid fa-user"></i>
-                    <span>Operadores</span> 
-                </button>
+        </section>
+        <section id="opciones">
+            <button class="opciones-hilera" rel="#inicio" onclick="opcion_menu(this)">
+                <i class="fa-solid fa-home"></i>
+                <span>Home</span>
+            </button>
             <?php
-            }
-        ?>
-        <button class="opciones-hilera" rel="#chofer" onclick="opcion_menu(this)">
-            <i class="fi fi-ss-steering-wheel"></i>
-            <span>Choferes</span> 
-        </button>
-        <button class="opciones-hilera" rel="#coche" onclick="opcion_menu(this)">
-            <i class="fa-solid fa-car"></i>
-            <span>Coches</span> 
-        </button>
-        <button class="opciones-hilera" rel="#asignacion" onclick="opcion_menu(this)">
-            <i class="fa-solid fa-clipboard-list"></i>
-            <span>Asignaciones</span> 
-        </button>
-        <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
-            <i class="fa-solid fa-person"></i>
-            <span>Particulares</span>
-        </button>
-        <button class="opciones-hilera" rel="#empresa" onclick="opcion_menu(this)"> 
-            <i class="fa-solid fa-building"></i>
-            <span>Empresas</span>
-        </button>
-        <button class="opciones-hilera" rel="#reserva" onclick="opcion_menu(this)"> 
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>Reservas</span>
-        </button>
-        <button class="opciones-hilera" rel="#gastos-de-mantenimiento" onclick="opcion_menu(this)"> 
-            <i class="fa-solid fa-wrench"></i>
-            <span>Mantenimiento</span>
-        </button>
-        <button class="opciones-hilera" rel="#acercaDe" onclick="opcion_menu(this)"> 
-            <i class="fa-solid fa-info"></i>
-            <span>Acerca De</span>
-        </button>
-        <div id="logout"> 
-            <i class="fa-solid fa-right-from-bracket"></i>
-        </div>
-    </section>
+                if($tipoUsuario=='administrador') {
+                ?>
+                    <button class="opciones-hilera" rel="#operador" onclick="opcion_menu(this)">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Operadores</span> 
+                    </button>
+                <?php
+                }
+            ?>
+            <button class="opciones-hilera" rel="#chofer" onclick="opcion_menu(this)">
+                <i class="fi fi-ss-steering-wheel"></i>
+                <span>Choferes</span> 
+            </button>
+            <button class="opciones-hilera" rel="#coche" onclick="opcion_menu(this)">
+                <i class="fa-solid fa-car"></i>
+                <span>Coches</span> 
+            </button>
+            <button class="opciones-hilera" rel="#asignacion" onclick="opcion_menu(this)">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <span>Asignaciones</span> 
+            </button>
+            <button class="opciones-hilera" rel="#particular" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-person"></i>
+                <span>Particulares</span>
+            </button>
+            <button class="opciones-hilera" rel="#empresa" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-building"></i>
+                <span>Empresas</span>
+            </button>
+            <button class="opciones-hilera" rel="#reserva" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Reservas</span>
+            </button>
+            <button class="opciones-hilera" rel="#gastos-de-mantenimiento" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-wrench"></i>
+                <span>Mantenimiento</span>
+            </button>
+            <button class="opciones-hilera" rel="#acercaDe" onclick="opcion_menu(this)"> 
+                <i class="fa-solid fa-info"></i>
+                <span>Acerca De</span>
+            </button>
+            <div id="logout"> 
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
+        </section>
     </nav>
     <main>
         <?php
