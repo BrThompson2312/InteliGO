@@ -33,10 +33,6 @@ function tableData(parametro, jsonObj){
         switch(parametro){
             case '.registro-choferes': case '.registro-coches':
                 row += `<td>${jsonObj[i].col4}</td>`; break;
-            // default:
-            //     row += `
-            //         <td>${jsonObj[i].col4}</td>
-            //         <td>${jsonObj[i].col5}</td>`; break;
         }
 
         row += cols_op
@@ -272,7 +268,7 @@ function tableData(parametro, jsonObj){
                 fields[i].style.display = "none";
             }
 
-            let arrInputs= [];
+            let arrInputs = [];
             for (let i = 0; i < exception.length; i++) {
                 inputException = document.querySelector(`input[name="${exception[i]}"]`);
                 if(inputException == null) {
@@ -298,94 +294,50 @@ function tableData(parametro, jsonObj){
                         }
                     }
 
+                    let obj;
                     if(errores) {
                         alertSuccess('incompleted');
                     } else {
                         switch (block) {
                             case '.BRS-operador':
-                                const operador = {
-                                    cedula: jsonObj[i].col1,
-                                    nombre: arrInputs[0].value,
-                                    contrasena: arrInputs[1].value,
-                                }
-                                upd_block('operador.php', operador, '#operador'); break;
+                                obj = new Operador();
+                                obj.cedula = jsonObj[i].col1;
+                                upd_block('operador.php', obj, '#operador'); break;
 
                             case '.BRS-choferes':
-                                const chofer = {
-                                    telefono: arrInputs[0].value,
-                                    nombre: arrInputs[1].value,
-                                    apellido: arrInputs[2].value,
-                                    cedula: jsonObj[i].col4,
-                                }
-                                upd_block('chofer.php', chofer, '#chofer'); break;
+                                obj = new Chofer();
+                                obj.cedula = jsonObj[i].col4
+                                upd_block('chofer.php', obj, '#chofer'); break;
 
                             case '.BRS-coches':
-                                const coche = {
-                                    matricula: jsonObj[i].col1,
-                                    marca: arrInputs[0].value,
-                                    modelo: arrInputs[1].value,
-                                    año: arrInputs[2].value,
-                                }
-                                upd_block('coche.php', coche, '#coche'); break;
+                                obj = new Coche();
+                                obj.matricula = jsonObj[i].col1;
+                                upd_block('coche.php', obj, '#coche'); break;
 
                             case '.BRS-asignacion':
-                                const asignacion = {
-                                    cedula: jsonObj[i].col1,
-                                    coche: arrInputs[0].value,
-                                }
-                                upd_block('asignacion.php', asignacion, '#asignacion'); break;
+                                obj = new Asignacion();
+                                obj.cedula = jsonObj[i].col1
+                                upd_block('asignacion.php', obj, '#asignacion'); break;
 
                             case '.BRS-cliente':
-                                const cliente = {
-                                    cod: jsonObj[i].col1,
-                                    telefono: arrInputs[0].value,
-                                    nombre: arrInputs[1].value,
-                                    apellido: arrInputs[2].value,
-                                    direccion: arrInputs[3].value,
-                                    listanegra: arrInputs[4].value,
-                                }
-                                upd_block('particular.php', cliente, '#particular'); break;
+                                obj = new Particular();
+                                obj.cod = jsonObj[i].col1;
+                                upd_block('particular.php', obj, '#particular'); break;
 
                             case '.BRS-empresa':
-                                const empresa = {
-                                    cod: jsonObj[i].col10,
-                                    listanegra: arrInputs[0].value,
-                                    fantasia: arrInputs[1].value,
-                                    razonsocial: arrInputs[2].value,
-                                    direccion: arrInputs[3].value,
-                                    telefono: arrInputs[4].value,
-                                    correo: arrInputs[5].value,
-                                    encargado: arrInputs[6].value,
-                                    autorizado: arrInputs[7].value,
-                                }
-                                upd_block('empresa.php', empresa, '#empresa'); break;
+                                obj = new Empresa();
+                                obj.cod = jsonObj[i].col10
+                                upd_block('empresa.php', obj, '#empresa'); break;
 
                             case '.BRS-reserva':
-                                const reserva = {
-                                    cod: jsonObj[i].col14,
-                                    nombre: arrInputs[0].value,
-                                    forma_pago: arrInputs[1].value,
-                                    apellido: arrInputs[2].value,
-                                    monto: arrInputs[3].value,
-                                    cliente: arrInputs[4].value,
-                                    origen: arrInputs[5].value,
-                                    destino: arrInputs[6].value,
-                                    chofer: arrInputs[7].value,
-                                    fecha: arrInputs[8].value,
-                                    hora: arrInputs[9].value,
-                                    comentario: arrInputs[10].value,
-                                }
-                                upd_block('reserva.php', reserva, '#reserva'); break;
+                                obj = new Reserva();
+                                obj.cod = jsonObj[i].col14;
+                                upd_block('reserva.php', obj, '#reserva'); break;
 
                             case '.BRS-GDM':
-                                const gdm = {
-                                    cod: jsonObj[i].col1,
-                                    concepto: arrInputs[0].value,
-                                    importe: arrInputs[1].value,
-                                    taller: arrInputs[2].value,
-                                    comentario: arrInputs[3].value,
-                                }
-                                upd_block('mantenimiento.php', gdm, '#gastos-de-mantenimiento'); break;
+                                obj = new Mantenimiento();
+                                obj.cod.jsonObj[i].col1;
+                                upd_block('mantenimiento.php', obj, '#gastos-de-mantenimiento'); break;
                         }                       
                     }
                 }

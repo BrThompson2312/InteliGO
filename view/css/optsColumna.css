@@ -1,0 +1,85 @@
+.opciones-hilera {
+    background: #141414;
+    font-family: "Inter-ExtraLight";
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: white;
+    text-align: start;
+    font-size: 1em;
+    border: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    z-index: 99;
+    padding: 0;
+
+    /* active hover */
+    /* background: none; */
+    transition: background .2s;
+}
+/* .opciones-hilera:nth-child(1) {
+    background-color: blue;
+} */
+.opciones-hilera span{
+    position: absolute;
+    left: 3em;
+}
+.opciones-hilera :where(ion-icon, i) {
+    position: absolute;
+    left: 1em;  
+    font-size: 1em;
+}
+.opciones-hilera:before {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    content: "";
+  }
+.opciones-hilera-activeHover:before {
+    background: #141414;
+  }
+.opciones-hilera-activeHover:hover::before {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    transition: width 0.7s;
+}
+.opciones-hilera[rel="#acercaDe"]{
+    background: var(--bg-inteligo);
+    background-size: 500% 500%;
+    animation: var(--btn-inteligo);  
+}
+/* .opciones-hilera-active {
+    font-family: "Inter-Bold";
+    text-transform: uppercase;
+} */
+/* .opciones-hilera-activeHover {
+    background: none;
+    transition: background .2s;
+} */
+.opciones-hilera .inputs-busqueda {
+    display: flex;
+    gap: 10px;
+}
+
+/* new */
+.opciones-hilera:nth-child(0) {
+    font-family: "Inter-Bold";
+    text-transform: uppercase;
+    transition: background .2s;
+}
+
+.bloque {
+    display: none;
+}
+.bloque:nth-child(1) {
+    display: block;
+}

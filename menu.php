@@ -14,15 +14,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
         if ($tipoUsuario == 'administrador'){
-            echo '<link rel="stylesheet" href="view/css/administrador.css">';
+            echo '<link rel="stylesheet" href="./view/css/users/administrador.css">';
         } else {
-            echo '<link rel="stylesheet" href="view/css/operativo.css">';
+            echo '<link rel="stylesheet" href="./view/css/users/operativo.css">';
         }
     ?>
     <link rel="shortcut icon" href="view/img/logofinal/logoIco3.ico">
     <script src="https://kit.fontawesome.com/4ffb78f01e.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-    <!-- <script src="view/js/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="./view/css/optsColumna.css">
 </head>
 <body>
     <section id="alert-add">
@@ -124,7 +124,18 @@
     <script src="view/js/uniAlerts.js"></script>
     <script src="view/js/tableData.js"></script>
     <script src="view/js/consultar.js"></script>
-    <script type="module" src="view/js/add_all.js"></script>
+    
+    <!-- Clases -->
+    <script src="view/js/entidades/Asignacion.js"></script>
+    <script src="view/js/entidades/Chofer.js"></script>
+    <script src="view/js/entidades/Empresa.js"></script>
+    <script src="view/js/entidades/Mantenimiento.js"></script>
+    <script src="view/js/entidades/Operador.js"></script>
+    <script src="view/js/entidades/Particular.js"></script>
+    <script src="view/js/entidades/Reserva.js"></script>
+    
+    <script src="view/js/add_all.js"></script>
+
     <script type="module" src="view/js/filter_all.js"></script>
 </body>
 </html>

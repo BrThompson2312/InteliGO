@@ -1,20 +1,6 @@
-let opciones_hilera = document.getElementsByClassName('opciones-hilera');
-for (let i = 0; i < opciones_hilera.length; i++){
-    opciones_hilera[i].classList.add('opciones-hilera-activeHover');
-}
-opciones_hilera[0].classList.add('opciones-hilera-active');
-opciones_hilera[0].classList.remove('opciones-hilera-activeHover');
-function hileraRecorrido() {
-    for (let i = 0; i < opciones_hilera.length; i++){
-        opciones_hilera[i].classList.remove('opciones-hilera-active');
-        opciones_hilera[i].classList.add('opciones-hilera-activeHover');
-    }
-}
-let bloque = document.getElementsByClassName('bloque');
-for (let i = 0; i < bloque.length; i++){
-    bloque[i].style.display = "none";
-}
-bloque[0].style.display = "block";
+let optsColumna = document.querySelectorAll('.opciones-hilera');
+
+let bloque = document.querySelectorAll('.bloque');
 
 function consultas(url, registro){
     fetch(`model/read/read_${url}`, { method: "POST" })
@@ -25,82 +11,56 @@ function consultas(url, registro){
 function llamado(rel){
     switch (rel) {
         case '#operador':
-            consultas(`operador.php`, '.registro-operadores');
-            break;
-
+            consultas(`operador.php`, '.registro-operadores'); break;
         case '#chofer':
-            consultas(`chofer.php`, '.registro-choferes');
-            break;
-
+            consultas(`chofer.php`, '.registro-choferes'); break;
         case '#coche':
-            consultas(`coche.php`, '.registro-coches');
-            break;
-
+            consultas(`coche.php`, '.registro-coches'); break;
         case '#asignacion':
-            consultas(`asignacion.php`, '.registro-asignacion');
-            break;
-
+            consultas(`asignacion.php`, '.registro-asignacion'); break;
         case '#particular':
-            consultas(`particular.php`, '.registro-cliente');
-            break;
-
+            consultas(`particular.php`, '.registro-cliente'); break;
         case '#empresa':
-            consultas(`empresa.php`, '.registro-empresa');
-            break;
-
+            consultas(`empresa.php`, '.registro-empresa'); break;
         case '#reserva':
-            consultas(`reserva.php`, '.registro-reserva');
-            break;
-
+            consultas(`reserva.php`, '.registro-reserva'); break;
         case '#gastos-de-mantenimiento':
-            consultas(`mantenimiento.php`, '.registro-GDM');
-            break;
+            consultas(`mantenimiento.php`, '.registro-GDM'); break;
     }
 }
 
 let rel;
 function opcion_menu(ObjHtml) {
+    
     rel = ObjHtml.getAttribute("rel");
-    for (let i = 0; i < opciones_hilera.length; i++){
-        if(opciones_hilera[i].getAttribute('rel')==rel) {
-            opciones_hilera[i].classList.add('opciones-hilera-active');
-            opciones_hilera[i].classList.remove('opciones-hilera-activeHover');
+
+    optsColumna.forEach(col => {
+        if (col.getAttribute('rel') == rel) {
+            col.style.backgroundColor = "red";
         } else {
-            opciones_hilera[i].classList.remove('opciones-hilera-active');
-            opciones_hilera[i].classList.add('opciones-hilera-activeHover');
+            col.style.backgroundColor = "black";
         }
-    }
-    navbar();
-    bloque[0].style.display = "block";
-    for (let i = 0; i < bloque.length; i++){
-        bloque[i].style.display = "none";
-    }
+    })
+
+    bloque.forEach(blq => blq.style.display = "none")
+    
     let block = document.querySelector(rel);
-        if(rel == '#acercaDe'){
-            block.style.display = "flex";
-        } else {
-            block.style.display = "block";
-        }
+    if (rel == '#acercaDe') block.style.display = "flex"; else block.style.display = "block";
+    
     llamado(rel);
+    navbar();
 }
 
+function disappearBlq(elements) {
+    elements.forEach(blq => blq.style.display = "block")
+}
 function labelInput(windowOpened){
-    let label = document.querySelectorAll(`${windowOpened} label`);
-    let input = document.querySelectorAll(`${windowOpened} input`);
-    let select = document.querySelectorAll(`${windowOpened} select`);
-    let textarea = document.querySelectorAll(`${windowOpened} textarea`);
-    for (let i = 0; i < label.length; i++){
-        label[i].style.display = "block";
-    }
-    for (let i = 0; i < input.length; i++){
-        input[i].style.display = "block";
-    }
-    for (let i = 0; i < select.length; i++){
-        select[i].style.display = "block";
-    }
-    for (let i = 0; i < textarea.length; i++){
-        textarea[i].style.display = "block";
-    }
+    let $all = container => document.querySelectorAll(`${windowOpened} ${container}`)
+
+    disappearBlq($all("label"))
+    disappearBlq($all("input"))
+    disappearBlq($all("select"))
+    disappearBlq($all("textarea"))
 }
 
 function ventanaSeccion(containerSection, windowOpened, mode){
@@ -144,16 +104,17 @@ document.querySelector("#xmark-salir").onclick = function() {
 
 let nav = document.querySelector('nav');
     nav.style.left = '-200%';
+    
 let button_hilera = document.querySelector('.navbar_hilera');
-    button_hilera.onclick = function(){   
-        navbar();
-    }
+    button_hilera.onclick = () => navbar()
+
 function nav_block(){
     if (nav.style.left === '-200%'){
         nav.style.left = '0%';
         nav.style.animation = 'ani_nav 0.5s ease';
     }
 }
+
 function navbar(){
     if (nav.style.left === '0%'){
         nav.style.animation = 'desani_nav 0.5s ease';

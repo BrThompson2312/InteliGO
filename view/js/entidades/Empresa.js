@@ -1,4 +1,4 @@
-export class Empresa {
+class Empresa {
     constructor() {
         this.rut = $name('rut-empresa')
         this.razonsocial = $name('razonsocial-empresa')

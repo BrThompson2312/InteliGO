@@ -1,4 +1,4 @@
-export class Chofer {
+class Chofer {
     constructor() {
         this.telefono = $name("tel-chofer")
         this.nombre = $name('nombre-chofer')

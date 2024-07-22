@@ -1,4 +1,4 @@
-export class Coche {
+class Coche {
     constructor() {
         this.matricula = $name('matricula-coche')
         this.marca = $name('marca-coche')

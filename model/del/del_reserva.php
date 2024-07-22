@@ -1,6 +1,6 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cod_servicio = $_POST['send'];
+$cod_servicio = $data['send'];
 
 $query = "UPDATE servicio SET activo = 0 WHERE cod_servicio = '$cod_servicio'";
 $result = mysqli_query($conn, $query);

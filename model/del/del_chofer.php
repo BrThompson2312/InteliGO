@@ -1,6 +1,6 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cedula = $_POST['send'];
+$cedula = $data['send'];
 
 $query = "UPDATE chofer SET activo = 0, fecha_desactivacion = now() WHERE cedula = '$cedula'";
 $result = mysqli_query($conn, $query);

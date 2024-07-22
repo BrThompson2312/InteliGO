@@ -1,4 +1,4 @@
-export class Particular {
+class Particular {
     constructor() {
         this.telefono = $name('tel-particular')
         this.nombre = $name('nombre-particular')

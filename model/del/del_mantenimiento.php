@@ -1,6 +1,6 @@
 <?php require_once '../conf_page/conexion.php';
 
-$codigo = $_POST['send'];
+$codigo = $data['send'];
 
 $query = "UPDATE mantenimiento SET activo = 0 WHERE cod_mantenimiento = '$codigo'";
 $result = mysqli_query($conn, $query);

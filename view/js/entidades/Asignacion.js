@@ -1,4 +1,4 @@
-export class Asignacion {
+class Asignacion {
     constructor() {
         this.cedula = $name('ci-asignacion')
         this.matricula = $name('matricula-asignacion')

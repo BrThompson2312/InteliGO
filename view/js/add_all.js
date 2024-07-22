@@ -1,20 +1,11 @@
-import {Operador}           from './entidades/Operador.js';
-import {Chofer}             from './entidades/Chofer.js';
-import {Coche}              from './entidades/Coche.js';
-import {Asignacion}         from './entidades/Asignacion.js';
-import {Particular}         from './entidades/Particular.js';
-import {Empresa}            from './entidades/Empresa.js';
-import {Reserva}            from './entidades/Reserva.js';
-import {Mantenimiento}      from './entidades/Mantenimiento.js';
-
-let cont_operador = $('.BRS-operador');
-let cont_chofer = $('.BRS-choferes');
-let cont_coche = $('.BRS-coches');
-let cont_asignacion = $('.BRS-asignacion');
-let cont_particular = $('.BRS-cliente');
-let cont_empresa = $('.BRS-empresa');
-let cont_reserva = $('.BRS-reserva');
-let cont_mantenimiento = $('.BRS-GDM');
+let cont_operador       = $('.BRS-operador');
+let cont_chofer         = $('.BRS-choferes');
+let cont_coche          = $('.BRS-coches');
+let cont_asignacion     = $('.BRS-asignacion');
+let cont_particular     = $('.BRS-cliente');
+let cont_empresa        = $('.BRS-empresa');
+let cont_reserva        = $('.BRS-reserva');
+let cont_mantenimiento  = $('.BRS-GDM');
 
 function upData(block) {
     return block.querySelector(".subir_datos")

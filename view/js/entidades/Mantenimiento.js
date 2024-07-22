@@ -1,4 +1,4 @@
-export class Mantenimiento {
+class Mantenimiento {
     constructor() {
         this.codigo = $name('codigo-gdm')
         this.matricula = $name('matricula-gdm')

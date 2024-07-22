@@ -1,4 +1,4 @@
-export class Operador {
+class Operador {
     constructor() {
         this.cedula = $name('ci-operador')
         this.nombre = $name('nombre-operador')

@@ -1,4 +1,4 @@
-export class Reserva {
+class Reserva {
     constructor() {
         this.origen = $name('origen-servicio')
         this.destino = $name('destino-servicio')

@@ -1,6 +1,6 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cod_cliente = $_POST['send'];
+$cod_cliente = $data['send'];
 
 $query = "UPDATE cliente SET activo = 0 WHERE cod_cliente = $cod_cliente";
 $result = mysqli_query($conn, $query);

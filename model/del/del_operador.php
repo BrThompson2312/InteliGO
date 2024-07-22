@@ -1,8 +1,4 @@
-<?php 
-
-require_once '../conf_page/conexion.php';
-
-$data = json_decode(file_get_contents("php://input"), true);
+<?php require_once '../conf_page/conexion.php';
 
 $cedula = $data['send'];
 

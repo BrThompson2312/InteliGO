@@ -1,6 +1,6 @@
 <?php require_once '../conf_page/conexion.php';
 
-$cedula = $_POST['send'];
+$cedula = $data['send'];
 
 $query_realizan = "DELETE FROM realizan WHERE cedula = '$cedula'";
 $query_asignacion = "DELETE FROM maneja WHERE cedula = '$cedula'";

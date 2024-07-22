@@ -1,7 +1,8 @@
-@import 'fonts.css';
-@import 'alertSection.css';
-@import 'datosAdmin.css';
-@import 'alerts.css';
+@import '../fonts.css';
+@import '../alertSection.css';
+@import '../datosAdmin.css';
+@import '../alerts.css';
+@import "../optsColumna.css";
 :root {
   --bg-inteligo: linear-gradient(-45deg, #9561ee, #1db6ef);
   --btn-inteligo: btn_inteligo 5s linear infinite;
@@ -23,7 +24,7 @@ html, body {
   margin: 0;
 }
 body {
-  background-image: url(../img/pocitos.jpg);
+  background-image: url("../../img/pocitos.jpg");
   background-size: 100% 100%;
   background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
@@ -108,7 +109,7 @@ main {
   display: flex;
   align-items: center;
 }
-.opciones-hilera {
+/* .opciones-hilera {
   font-family: "Inter-ExtraLight";
   font-weight: bold;
   display: flex;
@@ -125,7 +126,7 @@ main {
   z-index: 99;
   padding: 0;
 }
-.opciones-hilera-info {
+/* .opciones-hilera-info {
   width: 100%;
   display: flex;
   align-items: center;
@@ -177,10 +178,11 @@ main {
   background: none;
   transition: background .2s;
 }
+.opciones-hilera
 .inputs-busqueda {
   display: flex;
   gap: 10px;
-}
+} */
 .filtrar, .agregar, .eliminados {
   width: 100%;
   padding: 1em;
@@ -383,3 +385,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* .bloque {
+  display: "none" !important;
+} */
